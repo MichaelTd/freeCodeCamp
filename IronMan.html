@@ -1,0 +1,218 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Stark Industries</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v7/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+body, h1,h2,h3,h4,h5,h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.w3-row-padding img {
+  margin-bottom: 12px;
+}
+
+/* Set the width of the sidenav to 120px */
+.w3-sidenav {
+  width: 120px;
+  background: #222;
+}
+
+/* Add a left margin to the "page content" that matches the width of the sidenav (120px) */
+#main {margin-left: 120px;}
+
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0;}}
+
+</style>
+</head>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidenav - hidden on small screens) -->
+<nav class="w3-sidenav w3-center w3-small w3-hide-small">
+  <!-- Avatar image in top left corner -->
+  <img src="https://images5.alphacoders.com/401/thumb-1920-401566.jpg" style="width:100%">
+  <a class="w3-padding-large w3-black" href="#home"><i class="fa fa-home w3-xxlarge"></i><br>HOME</a>
+  <a class="w3-padding-large w3-hover-black" href="#about"><i class="fa fa-user w3-xxlarge"></i><br>ABOUT</a>
+  <a class="w3-padding-large w3-hover-black" href="#photos"><i class="fa fa-eye w3-xxlarge"></i><br>PROJECTS</a>
+  <a class="w3-padding-large w3-hover-black" href="#contact"><i class="fa fa-envelope w3-xxlarge"></i><br>CONTACT</a>
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <ul class="w3-navbar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <li class="w3-left" style="width:25% !important"><a href="#">HOME</a></li>
+    <li class="w3-left" style="width:25% !important"><a href="#about">ABOUT</a></li>
+    <li class="w3-left" style="width:25% !important"><a href="#photos">PROJECTS</a></li>
+    <li class="w3-left" style="width:25% !important"><a href="#contact">CONTACT</a></li>
+  </ul>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <img src="https://images5.alphacoders.com/401/thumb-1920-401566.jpg" alt="boy" class="w3-image">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Iron Man.</h1>
+    <p>Superhero, Avenger.</p><br><br>
+  </header>
+
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">Tony Stark</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <h3 class="w3-text-light-grey">Before the Iron Mask</h3>
+    <p>I was born to Howard Anthony Stark and Maria Collins Carbonell Stark,
+    owners of the prominent US firm, Stark Industries.
+    As a boy, I was fascinated with building and controlling machines.
+    At the age of 15 I've entered the undergraduate electrical engineering program
+    at the Massachusetts Institute of Technology (MIT), and graduated with two master’s degrees by the age of 19.
+    Went to work for Stark Industries, but showed more interest in living a reckless playboy lifestyle
+    than using my engineering skills.
+    At the age of 21, inherited Stark Enterprises when my parents were killed
+    in a car accident secretly orchestrated by rival corporation Republic Oil (later ROXXON).
+    Still lacking in business acumen, promoted secretary Virginia "Pepper" Potts to be my executive assistant
+    and left the majority of my workload on her to avoid unneeded burdens.</p>
+
+    <p align="right"><a target="_blank" href="http://marvel.com/universe/Iron_Man_(Anthony_Stark)">
+    <button class="w3-btn w3-light-grey w3-padding-large w3-section w3-hover-grey"><i class="fa fa-folder-open-o"></i> Full biography</button></a></p>
+
+    <h3 class="w3-padding-16 w3-text-light-grey">What I do best.</h3>
+    <p class="w3-wide">scientist</p><div class="w3-progress-container"><div class="w3-progressbar" style="width:95%"></div></div>
+    <p class="w3-wide">engineer</p><div class="w3-progress-container"><div class="w3-progressbar" style="width:85%"></div></div>
+    <p class="w3-wide">businessman</p><div class="w3-progress-container"><div class="w3-progressbar" style="width:80%"></div></div><br>
+
+    <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
+      <div class="w3-quarter w3-section"><span class="w3-xlarge">6+</span><br>Avengers</div>
+      <div class="w3-quarter w3-section"><span class="w3-xlarge">55+</span><br>OP's</div>
+      <div class="w3-quarter w3-section"><span class="w3-xlarge">89+</span><br>Contractees</div>
+      <div class="w3-quarter w3-section"><span class="w3-xlarge">150+</span><br>Meetings</div>
+    </div>
+
+    <!-- Grid for pricing tables -->
+    <h3 class="w3-padding-16 w3-text-light-grey">Charges</h3>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half w3-margin-bottom">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Professional</li>
+          <li class="w3-padding-16">Crime Fighting</li>
+          <li class="w3-padding-16">Villain Chasing</li>
+          <li class="w3-padding-16">Extortionist Take Down</li>
+          <li class="w3-padding-16">Kidnapper Neutralization</li>
+          <li class="w3-padding-16">
+            <h2>$ 10.000.000</h2>
+            <span class="w3-opacity">per month</span>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <a href="#contact"><button class="w3-btn w3-white w3-padding-large w3-hover-black">Sign Up</button></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w3-half">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Advanced</li>
+          <li class="w3-padding-16">Crime Obliteration</li>
+          <li class="w3-padding-16">Villain Crushing</li>
+          <li class="w3-padding-16">Extortionist Smack Down</li>
+          <li class="w3-padding-16">Kidnapper Vaporization</li>
+          <li class="w3-padding-16">
+            <h2>$ 25.000.000</h2>
+            <span class="w3-opacity">per month</span>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <a href="#contact"><button class="w3-btn w3-white w3-padding-large w3-hover-black">Sign Up</button></a>
+          </li>
+        </ul>
+      </div>
+    <!-- End Grid/Pricing tables -->
+    </div>
+
+    <!-- Testimonials -->
+    <h3 class="w3-padding-24 w3-text-light-grey">Recommendations</h3>
+    <img src="http://cdn.bleedingcool.net/wp-content/uploads/2011/02/nick-fury.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+    <p><span class="w3-large w3-margin-right">Nick Fury.</span> CEO at S.H.I.E.L.D.</p>
+    <p>Tony Stark saved us from a war disaster.</p><br>
+
+    <img src="https://pbs.twimg.com/profile_images/504622814578491392/Vqs-08oI.jpeg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+    <p><span class="w3-large w3-margin-right">Pepper Potts.</span> CEO at Stark Industries.</p>
+    <p>No one is better than Tony Stark.</p>
+  <!-- End About Section -->
+  </div>
+
+  <!-- Portfolio Section -->
+  <div class="w3-padding-64 w3-content" id="photos">
+    <h2 class="w3-text-light-grey">Projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <img src="http://img07.deviantart.net/af44/i/2015/018/1/1/iron_man__stark_industries___arc_reactor_blueprint_by_stntoulouse-d8efef8.jpg" style="width:100%">
+        <img src="https://s-media-cache-ak0.pinimg.com/236x/2f/96/3e/2f963eb91f4624127a479e824418075c.jpg" style="width:100%">
+      </div>
+      <div class="w3-half">
+        <img src="https://fitziu.files.wordpress.com/2015/08/debutart_jaceytec_19122.jpg" style="width:100%">
+        <img src="https://s-media-cache-ak0.pinimg.com/564x/e7/97/ea/e797eaa1f323b573489e1d68bd978914.jpg" style="width:100%">
+        <img src="https://s-media-cache-ak0.pinimg.com/236x/79/37/1e/79371e68740f4c96402bfe888bf5a1b2.jpg" style="width:100%">
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End Portfolio Section -->
+  </div>
+
+  <!-- Contact Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-light-grey">Drop by for a cup of <i class="fa fa-coffee fa-fw w3-text-white w3-xxlarge w3-margin-right"></i></h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-section">
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> New York City, US</p>
+      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +01 1234567890</p>
+      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: tony@stark-industries.com</p>
+    </div><br>
+    <p>Lets get in touch. Send me a message:</p>
+
+    <form action="form.asp" target="_blank">
+      <p><input class="w3-input w3-padding-16" placeholder="Name" required name="Name" type="text"></p>
+      <p><input class="w3-input w3-padding-16" placeholder="Email" required name="Email" type="text"></p>
+      <p><input class="w3-input w3-padding-16" placeholder="Subject" required name="Subject" type="text"></p>
+      <p><input class="w3-input w3-padding-16" placeholder="Message" required name="Message" type="text"></p>
+      <p>
+        <button class="w3-btn w3-light-grey w3-padding-large" type="submit">
+          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+        </button>
+      </p>
+    </form>
+  <!-- End Contact Section -->
+  </div>
+
+    <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <a href="https://www.facebook.com/robertdowneyjr/" target="_blank"><i class="fa fa-facebook-official w3-hover-text-indigo"></i></a>
+    <a href="http://instaliga.com/robertdowneyjr/969630337661749931_1518284433" target="_blank"><i class="fa fa-instagram w3-hover-text-purple"></i></a>
+    <a href="http://www.snapchat.com/" target="_blank"><i class="fa fa-snapchat w3-hover-text-yellow"></i></a>
+    <a href="http://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest-p w3-hover-text-red"></i></a>
+    <a href="https://twitter.com/RobertDowneyJr" target="_blank"><i class="fa fa-twitter w3-hover-text-light-blue"></i></a>
+    <a href="https://www.linkedin.com/in/robertdowneyjunior" target="_blank"><i class="fa fa-linkedin w3-hover-text-purple"></i></a>
+    <p class="w3-medium">Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <!-- End footer -->
+  </footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+</body>
+</html>
