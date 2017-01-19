@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>"Three lines" Calculator</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><!-- jQuery 3.1.1  -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><!-- Latest compiled and minified CSS --><!-- BOOTSTRAP -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"><!-- Optional theme -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Latest compiled and minified JavaScript -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- FONTAWESOME -->
+<link href="https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono" rel="stylesheet" type="text/css"><!-- GOOGLEAPI FONTS -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+body {
+  background: #ddd url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAEklEQVQImWNoamr6z0AWoKFOAKMAB5CiM/wYAAAAAElFTkSuQmCC) repeat;
+}
+
+html, body, div{
+  font-family: "Orbitron";
+}
+
+#page {
+  min-height: 90vh;
+}
+.container{
+  box-shadow: 0 0 30px black;
+  color:white;
+  border:solid black;
+  border-radius: 15px;
+  background-color: Grey;
+  background: #000 url("http://wallpapercave.com/wp/2u5OrmL.png")  no-repeat fixed center;
+  background-size: stretch;
+  width:50%;
+}
+
+.btn{
+  color:black !Important;
+  box-shadow: 0 0 30px black !Important;
+  width:24%;
+  border-radius:15px !Important;
+  font-size:18;
+}
+
+.display{
+  font-family:"Roboto Mono";
+  box-shadow: 0 0 30px black !Important;
+  color:black;
+  font-size:30;
+  possition:relative;
+  display:block;
+  width:100%;
+}
+
+footer {
+  background-color: lightgray;
+  min-height: 10vh;
+  padding: 1%;
+  text-align: center;
+}
+
+</style>
+<script type="text/javascript">
+function updateDisplay(param){
+	switch (param) {
+	case "=":
+		jsCalc.display.value = eval(jsCalc.display.value);
+		break;
+	case "CL":
+		jsCalc.display.value = '';
+		break;
+	default:
+		jsCalc.display.value += param;
+	}
+}
+</script>
+</head>
+<body>
+<div id="page">
+<br />
+<br />
+<div class="container container-fluid text-vertical-center text-center" id="calc-container">
+<form id="jsCalc">
+<br/>
+<h4><i class="fa fa-quote-left" aria-hidden="true"></i> Three lines <i class="fa fa-quote-right" aria-hidden="true"></i> Calculator</h4>
+<hr/>
+<p align="center"><input type="text" class="display" id="display" disabled /></p>
+<hr/>
+<p>
+<a class="btn btn-primary" onClick="updateDisplay(this.text)">1</a>
+<a class="btn btn-primary" onclick="updateDisplay(this.text)">2</a>
+<a class="btn btn-primary" onclick="updateDisplay(this.text)">3</a>
+<a class="btn btn-default" onclick="updateDisplay(this.text)">+</a>
+</p><p>
+<a class="btn btn-primary" onclick="updateDisplay(this.text)">4</a>
+<a class="btn btn-primary" onclick="updateDisplay(this.text)">5</a>
+<a class="btn btn-primary" onclick="updateDisplay(this.text)">6</a>
+<a class="btn btn-default" onclick="updateDisplay(this.text)">-</a>
+</p><p>
+<a class="btn btn-primary" onclick="updateDisplay(this.text)">7</a>
+<a class="btn btn-primary" onclick="updateDisplay(this.text)">8</a>
+<a class="btn btn-primary" onclick="updateDisplay(this.text)">9</a>
+<a class="btn btn-default" onclick="updateDisplay(this.text)">*</a>
+</p><p>
+<a class="btn btn-danger" onclick="updateDisplay(this.text)">CL</a>
+<a class="btn btn-primary" onclick="updateDisplay(this.text)">0</a>
+<a class="btn btn-warning" onclick="updateDisplay(this.text)">=</a>
+<a class="btn btn-default" onclick="updateDisplay(this.text)">/</a>
+</p>
+</form>
+<br/>
+</div>
+</div>
+<footer>
+<p>
+<a href="https://www.minds.com/michaeltsouchlarakis/" target='_blank'>MdT</a> 
+<script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script> 
+ <a href="https://www.freecodecamp.com/michaeltd/" target='_blank'><i class="fa fa-free-code-camp fa-fw fa-1x"></i></a>
+</p>
+<p style="font-size:6;"> Zero prefixed numbers will be calculated in hexadecimal system</p>
+</footer>
+</body>
+</html>
