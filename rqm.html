@@ -4,15 +4,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><!-- jQuery 3.1.1  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><!-- Latest compiled and minified CSS --><!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"><!-- Optional theme -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Latest compiled and minified JavaScript -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- FONTAWESOME -->
-    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Bungee+Inline" rel="stylesheet" type="text/css"><!-- GOOGLEAPI FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css"><!-- GOOGLEAPI FONTS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
-        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAADklEQVQImWNgwAKkMEQAAfsAG+89rNMAAAAASUVORK5CYII=) repeat;
-        font-family: cursive, sans-serif;
+        font-family: Ubuntu;
       }
       .container, .container-fluid {
         min-height: 90vh;
@@ -22,7 +20,7 @@
         box-shadow: 0 0 30px black !Important;
       }
       footer {
-        background-color: lightgray;
+        background-color: rgba(127,127,127,0.5);
         min-height: 10vh;
         line-height: 20px;
         padding-top: 10px;
@@ -32,24 +30,97 @@
       }
     </style>
     <script>
-    $(document).ready(function() {
-    	var getQuote = function() {return $.getJSON('https://helloacm.com/api/fortune/' ,"","jsonp")};
-    	var setQuote = function(data) {
-    		var encodedQuote = encodeURIComponent(data);
-    		var tweetUrl = "https://twitter.com/intent/tweet?text=" + encodedQuote;
-    		$('.quote').text(data);
-    		$('.btnTweet').attr('href', tweetUrl);
-    	};
+      var obj = {
+        unos: [
+          'Ladies and Gentlemen ',
+          'On the other hand ',
+          'At the same time ',
+          'We must not forget that ',
+          'That way ',
+          'Daily practice has shown that ',
+          'Needless to say the importance of those details regarding ',
+          'Extensive and rich experience combined with ',
+          'Organisaton management and foremost ',
+          'Ideological criteria when combined with ',
+        ],
+        dos: [
+          'the realization of given goals ',
+          'the extent and method of executive formation ',
+          'the constant rise in quality and volume of our efforts ',
+          'the given structure of our system ' ,
+          'a new model of action in multiple levels ',
+          'the development of our complex activities ',
+          'the restless commitment to practical documentation and education ',
+          'the enrichment and development of our infrastructure ',
+          'the wide collaboration with the public in our workflow ',
+          'the start of a decisive campaign ',
+        ],
+        tres: [
+          'dictates carefull analysis of ',
+          'playing an important role in determining ',
+          'obligates us to define and mesure ',
+          'is helping us to prepare and understand ',
+          'guaranties the widest possible acceptanse in order to process ',
+          'contributes in a determining manner in signing ',
+          'helps in an effort to solidify ',
+          'is giving us in great degree the opportunity to appreciate ',
+          'are part in a very important base for ',
+          'is opening a process that contributes in perfectioning ',
+        ],
+        quatros: [
+          'the given finincial and institutional landscape.',
+          'the axis of future course.',
+          'a general system of wider contribution.',
+          'the new norm and directives against modern days challenges.',
+          'the new guides and principles.',
+          'the basis of a liberal evolution.',
+          'a dynamic system to counter modern demands.',
+          'the best conditions possible for accelerating development.',
+          'a new model of grouth.',
+          'the various forms of developing our infuence.',
+        ]
+      }
 
-    	$('.btnNew').on('click', function() {
-    		var reloadBtn = $(this);
-    		reloadBtn.prop('disabled', true).children('i').addClass('fa-spin');
-    		getQuote().done(function(data) {
-    			setQuote(data);
-    			reloadBtn.prop('disabled', false).children('i').removeClass('fa-spin');
-    		});
-    	});
-    });
+      function randomizeText(part) {
+        var text = obj[part][Math.floor(Math.random() * obj[part].length)];
+        document.querySelector('.' + part).innerHTML = text;
+      };
+
+      function generateQuote() {
+        var generateUnos = setInterval(function() {
+          randomizeText('unos')}, 100);
+          setTimeout(function() {
+            clearInterval(generateUnos);
+            var generateDos = setInterval(function() {
+              randomizeText('dos')}, 100);
+              setTimeout(function() {
+                clearInterval(generateDos);
+                var generateTres = setInterval(function() {
+                  randomizeText('tres')}, 100);
+                  setTimeout(function() {
+                    clearInterval(generateTres);
+                    var generateQuatros = setInterval(function() {
+                      randomizeText('quatros')}, 100);
+                      setTimeout(function() {
+                        clearInterval(generateQuatros);
+                      }, 500);
+                  }, 500);
+              }, 500);
+          }, 500);
+      };
+
+      function tweetQuote(){
+        var fullText = document.querySelector('.unos').innerHTML
+          + document.querySelector('.dos').innerHTML
+          + document.querySelector('.tres').innerHTML
+          + document.querySelector('.quatros').innerHTML;
+        var encodedQuote = encodeURIComponent(fullText);
+        var tweetUrl = "https://twitter.com/intent/tweet?text=" + encodedQuote;
+        window.open(tweetUrl);
+      }
+
+      generateQuote();
+
     </script>
   </head>
   <body>
@@ -63,27 +134,22 @@
     				<blockquote>
               <i class="fa fa-quote-left"></i>
               <p class="quote">
-                Stumbling is not falling. <br> -- Malcom X
+                <span class='unos'>Ladies and Gentlemen </span><br/>
+                <span class='dos'>the realization of given goals</span><br/>
+                <span class='tres'>dictates carefull analysis</span><br/>
+                <span class='quatros'>the given finincial and institutional landscape.</span>
               </p>
     				</blockquote>
     				<div class="btn-group pull-right">
-    					<button class="btn btn-default btnNew">
-    						<i class="fa fa-refresh fa-4x"></i>
-    					</button>
-    					<a class="btn btn-default btnTweet" href="https://twitter.com/intent/tweet?text=Stumbling%20is%20not%20falling.%20--%20Malcom%20X" target="_blank">
-    						<i class="fa fa-twitter fa-4x"></i>
-    					</a>
+    					<button class="btn btn-default btnNew" onClick="generateQuote();"><i class="fa fa-refresh fa-4x"></i></button>
+              <button class="btn btn-default btnTweet" onClick="tweetQuote();"><i class="fa fa-twitter fa-4x"></i></button>
     				</div>
     			</div>
     		</div>
     	</div>
     </div>
-    <footer class="text-center footer">
+    <footer class="text-center">
       <p>
-        <a href="https://helloacm.com/fortune/" target='_blank'>Thanks to</a>
-        <a href="https://helloacm.com" target='_blank'>HelloACM</a>
-        <a href="https://helloacm.com/list-of-apis/" target='_blank'>for it's api's</a>
-        --
         <a href="https://www.minds.com/michaeltsouchlarakis" target='_blank'>TDM</a> <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>
         <a href="https://www.freecodecamp.com/michaeltd/" target='_blank'><i class="fa fa-free-code-camp fa-fw"></i></a>
       </p>
