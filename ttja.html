@@ -1,0 +1,195 @@
+<html >
+<head>
+<meta charset="UTF-8">
+<title>Twitch.tv json API</title>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- FONTAWESOME -->
+<style>
+
+  @import url(https://fonts.googleapis.com/css?family=Revalia|Diplomata );
+
+  .img-logo {
+    width: 100px;
+    margin-right: 20px;
+    float: left;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: "Diplomata";
+    font-size:33px;
+    padding-bottom: 20px;
+  }
+
+  .badger {
+    float: right;
+  }
+
+  .bg {
+    background-color: #4A235A;
+    min-height: 90vh;
+  }
+
+  footer {
+    background-color: rgba(127,127,127,0.5);
+    min-height: 10vh;
+    padding: 1%;
+    text-align: center;
+    font-family: cursive, sans-serif;
+  }
+
+  .nav-bar {
+    padding-bottom: 30px;
+  }
+
+  .center-box {
+    font-family: "Revalia";
+    font-size: 14px;
+  }
+
+</style>
+
+</head>
+
+<body>
+<div class="row bg">
+<div class="container-fluid">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 well center-box">
+    <h1>Twitch Featured Channels <svg version="1.1" id="twitch-logo" width="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-92.4 101 489.5 512" enable-background="new -92.4 101 489.5 512" xml:space="preserve"><g><path fill="#65459B" d="M263.6,546.1H163.4L96.7,613H30v-66.9H-92.4v-356l33.3-89.1h456.2v311.6L263.6,546.1z M352.7,390.5V145.5	H-14.6v322.7H85.6V535l66.7-66.7h122.4L352.7,390.5z"/><g id="Solo_Glitch_136_"><g><path fill="#65459B" d="M230.2,234.6v133.6h44.5V234.6H230.2z M107.8,368.1h44.5V234.6h-44.5V368.1z"/></g></g></g></svg></h1>
+    <div class="btn-group nav-bar btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group " role="group">
+        <button id="btn-all-channels" type="button" class="btn btn-primary">All</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button id ="btn-online-channels" type="button" class="btn btn-warning">Online</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button id="btn-offline-channels" type="button" class="btn btn-danger">Offline</button>
+      </div>
+    </div>
+    <div id="twitch-list" class="list-group">
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+</div>
+<footer>
+<p>
+<a href="https://www.minds.com/michaeltsouchlarakis" target="_blank">TDM</a>
+<script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>
+<a href="https://www.freecodecamp.com/michaeltd/" target='_blank'><i class="fa fa-free-code-camp fa-fw"></i></a>
+</p>
+</footer>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+
+<script>
+
+$(document).ready(function(){
+
+  fetchAll("all");
+
+  $("#btn-all-channels").on("click", function () {
+    fetchAll("all");
+  });
+
+  $("#btn-online-channels").on("click", function () {
+    fetchAll("online");
+  });
+
+  $("#btn-offline-channels").on("click", function () {
+    fetchAll("offline");
+  });
+
+});
+
+
+function fetchAll (status) {
+  $("#twitch-list").empty();
+
+  var fccURI = "https://api.twitch.tv/kraken/channels/freecodecamp/?client_id=yseyvfho795s23ubjenbwh07wraxra";
+  fetch(fccURI, true, status);
+
+  var featuredURI ="https://api.twitch.tv/kraken/streams/featured?client_id=yseyvfho795s23ubjenbwh07wraxra";
+  fetch(featuredURI, false, status );
+}
+
+function fetch (apiURI, includeFCC, status) {
+  $.ajax({type: 'GET',url: apiURI,
+  success: function(data) {
+    var json = "";
+    var twitchItem = "";
+    var twitchURI = "";
+    var twitchTitle = "";
+    var twitchText = "";
+    var twitchLogo = "";
+    var twitchStreaming = "offline";
+
+    if (includeFCC == false) {
+      json = data.featured;
+
+      json.forEach(function(val){
+
+      twitchTitle= val.title;
+      twitchText = val.text;
+      var fixedText = twitchText.substring(0, twitchText.indexOf("<a"));
+      if (fixedText.length < 100) {
+        return;
+      }
+      twitchURI = val.stream.channel.url;
+      twitchLogo =val.stream.channel.logo;
+
+      if (val.stream != '') {
+        twitchStreaming= "Online";
+      } else {
+        twitchStreaming = "Offline";
+      }
+
+      twitchItem = "<a href=\""
+        + twitchURI + "\" class=\"list-group-item\" > <span class=\"badge badger\">"
+        + twitchStreaming + "</span><img class=\"img-logo img-circle\" src=\""
+        + twitchLogo + "\"></img><h3 class=\"list-group-item-heading\">"
+        + twitchTitle + "</h3>" + "<p class=\"list-group-item-text\">"
+        + fixedText +  "</p></a>";
+
+      if (status === "all") {
+        $("#twitch-list").append(twitchItem);
+      } else if (status === "online" && twitchStreaming == "Online") {
+        $("#twitch-list").append(twitchItem);
+      } else if (status === "offline" &&  twitchStreaming == "Offline") {
+        $("#twitch-list").append(twitchItem);
+      }
+    });
+
+    } else {
+
+      twitchTitle = data.name;
+      twitchText = data.status + "<br/><br/><br/><br/><br/>";
+      twitchURI = data.url;
+      twitchLogo = data.logo;
+      twitchStreaming = "Offline";
+
+      twitchItem = "<a href=\""
+        + twitchURI + "\" class=\"list-group-item\" > <span class=\"badge badger\">"
+        + twitchStreaming + "</span><img class=\"img-logo img-circle\" src=\""
+        + twitchLogo + "\"></img><h3 class=\"list-group-item-heading\">"
+        + twitchTitle + "</h3>"
+        + "<p class=\"list-group-item-text\">"
+        + twitchText +  "</p></a>";
+
+       if (status === "all") {
+          $("#twitch-list").append(twitchItem);
+      } else if (status === "online" && twitchStreaming == "Online") {
+          $("#twitch-list").append(twitchItem);
+      } else if (status === "offline" &&  twitchStreaming == "Offline") {
+          $("#twitch-list").append(twitchItem);
+      }
+    }
+  }})
+}
+
+</script>
+
+</body>
+</html>
