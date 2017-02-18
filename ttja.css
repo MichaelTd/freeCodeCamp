@@ -1,0 +1,47 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Revalia|Diplomata");
+
+.img-logo {
+  width: 50px;
+  margin-right: 20px;
+  float: left;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Diplomata";
+  font-size:33px;
+  padding-bottom: 20px;
+}
+
+.list-group-item{
+  background-color:#eeeeee;
+}
+
+.badger {
+  float: right;
+}
+
+.bg {
+  background-color: #17141f;
+  min-height: 90vh;
+}
+
+footer {
+  background-color: rgba(127,127,127,0.5);
+  min-height: 10vh;
+  padding: 1%;
+  text-align: center;
+  font-family: "Diplomata";
+}
+
+.nav-bar {
+  padding-bottom: 30px;
+}
+
+.center-box {
+  font-family: "Revalia";
+  font-size: 14px;
+}
+
