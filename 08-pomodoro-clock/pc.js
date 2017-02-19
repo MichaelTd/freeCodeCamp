@@ -1,12 +1,8 @@
 $(document).ready(function(){
-  var countS = 25;
+  var countS = 25, countB = 5;
   $("#session").html(countS);
-  var countB = 5;
   $("#break").html(countB);
-  var pos = "pomodoro";
-  var countLama;
-  var posLama;
-  var count;
+  var pos = "pomodoro", countLama, posLama, count;
   $("#stats").html(pos);
   var clock = $(".timer").FlipClock(0, {
     countdown: true,
