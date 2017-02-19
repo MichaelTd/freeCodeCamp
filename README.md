@@ -1,25 +1,23 @@
-# freeCodeCamp Challenges
-
-[CodePen](http://codepen.io/TdMichael/)
+# [freeCodeCamp Challenges](http://codepen.io/TdMichael/)
 
 # [01-Tribute-Page](http://codepen.io/TdMichael/full/jVGGoX/)
 
-# 02-Personal-Portfolio-Page(http://codepen.io/TdMichael/full/pNdVbg/)
+# [02-Personal-Portfolio-Page](http://codepen.io/TdMichael/full/pNdVbg/)
 
-# 03-Random-Quote-Machine
+# [03-Random-Quote-Machine]()
 
-# 04-local-weather-app
+# [04-local-weather-app]()
 
-# 05-Wikipedia-Viewer
+# [05-Wikipedia-Viewer]()
 
-# 06-Twitch.tv-Json-Api
+# [06-Twitch.tv-Json-Api]()
 
-# 07-Javascript-Calculator
+# [07-Javascript-Calculator]()
 
-# 08-Pomodoro-Clock
+# [08-Pomodoro-Clock]()
 
-# 09-tic-tac-toe
+# [09-tic-tac-toe]()
 
-# 10-simon-game
+# [10-simon-game]()
 
 
