@@ -1,0 +1,51 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono");
+
+body {
+  background: #ddd url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAEklEQVQImWNoamr6z0AWoKFOAKMAB5CiM/wYAAAAAElFTkSuQmCC) repeat;
+}
+
+html, body, div{
+  font-family: "Orbitron";
+}
+
+#page {
+  min-height: 90vh;
+}
+.container{
+  box-shadow: 0 0 30px black;
+  color:white;
+  border:solid black;
+  border-radius: 15px;
+  background-color: Grey;
+  background: #000 url("http://wallpapercave.com/wp/2u5OrmL.png")  no-repeat fixed center;
+  background-size: stretch;
+  width:50%;
+}
+
+.btn{
+  color:black !Important;
+  box-shadow: 0 0 30px black !Important;
+  width:24%;
+  border-radius:15px !Important;
+  font-size:18;
+}
+
+.display{
+  font-family:"Roboto Mono";
+  box-shadow: 0 0 30px black !Important;
+  color:black;
+  font-size:30;
+  possition:relative;
+  display:block;
+  width:100%;
+}
+
+footer {
+  background-color: lightgray;
+  min-height: 10vh;
+  padding: 1%;
+  text-align: center;
+}
