@@ -1,87 +1,25 @@
-<html>
-<!-- 
+<!--
   Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/rLJZrA/.
   Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
   User Story: I can add, subtract, multiply and divide two numbers.
   User Story: I can clear the input field with a clear button.
   User Story: I can keep chaining mathematical operations together until I hit the equal button, and the calculator will tell me the correct output.
   Remember to use Read-Search-Ask if you get stuck.
-  When you are finished, click the "I've completed this challenge" button and include a link to your CodePen. 
+  When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
   You can get feedback on your project by sharing it with your friends on Facebook.
 -->
+<html>
 <head>
 <title>"Three lines" Calculator</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><!-- jQuery 3.1.1  -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><!-- Latest compiled and minified CSS --><!-- BOOTSTRAP -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"><!-- Optional theme -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Latest compiled and minified JavaScript -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- FONTAWESOME -->
-<link href="https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono" rel="stylesheet" type="text/css"><!-- GOOGLEAPI FONTS -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
 
-body {
-  background: #ddd url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAEklEQVQImWNoamr6z0AWoKFOAKMAB5CiM/wYAAAAAElFTkSuQmCC) repeat;
-}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><!-- jQuery 3.1.1  -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Latest compiled and minified JavaScript -->
 
-html, body, div{
-  font-family: "Orbitron";
-}
+<link rel="stylesheet" href="jc.css">
 
-#page {
-  min-height: 90vh;
-}
-.container{
-  box-shadow: 0 0 30px black;
-  color:white;
-  border:solid black;
-  border-radius: 15px;
-  background-color: Grey;
-  background: #000 url("http://wallpapercave.com/wp/2u5OrmL.png")  no-repeat fixed center;
-  background-size: stretch;
-  width:50%;
-}
+<script type="text/javascript" src="jc.js"></script>
 
-.btn{
-  color:black !Important;
-  box-shadow: 0 0 30px black !Important;
-  width:24%;
-  border-radius:15px !Important;
-  font-size:18;
-}
-
-.display{
-  font-family:"Roboto Mono";
-  box-shadow: 0 0 30px black !Important;
-  color:black;
-  font-size:30;
-  possition:relative;
-  display:block;
-  width:100%;
-}
-
-footer {
-  background-color: lightgray;
-  min-height: 10vh;
-  padding: 1%;
-  text-align: center;
-}
-
-</style>
-<script type="text/javascript">
-function updateDisplay(param){
-	switch (param) {
-	case "=":
-		jsCalc.display.value = eval(jsCalc.display.value);
-		break;
-	case "CL":
-		jsCalc.display.value = '';
-		break;
-	default:
-		jsCalc.display.value += param;
-	}
-}
-</script>
 </head>
 <body>
 <div id="page">
@@ -121,8 +59,8 @@ function updateDisplay(param){
 </div>
 <footer>
 <p>
-<a href="https://www.minds.com/michaeltsouchlarakis/" target='_blank'>MdT</a> 
-<script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script> 
+<a href="https://www.minds.com/michaeltsouchlarakis/" target='_blank'>MdT</a>
+<script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>
  <a href="https://www.freecodecamp.com/michaeltd/" target='_blank'><i class="fa fa-free-code-camp fa-fw fa-1x"></i></a>
 </p>
 <p style="font-size:6;"> Zero prefixed numbers will be calculated in hexadecimal system</p>
