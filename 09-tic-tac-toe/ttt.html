@@ -1,0 +1,47 @@
+<html>
+<!--
+  Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/KzXQgy/.
+  Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
+  User Story: I can play a game of Tic Tac Toe with the computer.
+  User Story: My game will reset as soon as it's over so I can play again.
+  User Story: I can choose whether I want to play as X or O.
+  Remember to use Read-Search-Ask if you get stuck.
+  When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
+  You can get feedback on your project by sharing it with your friends on Facebook.
+-->
+<head>
+  <!-- https://blog.vivekpanyam.com/how-to-build-an-ai-that-wins-the-basics-of-minimax-search/ -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><!-- jQuery 3.1.1  -->
+
+  <link rel="stylesheet" href="ttt.css">
+
+  <script src="ttt.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div class="wrapper">
+Click a cell when it's your move.<br><br>
+<div id="winner"></div>
+<div id="move">AI's Move</div>
+<table>
+    <tr>
+        <td><button id="c00"></button></td>
+        <td><button id="c01"></button></td>
+        <td><button id="c02"></button></td>
+    </tr>
+    <tr>
+        <td><button id="c10"></button></td>
+        <td><button id="c11"></button></td>
+        <td><button id="c12"></button></td>
+    </tr>
+    <tr>
+        <td><button id="c20"></button></td>
+        <td><button id="c21"></button></td>
+        <td><button id="c22"></button></td>
+    </tr>
+</table>
+
+<input type="button" id="restart" value="Restart Game"/>
+</div>
+</body>
+</html>
