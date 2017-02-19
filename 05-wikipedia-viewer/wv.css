@@ -1,0 +1,54 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond");
+
+.container-fluid{
+  min-height:90vh;
+  background:rgba(127,127,127,0.7);
+}
+
+.page-header{
+  color:#000;
+}
+
+footer{
+  min-height:10vh;
+  padding:1%;
+  background-color:#000;
+  color:lightGray;
+  text-align:center;
+}
+
+body{
+  font-family:"Cormorant Garamond",serif !important;
+  background-image:url(https://images.unsplash.com/photo-1477238134895-98438ad85c30?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=);
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center;
+  background-size:cover;
+}
+
+input,button{
+  display:block;
+  margin:auto;
+  box-shadow: 0 0 30px black !important;
+}
+
+input{
+  max-width:98%;
+  min-width:98%;
+}
+
+button{
+  max-width:32%;
+  min-width:32%;
+}
+
+img{
+  max-height:40px;
+}
+
+ul{
+  list-style-type:none;
+  margin-top:5px;
+}
