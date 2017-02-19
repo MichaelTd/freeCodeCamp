@@ -1,23 +1,20 @@
-<html>
-<!-- 
+<!--
   Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/aNyxXR/.
   Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
   User Story: I can start a 25 minute pomodoro, and the timer will go off once 25 minutes has elapsed.
   User Story: I can reset the clock for my next pomodoro.
   User Story: I can customize the length of each pomodoro.
   Remember to use Read-Search-Ask if you get stuck.
-  When you are finished, click the "I've completed this challenge" button and include a link to your CodePen. 
+  When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
   You can get feedback on your project by sharing it with your friends on Facebook.
 -->
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Pomodoro Clock</title>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- FONTAWESOME -->
+
 <link rel="stylesheet" href="pc.css">
-<style>
-</style>
+
 </head>
 <body>
   <div id="_body">
@@ -31,13 +28,13 @@
       <div class="row"><p>SESSION</p></div>
       <div class="row counter">
         <div class="col-md-4">
-          <button class="btn btn-default" id="ssnDn">-</button>
+          <button class="btn btn-primary" id="ssnDn">-</button>
         </div>
         <div class="col-md-2">
           <div id="session"></div>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-default" id="ssnUp">+</button>
+          <button class="btn btn-primary" id="ssnUp">+</button>
         </div>
       </div>
     </div>
@@ -45,13 +42,13 @@
       <div class="row"><p>BREAK</p></div>
       <div class="row counter">
         <div class="col-md-4">
-          <button class="btn btn-default" id="brkDn">-</button>
+          <button class="btn btn-primary" id="brkDn">-</button>
         </div>
         <div class="col-md-2">
           <div id="break"></div>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-default" id="brkUp">+</button>
+          <button class="btn btn-primary" id="brkUp">+</button>
         </div>
       </div>
     </div>
@@ -60,13 +57,13 @@
     <div class="timer"><div class="middle"></div></div>
   </div>
   <div class="row" id="statRow">
-    <div id="stats"></div>
+    <button class="btn btn-primary" id="stats"></button>
   </div>
   <div class="container">
     <div class="row" id="btns">
-      <button class="btn btn-default btn-lg" id="start">start</button>
-      <button class="btn btn-default btn-lg" id="stop">stop</button>
-      <button class="btn btn-default btn-lg" id="clear">clear</button>
+      <button class="btn btn-primary btn-lg" id="start">start</button>
+      <button class="btn btn-primary btn-lg" id="stop">stop</button>
+      <button class="btn btn-primary btn-lg" id="clear">clear</button>
     </div>
   </div>
 </div>
