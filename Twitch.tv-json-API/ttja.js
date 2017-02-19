@@ -29,9 +29,9 @@ function fetch (apiURI, includeFCC, status) {
         twURI = val.stream.channel.url;
         twLogo = val.stream.channel.logo;
         if (val.stream != "") {twStream = "ONLINE";} else {twStream = "OFFLINE";}
-        twItem = "<a target='_blank' href='" + 
-          twURI + "' class='list-group-item'> <span class='badge badger'>" + 
-          twStream + "</span><img class='img-logo' src='" + 
+        twItem = "<a target='_blank' href='" +
+          twURI + "' class='list-group-item'><span class='badge badger'>" +
+          twStream + "</span><img class='img-logo' src='" +
           twLogo + "'></img><h3 class='list-group-item-heading'>" +
           twTitle + "</h3>" + "<p class='list-group-item-text'>" +
           fixedText +  "</p></a>";
@@ -50,7 +50,7 @@ function fetch (apiURI, includeFCC, status) {
       twLogo = data.logo;
       twStream = "OFFLINE";
       twItem = "<a target='_blank' href='" +
-        twURI + "' class='list-group-item' > <span class='badge badger'>" +
+        twURI + "' class='list-group-item'><span class='badge badger'>" +
         twStream + "</span><img class='img-logo img-circle' src='" +
         twLogo + "'></img><h3 class='list-group-item-heading'>" +
         twTitle + "</h3><p class='list-group-item-text'>" +
