@@ -1,6 +1,6 @@
-# [freeCodeCamp Challenges](http://codepen.io/TdMichael/)
+### [freeCodeCamp Challenges](http://codepen.io/TdMichael/)
 
-# [01-tribute-page](http://codepen.io/TdMichael/full/jVGGoX/)
+#### [01-tribute-page](http://codepen.io/TdMichael/full/jVGGoX/)
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/NNvBQW/.
 Fulfill the below user stories. Use whichever libraries you need. Give it your own personal style.
