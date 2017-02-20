@@ -10,7 +10,7 @@ Remember to use Read-Search-Ask if you get stuck.
 When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 You can get feedback on your project by sharing it with your friends on Facebook.
 
-# [02-personal-portfolio-page](http://codepen.io/TdMichael/full/pNdVbg/)
+#### [02-personal-portfolio-page](http://codepen.io/TdMichael/full/pNdVbg/)
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/YqLyXB/.
 Fulfill the below user stories. Use whichever libraries you need. Give it your own personal style.
@@ -25,7 +25,7 @@ Remember to use Read-Search-Ask if you get stuck.
 When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 You can get feedback on your project by sharing it with your friends on Facebook.
 
-# [03-random-quote-machine](http://codepen.io/TdMichael/full/pRGVWw/)
+#### [03-random-quote-machine](http://codepen.io/TdMichael/full/pRGVWw/)
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/ONjoLe/.
 Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
@@ -35,7 +35,7 @@ Remember to use Read-Search-Ask if you get stuck.
 When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 You can get feedback on your project by sharing it with your friends on Facebook.
 
-# [04-local-weather-app](http://codepen.io/TdMichael/full/oYKBEy/)
+#### [04-local-weather-app](http://codepen.io/TdMichael/full/oYKBEy/)
 
 Objective: Build a CodePen.io app that is functionally similar to this: http://codepen.io/FreeCodeCamp/full/bELRjV.
 Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
@@ -47,7 +47,7 @@ Remember to use Read-Search-Ask if you get stuck.
 When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 You can get feedback on your project by sharing it with your friends on Facebook.
 
-# [05-wikipedia-viewer](http://codepen.io/TdMichael/full/ZBgMZq/)
+#### [05-wikipedia-viewer](http://codepen.io/TdMichael/full/ZBgMZq/)
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/wGqEga/.
 Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
@@ -60,7 +60,7 @@ Remember to use Read-Search-Ask if you get stuck.
 When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 You can get feedback on your project by sharing it with your friends on Facebook.
 
-# [06-twitch.tv-json-api](http://codepen.io/TdMichael/full/pRWbew/)
+#### [06-twitch.tv-json-api](http://codepen.io/TdMichael/full/pRWbew/)
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/Myvqmo/.
 Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
@@ -76,7 +76,7 @@ Remember to use Read-Search-Ask if you get stuck.
 When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 You can get feedback on your project by sharing it with your friends on Facebook.
 
-# [07-javascript-calculator](http://codepen.io/TdMichael/full/gLerPy/)
+#### [07-javascript-calculator](http://codepen.io/TdMichael/full/gLerPy/)
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/rLJZrA/.
 Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
@@ -87,7 +87,7 @@ Remember to use Read-Search-Ask if you get stuck.
 When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 You can get feedback on your project by sharing it with your friends on Facebook.
 
-# [08-pomodoro-clock](http://codepen.io/TdMichael/full/EZwKev/)
+#### [08-pomodoro-clock](http://codepen.io/TdMichael/full/EZwKev/)
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/aNyxXR/.
 Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
@@ -98,7 +98,7 @@ Remember to use Read-Search-Ask if you get stuck.
 When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 You can get feedback on your project by sharing it with your friends on Facebook.
 
-# [09-tic-tac-toe](#)
+#### [09-tic-tac-toe](#)
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/KzXQgy/.
 Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
@@ -109,7 +109,7 @@ Remember to use Read-Search-Ask if you get stuck.
 When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 You can get feedback on your project by sharing it with your friends on Facebook.
 
-# [10-simon-game](#)
+#### [10-simon-game](#)
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/obYBjE.
 Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
