@@ -20,7 +20,7 @@ Here are some helpful links:
 
     Array.prototype.join()
 
-```JavaScript
+```js
 
 function reverseString(strng) {
   strng = strng.split('');
@@ -49,7 +49,7 @@ Here are some helpful links:
 
     Arithmetic Operators
 
-``` JavaScript
+``` js
 
 function factorialize(nmbr) {
   if (nmbr === 0 || nmbr === 1) {
@@ -87,12 +87,13 @@ Here are some helpful links:
 
     String.prototype.toLowerCase()
 
-``` JavaScript
+``` js
 
 function palindrome(strng) {
-  let lcStrng = strng.replace(/[\W_]/g, '').toLowerCase();
-  let rvStrng = lcStrng.split('').reverse().join('');
-  return lcStrng == rvStrng;
+  let anStrng = strng.replace(/[\W_]/g, ''); // Alphanumeric string.
+  let lcStrng = anStrng.toLowerCase(); // Lower case string.
+  let rvStrng = lcStrng.split('').reverse().join(''); // Reverse string.
+  return lcStrng === rvStrng;
 }
 
 palindrome("eye");
@@ -147,7 +148,7 @@ Here are some helpful links:
 
     String.prototype.split()
 
-``` javascript
+``` js
 
 function titleCase(strng){                  // Simplest possible solution
   strng = strng.toLowerCase();
@@ -177,28 +178,18 @@ Here are some helpful links:
 
     Comparison Operators
 
-``` javascript
+``` js
 
 function largestOfFour(arr) {
-
-  var gt = [0,0,0,0];
-
-  for(var arrIdx = 0; arrIdx < arr.length; arrIdx++) {
-
-    for(var subArrIdx = 0; subArrIdx < arr[arrIdx].length; subArrIdx++) {
-
-      if(arr[arrIdx][subArrIdx] > gt[arrIdx]) {
-
-        gt[arrIdx] = arr[arrIdx][subArrIdx];
-
+  let lof = [0,0,0,0];
+  for(let arrIdx = 0; arrIdx < arr.length; arrIdx++) {
+    for(let subArrIdx = 0; subArrIdx < arr[arrIdx].length; subArrIdx++) {
+      if(arr[arrIdx][subArrIdx] > lof[arrIdx]) {
+        lof[arrIdx] = arr[arrIdx][subArrIdx];
       }
-
     }
-
   }
-
-  return  gt;
-
+  return  lof;
 }
 
 largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);  
@@ -220,10 +211,10 @@ Here are some helpful links:
     String.prototype.substring()
 
 
-``` JavaScript
+``` js
 
-function confirmEnding(str, target) {
-  return target === str.substr(str.length - target.length);
+function confirmEnding(strng, trgt) {
+  return trgt === strng.substr(strng.length - trgt.length);
 }
 
 confirmEnding("Bastian", "n");
@@ -240,7 +231,7 @@ Here are some helpful links:
 
     Global String Object
 
-``` javascript
+``` js
 
 function repeatStringNumTimes(str, num) {
   // repeat after me
