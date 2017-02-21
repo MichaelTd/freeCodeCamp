@@ -22,15 +22,11 @@ Here are some helpful links:
 
 ```JavaScript
 
-function reverseString(str) {
-
-  str = str.split('');
-
-  str = str.reverse();
-
-  str = str.join('');
-
-  return str;
+function reverseString(strng) {
+  strng = strng.split('');
+  strng = strng.reverse();
+  strng = strng.join('');
+  return strng;
 }
 
 reverseString("hello");
@@ -54,18 +50,20 @@ Here are some helpful links:
     Arithmetic Operators
 
 ``` JavaScript
-function factorialize(num) {
 
-  if (num === 0 || num === 1) {return 1;}
-  else {
-    for (var idx = num - 1; idx >= 1; idx--) {
-      num *= idx;
+function factorialize(nmbr) {
+  if (nmbr === 0 || nmbr === 1) {
+    return 1;
+  } else {
+    for (let indx = nmbr - 1; indx >= 1; indx--) {
+      nmbr *= indx;
     }
-    return num;
+    return nmbr;
   }    
 }
 
 factorialize(5);
+
 ```
 
 ### [Check for Palindromes](https://www.freecodecamp.com/challenges/check-for-palindromes)
@@ -91,10 +89,10 @@ Here are some helpful links:
 
 ``` JavaScript
 
-function palindrome(str) {
-  var lcStr = str.replace(/[\W_]/g, '').toLowerCase();
-  var rStr = lcStr.split('').reverse().join('');
-  return lcStr == rStr;
+function palindrome(strng) {
+  let lcStrng = strng.replace(/[\W_]/g, '').toLowerCase();
+  let rvStrng = lcStrng.split('').reverse().join('');
+  return lcStrng == rvStrng;
 }
 
 palindrome("eye");
@@ -118,20 +116,19 @@ Here are some helpful links:
 
 ``` JavaScript
 
-function findLongestWord(str) {
-  //return str.length;
-  var string = str.split(" ");
-  var longest = 0;
-  var word = null;
+function findLongestWord(strng) {
+  let strngArr = strng.split(" "); //Make a word array
+  let lngth = 0; // Init lengths check var
+  let wrd = null; // Var to hold longest word
 
-  for (var i = 0; i < string.length; i++) {
-    if (longest < string[i].length) {
-      longest = string[i].length;
-      word = string[i];
+  for (let ndx = 0; ndx < strngArr.length; ndx++) { // Loop through array
+    if (lngth < strngArr[ndx].length) { // Check for stuff
+      lngth = strngArr[ndx].length; // Assign stuff
+      wrd = strngArr[ndx];
     }
   }
 
-  return word.length;
+  return wrd.length;
 }
 
 findLongestWord("The quick brown fox jumped over the lazy dog");
@@ -152,10 +149,16 @@ Here are some helpful links:
 
 ``` javascript
 
-function titleCase(str) {
-  return str.toLowerCase().replace(/^\w|\s\w/g, function(firstLetter) {
-    return firstLetter.toUpperCase();
-  });
+function titleCase(strng){                  // Simplest possible solution
+  strng = strng.toLowerCase();
+  let sentArr = strng.split(" ");           // Make a sentance array
+  for (let ndx = 0; ndx < sentArr.length; ndx++){
+    let wrdArr = sentArr[ndx].split("");    // Make a word array
+    let frstLttr = wrdArr.shift();          // Get first letter
+    wrdArr.unshift(frstLttr.toUpperCase()); // Shift it in upper case.
+    sentArr[ndx] = wrdArr.join("");         // Update word.
+  }
+  return sentArr.join(" ");
 }
 
 titleCase("I'm a little tea pot");
@@ -220,12 +223,7 @@ Here are some helpful links:
 ``` JavaScript
 
 function confirmEnding(str, target) {
-  // "Never give up and good luck will find you."
-  // -- Falcor
-  //return str;
-
   return target === str.substr(str.length - target.length);
-
 }
 
 confirmEnding("Bastian", "n");
