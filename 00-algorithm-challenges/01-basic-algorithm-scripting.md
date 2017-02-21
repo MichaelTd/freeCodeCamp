@@ -262,7 +262,7 @@ Here are some helpful links:
     String.prototype.slice()
 
 
-``` JavaScript
+``` js
 
 function truncateString(str, num) {
   // Clear out that junk in your trunk
@@ -292,7 +292,7 @@ Here are some helpful links:
 
     Array.prototype.slice()
 
-``` javascript
+``` js
 
 function chunkArrayInGroups(arr, size) {
   // Break it up.
@@ -323,7 +323,7 @@ Here are some helpful links:
 
     Array.prototype.splice()
 
-``` javascript
+``` js
 
 function slasher(arr, howMany) {
   // it doesn't always pay to be first
@@ -352,7 +352,7 @@ Here are some helpful links:
     String.prototype.indexOf()
 
 
-``` javascript
+``` js
 
 function mutation(arr) {
   var test = arr[1].toLowerCase();
@@ -382,7 +382,7 @@ Here are some helpful links:
 
     Array.prototype.filter()
 
-``` JavaScript
+``` js
 
 function bouncer(arr) {
   // Don't show a false ID to this bouncer.
@@ -406,7 +406,7 @@ Here are some helpful links:
     Array.prototype.filter()
 
 
-``` javascript
+``` js
 
 function destroyer(arr) {
   // Remove all the values
@@ -441,7 +441,7 @@ Here are some helpful links:
     Array.prototype.sort()
 
 
-``` javascript
+``` js
 
 function getIndexToIns(arr, num) {
   // Find my place in this sorted array.
@@ -472,7 +472,7 @@ Here are some helpful links:
 
     String.fromCharCode()
 
-``` JavaScript
+``` js
 
 function rot13(str) { // LBH QVQ VG!
   var rotCharArray = [];
