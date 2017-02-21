@@ -4,63 +4,63 @@
 
 #### [01-tribute-page](http://codepen.io/TdMichael/full/jVGGoX/)
 
-   Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/NNvBQW/.
-  Fulfill the below user stories. Use whichever libraries you need. Give it your own personal style.
-  User Story: I can view a tribute page with an image and text.
-  User Story: I can click on a link that will take me to an external website with further information on the topic.
-  Remember to use Read-Search-Ask if you get stuck.
-  When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
-  You can get feedback on your project by sharing it with your friends on Facebook.
+      Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/NNvBQW/.
+      Fulfill the below user stories. Use whichever libraries you need. Give it your own personal style.
+      User Story: I can view a tribute page with an image and text.
+      User Story: I can click on a link that will take me to an external website with further information on the topic.
+      Remember to use Read-Search-Ask if you get stuck.
+      When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
+      You can get feedback on your project by sharing it with your friends on Facebook.
 
 #### [02-personal-portfolio-page](http://codepen.io/TdMichael/full/pNdVbg/)
 
-Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/YqLyXB/.
-Fulfill the below user stories. Use whichever libraries you need. Give it your own personal style.
-User Story: I can access all of the portfolio webpage's content just by scrolling.
-User Story: I can click different buttons that will take me to the portfolio creator's different social media pages.
-User Story: I can see thumbnail images of different projects the portfolio creator has built (if you haven't built any websites before, use placeholders.)
-User Story: I navigate to different sections of the webpage by clicking buttons in the navigation.
-Don't worry if you don't have anything to showcase on your portfolio yet - you will build several apps on the next few CodePen challenges, and can come back and update your portfolio later.
-There are many great portfolio templates out there already. However, you should consider building your portfolio page as much as you can from the ground up. Using Bootstrap can help make this process much easier for you.
-Note that CodePen.io overrides the Window.open() function, so if you want to open windows using jQuery, you will need to target invisible anchor elements like this one: <a target='_blank'>.
-Remember to use Read-Search-Ask if you get stuck.
-When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
-You can get feedback on your project by sharing it with your friends on Facebook.
+      Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/YqLyXB/.
+      Fulfill the below user stories. Use whichever libraries you need. Give it your own personal style.
+      User Story: I can access all of the portfolio webpage's content just by scrolling.
+      User Story: I can click different buttons that will take me to the portfolio creator's different social media pages.
+      User Story: I can see thumbnail images of different projects the portfolio creator has built (if you haven't built any websites before, use placeholders.)
+      User Story: I navigate to different sections of the webpage by clicking buttons in the navigation.
+      Don't worry if you don't have anything to showcase on your portfolio yet - you will build several apps on the next few CodePen challenges, and can come back and update your portfolio later.
+      There are many great portfolio templates out there already. However, you should consider building your portfolio page as much as you can from the ground up. Using Bootstrap can help make this process much easier for you.
+      Note that CodePen.io overrides the Window.open() function, so if you want to open windows using jQuery, you will need to target invisible anchor elements like this one: <a target='_blank'>.
+      Remember to use Read-Search-Ask if you get stuck.
+      When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
+      You can get feedback on your project by sharing it with your friends on Facebook.
 
 #### [03-random-quote-machine](http://codepen.io/TdMichael/full/pRGVWw/)
 
-Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/ONjoLe/.
-Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
-User Story: I can click a button to show me a new random quote.
-User Story: I can press a button to tweet out a quote.
-Remember to use Read-Search-Ask if you get stuck.
-When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
-You can get feedback on your project by sharing it with your friends on Facebook.
+      Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/ONjoLe/.
+      Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
+      User Story: I can click a button to show me a new random quote.
+      User Story: I can press a button to tweet out a quote.
+      Remember to use Read-Search-Ask if you get stuck.
+      When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
+      You can get feedback on your project by sharing it with your friends on Facebook.
 
 #### [04-local-weather-app](http://codepen.io/TdMichael/full/oYKBEy/)
 
-Objective: Build a CodePen.io app that is functionally similar to this: http://codepen.io/FreeCodeCamp/full/bELRjV.
-Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
-User Story: I can see the weather in my current location.
-User Story: I can see a different icon or background image (e.g. snowy mountain, hot desert) depending on the weather.
-User Story: I can push a button to toggle between Fahrenheit and Celsius.
-We recommend using the Open Weather API. This will require creating a free API key. Normally you want to avoid exposing API keys on CodePen, but we haven't been able to find a keyless API for weather.
-Remember to use Read-Search-Ask if you get stuck.
-When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
-You can get feedback on your project by sharing it with your friends on Facebook.
+      Objective: Build a CodePen.io app that is functionally similar to this: http://codepen.io/FreeCodeCamp/full/bELRjV.
+      Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
+      User Story: I can see the weather in my current location.
+      User Story: I can see a different icon or background image (e.g. snowy mountain, hot desert) depending on the weather.
+      User Story: I can push a button to toggle between Fahrenheit and Celsius.
+      We recommend using the Open Weather API. This will require creating a free API key. Normally you want to avoid exposing API keys on CodePen, but we haven't been able to find a keyless API for weather.
+      Remember to use Read-Search-Ask if you get stuck.
+      When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
+      You can get feedback on your project by sharing it with your friends on Facebook.
 
 #### [05-wikipedia-viewer](http://codepen.io/TdMichael/full/ZBgMZq/)
 
-Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/wGqEga/.
-Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
-User Story: I can search Wikipedia entries in a search box and see the resulting Wikipedia entries.
-User Story: I can click a button to see a random Wikipedia entry.
-Hint #1: Here's a URL you can use to get a random Wikipedia article: https://en.wikipedia.org/wiki/Special:Random.
-Hint #2: Here's an entry on using Wikipedia's API: https://www.mediawiki.org/wiki/API:Main_page.
-Hint #3: Use this link to experiment with Wikipedia's API.
-Remember to use Read-Search-Ask if you get stuck.
-When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
-You can get feedback on your project by sharing it with your friends on Facebook.
+      Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/wGqEga/.
+      Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
+      User Story: I can search Wikipedia entries in a search box and see the resulting Wikipedia entries.
+      User Story: I can click a button to see a random Wikipedia entry.
+      Hint #1: Here's a URL you can use to get a random Wikipedia article: https://en.wikipedia.org/wiki/Special:Random.
+      Hint #2: Here's an entry on using Wikipedia's API: https://www.mediawiki.org/wiki/API:Main_page.
+      Hint #3: Use this link to experiment with Wikipedia's API.
+      Remember to use Read-Search-Ask if you get stuck.
+      When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
+      You can get feedback on your project by sharing it with your friends on Facebook.
 
 #### [06-twitch.tv-json-api](http://codepen.io/TdMichael/full/pRWbew/)
 
