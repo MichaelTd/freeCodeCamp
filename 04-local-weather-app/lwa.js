@@ -25,10 +25,10 @@ function loadWeather(location, woeid){
 function togglestyle(el){
   if ($(el).hasClass("C")) {
     $(".temperature").html(far);
-    $(el).toggleClass("F").toggleClass("C").attr("value", "to Celsius");
+    $(el).toggleClass("F").toggleClass("C").attr("value", "Celsius");
   } else {
     $(".temperature").html(cel);
-    $(el).toggleClass("F").toggleClass("C").attr("value", "to Fahrenheit");
+    $(el).toggleClass("F").toggleClass("C").attr("value", "Fahrenheit");
   }
 }
 
