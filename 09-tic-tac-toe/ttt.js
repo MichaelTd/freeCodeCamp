@@ -1,22 +1,22 @@
-var board = [
+var tttBoard = [
   [null, null, null],
   [null, null, null],
   [null, null, null]
 ]
 
-var myMove = false;
+var playerMove = false;
 
-if (myMove) {
+if (playerMove) {
   makeMove();
 }
 
 function restartGame() {
-  board = [
+  tttBoard = [
     [null, null, null],
     [null, null, null],
     [null, null, null]
   ];
-  myMove = false;
+  playerMove = false;
   updateMove();
 }
 
@@ -25,9 +25,9 @@ $(document).ready(function() {
     var cell = $(this).attr("id")
     var row = parseInt(cell[1])
     var col = parseInt(cell[2])
-    if (!myMove) {
-      board[row][col] = false;
-      myMove = true;
+    if (!playerMove) {
+      tttBoard[row][col] = false;
+      playerMove = true;
       updateMove();
       makeMove();
     }
@@ -38,14 +38,14 @@ $(document).ready(function() {
 function updateMove() {
   updateButtons();
 
-  var winner = getWinner(board);
+  var winner = getWinner(tttBoard);
 
   $("#winner").html(winner == 1 ? "AI Won!" : winner == 0 ? "You Won!" : winner == -1 ? "Tie!" : "&nbsp;");
 
-  $("#move").html(myMove ? "AI's Move" : "Your move");
+  $("#move").html(playerMove ? "AI's Move" : "Player's Move");
 }
 
-function getWinner(board) {
+function getWinner(tttBoard) {
   // Check if someone won
   vals = [true, false];
   var allNotNull = true;
@@ -56,22 +56,22 @@ function getWinner(board) {
     var diagonalComplete1 = true;
     var diagonalComplete2 = true;
     for (var i = 0; i < 3; i++) {
-      if (board[i][i] != value) {
+      if (tttBoard[i][i] != value) {
         diagonalComplete1 = false;
       }
-      if (board[2 - i][i] != value) {
+      if (tttBoard[2 - i][i] != value) {
         diagonalComplete2 = false;
       }
       var rowComplete = true;
       var colComplete = true;
       for (var j = 0; j < 3; j++) {
-        if (board[i][j] != value) {
+        if (tttBoard[i][j] != value) {
           rowComplete = false;
         }
-        if (board[j][i] != value) {
+        if (tttBoard[j][i] != value) {
           colComplete = false;
         }
-        if (board[i][j] == null) {
+        if (tttBoard[i][j] == null) {
           allNotNull = false;
         }
       }
@@ -92,39 +92,39 @@ function getWinner(board) {
 function updateButtons() {
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < 3; j++) {
-      $("#c" + i + "" + j).text(board[i][j] == false ? "X" : board[i][j] == true ? "O" : "");
+      $("#c" + i + "" + j).text(tttBoard[i][j] == false ? "X" : tttBoard[i][j] == true ? "O" : "");
     }
   }
 }
 
 function makeMove() {
-  board = minimaxMove(board);
+  tttBoard = minimaxMove(tttBoard);
   console.log(numNodes);
-  myMove = false;
+  playerMove = false;
   updateMove();
 }
 
-function minimaxMove(board) {
+function minimaxMove(tttBoard) {
   numNodes = 0;
-  return recurseMinimax(board, true)[1];
+  return recurseMinimax(tttBoard, true)[1];
 }
 
 var numNodes = 0;
 
-function recurseMinimax(board, player) {
+function recurseMinimax(tttBoard, player) {
   numNodes++;
-  var winner = getWinner(board);
+  var winner = getWinner(tttBoard);
   if (winner != null) {
     switch(winner) {
       case 1:
         // AI wins
-        return [1, board]
+        return [1, tttBoard]
       case 0:
         // opponent wins
-        return [-1, board]
+        return [-1, tttBoard]
       case -1:
         // Tie
-        return [0, board];
+        return [0, tttBoard];
     }
   } else {
     // Next states
@@ -133,16 +133,16 @@ function recurseMinimax(board, player) {
 
     for (var i = 0; i < 3; i++) {
       for (var j = 0; j < 3; j++) {
-        if (board[i][j] == null) {
-          board[i][j] = player;
-          var value = recurseMinimax(board, !player)[0];
+        if (tttBoard[i][j] == null) {
+          tttBoard[i][j] = player;
+          var value = recurseMinimax(tttBoard, !player)[0];
           if ((player && (nextVal == null || value > nextVal)) || (!player && (nextVal == null || value < nextVal))) {
-            nextBoard = board.map(function(arr) {
+            nextBoard = tttBoard.map(function(arr) {
               return arr.slice();
             });
             nextVal = value;
           }
-          board[i][j] = null;
+          tttBoard[i][j] = null;
         }
       }
     }
