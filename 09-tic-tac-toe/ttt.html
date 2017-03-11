@@ -1,47 +1,61 @@
 <html>
 <!--
-  Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/KzXQgy/.
-  Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
-  User Story: I can play a game of Tic Tac Toe with the computer.
-  User Story: My game will reset as soon as it's over so I can play again.
-  User Story: I can choose whether I want to play as X or O.
-  Remember to use Read-Search-Ask if you get stuck.
-  When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
-  You can get feedback on your project by sharing it with your friends on Facebook.
+    Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/KzXQgy/.
+    Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
+    User Story: I can play a game of Tic Tac Toe with the computer.
+    User Story: My game will reset as soon as it's over so I can play again.
+    User Story: I can choose whether I want to play as X or O.
+    Remember to use Read-Search-Ask if you get stuck.
+    When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
+    You can get feedback on your project by sharing it with your friends on Facebook.
 -->
 <head>
   <!-- https://blog.vivekpanyam.com/how-to-build-an-ai-that-wins-the-basics-of-minimax-search/ -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><!-- jQuery 3.1.1  -->
 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Latest compiled and minified JavaScript -->
+
   <link rel="stylesheet" href="ttt.css">
-
   <script src="ttt.js" type="text/javascript"></script>
-
 </head>
 <body>
-<div class="wrapper">
-Click a cell when it's your move.<br><br>
-<div id="winner"></div>
-<div id="move">AI's Move</div>
-<table>
-    <tr>
-        <td><button id="c00"></button></td>
-        <td><button id="c01"></button></td>
-        <td><button id="c02"></button></td>
-    </tr>
-    <tr>
-        <td><button id="c10"></button></td>
-        <td><button id="c11"></button></td>
-        <td><button id="c12"></button></td>
-    </tr>
-    <tr>
-        <td><button id="c20"></button></td>
-        <td><button id="c21"></button></td>
-        <td><button id="c22"></button></td>
-    </tr>
-</table>
+  <div class="container">
+  <div class="page-header">
+    <h1 class="text-center"><i class="fa fa-quote-left"></i> Tic-tac-toe Game <i class="fa fa-quote-right"></i></h1>
+  </div>
 
-<input type="button" id="restart" value="Restart Game"/>
-</div>
+  <div class="wrapper">
+  <div id="msg">Click a cell when it's your move.<br><br></div>
+  <div id="winner">&nbsp;</div>
+  <div id="move">AI's Move</div>
+  <table>
+      <tr>
+          <td><button id="c00" class="btn btn-primary"></button></td>
+          <td><button id="c01" class="btn btn-primary"></button></td>
+          <td><button id="c02" class="btn btn-primary"></button></td>
+      </tr>
+      <tr>
+          <td><button id="c10" class="btn btn-primary"></button></td>
+          <td><button id="c11" class="btn btn-primary"></button></td>
+          <td><button id="c12" class="btn btn-primary"></button></td>
+      </tr>
+      <tr>
+          <td><button id="c20" class="btn btn-primary"></button></td>
+          <td><button id="c21" class="btn btn-primary"></button></td>
+          <td><button id="c22" class="btn btn-primary"></button></td>
+      </tr>
+  </table>
+  <input type="button" id="restart" class="btn btn-default" value="Restart"/>
+  </div>
+  </div>
 </body>
+<footer class="text-center">
+  <p>
+    <a href="https://blog.vivekpanyam.com/how-to-build-an-ai-that-wins-the-basics-of-minimax-search/" target='_blank'>Min-Max Tic-tac-toe game</a>
+    --
+    <a href="https://www.minds.com/michaeltsouchlarakis" target='_blank'>TDM</a> <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>
+    <a href="https://www.freecodecamp.com/michaeltd/" target='_blank'><i class="fa fa-free-code-camp fa-fw"></i></a>
+  </p>
+</footer>
+  
 </html>
