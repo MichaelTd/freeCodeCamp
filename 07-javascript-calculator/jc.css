@@ -4,25 +4,32 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono");
 
 body {
-  background: #ddd url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAEklEQVQImWNoamr6z0AWoKFOAKMAB5CiM/wYAAAAAElFTkSuQmCC) repeat;
+  background: url("http://www.wallpapers.net/web/wallpapers/earth-sun/1920x1080.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 html, body, div{
   font-family: "Orbitron";
+  text-align: center;
+}
+
+h1 {
+  background-color: rgba(127,127,127,0.5);
+  box-shadow: 0 0 60px black;
+  border-radius: 10px;
+  color: white;
 }
 
 #page {
   min-height: 90vh;
 }
-.container{
+
+#calc-container{
   box-shadow: 0 0 30px black;
   color:white;
   border:solid black;
   border-radius: 15px;
-  background-color: Grey;
-  background: #000 url("http://wallpapercave.com/wp/2u5OrmL.png")  no-repeat fixed center;
-  background-size: stretch;
-  width:50%;
+  background-color: rgba(127,127,127,0.5);
 }
 
 .btn{
@@ -33,19 +40,21 @@ html, body, div{
   font-size:18;
 }
 
+#zero {
+  width:48%;
+}
+
 .display{
   font-family:"Roboto Mono";
   box-shadow: 0 0 30px black !Important;
-  color:black;
+  color:white;
+  background-color:black;
   font-size:30;
-  possition:relative;
-  display:block;
-  width:100%;
+  width: 95%;
 }
 
 footer {
-  background-color: lightgray;
+  background-color: rgba(127,127,127,0.5);
   min-height: 10vh;
-  padding: 1%;
   text-align: center;
 }
