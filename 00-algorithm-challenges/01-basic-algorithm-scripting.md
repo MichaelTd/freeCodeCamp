@@ -1,7 +1,7 @@
 ## Basic Algorithm Scripting
 
 ### [Reverse a String](https://www.freecodecamp.com/challenges/reverse-a-string)
-
+OK
 Reverse the provided string.
 
 You may need to turn the string into an array before you can reverse it.
@@ -34,7 +34,7 @@ reverseString("hello");
 ```
 
 ### [Factorialize a Number](https://www.freecodecamp.com/challenges/factorialize-a-number)
-
+OK
 Return the factorial of the provided integer.
 
 If the integer is represented with the letter n, a factorial is the product of all positive integers less than or equal to n.
@@ -55,8 +55,8 @@ function factorialize(nmbr) {
   if (nmbr === 0 || nmbr === 1) {
     return 1;
   } else {
-    for (let indx = nmbr - 1; indx >= 1; indx--) {
-      nmbr *= indx;
+    for (let idx = nmbr - 1; idx >= 1; idx--) {
+      nmbr *= idx;
     }
     return nmbr;
   }    
@@ -67,7 +67,7 @@ factorialize(5);
 ```
 
 ### [Check for Palindromes](https://www.freecodecamp.com/challenges/check-for-palindromes)
-
+OK
 Return true if the given string is a palindrome. Otherwise, return false.
 
 A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing.
@@ -101,7 +101,7 @@ palindrome("eye");
 ```
 
 ### [Find the Longest Word in a String](https://www.freecodecamp.com/challenges/find-the-longest-word-in-a-string)
-
+OK
 Return the length of the longest word in the provided sentence.
 
 Your response should be a number.
@@ -122,10 +122,10 @@ function findLongestWord(strng) {
   let lngth = 0; // Init lengths check var
   let wrd = null; // Var to hold longest word
 
-  for (let ndx = 0; ndx < strngArr.length; ndx++) { // Loop through array
-    if (lngth < strngArr[ndx].length) { // Check for stuff
-      lngth = strngArr[ndx].length; // Assign stuff
-      wrd = strngArr[ndx];
+  for (let idx = 0; idx < strngArr.length; idx++) { // Loop through array
+    if (lngth < strngArr[idx].length) { // Check for stuff
+      lngth = strngArr[idx].length; // Assign stuff
+      wrd = strngArr[idx];
     }
   }
 
@@ -137,7 +137,7 @@ findLongestWord("The quick brown fox jumped over the lazy dog");
 ```
 
 ### [Title Case a Sentence](https://www.freecodecamp.com/challenges/title-case-a-sentence)
-
+OK
 Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
 
 For the purpose of this exercise, you should also capitalize connecting words like "the" and "of".
@@ -167,7 +167,7 @@ titleCase("I'm a little tea pot");
 ```
 
 ### [Return Largest Numbers in Arrays](https://www.freecodecamp.com/challenges/return-largest-numbers-in-arrays)
-
+OK
 Return an array consisting of the largest number from each provided sub-array. For simplicity, the provided array will contain exactly 4 sub-arrays.
 
 Remember, you can iterate through an array with a simple for loop, and access each member with array syntax arr[i].
@@ -181,11 +181,11 @@ Here are some helpful links:
 ``` js
 
 function largestOfFour(arr) {
-  let lof = [0,0,0,0];
-  for(let arrIdx = 0; arrIdx < arr.length; arrIdx++) {
-    for(let subArrIdx = 0; subArrIdx < arr[arrIdx].length; subArrIdx++) {
-      if(arr[arrIdx][subArrIdx] > lof[arrIdx]) {
-        lof[arrIdx] = arr[arrIdx][subArrIdx];
+  let lof = [];
+  for(let x = 0; x < arr.length; x++) {
+    for(let y = 0; y < arr[x].length; y++) {
+      if(arr[x][y] > lof[x]) {
+        lof.push(arr[x][y]);
       }
     }
   }
@@ -197,7 +197,7 @@ largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 85
 ```
 
 ### [Confirm the Ending](https://www.freecodecamp.com/challenges/confirm-the-ending)
-
+OK
 Check if a string (first argument, str) ends with the given target string (second argument, target).
 
 This challenge can be solved with the .endsWith() method, which was introduced in ES2015. But for the purpose of this challenge, we would like you to use one of the JavaScript substring methods instead.
@@ -210,11 +210,10 @@ Here are some helpful links:
 
     String.prototype.substring()
 
-
 ``` js
 
-function confirmEnding(strng, trgt) {
-  return trgt === strng.substr(strng.length - trgt.length);
+function confirmEnding(str, trg) {
+  return trg === str.substr(str.length - trg.length);
 }
 
 confirmEnding("Bastian", "n");
@@ -222,7 +221,7 @@ confirmEnding("Bastian", "n");
 ```
 
 ### [Repeat a string repeat a string](https://www.freecodecamp.com/challenges/repeat-a-string-repeat-a-string)
-
+OK
 Repeat a given string (first argument) num times (second argument). Return an empty string if num is not a positive number.
 
 Remember to use Read-Search-Ask if you get stuck. Write your own code.
@@ -233,14 +232,12 @@ Here are some helpful links:
 
 ``` js
 
-function repeatStringNumTimes(str, num) {
-  // repeat after me
-  if (num < 0) {
+function repeatStringNumTimes(str, tms) {
+  if (tms < 0) {
     return "";
   } else {
-    return str.repeat(num);
+    return str.repeat(tms);
   }
-
 }
 
 repeatStringNumTimes("abc", 3);
@@ -248,7 +245,7 @@ repeatStringNumTimes("abc", 3);
 ```
 
 ### [Truncate a string](https://www.freecodecamp.com/challenges/truncate-a-string)
-
+OK
 Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending.
 
 Note that inserting the three dots to the end will add to the string length.
@@ -264,24 +261,24 @@ Here are some helpful links:
 
 ``` js
 
-function truncateString(str, num) {
-  // Clear out that junk in your trunk
-  if (str.length > num && num > 3) {
-    return str.slice(0, (num - 3)) + "...";
-  } else if (str.length > num && num <= 3) {
-    return str.slice(0, num) + "...";
+function truncateString(str, ln) {
+  let rslt = "";
+  if (str.length > ln && ln > 3) {
+    rslt = str.slice(0, (ln - 3)) + "...";
+  } else if (str.length > ln && ln <= 3) {
+    rslt = str.slice(0, ln) + "...";
   } else {
-    return str;
+    rslt = str;
   }
+  return rslt;
 }
 
 truncateString("A-tisket a-tasket A green and yellow basket", 11);
 
-
 ```
 
 ### [Chunky Monkey](https://www.freecodecamp.com/challenges/chunky-monkey)
-
+OK
 Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
 
 Remember to use Read-Search-Ask if you get stuck. Write your own code.
@@ -294,13 +291,12 @@ Here are some helpful links:
 
 ``` js
 
-function chunkArrayInGroups(arr, size) {
-  // Break it up.
+function chunkArrayInGroups(arr, sz) {
   arr = arr.slice();
   var rslt = [];
-  for(var i = 0, len = arr.length; i < len; i+=size) {
-    rslt.push(arr.slice(0, size));
-    arr = arr.slice(size);
+  for(var i = 0, ln = arr.length; i < ln; i+=sz) {
+    rslt.push(arr.slice(0, sz));
+    arr = arr.slice(sz);
   }
   return rslt;
 }  
@@ -325,10 +321,8 @@ Here are some helpful links:
 
 ``` js
 
-function slasher(arr, howMany) {
-  // it doesn't always pay to be first
-
-  return arr.slice(howMany);
+function slasher(arr, tms) {
+  return arr.slice(tms);
 }
 
 slasher([1, 2, 3], 2);
@@ -336,7 +330,7 @@ slasher([1, 2, 3], 2);
 ```
 
 ### [Mutations](https://www.freecodecamp.com/challenges/mutations)
-
+OK
 Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
 
 For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
@@ -351,14 +345,13 @@ Here are some helpful links:
 
     String.prototype.indexOf()
 
-
 ``` js
 
 function mutation(arr) {
-  var test = arr[1].toLowerCase();
-  var target = arr[0].toLowerCase();
-  for (i=0;i<test.length;i++) {
-    if (target.indexOf(test[i]) < 0)
+  let tst = arr[1].toLowerCase();
+  let trg = arr[0].toLowerCase();
+  for (i = 0; i < tst.length; i++) {
+    if (trg.indexOf(tst[i]) < 0)
       return false;
   }
   return true;
@@ -369,7 +362,7 @@ mutation(["hello", "hey"]);
 ```
 
 ### [Falsy Bouncer](https://www.freecodecamp.com/challenges/falsy-bouncer)
-
+OK
 Remove all falsy values from an array.
 
 Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
@@ -385,7 +378,6 @@ Here are some helpful links:
 ``` js
 
 function bouncer(arr) {
-  // Don't show a false ID to this bouncer.
   return arr.filter(Boolean);
 }
 
@@ -394,7 +386,7 @@ bouncer([7, "ate", "", false, 9]);
 ```
 
 ### [Seek and Destroy](https://www.freecodecamp.com/challenges/seek-and-destroy)
-
+OK
 You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
 
 Remember to use Read-Search-Ask if you get stuck. Write your own code.
@@ -405,16 +397,14 @@ Here are some helpful links:
 
     Array.prototype.filter()
 
-
 ``` js
 
 function destroyer(arr) {
-  // Remove all the values
   var args = Array.prototype.slice.call(arguments);
-  for (var i = 0; i < arr.length; i++) {
-    for (var j = 0; j < args.length; j++) {
-      if (arr[i] === args[j]) {
-        delete arr[i];
+  for (var x = 0; x < arr.length; x++) {
+    for (var y = 0; y < args.length; y++) {
+      if (arr[x] === args[y]) {
+        delete arr[x];
       }
     }
   }
@@ -423,11 +413,10 @@ function destroyer(arr) {
 
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 
-
 ```
 
 ### [Where do I belong](https://www.freecodecamp.com/challenges/where-do-i-belong)
-
+OK
 Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
 
 For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
@@ -440,14 +429,12 @@ Here are some helpful links:
 
     Array.prototype.sort()
 
-
 ``` js
 
-function getIndexToIns(arr, num) {
-  // Find my place in this sorted array.
-  arr.push(num);
-  arr.sort(function(a, b){return a-b;});
-  return arr.indexOf(num);
+function getIndexToIns(ar, nm) {
+  ar.push(nm);
+  ar.sort(function(a, b){return a-b;});
+  return ar.indexOf(nm);
 }
 
 getIndexToIns([40, 60], 50);
@@ -455,7 +442,7 @@ getIndexToIns([40, 60], 50);
 ```
 
 ### [Caesars Cipher](https://www.freecodecamp.com/challenges/caesars-cipher)
-
+ok
 One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift cipher. In a shift cipher the meanings of the letters are shifted by some set amount.
 
 A common modern use is the ROT13 cipher, where the values of the letters are shifted by 13 places. Thus 'A' ↔ 'N', 'B' ↔  'O' and so on.
@@ -474,7 +461,7 @@ Here are some helpful links:
 
 ``` js
 
-function rot13(str) { // LBH QVQ VG!
+function rot13(str) {
   var rotCharArray = [];
   var regEx = /[A-Z]/ ;
   str = str.split("");
