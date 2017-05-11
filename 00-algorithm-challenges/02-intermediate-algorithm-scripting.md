@@ -1,5 +1,5 @@
 ## Intermediate Algorithm Scripting
-
+OK
 ### [Sum All Numbers in a Range](https://www.freecodecamp.com/challenges/sum-all-numbers-in-a-range)
 
 We'll pass you an array of two numbers. Return the sum of those two numbers and all numbers between them.
@@ -19,25 +19,23 @@ Here are some helpful links:
 ``` js
 
 function sumAll(arr) {
-  var low = Math.min(arr[0], arr[1]);
-  var hgh = Math.max(arr[0], arr[1]);
-  var idx = 0;
-  var retVal = 0;
+  let lw = Math.min(arr[0], arr[1]);
+  let hg = Math.max(arr[0], arr[1]);
+  let x = 0;
+  let rslt = 0;
 
-  for (idx = low; idx <= hgh; idx++);{
-      retVal += idx;
+  for (x = lw; x <= hg; x++);{
+      rslt += x;
   }
-
-  return retVal;
+  return rslt;
 }
 
 sumAll([1, 4]);
 
-
-```    
+```
 
 ### [Diff Two Arrays](https://www.freecodecamp.com/challenges/diff-two-arrays)
-
+OK
 Compare two arrays and return a new array with any items only found in one of the two given arrays, but not both. In other words, return the symmetric difference of the two arrays.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -56,30 +54,22 @@ Here are some helpful links:
 
 ``` js
 
-function diffArray(arr1, arr2) {
-
-  var newArr = arr1.concat(arr2);
-
+function diffArray(ar1, ar2) {
+  let na = ar1.concat(ar2);
   function check(item) {
-
-    if (arr1.indexOf(item) === -1 || arr2.indexOf(item) === -1) {
-
+    if (ar1.indexOf(item) === -1 || ar2.indexOf(item) === -1) {
       return item;
     }
   }
-
-  return newArr.filter(check);
-
+  return na.filter(check);
 }
-
-
 
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 
-```    
+```
 
 ### [Roman Numeral Converter](https://www.freecodecamp.com/challenges/roman-numeral-converter)
-
+OK
 Convert the given number into a roman numeral.
 
 All roman numerals answers should be provided in upper-case.
@@ -98,32 +88,26 @@ Here are some helpful links:
 
 ``` js
 
-function convertToRoman(num) {
-  // Create an empty string for the result  
-  var result = [];
-  // list all relevant numbers and numerals
-  var numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1],
-        roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
-  // Loop through the numbers while the number is greater than the number, keep looping
-  numbers.map((number, i) => {
-     while (num >= number) {
-     // add numerals as you go eg. 55 --> loop numbers, find L, loop again, find V
-       result += roman[i];
-       num -= number;
+function convertToRoman(nm) {
+  let rslt = [];
+  let numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  let roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+
+  numbers.map((currNum, x) => {
+     while (nm >= currNum) {
+       rslt += roman[x];
+       nm -= currNum;
      }
     });
-  return result;
+  return rslt;
 }
-
-
 
 convertToRoman(36);
 
-
-```    
+```
 
 ### [Wherefore art thou](https://www.freecodecamp.com/challenges/wherefore-art-thou)
-
+ok
 Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching property and value pairs (second argument). Each property and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
 
 For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the property and its value, that was passed on as the second argument.
@@ -140,32 +124,24 @@ Here are some helpful links:
 
 ``` js
 
-function whatIsInAName(collection, source) {
-  var srcKeys = Object.keys(source);
-
-  return collection.filter(function (obj) {
-
+function whatIsInAName(coll, src) {
+  let srcKeys = Object.keys(src);
+  return coll.filter(function (obj) {
     for(var i = 0; i < srcKeys.length; i++) {
-
-      if(!obj.hasOwnProperty(srcKeys[i]) || obj[srcKeys[i]] !== source[srcKeys[i]]) {
-
+      if(!obj.hasOwnProperty(srcKeys[i]) || obj[srcKeys[i]] !== src[srcKeys[i]]) {
         return false;
       }
     }
-
     return true;
-
   });
 }
 
-
 whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
-
 
 ```    
 
 ### [Search and Replace](https://www.freecodecamp.com/challenges/search-and-replace)
-
+ok
 Perform a search and replace on the sentence using the arguments provided and return the new sentence.
 
 First argument is the sentence to perform the search and replace on.
@@ -186,33 +162,23 @@ Here are some helpful links:
 
     Array.prototype.join()
 
-
-
 ``` js
 
-function myReplace(str, before, after) {
-
-  var index = str.indexOf(before);
-
-  if (str[index] === str[index].toUpperCase()) {
-
-    after = after.charAt(0).toUpperCase() + after.slice(1);
+function myReplace(str, pre, post) {
+  let idx = str.indexOf(pre);
+  if (str[idx] === str[idx].toUpperCase()) {
+    post = post.charAt(0).toUpperCase() + post.slice(1);
   }
-
-  str = str.replace(before, after);
-
-  return str;
-
+  return str.replace(pre, post);
 }
 
 myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
-
 
 ```    
 
 
 ### [Pig Latin](https://www.freecodecamp.com/challenges/pig-latin)
-
+ok
 Translate the provided string to pig latin.
 
 Pig Latin takes the first consonant (or consonant cluster) of an English word, moves it to the end of the word and suffixes an "ay".
@@ -238,24 +204,14 @@ Here are some helpful links:
 ``` js
 
 function translatePigLatin(str) {
-    var startedWithAConstant = false;
-
-    // split the string
-    var myArray  = str.split('');
-
-    // check for vowels
-    while (['a','e','i','o','u'].indexOf(myArray[0]) == -1){
-        startedWithAConstant=true;
-
-        // shift the first character
-        // and push it back
-        myArray.push(myArray.shift());
+    let cnsnnt = false;
+    let arr  = str.split('');
+    while (['a','e','i','o','u'].indexOf(arr[0]) == -1){
+        cnsnnt = true;
+        arr.push(arr.shift());
     }
-
-    // convert the array to string
-    str = myArray.join('');
-
-    str += startedWithAConstant ? 'ay':'way';
+    str = arr.join('');
+    str += cnsnnt ? 'ay':'way';
     return str;
 }
 
@@ -265,7 +221,7 @@ translatePigLatin("consonant");
 ```    
 
 ### [DNA Pairing](https://www.freecodecamp.com/challenges/dna-pairing)
-
+ok
 The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array.
 
 Base pairs are a pair of AT and CG. Match the missing element to the provided character.
@@ -286,23 +242,24 @@ Here are some helpful links:
 
 ``` js
 
-function MatchingPair(c){
-    switch (c){
-        case "T":
-            return "A";
-        case "A":
-            return "T";
-        case "C":
-            return "G";
-        case "G":
-            return "C";
-    }
+function MatchingPair(prt){
+  // why does this switch doesn't need break; statements? ;..;
+  switch (prt){
+    case "T":
+      return "A";
+    case "A":
+      return "T";
+    case "C":
+      return "G";
+    case "G":
+      return "C";
+  }
 }
 
 function pairElement(str) {
-    return str.split('').map(function(element){
-        return [element,MatchingPair(element)];
-    });
+  return str.split('').map(function(prt){
+    return [prt,MatchingPair(prt)];
+  });
 }
 
 
@@ -760,7 +717,6 @@ function binaryAgent(str) {
 
 binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
 
-
 ```
 
 ### [Everything Be True](https://www.freecodecamp.com/challenges/everything-be-true)
@@ -827,4 +783,4 @@ function addTogether(a) {
 addTogether(2,3);
 
 
-```    
+```
