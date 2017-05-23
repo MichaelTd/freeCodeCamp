@@ -269,7 +269,7 @@ pairElement("GCG");
 ```
 
 ### [Missing letters](https://www.freecodecamp.com/challenges/missing-letters)
-
+OK
 Find the missing letter in the passed letter range and return it.
 
 If all letters are present in the range, return undefined.
@@ -302,7 +302,7 @@ fearNotLetter("abce");
 ```
 
 ### [Boo who](https://www.freecodecamp.com/challenges/boo-who)
-
+OK
 Check if a value is classified as a boolean primitive. Return true or false.
 
 Boolean primitives are true and false.
@@ -315,9 +315,8 @@ Here are some helpful links:
 
 ``` js
 
-function booWho(bool) {
-  // What is the new fad diet for ghost developers? The Boolean.
-  return typeof bool === 'boolean';
+function booWho(val) {
+  return typeof val === 'boolean';
 }
 
 booWho(null);
@@ -326,7 +325,7 @@ booWho(null);
 ```    
 
 ### [Sorted Union](https://www.freecodecamp.com/challenges/sorted-union)
-
+OK
 Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
 
 In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
@@ -345,23 +344,20 @@ Here are some helpful links:
 
 ``` js
 
-function uniteUnique(arr1, arr2, arr3) {
+function uniteUnique(arr) {
 
-  var newArr;
+  var rsltArr;
 
-  var args = Array.prototype.slice.call(arguments);
+  var argv = Array.prototype.slice.call(arguments);
 
-  newArr = args.reduce(function(arrA,arrB){
-
-    return arrA.concat(arrB.filter(function(i){
-
-      return arrA.indexOf(i) === -1;
-
+  rsltArr = argv.reduce(function(par1,par2){
+    return par1.concat(par2.filter(function(i){
+      return par1.indexOf(i) === -1;
     }));
 
   });
 
-  return newArr;
+  return rsltArr;
 
 }
 
@@ -370,7 +366,7 @@ uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 ```    
 
 ### [Convert HTML Entities](https://www.freecodecamp.com/challenges/convert-html-entities)
-
+OK
 Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -386,20 +382,16 @@ Here are some helpful links:
 ``` js
 
 function convertHTML(str) {
-  // &colon;&rpar;
- // Split by character to avoid problems.
-
+  // & = &amp; < = &lt; > = &gt; " = &quot; ' = &apos;
   var spltStr = str.split('');
-
-  // Since we are only checking for a few HTML elements I used a switch
 
   for (var i = 0; i < spltStr.length; i++) {
     switch (spltStr[i]) {
-      case '<':
-        spltStr[i] = '&lt;';
-        break;
       case '&':
         spltStr[i] = '&amp;';
+        break;
+      case '<':
+        spltStr[i] = '&lt;';
         break;
       case '>':
         spltStr[i] = '&gt;';
@@ -412,17 +404,15 @@ function convertHTML(str) {
         break;
     }
   }
-
   return spltStr.join('');
 }
 
 convertHTML("Dolce & Gabbana");
 
-
 ```    
 
 ### [Spinal Tap Case](https://www.freecodecamp.com/challenges/spinal-tap-case)
-
+OK
 Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -436,15 +426,19 @@ Here are some helpful links:
 ``` js
 
 function spinalCase(str) {
-  // "It's such a fine line between stupid, and clever."
-  // --David St. Hubbins
-  return str.split(/\s|_|(?=[A-Z])/).join('-').toLowerCase();
+
+  var reUpper2Lower =  new RegExp(/([a-z])([A-Z])/, 'g');
+
+  var reSpacesUnderscores =  new RegExp(/\s+|_+/, 'g');
+
+  str = str.replace(reUpper2Lower, '$1 $2');
+
+  return str.replace(reSpacesUnderscores, '-').toLowerCase();
 }
 
 spinalCase('This Is Spinal Tap');
 
-
-```    
+```
 
 ### [Sum All Odd Fibonacci Numbers](https://www.freecodecamp.com/challenges/sum-all-odd-fibonacci-numbers)
 
