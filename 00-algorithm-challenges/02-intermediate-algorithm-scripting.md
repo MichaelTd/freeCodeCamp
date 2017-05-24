@@ -441,7 +441,7 @@ spinalCase('This Is Spinal Tap');
 ```
 
 ### [Sum All Odd Fibonacci Numbers](https://www.freecodecamp.com/challenges/sum-all-odd-fibonacci-numbers)
-
+OK
 Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
 
 The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
@@ -457,19 +457,16 @@ Here are some helpful links:
 ``` js
 
 function sumFibs(num) {
-    var lastNum = 0;
-    var currNum = 1;
-    var result = 0;
-    while (currNum <= num) {
-        if (currNum % 2 !== 0) {
-            result += currNum;
+    let ln = 0, cn = 1, rs = 0;
+    while (cn <= num) {
+        if (cn % 2 !== 0) {
+            rs += cn;
         }
-
-        currNum += lastNum;
-        lastNum = currNum - lastNum;
+        cn += ln;
+        ln = cn - ln;
     }
 
-    return result;
+    return rs;
 }
 
 sumFibs(4);
@@ -477,7 +474,7 @@ sumFibs(4);
 ```
 
 ### [Sum All Primes](https://www.freecodecamp.com/challenges/sum-all-primes)
-
+OK
 Sum all the prime numbers up to and including the provided number.
 
 A prime number is defined as a number greater than one and having only two divisors, one and itself. For example, 2 is a prime number because it's only divisible by one and two.
@@ -494,33 +491,19 @@ Here are some helpful links:
 
 ``` js
 
+function isPrime(num){
+  for (i = 2; i <= num; i++){
+    if(num % i === 0 && num != i) return false;
+  }
+  return true;
+}
+
 function sumPrimes(num) {
-  var rslt = 0;
+  if (num === 1) return 0;
 
-  function getPrimes(max) {
-    var comps = [];
-    var x;
-    var y;
-    var primes = [];
-    for (x = 2; x <= max; ++x) {
-      if (!comps[x]) {
-        // x is a prime
-        primes.push(x);
-        for (y = x << 1; y <= max; y += x) {
-          comps[y] = true;
-        }
-      }
-    }
-    return primes;
-  }
+  if(isPrime(num) === false) return sumPrimes(num - 1);
 
-  // Add the primes
-  var primes = getPrimes(num);
-  for (var p = 0; p < primes.length; p++) {
-    rslt += primes[p];
-  }
-
-  return rslt;
+  if(isPrime(num) === true) return num + sumPrimes(num - 1);
 }
 
 sumPrimes(10);
@@ -528,7 +511,7 @@ sumPrimes(10);
 ```    
 
 ### [Smallest Common Multiple](https://www.freecodecamp.com/challenges/smallest-common-multiple)
-
+OK
 Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
 
 The range will be an array of two numbers that will not necessarily be in numerical order.
@@ -543,33 +526,24 @@ Here are some helpful links:
 
 ``` js
 
+function gcd(a, b) {
+  if (b === 0) return a;
+  else return gcd(b, a%b);
+}
+
 function smallestCommons(arr) {
-  arr.sort(function(a, b) {return b - a;});
+  var range = [];
+  for (var i = Math.max(arr[0], arr[1]); i >= Math.min(arr[0], arr[1]); i--) range.push(i);
 
-  var newArr = [];
-  for (var i = arr[0]; i >= arr[1]; i--) {
-    newArr.push(i);
+  var lcm = range[0];
+  for (i = 1; i < range.length; i++) {
+    var GCD = gcd(lcm, range[i]);
+    lcm = (lcm * range[i]) / GCD;
   }
-
-  var q = 0;
-  var l = 1;
-  var n;
-
-  do {
-    q = newArr[0] * l * newArr[1];
-    for (n = 2; n < newArr.length; n++) {
-      if (q % newArr[n] !== 0) {
-        break;
-      }
-    }
-    l++;
-  } while (n !== newArr.length);
-
-  return q;
+  return lcm;
 }
 
 smallestCommons([1,5]);
-
 
 ```    
 
