@@ -548,7 +548,7 @@ smallestCommons([1,5]);
 ```    
 
 ### [Finders Keepers](https://www.freecodecamp.com/challenges/finders-keepers)
-
+OK
 Create a function that looks through an array (first argument) and returns the first element in the array that passes a truth test (second argument).
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -559,24 +559,38 @@ Here are some helpful links:
 
 ``` js
 
-function findElement(arr, func) {
-  var num;
-  for (var x = 0; x < arr.length; x++) {
-    if (func(arr[x])) {
-      num = arr[x];
-      return num;
+function findElement(varArr, check) {
+  let keepMe;
+  for (let i = 0; i < array.length; i++) {
+    if (check(varArr[i])) {
+      keepMe = varArr[i];
+      return keepMe;
     }
   }
-
-  return num;
 }
 
-findElement([1, 2, 3, 4], function(num){ return num % 2 === 0; });
+findElement([1, 2, 3, 4], function(checkMe){ return checkMe % 2 === 0; });
+
+
+var words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
+
+var longWords = words.filter(function(word){
+  return word.length > 6;
+}) // Filtered array longWords is ["exuberant", "destruction", "present"]
+
+// Final
+function findElement(varArr, check) {
+  let checked = varArr.filter(check);
+  return checked[0];
+}
+
+findElement([1, 2, 3, 4], function(checkMe){ return checkMe % 2 === 0; });
+
 
 ```    
 
 ### [Drop it](https://www.freecodecamp.com/challenges/drop-it)
-
+OK
 Drop the elements of an array (first argument), starting from the front, until the predicate (second argument) returns true.
 
 The second argument, func, is a function you'll use to test the first elements of the array to decide if you should drop it or not.
@@ -610,11 +624,34 @@ function dropElements(arr, func) {
 
 dropElements([1, 2, 3], function(n) {return n < 3; });
 
+// Final
+function dropElements(varArr, check) {
+
+  let staticArrLength = varArr.length;
+  for (let idx = 0; idx < staticArrLength; idx++) {
+    if (check(varArr[0])) {
+      break;
+    } else {
+      varArr.shift();
+    }
+  }
+  return varArr;
+}
+
+dropElements([1, 2, 3], function(n) {return n < 3; });
+
+
+dropElements([1, 2, 3, 4], function(n) {return n >= 3;})  // should return [3, 4]
+dropElements([0, 1, 0, 1], function(n) {return n === 1;}) // should return [1, 0, 1]
+dropElements([1, 2, 3], function(n) {return n > 0;}) // should return [1, 2, 3]
+dropElements([1, 2, 3, 4], function(n) {return n > 5;}) // should return []
+dropElements([1, 2, 3, 7, 4], function(n) {return n > 3;}) // should return [7, 4]
+dropElements([1, 2, 3, 9, 2], function(n) {return n > 2;}) // should return [3, 9, 2]
 
 ```    
 
 ### [Steamroller](https://www.freecodecamp.com/challenges/steamroller)
-
+OK
 Flatten a nested array. You must account for varying levels of nesting.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -625,26 +662,23 @@ Here are some helpful links:
 
 ``` js
 
-function steamrollArray(arr) {
-  // I'm a steamroller, baby
- var flatArray = [];
+function steamrollArray(varArr) {
 
-  // Create function that adds an element if it is not an array.
-  // If it is an array, then loops through it and uses recursion on that array.
-  function flat(par) {
-    if (!Array.isArray(par)) {
-      flatArray.push(par);
-    } else {
-      for (var x in par) {
-        flat(par[x]);
+  let flatArray = [];
+
+  function flatten(lmnt) {
+    if (Array.isArray(lmnt)) {
+      for (let idx1 in lmnt) {
+        flatten(lmnt[idx1]);
       }
+    } else {
+      flatArray.push(lmnt);
     }
   }
 
-  for (var x in arr){
-    flat(arr[x]);
+  for (let idx0 in varArr){
+    flatten(varArr[idx0]);
   }
-
 
   return flatArray;
 }
@@ -655,7 +689,7 @@ steamrollArray([1, [2], [3, [[4]]]]);
 ```    
 
 ### [Binary Agents](https://www.freecodecamp.com/challenges/binary-agents)
-
+OK
 Return an English translated sentence of the passed binary string.
 
 The binary string will be space separated.
@@ -672,23 +706,25 @@ Here are some helpful links:
 
 function binaryAgent(str) {
 
+  let biStrArr = str.split(' ');
 
-  biStrArr = str.split(' ');
-  reslt = [];
+  let trnsltd = [];
 
-  for( i = 0; i < biStrArr.length; i++){
-    reslt.push(String.fromCharCode(parseInt(biStrArr[i], 2)));
+  for(let idx = 0; idx < biStrArr.length; idx++) {
+
+    trnsltd.push(String.fromCharCode(parseInt(biStrArr[idx], 2)));
   }
 
-  return reslt.join('');
+  return trnsltd.join('');
 }
 
 binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
 
+
 ```
 
 ### [Everything Be True](https://www.freecodecamp.com/challenges/everything-be-true)
-
+OK
 Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
 
 Remember, you can access object properties through either dot notation or [] notation.
@@ -698,13 +734,18 @@ Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write you
 ``` js
 
 function truthCheck(collection, pre) {
-  var cnt = 0;
-  for (var i in collection) {
-    if (collection[i].hasOwnProperty(pre) && Boolean(collection[i][pre])) {
-      cnt++;
+
+  let cntr = 0;
+
+  for (let idx in collection) {
+
+    if (collection[idx].hasOwnProperty(pre) && Boolean(collection[idx][pre])) {
+
+      cntr++;
     }
   }
-  return cnt == collection.length;
+
+  return cntr == collection.length;
 }
 
 truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
@@ -712,7 +753,7 @@ truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "ma
 ```
 
 ### [Arguments Optional](https://www.freecodecamp.com/challenges/arguments-optional)
-
+OK
 Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
 
 For example, addTogether(2, 3) should return 5, and addTogether(2) should return a function.
@@ -735,20 +776,25 @@ Here are some helpful links:
 
 ``` js
 
-function addTogether(a) {
+function addTogether(someNums) {
+
  if (arguments.length === 1 && typeof arguments[0] === "number") {
-   return function (b) {
-     if (typeof arguments[0] === "number")  return a + b;
+
+   return function (aNum) {
+
+     if (typeof arguments[0] === "number")  return someNums + aNum;
    };
  } else {
+
     if (typeof arguments[0] !== "number"|| typeof arguments[1] !== "number") {
+
       return undefined;
     }
+
     return arguments[0] + arguments[1];
   }
 }
 
 addTogether(2,3);
-
 
 ```
