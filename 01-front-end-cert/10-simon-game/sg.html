@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Simon Game</title>
+  <link rel="stylesheet" href="sg.css">
+</head>
+
+<body>
+  <div id="sg" class="sg">
+    <h1 class="sg-title">Simon Game</h1>
+    <div class="sg-info">
+      <h2 class="sg-count">Count: <span class="sg-count__value">00</span></h2>
+      <span class="sg-status"></span>
+    </div>
+    <div class="sg-board">
+      <button class="sg-button sg-board__button sg-color-1"></button>
+      <button class="sg-button sg-board__button sg-color-2"></button>
+      <button class="sg-button sg-board__button sg-color-3"></button>
+      <button class="sg-button sg-board__button sg-color-4"></button>
+    </div>
+    <div class="sg-controls">
+      <button class="sg-button sg-controls__button sg-controls__start">On/Off</button>
+      <button class="sg-button sg-controls__button sg-controls__reset">Reset</button>
+      <button class="sg-button sg-controls__button sg-controls__strict">Strict</button>
+    </div>
+    <div class="sg-hint">
+      <button class="sg-hint__show sg-button">Show hint</button>
+      <div class="sg-hint__data">
+        <span class="sg-hint__title">Computer</span>
+        <div class="sg-hint__moves sg-hint__moves-computer"></div>
+        <span class="sg-hint__title">You</span>
+        <div class="sg-hint__moves sg-hint__moves-player"></div>
+      </div>
+    </div>
+  </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script src="sg.js"></script>
+</body>
+</html>

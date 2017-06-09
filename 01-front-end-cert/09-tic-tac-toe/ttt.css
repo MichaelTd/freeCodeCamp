@@ -1,0 +1,63 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+body {
+  background: url("http://www.wallpapers.net/web/wallpapers/spiral-rainbow/1920x1080.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color:white;
+}
+
+.msgBox {
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: rgba(127,127,127,0.5);
+}
+
+.announcementBox{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.container{
+  min-height: 90vh;
+}
+
+h1 {
+  background-color: rgba(127,127,127,0.5);
+  box-shadow: 0 0 60px black;
+  border-radius: 10px;
+}
+
+footer {
+  background-color: rgba(127,127,127,0.5);
+  min-height: 10vh;
+  padding: 1%;
+  text-align: center;
+}
+
+.btn {
+  font-size:60px;
+  color:black;
+}
+
+#restart{
+  font-size:20px;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+}
+
+a:hover{
+  color:white;
+}
+
+div {
+  text-align: center;
+}
+
+.wrapper, table {
+  margin: 20px auto;
+}
