@@ -1,3 +1,8 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Bungee+Shade|Bungee+Inline");
+
 #sg {
   min-height: 90vh;
 }
@@ -26,6 +31,9 @@ html {
 }
 
 body {
+  background: url("http://www.wallpapers.net/web/wallpapers/colourful-abstract-rainbow/1920x1080.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color:white;
   margin: 0;
 }
 

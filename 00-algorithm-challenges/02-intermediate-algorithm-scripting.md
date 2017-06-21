@@ -1,6 +1,8 @@
 ## Intermediate Algorithm Scripting
-OK
+
 ### [Sum All Numbers in a Range](https://www.freecodecamp.com/challenges/sum-all-numbers-in-a-range)
+
+OK
 
 We'll pass you an array of two numbers. Return the sum of those two numbers and all numbers between them.
 
@@ -35,7 +37,9 @@ sumAll([1, 4]);
 ```
 
 ### [Diff Two Arrays](https://www.freecodecamp.com/challenges/diff-two-arrays)
+
 OK
+
 Compare two arrays and return a new array with any items only found in one of the two given arrays, but not both. In other words, return the symmetric difference of the two arrays.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -69,7 +73,9 @@ diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 ```
 
 ### [Roman Numeral Converter](https://www.freecodecamp.com/challenges/roman-numeral-converter)
+
 OK
+
 Convert the given number into a roman numeral.
 
 All roman numerals answers should be provided in upper-case.
@@ -107,7 +113,9 @@ convertToRoman(36);
 ```
 
 ### [Wherefore art thou](https://www.freecodecamp.com/challenges/wherefore-art-thou)
+
 ok
+
 Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching property and value pairs (second argument). Each property and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
 
 For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the property and its value, that was passed on as the second argument.
@@ -141,7 +149,9 @@ whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: 
 ```    
 
 ### [Search and Replace](https://www.freecodecamp.com/challenges/search-and-replace)
+
 ok
+
 Perform a search and replace on the sentence using the arguments provided and return the new sentence.
 
 First argument is the sentence to perform the search and replace on.
@@ -178,7 +188,9 @@ myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
 
 
 ### [Pig Latin](https://www.freecodecamp.com/challenges/pig-latin)
+
 ok
+
 Translate the provided string to pig latin.
 
 Pig Latin takes the first consonant (or consonant cluster) of an English word, moves it to the end of the word and suffixes an "ay".
@@ -221,7 +233,9 @@ translatePigLatin("consonant");
 ```    
 
 ### [DNA Pairing](https://www.freecodecamp.com/challenges/dna-pairing)
+
 ok
+
 The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array.
 
 Base pairs are a pair of AT and CG. Match the missing element to the provided character.
@@ -269,7 +283,9 @@ pairElement("GCG");
 ```
 
 ### [Missing letters](https://www.freecodecamp.com/challenges/missing-letters)
+
 OK
+
 Find the missing letter in the passed letter range and return it.
 
 If all letters are present in the range, return undefined.
@@ -302,7 +318,9 @@ fearNotLetter("abce");
 ```
 
 ### [Boo who](https://www.freecodecamp.com/challenges/boo-who)
+
 OK
+
 Check if a value is classified as a boolean primitive. Return true or false.
 
 Boolean primitives are true and false.
@@ -325,7 +343,9 @@ booWho(null);
 ```    
 
 ### [Sorted Union](https://www.freecodecamp.com/challenges/sorted-union)
+
 OK
+
 Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
 
 In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
@@ -366,7 +386,9 @@ uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 ```    
 
 ### [Convert HTML Entities](https://www.freecodecamp.com/challenges/convert-html-entities)
+
 OK
+
 Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -412,7 +434,9 @@ convertHTML("Dolce & Gabbana");
 ```    
 
 ### [Spinal Tap Case](https://www.freecodecamp.com/challenges/spinal-tap-case)
+
 OK
+
 Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -441,7 +465,9 @@ spinalCase('This Is Spinal Tap');
 ```
 
 ### [Sum All Odd Fibonacci Numbers](https://www.freecodecamp.com/challenges/sum-all-odd-fibonacci-numbers)
+
 OK
+
 Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
 
 The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
@@ -474,7 +500,9 @@ sumFibs(4);
 ```
 
 ### [Sum All Primes](https://www.freecodecamp.com/challenges/sum-all-primes)
+
 OK
+
 Sum all the prime numbers up to and including the provided number.
 
 A prime number is defined as a number greater than one and having only two divisors, one and itself. For example, 2 is a prime number because it's only divisible by one and two.
@@ -511,7 +539,9 @@ sumPrimes(10);
 ```    
 
 ### [Smallest Common Multiple](https://www.freecodecamp.com/challenges/smallest-common-multiple)
+
 OK
+
 Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
 
 The range will be an array of two numbers that will not necessarily be in numerical order.
@@ -548,7 +578,9 @@ smallestCommons([1,5]);
 ```    
 
 ### [Finders Keepers](https://www.freecodecamp.com/challenges/finders-keepers)
+
 OK
+
 Create a function that looks through an array (first argument) and returns the first element in the array that passes a truth test (second argument).
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -590,7 +622,9 @@ findElement([1, 2, 3, 4], function(checkMe){ return checkMe % 2 === 0; });
 ```    
 
 ### [Drop it](https://www.freecodecamp.com/challenges/drop-it)
+
 OK
+
 Drop the elements of an array (first argument), starting from the front, until the predicate (second argument) returns true.
 
 The second argument, func, is a function you'll use to test the first elements of the array to decide if you should drop it or not.
@@ -651,7 +685,9 @@ dropElements([1, 2, 3, 9, 2], function(n) {return n > 2;}) // should return [3, 
 ```    
 
 ### [Steamroller](https://www.freecodecamp.com/challenges/steamroller)
+
 OK
+
 Flatten a nested array. You must account for varying levels of nesting.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -689,7 +725,9 @@ steamrollArray([1, [2], [3, [[4]]]]);
 ```    
 
 ### [Binary Agents](https://www.freecodecamp.com/challenges/binary-agents)
+
 OK
+
 Return an English translated sentence of the passed binary string.
 
 The binary string will be space separated.
@@ -724,7 +762,9 @@ binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 0110
 ```
 
 ### [Everything Be True](https://www.freecodecamp.com/challenges/everything-be-true)
+
 OK
+
 Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
 
 Remember, you can access object properties through either dot notation or [] notation.
@@ -753,7 +793,9 @@ truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "ma
 ```
 
 ### [Arguments Optional](https://www.freecodecamp.com/challenges/arguments-optional)
+
 OK
+
 Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
 
 For example, addTogether(2, 3) should return 5, and addTogether(2) should return a function.
