@@ -111,7 +111,7 @@
 7. When you are finished, click the "I've completed this challenge" button and include a link to your CodePen.
 8. You can get feedback on your project by sharing it with your friends on Facebook.
 
-#### [10-simon-game](#)
+#### [10-simon-game](https://codepen.io/TdMichael/full/jyGrry)
 
 1. Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/obYBjE.
 2. Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
