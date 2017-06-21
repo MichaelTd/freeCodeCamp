@@ -1,5 +1,5 @@
 ## Advanced Algorithm Scripting
-
+OK
 ### [Validate US Telephone Numbers](https://www.freecodecamp.com/challenges/validate-us-telephone-numbers)
 
 Return true if the passed string is a valid US phone number.
@@ -23,24 +23,30 @@ Here are some helpful links:
 
 
 ``` js
-
+/*
+*
+/^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/
+^\([0-9]{3}\)[0-9]{3}-[0-9]{4}$
+^[0-9]{3}-[0-9]{3}-[0-9]{4}$
+^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$
+^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$
+/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g
+*/
 function telephoneCheck(str) {
   // Good luck!
 
-  var regex = /^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/;
+  var re = /^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/im;
 
-  return regex.test(str);
+  return re.test(str);
 }
 
-
-
 telephoneCheck("555-555-5555");
-
 
 ```
 
 ### [Record Collection](https://www.freecodecamp.com/challenges/record-collection)
-
+OK
 You are given a JSON object representing a part of your musical album collection. Each album has several properties and a unique id number as its key. Not all albums have complete information.
 
 Write a function which takes an album's id (like 2548), a property prop (like "artist" or "tracks"), and a value (like "Addicted to Love") to modify the data in this collection.
@@ -66,7 +72,6 @@ You may refer back to Manipulating Complex Objects Introducing JavaScript Object
 
 ``` JavaScript
 
-// Setup
 var collection = {
     "2548": {
       "album": "Slippery When Wet",
@@ -86,28 +91,27 @@ var collection = {
     },
     "1245": {
       "artist": "Robert Palmer",
-      "tracks": [ ]
+      "tracks": []
     },
     "5439": {
       "album": "ABBA Gold"
     }
 };
-// Keep a copy of the collection for tests
+
 var collectionCopy = JSON.parse(JSON.stringify(collection));
 
-// Only change code below this line
 function updateRecords(id, prop, value) {
 
-  if (prop === "tracks" && (!(collection[id]).tracks)) {
+  if ((prop === "tracks") && (!(collection[id]).tracks))
     collection[id].tracks = [];
-  }
-  if (prop === "tracks" && value !== "") {
+
+  if ((prop === "tracks") && (value !== ""))
     collection[id].tracks.push(value);
-  } else if (prop !== "tracks" && value !== "") {
+  else if ((prop !== "tracks") && (value !== ""))
     collection[id][prop] = value;
-  } else if (value === "") {
+  else if (value === "")
     delete collection[id][prop];
-  }
+
   return collection;
 }
 
@@ -117,7 +121,7 @@ updateRecords(5439, "artist", "ABBA");
 ```
 
 ### [Symmetric Difference](https://www.freecodecamp.com/challenges/symmetric-difference)
-
+OK
 Create a function that takes two or more arrays and returns an array of the symmetric difference (△ or ⊕) of the provided arrays.
 
 Given two sets (for example set A = {1, 2, 3} and set B = {2, 3, 4}), the mathematical term "symmetric difference" of two sets is the set of elements which are in either of the two sets, but not in both (A △ B = C = {1, 4}). For every additional symmetric difference you take (say on a set D = {2, 3}), you should get the set with elements which are in either of the two the sets but not both (C △ D = {1, 4} △ {2, 3} = {1, 2, 3, 4}).
@@ -132,18 +136,18 @@ Here are some helpful links:
 
 ``` js
 
+function findSymDiff(a, b){
+  var curDiff = [];
+
+  a.reduce(function(prevVal, curVal){if(b.indexOf(curVal)==-1 && curDiff.indexOf(curVal)==-1)curDiff.push(curVal);}, 0);
+
+  b.reduce(function(prevVal, curVal){if(a.indexOf(curVal)==-1 && curDiff.indexOf(curVal)==-1)curDiff.push(curVal);}, 0);
+
+  return curDiff;
+
+}
+
 function sym(args) {
-
-  function findSymDiff(a, b){
-    var curDiff = [];
-
-    a.reduce(function(prevVal, curVal){if(b.indexOf(curVal)==-1 && curDiff.indexOf(curVal)==-1)curDiff.push(curVal);}, 0);
-
-    b.reduce(function(prevVal, curVal){if(a.indexOf(curVal)==-1 && curDiff.indexOf(curVal)==-1)curDiff.push(curVal);}, 0);
-
-    return curDiff;
-
-  }
 
   var symDiff = arguments[0];
 
@@ -162,7 +166,7 @@ sym([1, 2, 3], [5, 2, 1, 4]);
 ```
 
 ### [Exact Change](https://www.freecodecamp.com/challenges/exact-change)
-
+OK
 Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument (price), payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
 
 cid is a 2D array listing available currency.
@@ -178,6 +182,59 @@ Here are some helpful links:
     Global Object
 
 ``` js
+
+var denoms = [
+  {name: "HUNDRED", value: 100.00},
+  {name: "TWENTY", value: 20.00},
+  {name: "TEN", value: 10.00},
+  {name: "FIVE", value: 5.00},
+  {name: "ONE", value: 1.00},
+  {name: "QUARTER", value: 0.25},
+  {name: "DIME", value: 0.10},
+  {name: "NICKEL", value: 0.05},
+  {name: "PENNY", value: 0.01}
+];
+
+function checkCashRegister(price, cash, cid) {
+
+  var remainder = cash - price;
+
+  var fullCid = cid.reduce(function(acc, next) {
+    return acc + next[1];
+  }, 0.0);
+
+  if (fullCid < remainder) {
+    return "Insufficient Funds";
+  } else if (fullCid === remainder) {
+    return "Closed";
+  }
+
+  cid = cid.reverse();
+
+  var outcome = denoms.reduce(function(acc, next, index) {
+    if (remainder >= next.value) {
+      var curr  = 0.0;
+      while (remainder >= next.value && cid[index][1] >= next.value) {
+        curr += next.value;
+        remainder -= next.value;
+        remainder = Math.round(remainder * 100) / 100;
+        cid[index][1] -= next.value;
+      }
+      acc.push([next.name, curr]);
+      return acc;
+    } else {
+      return acc;
+    }
+  }, []);
+
+  if ((outcome.length > 0) && (remainder === 0))
+    return outcome;
+  else
+    return "Insufficient Funds";
+}
+
+
+
 function checkCashRegister(price, cash, cid) {
   price *= 100; cash *= 100;
 
@@ -219,7 +276,7 @@ checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1
 ```
 
 ### [Inventory Update](https://www.freecodecamp.com/challenges/inventory-update)
-
+OK
 Compare and update the inventory stored in a 2D array against a second 2D array of a fresh delivery. Update the current existing inventory item quantities (in arr1). If an item cannot be found, add the new item and quantity into the inventory array. The returned inventory array should be in alphabetical order by item.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -229,10 +286,6 @@ Here are some helpful links:
     Global Array Object
 
 ``` js
-function updateInventory(arr1, arr2) {
-    // All inventory must be accounted for or you're fired!
-    return arr1;
-}
 
 // Example inventory lists
 var curInv = [
@@ -249,12 +302,80 @@ var newInv = [
     [7, "Toothpaste"]
 ];
 
+// New
+function updateInventory(curInv, newInv) {
+
+var result =
+  curInv.concat(newInv)
+    .reduce(function(ob, ar) {
+      // For unique name
+      if (!(ar[1] in ob.names)) {  
+          ob.names[ar[1]] = ar;
+          // Add it to array
+          ob.result.push(ar);      
+      // Not unique so we should add them
+      } else
+          ob.names[ar[1]][0] += ar[0];
+      return ob;
+      //thanx to http://jsfiddle.net/aUXLV/
+    }, { names:{}, result:[] })  
+    .result
+    .sort(function(a,b) {
+      // Sort array names ASC.
+      return a[1] > b[1] ? 1 : -1;    
+    });
+
+  return result;
+}
+
+// curr
+function updateInventory(arr1, arr2) {
+
+    if (!Array.isArray(arr1)) {
+        return [];
+    }
+
+    var currentInventory = createObject(arr1);
+
+    arr2.forEach(function(current) {
+        if (currentInventory.hasOwnProperty(current[1])) {
+            currentInventory[current[1]] += current[0];
+        } else {
+            currentInventory[current[1]] = current[0];
+        }
+    });
+
+    return createArray(currentInventory).sort(function(a, b) {
+        if (a[1] < b[1])
+          return -1;
+        if (a[1] > b[1])
+          return 1;
+        return 0;
+    });
+
+    function createObject(array) {
+        var obj = {};
+        array.forEach(function(current) {
+            obj[current[1]] = current[0];
+        });
+        return obj;
+    }
+
+    function createArray(object) {
+        var array = [];
+        for (var key in object) {
+            array.push([object[key], key]);
+        }
+        return array;
+    }
+}
+
 updateInventory(curInv, newInv);
 
 ```
 
 ### [No repeats please](https://www.freecodecamp.com/challenges/no-repeats-please)
-
+OK
 Return the number of total permutations of the provided string that don't have repeated consecutive letters. Assume that all characters in the provided string are each unique.
 
 For example, aab should return 2 because it has 6 total permutations (aab, aab, aba, aba, baa, baa), but only 2 of them (aba and aba) don't have the same letter (in this case a) repeating.
@@ -269,6 +390,124 @@ Here are some helpful links:
 
 ``` js
 
+// Next 3 This is it
+// http://crookedcode.com/2016/12/20/fcc-advanced-algorithm-scripting-challenge-no-repeats-please/
+function permAlone(str) {
+
+  //create variable to store number of perms without a repeat
+  var noDupes = 0;
+
+  //split string into array
+  var strArray = str.split("");
+
+  //Heap's Algorithm
+  function findPerm(n, arr) {
+    // If only 1 element, just output the array
+    if (n == 1) {
+      //check for duplicates
+      if(!(/([a-zA-Z])\1+/).test(arr.join("")))
+        noDupes += 1;
+
+      return;
+    }
+
+    for (var i = 0; i < n; i+= 1) {
+      findPerm(n - 1, arr);
+      // If n is even
+      if (n % 2 === 0)
+        swap(i, n - 1);
+      else
+        swap(0, n - 1);
+    }
+
+    function swap(idxA, idxB) {
+      var tmp = arr[idxA];
+      arr[idxA] = arr[idxB];
+      arr[idxB] = tmp;
+    }
+  }
+
+  // Call with an array of the original string
+  findPerm(strArray.length, strArray);
+
+  return noDupes;  
+}
+
+//call permAlone() with any string
+permAlone("aab");
+
+// New 2
+function permAlone(str) {
+  var permArr = [];
+  var usedChars = [];
+
+  if (typeof str == 'string') {
+    str = str.split('');
+  }
+
+  function checkPermute(str){
+    for (var i in str) {
+
+      var ch = str.splice(i, 1)[0];
+      //console.log(ch);
+      usedChars.push(ch);
+      var temp = usedChars.slice().join('');
+      // console.log(temp, tmpStr)
+
+      var hasDuplicates = (/([a-z])\1+/).test(temp);
+
+      if (str.length === 0 && !hasDuplicates) {
+      	permArr.push(temp);
+      }
+
+      checkPermute(str);
+      str.splice(i, 0, ch);
+      usedChars.pop();
+  	}
+	}
+
+  checkPermute(str);
+
+
+  return permArr.length;
+  //console.log(permArr, permArr.length);
+}
+
+permAlone('aabb');
+
+
+
+//https://jsfiddle.net/Skaidrius/7cobg0db/55/
+// Next
+// YouTube: https://youtu.be/B5lUyJDkWzE
+
+function permAlone(str) {
+  var arr = str.split('');
+  var result = 0;
+
+  function swap(a, b) {
+    var tmp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = tmp;
+  }
+
+  function generate(n) {
+    var regex = /([a-z])\1+/;
+
+    if (n === 1 && !regex.test(arr.join(''))) {
+      result++;
+    } else {
+      for (var i = 0; i !== n; i++) {
+        generate(n - 1);
+        swap(n % 2 ? 0 : i, n - 1);
+      }
+    }
+  }
+  generate(arr.length);
+  return result;
+}
+
+// Curr
 function permAlone(str) {
 
   var regex = /(.)\1+/g;
@@ -309,7 +548,7 @@ permAlone('aab');
 ```
 
 ### [Friendly Date Ranges](https://www.freecodecamp.com/challenges/friendly-date-ranges)
-
+Gone
 Convert a date range consisting of two dates formatted as YYYY-MM-DD into a more readable format.
 
 The friendly display should use month names instead of numbers and ordinal dates instead of cardinal (1st instead of 1).
@@ -337,6 +576,7 @@ Here are some helpful links:
     parseInt()
 
 ``` js
+
 function makeFriendlyDates(arr) {
    var dateArr = [];
    var from = arr[0].split('-');
@@ -393,7 +633,7 @@ makeFriendlyDates(['2016-07-01', '2016-07-04']);
 ```
 
 ### [Make a Person](https://www.freecodecamp.com/challenges/make-a-person)
-
+OK
 Fill in the object constructor with the following methods below:
 
     getFirstName()
@@ -422,27 +662,28 @@ Here are some helpful links:
 var Person = function(firstAndLast) {
   var fullName = firstAndLast;
 
-  this.getFirstName = function() {
+  this.getFirstName = function() {     // getFirstName() check
     return fullName.split(" ")[0];
   };
 
-  this.getLastName = function() {
+  this.getLastName = function() {      // getLastName() check
+
     return fullName.split(" ")[1];
   };
 
-  this.getFullName = function() {
+  this.getFullName = function() {      // getFullName() check
     return fullName;
   };
 
-  this.setFirstName = function(name) {
+  this.setFirstName = function(name) { // setFirstName(first) check
     fullName = name + " " + fullName.split(" ")[1];
   };
 
-  this.setLastName = function(name) {
+  this.setLastName = function(name) {  // setLastName(last) check
     fullName = fullName.split(" ")[0] + " " + name;
   };
 
-  this.setFullName = function(name) {
+  this.setFullName = function(name) {  // setFullName(firstAndLast) check
     fullName = name;
   };
 };
@@ -478,16 +719,19 @@ function orbitalPeriod(arr) {
  var nameArr = [];
  var avgAltArr = [];
  var orbPerArr = [];
- for(var i=0;i<arr.length;i++){
+ for(var i = 0;i < arr.length; i++){
      nameArr.push(arr[i].name);
      avgAltArr.push(arr[i].avgAlt);
- }  for(var j=0;j<avgAltArr.length;j++){
-     var orbPer = Math.round(2 * Math.PI * Math.sqrt(Math.pow(earthRadius + avgAltArr[j], 3)/GM));
+ }  for(var j = 0;j < avgAltArr.length; j++){
+     var orbPer = Math.round(2 * Math.PI * Math.sqrt(Math.pow(earthRadius + avgAltArr[j], 3) / GM));
      orbPerArr.push(orbPer);
  }
  var objArr = [];
- for(var k=0;k<nameArr.length;k++){
-     var obj = {name: nameArr[k], orbitalPeriod: orbPerArr[k]};
+ for(var k = 0;k < nameArr.length; k++){
+     var obj = {
+       name: nameArr[k],
+       orbitalPeriod: orbPerArr[k]
+     };
      objArr.push(obj);
  }
  return objArr;
@@ -521,6 +765,7 @@ Here are some helpful links:
     Array.prototype.reduce()
 
 ``` js
+
 function pairwise(arr, arg) {
 
   var sum = 0;
@@ -532,7 +777,8 @@ function pairwise(arr, arg) {
 
       if(pairArr[i] + pairArr[j] == arg) {
         sum += i + j;
-        pairArr[i] = pairArr[j] = NaN;
+        pairArr[i] = NaN;
+        pairArr[j] = NaN;
       }
     }
   }
