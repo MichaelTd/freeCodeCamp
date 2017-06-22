@@ -712,6 +712,8 @@ bob.getFullName();
 
 ### [Map the Debris](https://www.freecodecamp.com/challenges/map-the-debris)
 
+OK?
+
 Return a new array that transforms the element's average altitude into their orbital periods.
 
 The array will contain objects in the format {name: 'name', avgAlt: avgAlt}.
@@ -729,36 +731,39 @@ Here are some helpful links:
     Math.pow()
 
 ``` js
-function orbitalPeriod(arr) {
- var GM = 398600.4418;
- var earthRadius = 6367.4447;
- var nameArr = [];
- var avgAltArr = [];
- var orbPerArr = [];
- for(var i = 0;i < arr.length; i++){
-     nameArr.push(arr[i].name);
-     avgAltArr.push(arr[i].avgAlt);
- }  for(var j = 0;j < avgAltArr.length; j++){
-     var orbPer = Math.round(2 * Math.PI * Math.sqrt(Math.pow(earthRadius + avgAltArr[j], 3) / GM));
-     orbPerArr.push(orbPer);
- }
- var objArr = [];
- for(var k = 0;k < nameArr.length; k++){
-     var obj = {
-       name: nameArr[k],
-       orbitalPeriod: orbPerArr[k]
-     };
-     objArr.push(obj);
- }
- return objArr;
-}
 
+function orbitalPeriod(arr) {
+  var GM = 398600.4418;
+  var earthRadius = 6367.4447;
+  var nameArr = [];
+  var avgAltArr = [];
+  var orbPerArr = [];
+  for(var i = 0;i < arr.length; i++){
+    nameArr.push(arr[i].name);
+    avgAltArr.push(arr[i].avgAlt);
+  }
+  for(var j = 0;j < avgAltArr.length; j++){
+    var orbPer = Math.round(2 * Math.PI * Math.sqrt(Math.pow(earthRadius + avgAltArr[j], 3) / GM));
+    orbPerArr.push(orbPer);
+  }
+  var objArr = [];
+  for(var k = 0;k < nameArr.length; k++) {
+    var obj = {
+      name: nameArr[k],
+      orbitalPeriod: orbPerArr[k]
+    };
+    objArr.push(obj);
+  }
+  return objArr;
+}
 
 orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 
 ```
 
 ### [Pairwise](https://www.freecodecamp.com/challenges/pairwise)
+
+OK
 
 Given an array arr, find element pairs whose sum equal the second argument arg and return the sum of their indices.
 
@@ -783,24 +788,17 @@ Here are some helpful links:
 ``` js
 
 function pairwise(arr, arg) {
-
   var sum = 0;
+  var pairArr = arr;
 
-  var pairArr = arr.slice();
-
-  for(i = 0; i < pairArr.length; i++) {
-    for(j = i + 1; j < pairArr.length; j++) {
-
+  for(i = 0; i < pairArr.length; i++)
+    for(j = i + 1; j < pairArr.length; j++)
       if(pairArr[i] + pairArr[j] == arg) {
         sum += i + j;
-        pairArr[i] = NaN;
-        pairArr[j] = NaN;
+        pairArr[i] = undefined;
+        pairArr[j] = undefined;
       }
-    }
-  }
-
   return sum;
-
 }
 
 pairwise([1,4,2,3,0,5], 7);

@@ -18,6 +18,7 @@ function loadWeather(location, woeid){
     error: function(error){
       $(".error-title").html('<p>Weather API Error:</p>');
       $(".error").html('<p>' + error + '</p>');
+      //console.log("LoadWeatherError", error)
     }
   });
 }
@@ -32,11 +33,28 @@ function togglestyle(el){
   }
 }
 
-$.getJSON("http://ip-api.com/json",function(){})
-.done(function(data) {
-  loadWeather(data.lat + ',' + data.lon);
+// The ip-api is dead Long live the ipinfo.io
+//$.getJSON("http://ip-api.com/json",function(){}) 
+//.done(function(data) {
+//  loadWeather(data.lat + ',' + data.lon);
+//})
+//.fail(function(error){
+//  $(".error-title").html('<p>jQuery Error:</p>');
+//  $(".error").html('<p>' + error + '</p>');
+//  //console.log("ip-api error", error)
+//})
+
+$.getJSON("https://ipinfo.io/json",function(){})
+	.done(function(data) {
+		var lat;
+		var lon;
+		sLoc = data.loc.split(',');
+		lat = sLoc[0];
+		lon = sLoc[1];
+		loadWeather(lat + ',' + lon);
 })
 .fail(function(error){
   $(".error-title").html('<p>jQuery Error:</p>');
   $(".error").html('<p>' + error + '</p>');
+  console.log("ipinfo.io error", error)
 })

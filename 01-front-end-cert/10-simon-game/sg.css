@@ -43,7 +43,7 @@ body {
   min-width: 310px;
   margin: 0 auto;
   font-family: sans-serif;
-  color: #797979;
+  color: black;
 }
 
 @media all and (max-width: 610px) {
@@ -107,7 +107,8 @@ body {
 
 .sg-count__value {
   letter-spacing: 3px;
-  color: #E53AB0;
+  /*  color: #E53AB0;*/
+  color: black;
   font-weight: bold;
 }
 
@@ -193,7 +194,7 @@ body {
   content: '';
   display: block;
   position: absolute;
-  border-radius: 50%;
+  border-radius: 5%;
   top: 0;
   right: 0;
   bottom: 0;
@@ -230,12 +231,13 @@ body {
 
 .sg-controls__button {
   padding: 4px;
+  /*
   background-color: white;
-  font-size: 16px;
+  font-size: 16px; */
 }
 
 .sg-controls__button:hover {
-  background-color: rgba(229, 58, 176, 0.3);
+ /* background-color: rgba(229, 58, 176, 0.3); */
 }
 
 .sg-controls__button-active {
@@ -244,13 +246,13 @@ body {
 }
 
 .sg-controls__button-active:hover {
-  background-color: rgba(229, 58, 176, 0.7);
+  /* background-color: rgba(229, 58, 176, 0.7); */
 }
 
 .sg-hint__show {
   background-color: transparent;
   margin: 10px 0 4px;
-  font-size: 14px;
+  font-size: 16px;
   border-bottom: dashed 1px #797979;
 }
 
@@ -296,3 +298,12 @@ body {
   border-left: solid 1px white;
   opacity: .7;
 }
+
+.box {
+  color:#333333;
+  background-color: rgba(127,127,127,0.5);
+  box-shadow: 0 0 60px black;
+  border:solid #333333;
+  border-radius: 10px;
+}
+
