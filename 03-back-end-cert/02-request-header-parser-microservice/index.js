@@ -4,13 +4,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-
+// Headers in nicely formated fields
+var useragent = require('express-useragent');
 // Create an instance of express for out app and instantiante body-parser - cors
 
 var app = module.exports = express();
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(useragent.express());
 
 // API URL
 //var api = '/api/whoami';
@@ -22,7 +24,8 @@ app.get('/api/whoami', function(req, res, next){
 
   var lang = req.acceptsLanguages();
   //var soft =  req.headers['user-agent']; Same way of getting data for software
-  var soft = req.get('User-Agent');
+  //var soft = req.get('User-Agent');
+  var soft = req.useragent.browser + ", on " + req.useragent.os;
   var ipadd = req.ip;
 
 
