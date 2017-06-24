@@ -1,8 +1,8 @@
 {
-  "name": "01-time-stamp-micro-service",
+  "name": "02-request-header-parser-microservice",
   "version": "1.0.0",
-  "description": "first back end freeCodeCamp challenge",
-  "main": "app.js",
+  "description": "freeCodeCamp's 2'nd be challenge",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,7 @@
     "API",
     "microservice",
     "fcc",
-    "date-time"
+    "header-parser"
   ],
   "author": "tdm",
   "license": "MIT",
