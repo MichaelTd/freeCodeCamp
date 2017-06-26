@@ -1,26 +1,37 @@
-@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
-@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css");
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-@import url("https://fonts.googleapis.com/css?family=Bungee+Shade|Bungee+Inline");
+html, body, #editor {
+  margin: 0;
+/*  height: 100%;*/
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+}
 
-body, html, .container {
-  height: 90vh;
+textarea, #editor div {
+  display: inline-block;
+  width: 49%;
+/*  height: 100%; */
+min-height: 90vh;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
-.container {
-  width: 100%;
-  padding: 10px 20px;
+
+textarea {
+  border: none;
+  border-right: 1px solid #ccc;
+  resize: none;
+  outline: none;
+  background-color: #f6f6f6;
+  font-size: 14px;
+  font-family: 'Monaco', courier, monospace;
+  padding: 20px;
 }
-.container .row,
-.container .row > div {
-  height: 100%;
+
+code {
+  color: #f66;
 }
-.preview {
-  height: 100%;
-  overflow: auto;
-}
-.editor {
-  width: 100%;
-  height: 100%;
+
+div {
+  /*min-height: 90vh;*/
 }
 
 footer {

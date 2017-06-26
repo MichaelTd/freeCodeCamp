@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="shortUrlApp">
 
 <head>
 
@@ -13,6 +13,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Latest compiled and minified JavaScript -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- FONTAWESOME -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Shade|Bungee+Inline" type="text/css"><!-- GOOGLEAPI FONTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+
+  <script src="app.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -41,7 +44,18 @@
 <h3>URL Shortener Microservice</h3>
 <h4><a href='https://www.freecodecamp.com/' target='_blank'>freeCodeCamp</a></h4>
 
+<h5> Node, Express, MongoDB, Mongoose, JavaScript, HTML, CSS, Bootstrap</h5>
+
 </header>
+
+<section ng-controller="shortAppCtrl">
+  {{urlToShorten}}
+  <br/>
+
+  <input placeholder="Enter Url" ng-model="urlToShorten">
+  <a class="btn btn-primary" ng-href="/new/{{urlToShorten}}"> Get Short Url</a>
+
+</section>
 
 </div>
   <footer>
