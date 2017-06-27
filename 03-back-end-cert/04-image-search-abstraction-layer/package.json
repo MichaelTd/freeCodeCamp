@@ -1,0 +1,24 @@
+{
+  "name": "04-image-search-abstraction-layer",
+  "version": "1.0.0",
+  "description": "fcc ial be p",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "image",
+    "fcc",
+    "bep"
+  ],
+  "author": "tdm",
+  "license": "ISC",
+  "dependencies": {
+    "bing-api": "0.0.1",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.0",
+    "node-bing-api": "^3.2.1"
+  }
+}
