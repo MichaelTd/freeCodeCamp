@@ -1,7 +1,8 @@
+
 new Vue({
   el: '#editor',
   data: {
-    input: '# hello'
+    input: '### Hello Markdown'
   },
   computed: {
     compiledMarkdown: function () {
@@ -13,4 +14,4 @@ new Vue({
       this.input = e.target.value
     }, 300)
   }
-})
+});
