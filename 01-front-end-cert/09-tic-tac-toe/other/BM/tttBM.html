@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>Tic Tac Toe</title>
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<style>
+@keyframes appear {
+  from {opacity: 0; height: 0px; width: 0px}
+}
+
+.game-row {
+  border-bottom: 2px solid black;
+  height: 99px;
+  width: 298px;
+  float: left;
+  display: inline;
+}
+
+.game-cell {
+  border-right: 2px solid black;
+  height: 100px;
+  width: 99px;
+  float: left;
+  display: inline;
+  font-size: 48px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.game-cell:hover {
+  cursor: pointer;
+}
+
+.game-cell.used:hover {
+  cursor: default;
+}
+
+#choice-prompt {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  height: 70px;
+  width: 300px;
+  background-color: grey;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  animation-name: appear;
+  animation-duration: 0.5s;
+}
+
+#game-board {
+  border: 2px solid black;
+  height: 300px;
+  width: 300px;
+  margin: 0px auto;
+}
+
+.game-row:nth-child(3), #A3, #B3, #C3 {
+  border: none;
+}
+
+#game-result {
+  position: relative;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%, 0);
+  width: 500px;
+  font-size: 48px;
+  color: #ff0000;
+}
+</style>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+    var LINES = ['.row-a', '.row-b', '.row-c', '.col-1', '.col-2', '.col-3', '.diag-left', '.diag-right'];
+
+    var CELLS = $('.game-cell');
+
+    var human;
+    var computer;
+    var canMove = false;
+
+    $(document).ready(function() {
+      $('#O-btn').on('click', function() {
+        human = 'O';
+        computer = 'X';
+      });
+      
+      $('#X-btn').on('click', function() {
+        human = 'X';
+        computer = 'O';
+      });
+      
+      $('.player-select').on('click', function() {
+        $('#choice-prompt').hide();
+        resetBoard();
+      });
+      
+      $('.game-cell').on('click', function() {
+        if (canMove && !$(this).hasClass('used')) {
+          markSpace(this, human);
+          if (checkForVictory(human) === 'win') {
+            gameResult('You win!');
+          } else if (checkForVictory(human) === 'draw') {
+            gameResult('Draw');
+          } else {
+            var move = computerAI();
+            if (move) {
+              computerMove(move);
+            } else {
+              console.log('ERROR: No legal moves available!')
+            }
+          }
+        }
+      })
+    });
+
+    function computerMove(space) {
+      canMove = false;
+      setTimeout(function() {
+        markSpace(space, computer);
+        if (checkForVictory(computer) === 'win') {
+          gameResult('You lose');
+        } else if (checkForVictory(computer) === 'draw') {
+          gameResult('Draw');
+        }
+        canMove = true;
+      }, 1000);
+    }
+
+    function markSpace(space, player) {
+      $(space).addClass('used');
+      $(space).html(player);
+    }
+
+    function resetBoard() {
+      canMove = false;
+      $('.game-cell').removeClass('used');
+      $('.game-cell').empty();
+      $('#game-result').empty();
+      computerMove('#B2');
+    }
+
+    function computerAI() {
+      var move;
+      //Find winning move
+      console.log('Winning move');
+      move = lineStrategy(computer, human, 2);
+      if (move) {
+        return move;
+      }
+      
+      //Find opponent winning move
+      console.log('Blocking move');
+      move = lineStrategy(human, computer, 2);
+      if (move) {
+        return move;
+      }
+      
+      //Fork strategy
+      console.log('Fork move');
+      move = forkStrategy(computer, human);
+      if (move) {
+        return move;
+      }
+      
+      //Block fork strategy
+      console.log('Block fork move');
+      move = forkStrategy(human, computer);
+      if (move) {
+        return move;
+      }
+      
+      //Center strategy
+      console.log('Center strategy');
+      move = centerStrategy();
+      if (move) {
+        return move;
+      }
+      
+      //Opposite corner strategy
+      console.log('Opposite corner move');
+      move = oppositeCornerStrategy()
+      if (move) {
+        return move;
+      }
+      
+      //Empty corner
+      console.log('Empty corner move');
+      move = endsStrategy('.corner');
+      if (move) {
+        return move;
+      }
+      
+      //Empty mid-end
+      console.log('Empty mid-end move');
+      move = endsStrategy('.mid-end');
+      return move;
+    }
+
+    function lineStrategy(player, opponent, count) {
+      var moves = [];
+      for (var i = 0; i < LINES.length; i++) {
+        if (checkLine(LINES[i], player, opponent, count)) {
+          moves = moves.concat($(LINES[i] + ':not(.used)'));
+        }
+      }
+      console.log(moves);
+      return selectRandomSpace(moves);
+    }
+
+    function forkStrategy(player, opponent) {
+      var commonLines;
+      var moves = [];
+      for (var i = 0; i < CELLS.length; i++) {
+        commonLines = [];
+        if ($(CELLS[i]).hasClass('used')) {
+          continue;
+        }
+        console.log($(CELLS[i]).attr('id'));
+        for (var j = 0; j < LINES.length; j++) {
+          if ($(CELLS[i]).hasClass(LINES[j].slice(1)) && 
+              $(LINES[j] + '.used:contains('+player+')').length === 1 &&
+              $(LINES[j] + '.used:contains('+opponent+')').length === 0) {
+            console.log(LINES[j]);
+            commonLines.push(LINES[j]);
+          }
+        }
+        if (commonLines.length >= 2) {
+          moves.push(CELLS[i]);
+        }
+      }
+      return selectRandomSpace(moves);
+    }
+
+    function centerStrategy() {
+      if (!$('#B2').hasClass('used')) {
+        return '#B2';
+      } else {
+        return undefined;
+      }
+    }
+
+    function oppositeCornerStrategy() {
+      var moves = [];
+      var corners = $('.corner:contains('+human+')');
+      
+      for (var i = 0; i < corners.length; i++) {
+        switch($(corners[i]).attr('id')) {
+          case 'A1':
+            pushEmptyCell('#C3', moves);
+            break;
+          case 'A3':
+            pushEmptyCell('#C1', moves);
+            break;
+          case 'C1':
+            pushEmptyCell('#A3', moves);
+            break;
+          case 'C3':
+            pushEmptyCell('#A1', moves);
+        }
+      }
+      
+      return selectRandomSpace(moves);
+    }
+
+    function endsStrategy(classGroup) {
+      return selectRandomSpace($(classGroup + ':not(.used)'));
+    }
+
+    function checkForVictory(player) {
+      for (var i = 0; i < LINES.length; i++) {
+        if ($(LINES[i] + ':contains('+player+')').length === 3) {
+          return 'win';
+        }
+      }
+      if ($('.used').length === 9) {
+        return 'draw';
+      }
+      return 'none';
+    }
+
+    function gameResult(message) {
+      canMove = false;
+      $('#game-result').html(message);
+      setTimeout(function() {
+        resetBoard();
+      }, 3000);
+    }
+
+    function checkLine(line, player, opponent, count) {
+      if ($(line + '.used:contains('+player+')').length === count && $(line + '.used:contains('+opponent+')').length === 0) {
+        console.log(line);
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function selectRandomSpace(spaces) {
+      if (spaces.length > 0) {
+        return spaces[Math.floor(Math.random() * spaces.length)];
+      } else {
+        return undefined;
+      }
+    }
+
+    function pushEmptyCell(cell, moves) {
+      if (!$(cell).hasClass('used')) {
+        moves.push(cell);
+      }
+    }
+</script>
+</head>
+<body>
+<h1 class="text-center">Tic Tac Toe</h1>
+<div id="choice-prompt">
+<div>Would you like to be "X's" or "O's"?</div>
+<button class="btn btn-primary player-select" id="O-btn">O</button>
+<button class="btn btn-primary player-select" id="X-btn">X</button>
+</div>
+<div id="game-board">
+<div class="game-row">
+<div class="game-cell row-a col-1 diag-left corner used" id="A1"></div>
+<div class="game-cell row-a col-2 mid-end used" id="A2"></div>
+<div class="game-cell row-a col-3 diag-right corner used" id="A3"></div>
+</div>
+<div class="game-row">
+<div class="game-cell row-b col-1 mid-end used" id="B1"></div>
+<div class="game-cell row-b col-2 diag-left diag-right used" id="B2"></div>
+<div class="game-cell row-b col-3 mid-end used" id="B3"></div>
+</div>
+<div class="game-row">
+<div class="game-cell row-c col-1 diag-right corner used" id="C1"></div>
+<div class="game-cell row-c col-2 mid-end used" id="C2"></div>
+<div class="game-cell row-c col-3 diag-left corner used" id="C3"></div>
+</div>
+</div>
+<div class="text-center" id="game-result"></div>
+</body>
+</html>

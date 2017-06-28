@@ -1,0 +1,3159 @@
+<!-- http://codepen.io/jacobBogers/ -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width">
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title id="page-title">Simon Game</title>
+
+<!--link rel="shortcut icon" href="icon.png"-->
+<!-- META TAGS -->
+
+<meta property="og:title" content="Simon Game">
+<meta property="og:description" content="Enjoy playing Tic Tac Toe.">
+<meta property="og:author" content="JacobBogers">
+
+<!-- Google Font(s) Import -->
+<link href='https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,400italic,700,900,700italic,900italic|Open+Sans:400,300,300italic,400italic,600,600italic,700italic,800,700,800italic|Julius+Sans+One'
+      rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+<!-- CSS CDN's -->
+<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.0.2/css/hover-min.css"-->
+
+<!-- JS CDN's -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.2.1/math.js"></script>
+
+<!-- MY CSS -->
+<link rel="stylesheet" href="./simon.css"/>
+<style>
+/**
+ * Created by jacobbogers on 5/16/16.
+ */
+
+/**
+ ___   ___  _ _  ___  ___  _  ___   ___  ___  _ _  _    _  _ _  ___
+/  _> | __>| \ || __>| . \| ||  _> / __>|_ _|| | || |  | || \ |/  _>
+| <_/\| _> |   || _> |   /| || <__ \__ \ | | \   /| |_ | ||   || <_/\
+`____/|___>|_\_||___>|_\_\|_|`___/ <___/ |_|  |_| |___||_||_\_|`____/
+
+*/
+
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+}
+
+/* stop that crazy shit */
+/* stop that crazy shit */
+/* stop that crazy shit */
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, a, form, fieldset, input[type="search"], textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+input:focus, textarea:focus, keygen:focus, select:focus {
+    outline-offset: -2px;
+}
+
+div:before, select, * {
+    box-sizing: border-box;
+}
+
+button, input {
+    line-height: normal;
+}
+
+html,
+body {
+    font-family: 'Open Sans';
+    font-weight: 300;
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+}
+
+/* FLEX-BOX STUFF AND OTHER ALIGNMENT STUFF */
+
+.flex-column-flow {
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row-flow {
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column-halign-center {
+    align-items: center;
+}
+
+.flex-column-vspace-around {
+    justify-content: space-around;
+
+}
+
+.flex-column-valign-center {
+    justify-content: center;
+    height: 100%;
+}
+
+.flex-stretch {
+    align-items:stretch;
+}
+
+.h-center {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.user-select-none {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:default;
+}
+
+.fit {
+
+    width: -moz-fit-content;
+    width: fit-content;
+
+}
+
+.all-margin-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+/* MARKING ELEMENTS */
+
+/* debug markers */
+/* debug markers */
+/* debug markers */
+.debug-white {
+    border: 1px white solid;
+}
+
+.debug-black {
+    border: 1px solid black;
+}
+
+.debug-red {
+    border: 1px solid red;
+}
+
+.debug-blue {
+    border: 1px solid blue;
+}
+
+.outline-r {
+    outline: 1px solid red;
+}
+
+.outline-g {
+    outline: 1px solid green;
+}
+
+.outline-b {
+    outline: 1px solid blue;
+}
+
+/*general decoration*/
+/*general decoration*/
+/*general decoration*/
+
+.rounded {
+    border-radius: 1rem;
+}
+
+.bck-w {
+    background-color: white !important;
+}
+
+.ncursor {
+    cursor: unset !important;
+}
+
+.dcursor {
+    cursor: default !important;
+}
+
+.p-small {
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+/** buttons */
+/** buttons */
+/** buttons */
+
+
+.bg-white {
+    background-color: #FFF;
+}
+
+.txt-white {
+    color:#FFF;
+    line-height: 1;
+}
+
+/*
+ ___  ___  ___  _    _  ___  ___  ___  _  ___  _ _
+| . || . \| . \| |  | ||  _>| . ||_ _|| || . || \ |
+|   ||  _/|  _/| |_ | || <__|   | | | | || | ||   |
+|_|_||_|  |_|  |___||_|`___/|_|_| |_| |_|`___'|_\_|
+
+*/
+
+body {
+  background: radial-gradient(circle, #5772A1, #3C4B6A);
+  font-family:"Open Sans";
+  font-size:16px;
+}
+
+
+#container {
+    margin-top:20px;
+}
+
+#inner-canvas {
+    position:relative;
+}
+
+ul.btn {
+    display:table;
+    table-layout: fixed;
+    border-collapse: separate;
+    list-style-type: none;
+}
+
+ul.btn > li {
+    display:table-row;
+    white-space: nowrap;
+    align-items: center;
+    list-style-type: none;
+}
+
+ul.btn >  li > span   {
+    display: table-cell;
+    border: 1.2em solid black;
+    overflow:hidden;
+    background-color:black;
+}
+
+ul.btn >  li > span#green-btn   {
+    border-top-left-radius: 100%;
+}
+
+ul.btn >  li > span#red-btn   {
+    border-top-right-radius: 100%;
+}
+
+ul.btn >  li > span#yellow-btn   {
+    border-bottom-left-radius: 100%;
+}
+
+ul.btn >  li > span#blue-btn   {
+    border-bottom-right-radius: 100%;
+}
+
+.green-btn {
+    background:linear-gradient(315deg,
+    rgb(96,215,115) 50%,
+    rgb(80,213,96) 60%,
+    rgb(49 , 207, 58 ) 90%);
+}
+
+ul.btn > li > span#green-btn > a > div.default {
+    border-top-left-radius: 100%;
+    border-top-right-radius:10%;
+    border-bottom-left-radius: 10%;
+    overflow:hidden;
+    width:-moz-fit-content;
+    width:fit-content;
+}
+
+.red-btn {
+    background:linear-gradient(45deg,
+    rgb(250,78,40) 50%,
+    rgb(247,33,14) 60%,
+    rgb(245,34,12) 90%);
+}
+
+ul.btn > li > span#red-btn > a > div.default {
+
+    border-top-right-radius: 100%;
+    border-top-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    overflow:hidden;
+    width:-moz-fit-content;
+    width:fit-content;
+}
+
+ul.btn > li > span#yellow-btn > a > div.default {
+    background:linear-gradient(225deg,
+    rgb(251,250,106) 50%,
+    rgb(255,241,44) 90%);
+    border-top-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius:100%;
+    overflow:hidden;
+    width:-moz-fit-content;
+    width:fit-content;
+    cursor:pointer;
+}
+
+ul.btn > li > span#blue-btn > a > div.default {
+    background:linear-gradient(135deg,
+    rgb(0,167,238) 10%,
+    rgb(1,143,227) 40%,
+    rgb(3 , 123, 218 ) 60%);
+    border-top-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 100%;
+    overflow:hidden;
+    width:-moz-fit-content;
+    width:fit-content;
+}
+
+#ctrl-display {
+   left: calc( 50% - 12.5em  );
+   top:  calc( 50% - 12.5em ) ;
+   position:absolute;
+   background: black;
+   border-radius: 50%;
+   border:1em solid black;
+   width:25em;
+   height:25em;
+
+}
+
+#ctrl-area {
+   position:absolute;
+   width:100%;
+   height:100%;
+   pointer-events:none;
+}
+
+ul.btn > li > span > a > div.default > div.highlight {
+    width:19em;
+    height:19em;
+    cursor:pointer;
+}
+
+ul.btn > li > span > a:active > div.default > div.highlight,
+ul.btn > li > span.game-activated > a > div.default > div.highlight {
+    background:radial-gradient(circle, rgba(255,255,255,1), rgba(0,0,0,0));
+}
+
+#svg-logo {
+
+    width:20em;
+    height:auto;
+    margin-top:20px;
+}
+
+#mbradly-logo {
+
+  width:4em;
+  height:auto;
+  margin-top:20px;
+
+}
+
+#pixel-display {
+
+    font-size:95%;
+    width:100%;
+    height:fit-content;
+    background-color: black;
+
+}
+
+.center {
+
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 81%;
+    border-left: 0.430em black solid;
+    border-top:0.430em black solid;
+
+}
+
+svg#svg3082 {
+
+    stroke:transparent;
+    fill:white;
+    background-color: transparent;
+
+}
+
+#select-buttons > ul {
+
+    display:table;
+    margin-top:1em;
+
+}
+
+#select-buttons > ul {
+
+    display:table;
+
+}
+
+#select-buttons > ul > li {
+    display:table-row;
+}
+
+#select-buttons > ul > li > span {
+    display:table-cell;
+}
+
+.dlg-button{
+    width:3em;
+    height:3em;
+    border-radius:50%;
+    display:block;
+    margin: 0.25em 2em 0.25em 2em;
+    cursor:pointer;
+
+}
+
+.dlg-button.enabled {
+    pointer-events:auto;
+    opacity:1;
+}
+
+.txt-center-xy {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.medium {
+    font-size: 150%;
+    font-weight:600;
+}
+
+a.dlg-button.enabled:active    {
+    box-shadow: inset 0px 0px 15px #000;
+}
+
+
+.dlg-button:not(.enabled)  {
+    pointer-events:none;
+    opacity:0.4;
+}
+
+
+
+#shield {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:10;
+    background:transparent;
+}
+
+/* CSS Fonts */
+/* CSS Fonts */
+/* CSS Fonts */
+
+.letter {
+    display:inline-block;
+}
+
+.letter > ul {
+    display: table;
+    font-size: 100%;
+    background-color: #FFF;
+}
+
+.letter > ul > li {
+  display:table-row;
+}
+
+.letter > ul > li > em {
+  display:table-cell;
+  width:0.375em;
+  height:0.430em;
+  background-color:#000;
+  padding-bottom:1px;
+  padding-right:1px;
+}
+
+.letter > ul > li > em > i {
+  display:block;
+  line-height: 0;
+  width:100%;
+  height:100%;
+  background-color:#1F1F1F;
+}
+
+.letter > ul > li > em:last-of-type > i {
+    background-color:#000;
+}
+
+.letter > ul > li > em:last-of-type > i , .letter > ul > li:last-of-type > em > i  {
+    background-color:black;
+}
+
+/* letter definitions */
+/* letter definitions */
+/* letter definitions */
+
+/* _A Letter A */
+
+.letter._A > ul > li:nth-of-type(1) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(1) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(1) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(2) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(2) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(3) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(3) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+
+.letter._A > ul > li:nth-of-type(4) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(4) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(5) > em > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(5) > em:nth-of-type(6) > i {
+    background-color:#000;
+}
+
+.letter._A > ul > li:nth-of-type(6) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(6) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(7) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._A > ul > li:nth-of-type(7) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+/* _B Letter B */
+
+.letter._B > ul > li:nth-of-type(1) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(1) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(1) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(1) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+
+.letter._B > ul > li:nth-of-type(1) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(2) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(2) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(3) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(3) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(4) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(4) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(4) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(4) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(5) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(5) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(6) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(6) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(7) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(7) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(7) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+.letter._B > ul > li:nth-of-type(7) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+/* _C Letter C */
+
+
+.letter._C > ul > li:nth-of-type(1) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(1) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(1) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+
+.letter._C > ul > li:nth-of-type(1) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(2) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(2) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(3) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(4) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(5) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(6) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(6) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+
+.letter._C > ul > li:nth-of-type(7) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(7) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+.letter._C > ul > li:nth-of-type(7) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+/* _D Letter D */
+
+
+.letter._D > ul > li:nth-of-type(1) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(1) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(1) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(2) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(2) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(3) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+
+.letter._D > ul > li:nth-of-type(3) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(4) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(4) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(5) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+
+.letter._D > ul > li:nth-of-type(5) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+
+.letter._D > ul > li:nth-of-type(5) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(6) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(6) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(7) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(7) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+.letter._D > ul > li:nth-of-type(7) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+
+/* _E Letter E */
+
+.letter._E > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._E > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._E > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._E > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._E > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._E > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._E > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._E > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._E > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._E > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._E > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._E > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._E > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._E > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._E > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._E > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._E > ul > li:nth-of-type(7) > em:nth-of-type(4) > i,
+.letter._E > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+/* _F Letter F */
+
+.letter._F > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._F > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._F > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._F > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._F > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._F > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._F > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._F > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._F > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._F > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._F > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._F > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._F > ul > li:nth-of-type(7) > em:nth-of-type(1) > i{
+    background-color:#E00;
+}
+
+/* _G Letter G */
+
+.letter._G > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._G > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._G > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._G > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._G > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._G > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._G > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._G > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._G > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._G > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._G > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._G > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._G > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._G > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._G > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._G > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._G > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._G > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color:#E00;
+}
+
+
+/* _H Letter H */
+
+.letter._H > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._H > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._H > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._H > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._H > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._H > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._H > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._H > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._H > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._H > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._H > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._H > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._H > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._H > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._H > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._H > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._H > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+/* _I Letter I */
+
+.letter._I > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._I > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._I > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._I > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._I > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._I > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._I > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._I > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._I > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._I > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._I > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color:#E00;
+}
+
+/* _J Letter J */
+
+.letter._J > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._J > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._J > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._J > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._J > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._J > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._J > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._J > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._J > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._J > ul > li:nth-of-type(7) > em:nth-of-type(2) > i{
+    background-color:#E00;
+}
+
+/* _K Letter K */
+
+.letter._K > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._K > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._K > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._K > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._K > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._K > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._K > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._K > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+/* _K Letter K */
+
+.letter._K > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._K > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._K > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._K > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._K > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._K > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._K > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._K > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._K > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+/* _L Letter L */
+
+.letter._L > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._L > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._L > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._L > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._L > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._L > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._L > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._L > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._L > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._L > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._L > ul > li:nth-of-type(7) > em:nth-of-type(4) > i,
+.letter._L > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+/* _M Letter M */
+
+.letter._M > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._M > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._M > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._M > ul > li:nth-of-type(2) > em:nth-of-type(2) > i,
+.letter._M > ul > li:nth-of-type(2) > em:nth-of-type(4) > i,
+.letter._M > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._M > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._M > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._M > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._M > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._M > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._M > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._M > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._M > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._M > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._M > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._M > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+/* _N Letter N */
+
+.letter._N > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._N > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._N > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._N > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._N > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._N > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._N > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._N > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._N > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._N > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._N > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._N > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._N > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._N > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._N > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._N > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._N > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+/* _O Letter O */
+
+.letter._O > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._O > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._O > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._O > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._O > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._O > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._O > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._O > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._O > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._O > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._O > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._O > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._O > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._O > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._O > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._O > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color:#E00;
+}
+
+/* _P Letter P */
+
+.letter._P > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._P > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._P > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._P > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._P > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._P > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._P > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._P > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._P > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._P > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._P > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._P > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._P > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._P > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._P > ul > li:nth-of-type(7) > em:nth-of-type(1) > i
+{
+    background-color:#E00;
+}
+
+/* _Q Letter Q */
+
+.letter._Q > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._Q > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._Q > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._Q > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._Q > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._Q > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._Q > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._Q > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._Q > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._Q > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._Q > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._Q > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._Q > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._Q > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._Q > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._Q > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._Q > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._Q > ul > li:nth-of-type(7) > em:nth-of-type(4) > i,
+.letter._Q > ul > li:nth-of-type(7) > em:nth-of-type(5) > i
+{
+    background-color:#E00;
+}
+
+/* _R Letter R */
+
+.letter._R > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._R > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._R > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._R > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._R > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._R > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._R > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._R > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._R > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._R > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._R > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._R > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._R > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._R > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._R > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._R > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._R > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._R > ul > li:nth-of-type(7) > em:nth-of-type(5) > i
+{
+    background-color:#E00;
+}
+
+/* _S Letter S */
+
+.letter._S > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._S > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._S > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._S > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._S > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._S > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._S > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._S > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._S > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._S > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._S > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._S > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._S > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._S > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._S > ul > li:nth-of-type(7) > em:nth-of-type(4) > i
+
+{
+    background-color:#E00;
+}
+
+/* _T Letter T */
+.letter._T > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._T > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._T > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._T > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._T > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._T > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._T > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._T > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._T > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._T > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._T > ul > li:nth-of-type(7) > em:nth-of-type(3) > i
+{
+    background-color:#E00;
+}
+
+/* _U Letter U */
+.letter._U > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._U > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._U > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._U > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._U > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._U > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._U > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._U > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._U > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._U > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._U > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._U > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._U > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._U > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._U > ul > li:nth-of-type(7) > em:nth-of-type(4) > i
+{
+    background-color:#E00;
+}
+
+/* _V Letter U */
+.letter._V > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._V > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._V > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._V > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._V > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._V > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._V > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._V > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._V > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._V > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._V > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._V > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._V > ul > li:nth-of-type(7) > em:nth-of-type(3) > i
+{
+    background-color:#E00;
+}
+
+/* _W Letter W */
+.letter._W > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._W > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._W > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._W > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._W > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._W > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._W > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._W > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._W > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._W > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._W > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._W > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._W > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._W > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._W > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._W > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._W > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._W > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._W > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+
+/* _X Letter X */
+.letter._X > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._X > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._X > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._X > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._X > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._X > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._X > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._X > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._X > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._X > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._X > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._X > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._X > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+/* _Y Letter Y */
+.letter._Y > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._Y > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._Y > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._Y > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._Y > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._Y > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._Y > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._Y > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._Y > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._Y > ul > li:nth-of-type(7) > em:nth-of-type(3) > i{
+    background-color:#E00;
+}
+
+/* _Z Letter Z */
+.letter._Z > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._Z > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._Z > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._Z > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._Z > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._Z > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._Z > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._Z > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._Z > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._Z > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._Z > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._Z > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._Z > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._Z > ul > li:nth-of-type(7) > em:nth-of-type(4) > i,
+.letter._Z > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+
+/* _block Letter _block */
+.letter._block > ul > li:nth-of-type(1) > em > i,
+.letter._block > ul > li:nth-of-type(2) > em > i,
+.letter._block > ul > li:nth-of-type(3) > em > i,
+.letter._block > ul > li:nth-of-type(4) > em > i,
+.letter._block > ul > li:nth-of-type(5) > em > i,
+.letter._block > ul > li:nth-of-type(6) > em > i,
+.letter._block > ul > li:nth-of-type(7) > em > i {
+    background-color:#E00;
+}
+
+.letter._block > ul > li:nth-of-type(1) > em:nth-of-type(6) > i,
+.letter._block > ul > li:nth-of-type(2) > em:nth-of-type(6) > i,
+.letter._block > ul > li:nth-of-type(3) > em:nth-of-type(6) > i,
+.letter._block > ul > li:nth-of-type(4) > em:nth-of-type(6) > i,
+.letter._block > ul > li:nth-of-type(5) > em:nth-of-type(6) > i,
+.letter._block > ul > li:nth-of-type(6) > em:nth-of-type(6) > i,
+.letter._block > ul > li:nth-of-type(7) > em:nth-of-type(6) > i {
+    background-color:#000;
+}
+
+/* _div Letter div '/' */
+.letter._div > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._div > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._div > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._div > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._div > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._div > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._div > ul > li:nth-of-type(7) > em:nth-of-type(2) > i{
+    background-color:#E00;
+}
+
+
+/* _plus Letter '+' */
+.letter._plus > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._plus > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._plus > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._plus > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._plus > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._plus > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._plus > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._plus > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._plus > ul > li:nth-of-type(6) > em:nth-of-type(3) > i{
+    background-color:#E00;
+}
+
+
+/* _minus Letter '-' */
+.letter._minus > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._minus > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._minus > ul > li:nth-of-type(4) > em:nth-of-type(4) > i
+{
+    background-color:#E00;
+}
+
+/* _times Letter '*' */
+.letter._times > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._times > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._times > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._times > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._times > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._times > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._times > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._times > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._times > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._times > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._times > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._times > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._times > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._times > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._times > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._times > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._times > ul > li:nth-of-type(6) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+
+/* _st Letter '<' */
+.letter._st > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._st > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._st > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._st > ul > li:nth-of-type(2) > em:nth-of-type(4) > i,
+.letter._st > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._st > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._st > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._st > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._st > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._st > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._st > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._st > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._st > ul > li:nth-of-type(7) > em:nth-of-type(4) > i,
+.letter._st > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+
+
+/* _lt Letter '>' */
+.letter._lt > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._lt > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._lt > ul > li:nth-of-type(2) > em:nth-of-type(2) > i,
+.letter._lt > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._lt > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._lt > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._lt > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._lt > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._lt > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._lt > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._lt > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._lt > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._lt > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._lt > ul > li:nth-of-type(7) > em:nth-of-type(1) > i{
+    background-color:#E00;
+}
+
+/* _emp Letter '&' */
+
+.letter._emp > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._emp > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._emp > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._emp > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._emp > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._emp > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._emp > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._emp > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._emp > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._emp > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._emp > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._emp > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._emp > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._emp > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._emp > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._emp > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._emp > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+/* _0 ZERO */
+
+.letter._0 > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._0 > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._0 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._0 > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._0 > ul > li:nth-of-type(2) > em:nth-of-type(4) > i,
+.letter._0 > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._0 > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._0 > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._0 > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._0 > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._0 > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._0 > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._0 > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._0 > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._0 > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._0 > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._0 > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._0 > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._0 > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color: #E00;
+}
+
+/* _1 ONE */
+
+.letter._1 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._1 > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._1 > ul > li:nth-of-type(2) > em:nth-of-type(4) > i,
+.letter._1 > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._1 > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._1 > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._1 > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._1 > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._1 > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color: #E00;
+}
+
+
+/* _2 two */
+
+.letter._2 > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._2 > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._2 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._2 > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._2 > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._2 > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._2 > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._2 > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._2 > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._2 > ul > li:nth-of-type(7) > em > i {
+    background-color:#E00;
+}
+.letter._2 > ul > li:nth-of-type(7) > em:nth-of-type(6) > i {
+    background-color:#000;
+}
+
+/* _3 THREE */
+
+.letter._3 > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._3 > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._3 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._3 > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._3 > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._3 > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._3 > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._3 > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._3 > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._3 > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._3 > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._3 > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._3 > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._3 > ul > li:nth-of-type(7) > em:nth-of-type(4) > i {
+    background-color: #E00;
+}
+
+/* _4 FOUR */
+
+.letter._4 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._4 > ul > li:nth-of-type(2) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._4 > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._4 > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._4 > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color:#E00;
+}
+
+
+/* _5 FOUR */
+
+.letter._4 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._4 > ul > li:nth-of-type(2) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._4 > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._4 > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._4 > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._4 > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color:#E00;
+}
+
+/* _5 FIVE */
+
+.letter._5 > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._5 > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._5 > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._5 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._5 > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._5 > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._5 > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._5 > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._5 > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._5 > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._5 > ul > li:nth-of-type(4) > em:nth-of-type(5) > i,
+.letter._5 > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._5 > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._5 > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._5 > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._5 > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._5 > ul > li:nth-of-type(7) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+
+/* _6 SIX */
+
+.letter._6 > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._6 > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._6 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._6 > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._6 > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._6 > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._6 > ul > li:nth-of-type(4) > em:nth-of-type(1) > i,
+.letter._6 > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._6 > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._6 > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._6 > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._6 > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._6 > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._6 > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._6 > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._6 > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._6 > ul > li:nth-of-type(7) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+/* _7 SEVEN */
+
+.letter._7 > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._7 > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._7 > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._7 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._7 > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._7 > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._7 > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._7 > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._7 > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._7 > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._7 > ul > li:nth-of-type(7) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+
+/* _8 SEVEN */
+
+.letter._8 > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._8 > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._8 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._8 > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._8 > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._8 > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._8 > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._8 > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._8 > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._8 > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._8 > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._8 > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._8 > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._8 > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._8 > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._8 > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._8 > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color:#E00;
+}
+
+
+/* _9 SEVEN */
+.letter._9 > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._9 > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._9 > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._9 > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._9 > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._9 > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._9 > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._9 > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._9 > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._9 > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._9 > ul > li:nth-of-type(4) > em:nth-of-type(5) > i ,
+.letter._9 > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._9 > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._9 > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._9 > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._9 > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._9 > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color:#E00;
+}
+
+
+/* _quest aka '?' */
+
+.letter._quest > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._quest > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._quest > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._quest > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._quest > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._quest > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._quest > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._quest > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._quest > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._quest > ul > li:nth-of-type(7) > em:nth-of-type(3) > i{
+    background-color:#E00;
+}
+
+
+/* _excl aka '!' */
+
+.letter._excl > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._excl > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._excl > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._excl > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._excl > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._excl > ul > li:nth-of-type(7) > em:nth-of-type(3) > i{
+    background-color:#E00;
+}
+
+/* _hash aka '?' */
+
+.letter._hash > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._hash > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._hash > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._hash > ul > li:nth-of-type(2) > em:nth-of-type(2) > i,
+.letter._hash > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._hash > ul > li:nth-of-type(2) > em:nth-of-type(4) > i,
+.letter._hash > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._hash > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._hash > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._hash > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._hash > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._hash > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._hash > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._hash > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._hash > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._hash > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._hash > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._hash > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._hash > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._hash > ul > li:nth-of-type(7) > em:nth-of-type(4) > i{
+    background-color:#E00;
+}
+
+/* _perc aka '%' */
+
+.letter._perc > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._perc > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._perc > ul > li:nth-of-type(2) > em:nth-of-type(1) > i,
+.letter._perc > ul > li:nth-of-type(2) > em:nth-of-type(2) > i,
+.letter._perc > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._perc > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._perc > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._perc > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._perc > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._perc > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._perc > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._perc > ul > li:nth-of-type(7) > em:nth-of-type(4) > i,
+.letter._perc > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+/* _usd aka '$' */
+
+.letter._usd > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._usd > ul > li:nth-of-type(2) > em:nth-of-type(2) > i,
+.letter._usd > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._usd > ul > li:nth-of-type(2) > em:nth-of-type(4) > i,
+.letter._usd > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._usd > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._usd > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._usd > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._usd > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._usd > ul > li:nth-of-type(4) > em:nth-of-type(4) > i,
+.letter._usd > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._usd > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._usd > ul > li:nth-of-type(6) > em:nth-of-type(1) > i,
+.letter._usd > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._usd > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._usd > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._usd > ul > li:nth-of-type(7) > em:nth-of-type(3) > i{
+    background-color:#E00;
+}
+
+/* _euro aka 'e' */
+
+.letter._euro > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._euro > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._euro > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._euro > ul > li:nth-of-type(2) > em:nth-of-type(2) > i,
+.letter._euro > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._euro > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._euro > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._euro > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._euro > ul > li:nth-of-type(4) > em:nth-of-type(2) > i,
+.letter._euro > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._euro > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._euro > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._euro > ul > li:nth-of-type(5) > em:nth-of-type(4) > i,
+.letter._euro > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._euro > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._euro > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._euro > ul > li:nth-of-type(7) > em:nth-of-type(4) > i,
+.letter._euro > ul > li:nth-of-type(7) > em:nth-of-type(5) > i{
+    background-color:#E00;
+}
+
+/* _colon aka ':' */
+
+.letter._colon > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._colon > ul > li:nth-of-type(6) > em:nth-of-type(3) > i{
+    background: #E00;
+}
+
+/* _aup aka 'arrow up' */
+
+.letter._aup > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._aup > ul > li:nth-of-type(2) > em:nth-of-type(2) > i,
+.letter._aup > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._aup > ul > li:nth-of-type(2) > em:nth-of-type(4) > i,
+.letter._aup > ul > li:nth-of-type(3) > em:nth-of-type(1) > i,
+.letter._aup > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._aup > ul > li:nth-of-type(3) > em:nth-of-type(5) > i,
+.letter._aup > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._aup > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._aup > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._aup > ul > li:nth-of-type(7) > em:nth-of-type(3) > i{
+    background-color:#E00;
+}
+
+
+/* _adown aka 'arrow down' */
+
+.letter._adown > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._adown > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._adown > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._adown > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._adown > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._adown > ul > li:nth-of-type(5) > em:nth-of-type(3) > i,
+.letter._adown > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._adown > ul > li:nth-of-type(4) > em:nth-of-type(3) > i,
+.letter._adown > ul > li:nth-of-type(3) > em:nth-of-type(3) > i,
+.letter._adown > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._adown > ul > li:nth-of-type(1) > em:nth-of-type(3) > i{
+    background-color:#E00;
+}
+
+/* _rua aka right up arrow */
+
+.letter._rua > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._rua > ul > li:nth-of-type(1) > em:nth-of-type(3) > i ,
+.letter._rua > ul > li:nth-of-type(1) > em:nth-of-type(4) > i ,
+.letter._rua > ul > li:nth-of-type(1) > em:nth-of-type(5) > i ,
+.letter._rua > ul > li:nth-of-type(2) > em:nth-of-type(4) > i ,
+.letter._rua > ul > li:nth-of-type(2) > em:nth-of-type(5) > i,
+.letter._rua > ul > li:nth-of-type(3) > em:nth-of-type(3) > i ,
+.letter._rua > ul > li:nth-of-type(3) > em:nth-of-type(5) > i ,
+.letter._rua > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+.letter._rua > ul > li:nth-of-type(4) > em:nth-of-type(5) > i ,
+.letter._rua > ul > li:nth-of-type(5) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+/*  _lua aka 'left up arrow' */
+.letter._lua > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._lua > ul > li:nth-of-type(1) > em:nth-of-type(2) > i ,
+.letter._lua > ul > li:nth-of-type(1) > em:nth-of-type(3) > i ,
+.letter._lua > ul > li:nth-of-type(1) > em:nth-of-type(4) > i ,
+.letter._lua > ul > li:nth-of-type(2) > em:nth-of-type(1) > i ,
+.letter._lua > ul > li:nth-of-type(2) > em:nth-of-type(2) > i,
+.letter._lua > ul > li:nth-of-type(3) > em:nth-of-type(1) > i ,
+.letter._lua > ul > li:nth-of-type(3) > em:nth-of-type(3) > i ,
+.letter._lua > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._lua > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._lua > ul > li:nth-of-type(5) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+/* _rda aka right up arrow */
+
+.letter._rda > ul > li:nth-of-type(7) > em:nth-of-type(2) > i,
+.letter._rda > ul > li:nth-of-type(7) > em:nth-of-type(3) > i ,
+.letter._rda > ul > li:nth-of-type(7) > em:nth-of-type(4) > i ,
+.letter._rda > ul > li:nth-of-type(7) > em:nth-of-type(5) > i ,
+.letter._rda > ul > li:nth-of-type(6) > em:nth-of-type(4) > i ,
+.letter._rda > ul > li:nth-of-type(6) > em:nth-of-type(5) > i,
+.letter._rda > ul > li:nth-of-type(5) > em:nth-of-type(3) > i ,
+.letter._rda > ul > li:nth-of-type(5) > em:nth-of-type(5) > i ,
+.letter._rda > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+.letter._rda > ul > li:nth-of-type(4) > em:nth-of-type(5) > i ,
+.letter._rda > ul > li:nth-of-type(3) > em:nth-of-type(1) > i {
+    background-color:#E00;
+}
+
+/*  _lda aka 'left down arrow' */
+.letter._lda > ul > li:nth-of-type(7) > em:nth-of-type(1) > i,
+.letter._lda > ul > li:nth-of-type(7) > em:nth-of-type(2) > i ,
+.letter._lda > ul > li:nth-of-type(7) > em:nth-of-type(3) > i ,
+.letter._lda > ul > li:nth-of-type(7) > em:nth-of-type(4) > i ,
+.letter._lda > ul > li:nth-of-type(6) > em:nth-of-type(1) > i ,
+.letter._lda > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._lda > ul > li:nth-of-type(5) > em:nth-of-type(1) > i ,
+.letter._lda > ul > li:nth-of-type(5) > em:nth-of-type(3) > i ,
+.letter._lda > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._lda > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._lda > ul > li:nth-of-type(3) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+/* _chevron-up aka '^'   */
+
+.letter._chevron-up > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._chevron-up > ul > li:nth-of-type(2) > em:nth-of-type(2) > i ,
+.letter._chevron-up > ul > li:nth-of-type(2) > em:nth-of-type(4) > i ,
+.letter._chevron-up > ul > li:nth-of-type(3) > em:nth-of-type(1) > i ,
+.letter._chevron-up > ul > li:nth-of-type(3) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+/* _quote-left */
+
+.letter._quote-left > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._quote-left > ul > li:nth-of-type(2) > em:nth-of-type(1) > i ,
+.letter._quote-left > ul > li:nth-of-type(3) > em:nth-of-type(1) > i ,
+.letter._quote-left > ul > li:nth-of-type(3) > em:nth-of-type(2) > i ,
+.letter._quote-left > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._quote-left > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+
+.letter._quote-left > ul > li:nth-of-type(1) > em:nth-of-type(5) > i,
+.letter._quote-left > ul > li:nth-of-type(2) > em:nth-of-type(4) > i ,
+.letter._quote-left > ul > li:nth-of-type(3) > em:nth-of-type(4) > i ,
+.letter._quote-left > ul > li:nth-of-type(3) > em:nth-of-type(5) > i ,
+.letter._quote-left > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._quote-left > ul > li:nth-of-type(4) > em:nth-of-type(5) > i
+
+{
+    background-color:#E00;
+}
+
+/* _quote-right */
+
+.letter._quote-right > ul > li:nth-of-type(1) > em:nth-of-type(1) > i,
+.letter._quote-right > ul > li:nth-of-type(2) > em:nth-of-type(2) > i ,
+.letter._quote-right > ul > li:nth-of-type(3) > em:nth-of-type(1) > i ,
+.letter._quote-right > ul > li:nth-of-type(3) > em:nth-of-type(2) > i ,
+.letter._quote-right > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._quote-right > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+
+.letter._quote-right > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._quote-right > ul > li:nth-of-type(2) > em:nth-of-type(5) > i ,
+.letter._quote-right > ul > li:nth-of-type(3) > em:nth-of-type(4) > i ,
+.letter._quote-right > ul > li:nth-of-type(3) > em:nth-of-type(5) > i ,
+.letter._quote-right > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._quote-right > ul > li:nth-of-type(4) > em:nth-of-type(5) > i {
+    background-color:#E00;
+}
+
+/* _at '@' */
+.letter._at > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._at > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._at > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._at > ul > li:nth-of-type(2) > em:nth-of-type(1) > i ,
+.letter._at > ul > li:nth-of-type(2) > em:nth-of-type(5) > i ,
+.letter._at > ul > li:nth-of-type(3) > em:nth-of-type(1) > i ,
+.letter._at > ul > li:nth-of-type(3) > em:nth-of-type(3) > i ,
+.letter._at > ul > li:nth-of-type(3) > em:nth-of-type(5) > i ,
+.letter._at > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._at > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+.letter._at > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._at > ul > li:nth-of-type(4) > em:nth-of-type(5) > i ,
+.letter._at > ul > li:nth-of-type(5) > em:nth-of-type(1) > i ,
+.letter._at > ul > li:nth-of-type(5) > em:nth-of-type(2) > i ,
+.letter._at > ul > li:nth-of-type(5) > em:nth-of-type(3) > i ,
+.letter._at > ul > li:nth-of-type(5) > em:nth-of-type(5) > i ,
+.letter._at > ul > li:nth-of-type(6) > em:nth-of-type(1) > i ,
+.letter._at > ul > li:nth-of-type(6) > em:nth-of-type(2) > i ,
+.letter._at > ul > li:nth-of-type(6) > em:nth-of-type(5) > i ,
+.letter._at > ul > li:nth-of-type(7) > em:nth-of-type(2) > i ,
+.letter._at > ul > li:nth-of-type(7) > em:nth-of-type(3) > i ,
+.letter._at > ul > li:nth-of-type(7) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+/* _braket-left */
+
+.letter._braket-left > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._braket-left > ul > li:nth-of-type(2) > em:nth-of-type(2) > i ,
+.letter._braket-left > ul > li:nth-of-type(3) > em:nth-of-type(2) > i ,
+.letter._braket-left > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+.letter._braket-left > ul > li:nth-of-type(5) > em:nth-of-type(2) > i ,
+.letter._braket-left > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._braket-left > ul > li:nth-of-type(7) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+/* _braket-right */
+
+.letter._braket-right > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._braket-right > ul > li:nth-of-type(2) > em:nth-of-type(4) > i ,
+.letter._braket-right > ul > li:nth-of-type(3) > em:nth-of-type(4) > i ,
+.letter._braket-right > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._braket-right > ul > li:nth-of-type(5) > em:nth-of-type(4) > i ,
+.letter._braket-right > ul > li:nth-of-type(6) > em:nth-of-type(4) > i,
+.letter._braket-right > ul > li:nth-of-type(7) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+/* _plane-up  */
+.letter._plane-up > ul > li:nth-of-type(1) > em:nth-of-type(3) > i,
+.letter._plane-up > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._plane-up > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._plane-up > ul > li:nth-of-type(3) > em:nth-of-type(3) > i ,
+.letter._plane-up > ul > li:nth-of-type(3) > em:nth-of-type(4) > i ,
+.letter._plane-up > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._plane-up > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+.letter._plane-up > ul > li:nth-of-type(4) > em:nth-of-type(3) > i ,
+.letter._plane-up > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._plane-up > ul > li:nth-of-type(4) > em:nth-of-type(5) > i ,
+.letter._plane-up > ul > li:nth-of-type(5) > em:nth-of-type(1) > i ,
+.letter._plane-up > ul > li:nth-of-type(5) > em:nth-of-type(3) > i ,
+.letter._plane-up > ul > li:nth-of-type(5) > em:nth-of-type(5) > i ,
+.letter._plane-up > ul > li:nth-of-type(6) > em:nth-of-type(3) > i ,
+.letter._plane-up > ul > li:nth-of-type(7) > em:nth-of-type(2) > i ,
+.letter._plane-up > ul > li:nth-of-type(7) > em:nth-of-type(3) > i ,
+.letter._plane-up > ul > li:nth-of-type(7) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+/* _plane-down  */
+.letter._plane-down > ul > li:nth-of-type(7) > em:nth-of-type(3) > i,
+.letter._plane-down > ul > li:nth-of-type(6) > em:nth-of-type(3) > i,
+.letter._plane-down > ul > li:nth-of-type(5) > em:nth-of-type(2) > i,
+.letter._plane-down > ul > li:nth-of-type(5) > em:nth-of-type(3) > i ,
+.letter._plane-down > ul > li:nth-of-type(5) > em:nth-of-type(4) > i ,
+.letter._plane-down > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._plane-down > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+.letter._plane-down > ul > li:nth-of-type(4) > em:nth-of-type(3) > i ,
+.letter._plane-down > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._plane-down > ul > li:nth-of-type(4) > em:nth-of-type(5) > i ,
+.letter._plane-down > ul > li:nth-of-type(3) > em:nth-of-type(1) > i ,
+.letter._plane-down > ul > li:nth-of-type(3) > em:nth-of-type(3) > i ,
+.letter._plane-down > ul > li:nth-of-type(3) > em:nth-of-type(5) > i ,
+.letter._plane-down > ul > li:nth-of-type(2) > em:nth-of-type(3) > i ,
+.letter._plane-down > ul > li:nth-of-type(1) > em:nth-of-type(2) > i ,
+.letter._plane-down > ul > li:nth-of-type(1) > em:nth-of-type(3) > i ,
+.letter._plane-down > ul > li:nth-of-type(1) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+
+
+/*._chevron-right '>' */
+.letter._chevron-right > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._chevron-right > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._chevron-right > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._chevron-right > ul > li:nth-of-type(4) > em:nth-of-type(5) > i ,
+.letter._chevron-right > ul > li:nth-of-type(5) > em:nth-of-type(4) > i ,
+.letter._chevron-right > ul > li:nth-of-type(6) > em:nth-of-type(3) > i ,
+.letter._chevron-right > ul > li:nth-of-type(7) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+
+/*._chevron-left '>' */
+.letter._chevron-left > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._chevron-left > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._chevron-left > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._chevron-left > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._chevron-left > ul > li:nth-of-type(5) > em:nth-of-type(2) > i ,
+.letter._chevron-left > ul > li:nth-of-type(6) > em:nth-of-type(3) > i ,
+.letter._chevron-left > ul > li:nth-of-type(7) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+
+
+/*._arrow-right '->' */
+.letter._arrow-right > ul > li:nth-of-type(1) > em:nth-of-type(2) > i,
+.letter._arrow-right > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._arrow-right > ul > li:nth-of-type(3) > em:nth-of-type(4) > i,
+.letter._arrow-right > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._arrow-right > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+.letter._arrow-right > ul > li:nth-of-type(4) > em:nth-of-type(3) > i ,
+.letter._arrow-right > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._arrow-right > ul > li:nth-of-type(4) > em:nth-of-type(5) > i ,
+.letter._arrow-right > ul > li:nth-of-type(5) > em:nth-of-type(4) > i ,
+.letter._arrow-right > ul > li:nth-of-type(6) > em:nth-of-type(3) > i ,
+.letter._arrow-right > ul > li:nth-of-type(7) > em:nth-of-type(2) > i {
+    background-color:#E00;
+}
+
+
+/*._arrow-left '<-' */
+.letter._arrow-left > ul > li:nth-of-type(1) > em:nth-of-type(4) > i,
+.letter._arrow-left > ul > li:nth-of-type(2) > em:nth-of-type(3) > i,
+.letter._arrow-left > ul > li:nth-of-type(3) > em:nth-of-type(2) > i,
+.letter._arrow-left > ul > li:nth-of-type(4) > em:nth-of-type(1) > i ,
+.letter._arrow-left > ul > li:nth-of-type(4) > em:nth-of-type(2) > i ,
+.letter._arrow-left > ul > li:nth-of-type(4) > em:nth-of-type(3) > i ,
+.letter._arrow-left > ul > li:nth-of-type(4) > em:nth-of-type(4) > i ,
+.letter._arrow-left > ul > li:nth-of-type(4) > em:nth-of-type(5) > i ,
+.letter._arrow-left > ul > li:nth-of-type(5) > em:nth-of-type(2) > i ,
+.letter._arrow-left > ul > li:nth-of-type(6) > em:nth-of-type(3) > i ,
+.letter._arrow-left > ul > li:nth-of-type(7) > em:nth-of-type(4) > i {
+    background-color:#E00;
+}
+
+
+
+/*._chevron-down  */
+.letter._chevron-down > ul > li:nth-of-type(5) > em:nth-of-type(1) > i,
+.letter._chevron-down > ul > li:nth-of-type(5) > em:nth-of-type(5) > i,
+.letter._chevron-down > ul > li:nth-of-type(6) > em:nth-of-type(2) > i,
+.letter._chevron-down > ul > li:nth-of-type(6) > em:nth-of-type(4) > i ,
+.letter._chevron-down > ul > li:nth-of-type(7) > em:nth-of-type(3) > i {
+    background-color:#E00;
+}
+
+</style>
+<script src="./simon.js"></script>
+<script>
+/**
+ * Created by jacobbogers on 5/29/16.
+ */
+
+'use strict';
+
+var _simon;
+
+_simon = (function(){
+
+    /* some ui vars */
+
+    var big_green_btn;
+    var big_red_btn;
+    var big_blue_btn;
+    var big_yellow_btn;
+    var start_btn;
+    var strict_btn;
+    var pixel_display;
+    var shield;
+    var start_stop_botton_text;
+    var g_snd;
+    var y_snd;
+    var b_snd;
+    var r_snd;
+    var strict_text;
+
+    var enum_btn;
+
+
+
+
+
+    /** game.state 0 =init, 2 = configure or start gamestart, 3 run gale
+*/
+     var game = {
+        state:0,
+        sequence:[],
+        replay:[],
+        strict:false,
+        res:null,
+        pending:null,
+        delay:500
+    };
+
+    /* css font mapping */
+    var pixel_font_map = {
+        "A": "_A",
+        "B": "_B",
+        "C": "_C",
+        "D": "_D",
+        "E": "_E",
+        "F": "_F",
+        "G": "_G",
+        "H": "_H",
+        "I": "_I",
+        "J": "_J",
+        "K": "_K",
+        "L": "_L",
+        "M": "_M",
+        "N": "_N",
+        "O": "_O",
+        "P": "_P",
+        "Q": "_Q",
+        "R": "_R",
+        "S": "_S",
+        "T": "_T",
+        "U": "_U",
+        "V": "_V",
+        "W": "_W",
+        "X": "_X",
+        "Y": "_Y",
+        "Z": "_Z",
+        "█": "_block", /* U+2588*/
+        " ": "",
+        "÷": "_div", /* , ÷, U+00F7*/
+        "+": "_plus",
+        "-": "_minus",
+        "*": "_times",
+        "??": "_what",
+        "»": "_st",
+        "«": "_lt",
+        "&": "_emp",
+        "0": "_0",
+        "1": "_1",
+        "2": "_2",
+        "3": "_3",
+        "4": "_4",
+        "5": "_5",
+        "6": "_6",
+        "7": "_7",
+        "8": "_8",
+        "9": "_9",
+        "?": "_quest",
+        "!": "_excl",
+        "#": "_hash",
+        "%": "_perc",
+        "$": "_usd",
+        "€": "_euro", /*U+20AC*/
+        ":": "_colon",
+        "↑": "_aup", /* U2191*/
+        "↓": "_adown", /* u2193*/
+        "↗": "_rua", /*U+2197*/
+        "↖": "_lua", /*U+2196*/
+        "↘": "_rda", /*U+2198*/
+        "↙": "_lda", /*U+2199*/
+        "^": "_chevron-up",
+        "❝": "_quote-left",
+        "❞": "_quote-right",
+        "@": "_at",
+        "(": "_braket-left",
+        ")": "_braket-right",
+        "&planeup;": "_plane-up",
+        "&planedown;": "_plane-down",
+        ">": "_chevron-right",
+        "<": "chevron-left",
+        "←": "_arrow-left", /*U+2190*/
+        "➝": "_arrow-right", /*U+279E*/
+        "⌄": "_chevron-down" /* U+2304 */
+    };
+
+    /* some utility functions */
+
+    function translate ( prop ){
+        var rc = pixel_font_map[''+prop];
+
+        return rc;
+    }
+
+    function _$(id) {
+        var ui = document.querySelector(id);
+        if (!ui) {
+            throw new Error("oops, no #" + id + " found in DOM");
+        }
+        return ui;
+    }
+
+    function arr_from_node_list( nl ) {
+
+        var rc = [];
+
+        for (var i = 0; i < nl.length; i++) {
+            rc.push(nl.item(i));
+        }
+
+        return rc;
+    }
+
+    /* UI utility functions */
+
+    function wrap_button_evt_handler(func, value) {
+
+        return function (evt) {
+            evt.extra = value; //enrich event
+            func(evt);
+        }
+
+    }
+
+
+    function swipe_display_element ( nodes ){
+        nodes.forEach(function (cur, idx, arr ){
+            var remove_this = [];
+            var all_classes = cur.classList;
+            for (var i = 0; i < all_classes.length; i++){
+                var _class=  all_classes.item(i)
+                if ( _class != "letter"){
+                    remove_this.push(_class);
+                }
+            }
+            remove_this.forEach( function (c){
+                all_classes.remove(c);
+            });
+        });
+
+    }
+
+    function print_tokens( tokens ){
+        tokens.forEach( function (t, i){
+            var remove = [];
+            var all_classes = pixel_display[i].classList;
+            var j;
+            for (j=0; j < all_classes.length; j++){
+                var class_name = all_classes.item(j);
+                if ( class_name != "letter" && class_name != tokens[i] ){
+                    remove.push(class_name);
+                }
+            }
+            remove.forEach(function (c){
+                all_classes.remove(c);
+            });
+            if (tokens[i]!="") {
+                all_classes.add(tokens[i]);
+            }
+        });
+    }
+
+
+    /* program */
+    /* program */
+    /* program */
+
+
+
+
+    /*print text functions */
+    /*print text functions */
+    /*print text functions */
+
+    function display_go_txt1(){
+        var t = ["","_arrow-right","","","_G","_O","","","_arrow-left",""];
+        print_tokens(t);
+    }
+
+
+    function display_go_txt2(){
+        var t = ["","","_arrow-right","","_G","_O","","_arrow-left","",""];
+        print_tokens(t);
+    }
+
+
+    function display_go_txt3(){
+        var t = ["","","","_arrow-right","_G","_O","_arrow-left","","",""];
+        print_tokens(t);
+    }
+
+
+
+    function convert_int_to_pixel( num ){
+
+        var s1,s2,s3;
+
+        s1="", s2="", s3="";
+
+        if ( num < 10) {
+            s1 = num;
+        }
+        else if (num < 100) {
+            s2 = num % 10;
+            s1 = Math.trunc(num / 10);
+        }
+        else if (num >= 100) {
+            s1 = "#";
+            s2 = s1;
+            s3 = s1;
+        }
+        console.log([s1,s2,s3]);
+        s1 = translate(s1);
+        s2 = translate(s2);
+        s3 = translate(s3);
+        console.log([s1,s2,s3]);
+        return [s1,s2,s3];
+
+    }
+
+    function display_level_txt(){
+
+        var t =  ["","_L","_E","_V","_E","_L","_colon"];
+        var level = game.sequence.length;
+        var num = convert_int_to_pixel( level );
+        Array.prototype.push.apply(t, num);
+        print_tokens(t);
+    }
+
+    function display_replay_text( val ){
+        var t =  ["_R","_E","_P","_L","_A","_Y","_colon"];
+        if ( val == undefined) {
+            var val = game.sequence.length;
+        }
+        var num = convert_int_to_pixel( val );
+        Array.prototype.push.apply(t, num);
+        print_tokens(t);
+    }
+
+
+
+
+
+
+    function display_strict_txt(){
+
+        var tokens_on = ["_S","_T","_R","_I","_C","_T","_colon","_O","_N",""];
+        var tokens_off = ["_S","_T","_R","_I","_C","_T","_colon","_O","_F","_F"]
+        var t;
+        t = game.strict ? tokens_on: tokens_off;
+        print_tokens( t );
+    }
+
+
+
+    function display_welcome_txt(){
+        var t = ["","_W","_E","_L","_C","_O","_M","_E","_excl",""];
+        print_tokens( t );
+        console.log("display-welcome");
+    }
+
+    function display_stop_txt(){
+        var t = ["","_S","_T","_O","_P","_P","_E","_D","_excl",""];
+        print_tokens( t );
+    }
+
+    function display_again_txt(){
+        var t = ["","","_R","_E","_T","_R","_Y","_excl","",""];
+        print_tokens( t );
+    }
+
+    function display_error_txt() {
+        var t = ["","","_E","_R","_R","_O","_R","_excl","",""];
+        print_tokens( t );
+    }
+
+    function display_game_over_txt(){
+        var t = ["_G","_A","_M","_E","_minus","_O","_V","_E","_R","_excl"];
+        print_tokens( t );
+    }
+
+    function display_max_lev_txt() {
+        var t = ["_M", "_A", "_X", "_L", "_E", "_V", "_colon"];
+        var level = game.sequence.length;
+        var num = convert_int_to_pixel(level);
+        Array.prototype.push.apply(t, num);
+        print_tokens(t);
+    }
+
+    function display_you_won_txt() {
+        var t = ["_times","_Y","_O","_U","","_W","_O","_N","_times",""];
+        print_tokens(t);
+    }
+
+    function clear_display_txt() {
+        var t = ["","","","","","","","","",""];
+        print_tokens(t);
+    }
+
+
+    /* game engine */
+    /* game engine */
+    /* game engine */
+
+
+
+    function chain_runner( chain ){
+
+        // obj= {func:function, args=argument_array, delay}
+        var obj = chain.shift();
+
+        var _delay = 0;
+        if (obj) {
+            _delay = obj.delay ? obj.delay : 500;
+            obj.func(obj.args); //execute
+            if (chain.length > 0 && _delay > 0) {
+                game.pending = setTimeout( chain_runner, _delay, chain);
+            }
+        }
+        if (_delay == 0 || chain.length == 0){
+            game.pending = 0;
+        }
+    }
+
+    function new_game(){
+        game.state = 3;
+        game.replay = [];
+        game.sequence =[];
+    }
+
+
+    function stop_game(){
+        console.log('stop game!');
+    }
+
+
+    function random(){
+
+       /* var i,j;
+        var str;
+        var str_arr;
+        var rc = 0;
+        var int32View = new Int32Array( 32 );
+        crypto.getRandomValues( int32View );
+        for ( i = 0; i < 32; i++){
+            if (int32View[i] <= 0){
+                continue;
+            }
+            str = '' + int32View[i];
+            str_arr = str.split('');
+            for ( j = 0; j< str_arr.length; j++){
+                rc = str_arr[j] % 4 ;
+                if (rc <= 3){
+                    break;
+                }
+            }
+        }
+        return rc;*/
+        return math.randomInt(0, 4);
+    }
+
+
+    function build_replay_sequence(){
+        var chains = game.sequence.map( function (c){
+            return {func:play_button, args:c, delay:game.delay};
+        });
+        /** frame it */
+        chains.unshift({"func":display_level_txt,"args":null,"delay":game.delay});
+        chains.push({"func":display_replay_text,"args":null,delay:10});
+        chains.push({"func":lower_shield,"args":null,delay:0});
+
+        return chains;
+    }
+
+    function do_next_game_step(){
+
+        raise_shield();
+        enable_big_buttons();
+        var pickler = random();
+        console.log(pickler);
+        var color = Object.keys(enum_btn).filter( function (c) {
+           return ( enum_btn[c].id == pickler);
+        })[0];
+
+        game.sequence.push(color);
+        //DEBUG: for debug only
+        //Array.prototype.push.apply(game.sequence,["red","blue","green","yellow"]);
+
+        /** build up play sequence*/
+        /** build up play sequence*/
+        /** build up play sequence*/
+
+        var chains = build_replay_sequence();
+        chain_runner( chains );
+        game.replay = [];
+    }
+
+
+
+    function play_button ( color ){
+        var ui_button = enum_btn[color].visual;
+        enum_btn[color].snd.cloneNode( true ).play();
+        ui_button.classList.add("game-activated");
+        setTimeout(function( btn ){
+            btn.classList.remove("game-activated");
+        }, Math.trunc(game.delay*0.8), ui_button);
+
+    }
+
+    function validate_sequence( ){
+        /* get errors */
+
+        var chains;
+
+        function dummy(){};
+
+        var err = game.replay.filter(function (c, i){
+            return (c != game.sequence[i] );
+        });
+        if (err.length){
+            //TODO err
+            game.replay = [];
+            raise_shield();
+            if (game.strict){
+                chains = [
+                    {func:dummy, delay:10},
+                    {func:display_error_txt,delay:1000},
+                    {func:display_game_over_txt,delay:1000},
+                    {func:display_max_lev_txt,delay:1000},
+                    {func:set_state_to_select,delay:0}
+                ];
+            }
+            else {
+                chains = build_replay_sequence();
+                chains.unshift({func:display_again_txt,delay:1000});
+                chains.unshift({func:display_error_txt,delay:1000});
+                chains.unshift({func:dummy, delay:10});
+
+            }
+            chain_runner( chains );
+            console.log("err->"+err);
+            return;
+        }
+        if (game.sequence.length == game.replay.length){
+            raise_shield();
+            if (game.sequence.length == 20){
+
+                chain_runner([
+                    {func:dummy, delay:10},
+                    {func:display_you_won_txt, delay:100},
+                    {func:clear_display_txt, delay:100},
+                    {func:display_you_won_txt, delay:100},
+                    {func:clear_display_txt, delay:100},
+                    {func:display_you_won_txt, delay:100},
+                    {func:clear_display_txt, delay:100},
+                    {func:set_state_to_select, delay:0}
+                ]);
+            }
+            else {
+                chain_runner([
+                    {func:dummy, delay:Math.round(game.delay*1.3)},
+                    {func:do_next_game_step, delay:0}
+                ]);
+            }
+            return
+        }
+        //wait for next click
+        display_replay_text(game.sequence.length-game.replay.length);
+    }
+
+
+    /* ui controls , event handling */
+    /* ui controls , event handling */
+    /* ui controls , event handling */
+
+    function init_pixel_display(){
+        pixel_display = arr_from_node_list(document.querySelectorAll("#pixel-display > .center > .letter"));
+        swipe_display_element( pixel_display );
+
+    }
+
+    function disable_big_buttons(){
+        big_blue_btn.style.pointerEvents = "none";
+        big_red_btn.style.pointerEvents = "none";
+        big_green_btn.style.pointerEvents = "none";
+        big_yellow_btn.style.pointerEvents = "none";
+    }
+
+    function enable_big_buttons(){
+        big_blue_btn.style.pointerEvents = "auto";
+        big_red_btn.style.pointerEvents = "auto";
+        big_green_btn.style.pointerEvents = "auto";
+        big_yellow_btn.style.pointerEvents = "auto";
+    }
+
+
+    function set_state_to_select(){
+        var tokens = ["","_adown","_S","_E","_L","_E","_C","_T","_adown",""];
+        print_tokens( tokens );
+        game.state=2;
+        stop_btn_to_start_btn_visual();
+        enable_btn( start_btn , true);
+        enabele_strict_btn_visual();
+        game.sequence =[];
+        game.replay = [];
+        disable_big_buttons();
+        lower_shield();
+    }
+
+
+    function enable_btn( btn, flag ){
+        switch (flag){
+            case true:
+                btn.classList.add('enabled');
+                break;
+            case false:
+                btn.classList.remove('enabled');
+            default:
+        }
+    }
+
+
+
+    function strict_btn_press_handler ( evt ){
+
+        if (game.state != 2){
+            return;
+        }
+
+        game.strict = game.strict ? false: true;
+
+        var chains = [];
+
+        raise_shield();
+
+        chains.push( { "func":display_strict_txt, "args":null, "delay":800} );
+
+        chains.push( { "func":set_state_to_select, args:null, delay:0 } );
+
+        chain_runner( chains );
+
+    }
+
+    function disable_strict_btn_visual(){
+        enable_btn( strict_btn, false ); //change to stop button
+        strict_text.style.opacity = 0.5;
+    }
+
+    function enabele_strict_btn_visual(){
+        enable_btn( strict_btn, true ); //change to stop button
+        strict_text.style.opacity = 1;
+    }
+
+    function start_btn_to_stop_btn_visual(){
+        start_btn.classList.add("red-btn");
+        start_btn.classList.remove("green-btn");
+        start_stop_botton_text.textContent = "stop";
+    }
+
+    function stop_btn_to_start_btn_visual(){
+        start_btn.classList.add("green-btn");
+        start_btn.classList.remove("red-btn");
+        start_stop_botton_text.textContent = "start";
+    }
+
+
+    function start_btn_press_handler ( evt ){
+
+
+        if (game.state == 2){
+            //init
+            raise_shield();
+            disable_strict_btn_visual();
+            start_btn_to_stop_btn_visual();
+            new_game();
+            chain_runner([
+                {func:display_go_txt1,delay:100},
+                {func:display_go_txt2,delay:100},
+                {func:display_go_txt3,delay:200},
+                {func:display_strict_txt, delay:900},
+                {func:do_next_game_step,delay:0}
+            ]);
+            return;
+        }
+        if (game.state == 3){
+            raise_shield();
+            stop_btn_to_start_btn_visual();
+            enabele_strict_btn_visual();
+            game.state = 2;
+            //game.strict = false;
+            chain_runner([
+                {func:display_stop_txt, delay:900},
+                {func:set_state_to_select,delay:0}
+            ]);
+            return;
+        }
+
+    }
+
+    function big_button_handler( evt ){
+
+        var color = evt.extra.btn;
+        enum_btn[color].snd.cloneNode( true ).play();
+        game.replay.push( evt.extra.btn );
+
+        validate_sequence();
+    }
+
+    function register_events(){
+        start_btn.addEventListener("click" , start_btn_press_handler);
+        strict_btn.addEventListener("click", strict_btn_press_handler );
+        big_green_btn.addEventListener("click", wrap_button_evt_handler( big_button_handler, {btn:"green"}) );
+        big_red_btn.addEventListener("click", wrap_button_evt_handler( big_button_handler, {btn:"red"}) );
+        big_blue_btn.addEventListener("click", wrap_button_evt_handler( big_button_handler, {btn:"blue"}) );
+        big_yellow_btn.addEventListener("click", wrap_button_evt_handler( big_button_handler, {btn:"yellow"}) );
+    }
+
+    function raise_shield(){
+        shield.style.zIndex = "99";
+    }
+
+    function lower_shield(){
+        shield.style.zIndex = -1;
+    }
+
+    function init(){
+
+          big_green_btn = _$("#green-btn");
+          big_red_btn = _$("#red-btn");
+          big_blue_btn = _$("#blue-btn");
+          big_yellow_btn = _$("#yellow-btn");
+          start_btn = _$("#start");
+          strict_btn = _$("#strict");
+          shield = _$("#shield");
+          start_stop_botton_text = _$("#start-stop-text");
+          g_snd = _$("#green_sound");
+          y_snd = _$("#yellow_sound");
+          r_snd = _$("#red_sound");
+          b_snd = _$("#blue_sound");
+          strict_text = _$("#strict-text");
+
+          enum_btn = {
+            "green": {id: 0, snd: g_snd, visual: big_green_btn},
+            "yellow": {id: 1, snd: y_snd, visual: big_yellow_btn},
+            "blue": {id: 2, snd: b_snd, visual: big_blue_btn},
+            "red": {id: 3, snd: r_snd, visual: big_red_btn}
+          };
+
+          raise_shield();
+          init_pixel_display();
+
+          register_events();
+
+          enable_btn( strict_btn, false );
+          enable_btn( start_btn, false );
+
+          game.state = 0;
+
+          var chains = [];
+          chains.push({"func":display_welcome_txt, args:null, delay:800});
+          chains.push({"func":set_state_to_select, args:null, delay:0});
+          disable_big_buttons();
+          chain_runner ( chains );
+
+    }
+
+    return init;
+
+})();
+
+window.onload= _simon;
+
+</script>
+</head>
+<body>
+<div class="container flex-column-flow flex-column-valign-center flex-column-halign-center">
+    <div id="place-holder" class="all-margin-auto fit ">
+        <div id="inner-canvas" class="fit ">
+            <div id="outer-ring">
+                <ul class="btn">
+                    <li><span id="green-btn" >
+                           <a>
+                               <div  class="default green-btn">
+                                   <div class="highlight">
+                                   </div>
+                               </div>
+                           </a>
+                       </span><span id="red-btn">
+                           <a>
+                               <div class="default red-btn ">
+                                   <div class="highlight">
+                                   </div>
+                               </div>
+                           </a>
+                       </span>
+                    </li>
+                    <li> <span id="yellow-btn">
+                           <a>
+                               <div class="default">
+                                   <div class="highlight">
+
+                                   </div>
+                               </div>
+                           </a>
+                       </span><span id="blue-btn">
+                          <a>
+                              <div class="default">
+                                  <div class="highlight">
+
+                                  </div>
+                              </div>
+                          </a>
+                       </span>
+                    </li>
+                </ul>
+            </div><!-- outer ring -->
+            <div id="ctrl-display">
+                <div id="ctrl-area" class="flex-column-flow flex-column-halign-center ">
+                    <div id="mbradly-logo">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 253.092 288.894" style="enable-background:new 0 0 253.092 288.894;"
+	 xml:space="preserve">
+<g>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" d="M19.592,4.031h213.906c8.598,0,15.563,6.964,15.563,15.561
+		v249.72c0,8.585-6.965,15.551-15.563,15.551H19.592c-8.596,0-15.561-6.966-15.561-15.551V19.592
+		C4.031,10.996,10.996,4.031,19.592,4.031"/>
+	<path style="fill:none;stroke:#000000;stroke-width:8.0628;stroke-miterlimit:3.8637;" d="M19.592,4.031h213.906
+		c8.598,0,15.563,6.964,15.563,15.561v249.72c0,8.585-6.965,15.551-15.563,15.551H19.592c-8.596,0-15.561-6.966-15.561-15.551
+		V19.592C4.031,10.996,10.996,4.031,19.592,4.031z"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M223.874,46.436c0,4.123-2.842,6.964-6.444,6.964
+		c-4.015,0-6.505-3.132-6.505-6.964c0-4.099,2.854-6.965,6.505-6.965C221.032,39.471,223.874,42.336,223.874,46.436 M225.676,46.436
+		c0-5.067-3.833-8.428-8.246-8.428c-4.475,0-8.308,3.361-8.308,8.428c0,4.8,3.459,8.439,8.308,8.439
+		C221.843,54.875,225.676,51.513,225.676,46.436z M215.761,45.963v-2.732h1.838c0.932,0,2.031,0.133,2.031,1.27
+		c0,1.354-1.016,1.462-2.165,1.462H215.761z M215.761,47.27h1.438l2.406,3.99h1.742l-2.612-4.099
+		c1.39-0.157,2.431-0.858,2.431-2.551c0-1.899-1.149-2.685-3.398-2.685h-3.542v9.335h1.535V47.27z"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M49.749,250.861c7.846,0,11.85-3.409,11.85-8.487
+		c0-3.844-4.003-6.335-7.219-6.493v-0.084c1.752-0.787,5.428-2.055,5.428-6.385c0-4.039-3.64-6.286-9.153-6.286H38.334v27.735
+		H49.749 M46.701,238.625h2.37c2.902,0,4.003,1.427,4.003,3.604c0,2.684-1.863,4.159-4.801,4.159h-1.572V238.625z M46.701,227.598
+		h2.334c1.221,0,3.252,0.629,3.252,2.975c0,1.813-1.076,3.566-4.123,3.566h-1.463V227.598z"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M64.621,250.861h8.367v-10.494h2.176l4.401,10.979l8.947-0.918L82.37,238.53
+		c2.587-1.258,4.679-3.749,4.679-8.005c0-4.547-3.518-7.399-10.059-7.399h-12.37V250.861 M72.988,228.311h2.224
+		c1.778,0,3.482,0.666,3.482,3.41c0,1.512-1.112,3.41-3.325,3.41h-2.381V228.311z"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M100.991,239.847c1.028-3.29,1.983-5.95,3.047-9.903h0.073
+		c0.991,3.953,1.79,6.613,2.708,9.903H100.991 M101.655,223.125l-11.281,27.735h6.53l2.66-6.613h8.596l2.176,6.613h8.875
+		l-10.531-27.735H101.655z"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M130.069,228.311h2.419c3.64,0,6.771,2.891,6.771,7.92
+		c0,5.599-2.261,9.444-7.049,9.444h-2.142V228.311 M121.703,223.125v27.735h10.459c8.318,0,15.694-4.521,15.694-14.654
+		c0-6.698-4.28-13.081-15.368-13.081H121.703z"/>
+	<polyline style="fill-rule:evenodd;clip-rule:evenodd;" points="151.714,250.861 170.226,250.861 170.226,245.675 160.068,245.675
+		160.068,223.125 151.714,223.125 151.714,250.861 	"/>
+	<polyline style="fill-rule:evenodd;clip-rule:evenodd;" points="190.369,223.125 173.525,223.125 173.525,250.861 192.063,250.861
+		192.063,245.675 181.881,245.675 181.881,238.964 190.164,238.964 190.164,233.789 181.881,233.789 181.881,228.311
+		190.369,228.311 190.369,223.125 	"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M209.631,250.861v-10.784l8.524-16.565l-6.663-0.799
+		c-1.705,3.652-3.373,7.34-5.041,12.177h-0.073c-1.379-4.837-2.854-8.524-4.28-12.177l-8.996,0.799l8.175,16.565v10.784H209.631"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M85.139,190.756H74.051c-1.837,5.308-3.687,10.579-5.477,17.085h-0.073
+		c-1.862-6.506-3.772-11.777-5.671-17.085H51.489v27.749h6.59v-19.418h0.073c2.188,7.255,4.437,13.349,6.698,19.418h5.272
+		c2.212-6.069,4.437-12.163,6.576-19.418h0.073v19.418h8.368V190.756"/>
+	<polyline style="fill-rule:evenodd;clip-rule:evenodd;" points="100.169,218.505 100.169,190.756 91.801,190.756 91.801,218.505
+		100.169,218.505 	"/>
+	<polyline style="fill-rule:evenodd;clip-rule:evenodd;" points="106.601,218.505 125.112,218.505 125.112,213.307 114.969,213.307
+		114.969,190.756 106.601,190.756 106.601,218.505 	"/>
+	<polyline style="fill-rule:evenodd;clip-rule:evenodd;" points="139.925,218.505 139.925,195.943 147.929,195.943 147.929,190.756
+		123.553,190.756 123.553,195.943 131.558,195.943 131.558,218.505 139.925,218.505 	"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M162.656,213.185c-3.725,0-5.054-3.639-5.054-8.874
+		c0-4.909,1.499-8.247,5.054-8.247c3.579,0,5.078,3.338,5.078,8.247C167.734,209.546,166.38,213.185,162.656,213.185
+		 M162.656,218.99c8.524,0,13.796-6.385,13.796-14.679c0-7.764-5.828-14.038-13.796-14.038c-7.956,0-13.784,6.274-13.784,14.038
+		C148.872,212.605,154.144,218.99,162.656,218.99z"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M204.987,190.756h-6.578v15.899h-0.084
+		c-1.971-3.772-7.956-10.979-11.958-15.899h-6.058v27.749h6.565v-16.251h0.085c2.659,4.596,8.282,11.222,12.441,16.251h5.586
+		V190.756"/>
+	<path style="fill:#F00A12;" d="M111.776,105.585c0.023-0.085,0-2.999,0-2.999l-0.46,2.999l-16.878,62.488h-15.84l-16.831-62.488
+		c-0.182-0.241-0.532-3.059-0.532-3.059v3.059l-0.061,62.488H38.117V37.838h28.486l19.25,70.795l0.363,2.092l0.363-2.092
+		l18.766-70.795H135.1v130.236h-23.3L111.776,105.585"/>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#007AFF;" d="M168.423,59.409c1.379-0.181,6.639-0.097,6.639-0.097
+		c4.909-0.061,15.15,4.631,14.981,14.315c-0.218,13.252-10.362,15.985-14.969,16.058c0,0-5.296,0.096-6.651,0.096V59.409
+		 M168.581,112.889c2.14-0.049,6.94,0.047,6.94,0.047c9.032,0.073,18.415,5.805,18.233,16.094
+		c-0.206,12.358-9.891,17.048-17.786,17.074c0,0-5.332,0.12-7.4,0.035L168.581,112.889z M145.342,37.705l31.219,0.025
+		c22.515,0.023,37.7,16.697,36.879,35.003c-0.545,12.37-5.586,21.45-11.886,26.662c12.854,8.186,18.221,24.267,15.561,37.979
+		c-4.401,22.67-23.118,30.602-40.118,30.602h-31.582L145.342,37.705z"/>
+</g>
+</svg>
+                    </div>
+                    <div id="svg-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             version="1.1"
+                             id="svg3082"
+                             viewbox="0 0 555.67767 114.957">
+                            <g transform="translate(-1.908368,-1.2844307)"
+                               id="layer1">
+                                <g
+                                        id="g3304">
+                                    <path
+                                            d="m 451.58729,115.18625 c -0.112,-0.58042 -0.0631,-26.09568 0.10871,-56.70058 l 0.31236,-55.6452722 18.11644,-0.17507 c 9.96405,-0.0963 18.72657,-0.0263 19.47227,0.15558 0.84856,0.20695 1.50016,0.98782 1.7416,2.08713 l 0.38579,1.75646 3.62864,-1.79852 c 4.57181,-2.266 9.41516,-2.66558 31.61986,-2.60863 18.57366,0.0476 20.6804,0.43237 25.47435,4.6522 5.41982,4.7707122 5.1362,1.52827 5.1362,58.7137022 l 0,50.28876 -20.45909,0.16471 -20.45909,0.16471 0,-45.16707 0,-45.16707 -1.80433,-2.16287 -1.80432,-2.16287 -7.34645,-0.21221 c -8.12294,-0.23464 -9.48674,0.15016 -11.74318,3.31333 -1.34969,1.89207 -1.3536,2.00137 -1.66522,46.56293 l -0.31235,44.66641 -20.09928,0.16477 c -18.44832,0.15123 -20.116,0.0781 -20.30291,-0.89053 z"
+                                            id="path3395"
+                                    />
+                                    <path
+                                            d="m 298.79944,114.92023 c -1.66862,-0.62886 -1.54724,3.53883 -1.46854,-50.42097 0.0596,-40.85435 0.10576,-40.33259 -3.74633,-42.32458 -2.81928,-1.45791 -15.81474,-1.07396 -18.27798,0.54002 -4.03763,2.64555 -3.81957,0.0654 -4.02,47.56569 -0.1616,38.29654 -0.29181,43.21615 -1.16135,43.87619 -0.71635,0.54374 -6.16775,0.71151 -20.29988,0.6247 -16.39775,-0.10073 -19.4123,-0.26044 -19.92714,-1.05574 -0.37939,-0.58606 -0.5812,-17.40583 -0.53878,-44.90361 l 0.0678,-43.96656 -1.95051,-1.94926 -1.95051,-1.94927 -8.21513,0.11426 c -6.98758,0.0972 -8.45582,0.29228 -9.82585,1.3056 -3.58729,2.65327 -3.4694,1.11206 -3.66368,47.89516 -0.12717,30.61972 -0.38102,43.31155 -0.87827,43.9107 -1.06099,1.27842 -39.03583,0.88052 -39.83716,-0.41741 -0.57925,-0.93823 -0.25884,-92.26606 0.36323,-103.532102 0.34908,-6.3222002 0.35902,-6.3543202 2.20199,-7.1177102 2.54164,-1.05277 33.86081,-0.4539 35.2192,0.67345 0.50786,0.4215 0.92339,1.59536 0.92339,2.6086 0,1.74596 0.0565,1.7858 1.08007,0.76218 0.59404,-0.59404 2.35102,-1.66831 3.9044,-2.38727 2.63466,-1.2194 4.10399,-1.32105 21.87785,-1.5134 24.09046,-0.2607 26.85291,0.19021 32.5175,5.30783 l 2.45702,2.2197702 2.21402,-1.9439202 c 1.2177,-1.06916 3.67949,-2.71647 5.47064,-3.6607 l 3.25664,-1.71678 24.05115,0 24.05114,0 4.19924,2.05385 c 3.34032,1.63374 4.70587,2.76133 6.6761,5.5127222 4.44756,6.21095 4.42993,5.98153 4.42993,57.66027 0,44.67962 -0.0251,45.62779 -1.2256,46.27027 -1.48002,0.79209 -35.86237,0.75408 -37.97464,-0.042 z"
+                                            id="path3391"
+                                    />
+                                    <path
+                                            d="m 390.03332,2.7730778 c -26.54699,0.0483 -33.64842,0.55706 -37.40625,2.21875 -5.12829,2.26772 -8.04509,5.8284202 -9.5,11.5937522 -0.36783,1.45758 -0.78959,18.46445 -1,40.90625 -0.301,32.105 -0.19081,39.12632 0.5625,42.6875 1.86041,8.79482 6.95675,13.63231 15.53125,14.75 6.37806,0.83139 77.09027,0.8058 78.6875,-0.0312 3.33225,-1.74632 6.21877,-4.70681 8.375,-8.5625 l 2.3125,-4.15625 -0.0312,-42.5 c -0.0463,-41.32127 -0.10854,-42.58262 -1.34375,-45.375 -1.79685,-4.062092 -5.09775,-7.4909822 -9.3125,-9.6250022 l -3.65625,-1.84375 -30.59375,-0.0625 c -4.63292,-0.009 -8.83257,-0.007 -12.625,0 z m 3.8125,17.2500022 c 8.43294,0 11.58162,0.79794 13,3.28125 0.62528,1.09474 0.8125,8.31524 0.8125,32.625 0,35.82168 -0.21138,39.21139 -2.4375,41.4375 -1.4538,1.4538 -1.97775,1.56784 -9.84375,1.78125 -7.01361,0.1903 -8.69673,0.0518 -10.53125,-0.875 -3.81398,-1.92675 -3.7726,-1.6018 -3.65625,-30.78125 0.0582,-14.60248 0.29859,-30.43488 0.5,-35.1875 l 0.34375,-8.625 2.0625,-1.84375 c 2.02086,-1.80546 2.10031,-1.8125 9.75,-1.8125 z"
+                                            id="path3387"
+                                    />
+                                    <path
+                                            d="m 16.620078,113.99193 c -5.08305,-1.25661 -8.56797,-3.44133 -11.12365,-6.97346 -3.32849,-4.60023 -3.58806,-6.01437 -3.58806,-19.54727 0,-9.93075 0.17368,-12.46853 0.89426,-13.06655 0.65991,-0.54768 5.9937801,-0.69051 20.35396,-0.54503 18.41879,0.18661 19.5071,0.26201 20.34571,1.40979 0.66241,0.90659 0.88601,3.36528 0.88601,9.74228 0,11.20478 -0.46866,10.74993 11.42567,11.08898 13.94152,0.3974 14.39218,-0.0182 14.71752,-13.57412 0.23938,-9.97471 -0.34237,-12.29963 -3.42965,-13.70629 -1.03911,-0.47345 -8.82597,-0.69819 -24.19131,-0.69819 -18.85826,0 -23.21798,-0.16601 -25.9917,-0.98972 -5.54295,-1.64608 -9.44708,-4.69111 -12.34723,-9.63026 -2.3973,-4.08276 -2.78553,-8.05853 -2.56207,-26.23761 0.20449,-16.63576 0.25783,-17.26835 1.6855,-19.99056 2.76219,-5.2668622 5.6792601,-7.5585622 11.64448,-9.1481322 3.66774,-0.97734 53.78414,-1.15414999 73.76966,-0.26025 12.963762,0.57984 14.833392,1.06319 18.630492,4.81646 3.90109,3.8560702 4.30513,5.8796022 4.40319,22.0522122 0.0826,13.6148 0.005,14.73275 -1.09545,15.83342 -1.12292,1.12291 -2.1574,1.16994 -19.960842,0.90744 -17.34075,-0.25567 -18.84093,-0.3649 -19.6186,-1.42842 -0.60702,-0.83015 -0.84462,-3.51574 -0.85126,-9.62187 -0.006,-5.4797 -0.2834,-9.02171 -0.78581,-10.03206 -1.16617,-2.34519 -4.54639,-3.67133 -10.53035,-4.13129 -6.46811,-0.49718 -11.02524,0.42772 -13.12929,2.66469 -1.38876,1.47648 -1.48205,2.09095 -1.67643,11.0418 -0.12583,5.79433 0.0656,10.38742 0.49252,11.81731 1.23081,4.12245 1.77366,4.22143 25.1805,4.59178 11.41854,0.18066 22.65273,0.61711 24.96486,0.96988 7.596132,1.15896 13.989882,6.70997 16.084012,13.96401 0.48781,1.68977 0.65758,7.76281 0.52438,18.75703 l -0.197,16.25821 -2.04265,4.04471 c -2.39336,4.73916 -5.69979,7.64417 -10.355018,9.09786 -4.705214,1.46929 -76.849264,1.92669 -82.526354,0.52322 z"
+                                            id="path3379"
+                                    />
+                                    <path
+                                            d="m 121.07562,114.51239 c -3.73395,-0.19415 -4.25015,-0.37531 -4.54823,-1.59617 -0.51502,-2.10942 -0.0502,-109.5951122 0.4762,-110.1213522 0.25402,-0.25393 9.24977,-0.40251 19.99056,-0.33017 15.7584,0.10613 19.69968,0.30021 20.41422,1.00525 0.70457,0.6952 0.87378,3.20938 0.82807,12.3038422 -0.0316,6.28656 -0.083,30.68664 -0.11419,54.2224 -0.0342,25.76313 -0.29228,43.16519 -0.64861,43.72935 -0.49966,0.7911 -3.05251,0.94242 -16.38893,0.97146 -8.68841,0.0189 -17.69249,-0.0642 -20.00909,-0.18461 z"
+                                            id="path3375"
+                                    />
+                                </g>
+                            </g>
+                        </svg>
+                    </div><!-- svg logo -->
+                    <div id="pixel-display" class="">
+                        <div class="center ">
+                            <div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div><div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div><div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div><div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div><div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div><div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div><div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div><div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div><div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div><div class="letter ">
+                                <ul>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                    <li><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em><em><i></i></em>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- pixel-display -->
+                    <div id="select-buttons" >
+                        <ul>
+                           <li>
+                               <span>
+                                   <a id="start" class="dlg-button green-btn"></a>
+                               </span>
+                               <span>
+                                   <a id="strict" class="dlg-button red-btn "></a>
+                               </span>
+                           </li>
+                           <li>
+                               <span id="start-stop-text" class="txt-center-xy txt-white medium user-select-none">
+                                   start
+                               </span>
+                               <span id="strict-text" class="txt-white txt-center-xy medium user-select-none">
+                                   strict
+                               </span>
+                           </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!-- inner-canvas -->
+    </div><!-- id = place-holder -->
+</div><!-- class = "container" -->
+<div id="shield"></div>
+</body>
+<audio id="green_sound" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" type="audio/mpeg">
+</audio>
+<audio id="red_sound" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" type="audio/mpeg">
+</audio>
+<audio id="blue_sound" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" type="audio/mpeg">
+</audio>
+<audio id="yellow_sound" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" type="audio/mpeg">
+</audio>
+</html>

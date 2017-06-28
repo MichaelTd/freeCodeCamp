@@ -1,0 +1,41 @@
+@import "https://fonts.googleapis.com/css?family=Exo+2";
+.app {
+  margin-top: 50px;
+}
+
+svg {
+  background: white;
+  box-shadow: -1px 4px 10px #232528;
+}
+
+text {
+  font-family: 'Exo 2', sans-serif;
+  fill: #232528;
+}
+
+.h-axis {
+  font-size: 0.9em;
+}
+
+.v-axis {
+  font-size: 1em;
+}
+.v-axis path, .v-axis line {
+  stroke: none;
+}
+
+.legend-axis path, .legend-axis line {
+  stroke: none;
+}
+
+.tooltip {
+  pointer-events: none;
+  background-color: #232528;
+}
+.tooltip .tooltip-rect {
+  fill: #232528;
+}
+.tooltip .tooltip-text {
+  font-size: 1.2em;
+  fill: white;
+}

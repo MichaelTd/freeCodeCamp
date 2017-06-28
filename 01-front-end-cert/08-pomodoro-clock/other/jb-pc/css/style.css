@@ -1,0 +1,318 @@
+/**
+ ___   ___  _ _  ___  ___  _  ___   ___  ___  _ _  _    _  _ _  ___
+/  _> | __>| \ || __>| . \| ||  _> / __>|_ _|| | || |  | || \ |/  _>
+| <_/\| _> |   || _> |   /| || <__ \__ \ | | \   /| |_ | ||   || <_/\
+`____/|___>|_\_||___>|_\_\|_|`___/ <___/ |_|  |_| |___||_||_\_|`____/
+
+*/
+
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+}
+
+/* stop that crazy shit */
+/* stop that crazy shit */
+/* stop that crazy shit */
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, a, form, fieldset, input[type="search"], textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+input:focus, textarea:focus, keygen:focus, select:focus {
+    outline-offset: -2px;
+}
+
+div:before, select, * {
+    box-sizing: border-box;
+}
+
+button, input {
+    line-height: normal;
+}
+
+html,
+body {
+    font-family: 'Open Sans';
+    font-weight: 300;
+    line-height: 1;
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+}
+
+/* FLEX-BOX STUFF AND OTHER ALIGNMENT STUFF */
+
+.flex-column-flow {
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    display: flex;
+    flex-direction: column;
+
+}
+
+.flex-row-flow {
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    display: flex;
+    flex-direction: row;
+
+}
+
+.flex-column-halign-center {
+
+    align-items: center;
+
+}
+
+.flex-column-valign-center {
+
+    justify-content: center;
+    height: 100%;
+
+}
+
+.flex-stretch {
+    align-items:stretch;
+}
+
+.h-center {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
+
+.user-select-none {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.fit {
+
+    width: -moz-fit-content;
+    width: fit-content;
+
+}
+
+.all-margin-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+/* MARKING ELEMENTS */
+
+/* debug markers */
+/* debug markers */
+/* debug markers */
+.debug-white {
+    border: 1px white solid;
+}
+
+.debug-black {
+    border: 1px solid black;
+}
+
+.debug-red {
+    border: 1px solid red;
+}
+
+.debug-blue {
+    border: 1px solid blue;
+}
+
+.outline-r {
+    outline: 1px solid red;
+}
+
+.outline-g {
+    outline: 1px solid green;
+}
+
+.outline-b {
+    outline: 1px solid blue;
+}
+
+/*general decoration*/
+/*general decoration*/
+/*general decoration*/
+
+.rounded {
+    border-radius: 1rem;
+}
+
+.bck-w {
+    background-color: white !important;
+}
+
+.ncursor {
+    cursor: unset !important;
+}
+
+.dcursor {
+    cursor: default !important;
+}
+
+.p-small {
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+/** buttons */
+/** buttons */
+/** buttons */
+
+.j-btn {
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+}
+
+/*
+ ___  ___  ___  _    _  ___  ___  ___  _  ___  _ _
+| . || . \| . \| |  | ||  _>| . ||_ _|| || . || \ |
+|   ||  _/|  _/| |_ | || <__|   | | | | || | ||   |
+|_|_||_|  |_|  |___||_|`___/|_|_| |_| |_|`___'|_\_|
+
+*/
+
+body {
+    /*background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/blackmamba.png");
+    /*background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/flowers.png");
+    /*background: rgb(192, 192, 192);*/
+   /* background-color: rgb(38, 49, 59);
+*/
+  background-color: #222222;
+/*
+    background: #2980b9; 
+    background: -webkit-linear-gradient(to left, #2980b9 , #2c3e50);
+    background: linear-gradient(to left, #2980b9 , #2c3e50); 
+*/
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+}
+
+.julius-big {
+    font-family:"Julius Sans One";
+    font-size:3rem;
+    color:white;
+}
+
+.title {
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+    text-align: center;
+}
+
+#inner-canvas header ul {
+    display:table;
+    width:100%;
+    color:white;
+    text-align: center;
+    font-family:"Julius Sans One";
+}
+
+#inner-canvas header ul li {
+    display:table-row;
+}
+
+#inner-canvas header ul li span {
+    display:table-cell;
+}
+
+.btn::before {
+   padding-top:0.25rem;
+   padding-bottom:0.25rem;
+
+}
+
+.minutes {
+    font-family: "Open Sans";
+    font-size:2rem;
+
+}
+
+svg#angular-progress { /* fits on an iphone in portrait mode */
+    width:320px;
+    height:320px;
+    cursor: pointer;
+}
+
+
+.text-white {
+    font-family:"Open Sans";
+    font-size:6em;
+    fill:white;
+    font-weight:200;
+}
+
+#arrow-up-break , #arrow-down-break ,#arrow-down-work, #arrow-up-work {
+    cursor: pointer;
+}
+
+.red-text {
+    font-family:"Open Sans";
+    font-weight:normal;
+    fill:red;
+    font-size:2em;
+}
+
+.piece {
+    visibility:hidden;
+}
+
+.piece.v {
+    visibility: visible;
+}
+
+.dim {
+    opacity:0.3;
+}
+
+#ui-ctrls, #time, .red-text, path  {
+    transition: 0.2s ease-in;
+}

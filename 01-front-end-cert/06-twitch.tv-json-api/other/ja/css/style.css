@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Bungee+Shade|Roboto+Condensed);
+
+.img-logo {
+  width: 100px;
+  margin-right: 20px;
+  float: left;
+}
+
+.badger {
+ float: right;
+}
+
+.bg {
+  background-color: #4A235A;
+}
+
+.top-title {
+  text-align: center;
+  font-family: "Bungee Shade", serif;
+  font-size:33px;
+  padding-bottom: 20px;
+}
+
+.nav-bar {
+  padding-bottom: 30px;
+  
+}
+
+.center-box {
+    font-family: "Roboto Condensed", serif;
+    font-size: 14px;
+}

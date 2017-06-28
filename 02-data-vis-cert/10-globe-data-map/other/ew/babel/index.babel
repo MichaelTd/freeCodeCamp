@@ -1,0 +1,216 @@
+'use strict'
+
+for(let r in ReactBootstrap)
+	if(!window.hasOwnProperty(r) && r!=='__esModule')
+		window[r]=ReactBootstrap[r];
+
+class Application extends React.PureComponent {
+	constructor(..._) {
+		super(..._);
+		this.state = {
+			w: 500,
+			h: 450,
+			worldmap	: undefined,
+			meteorite	: undefined,
+			tooltipShow: false,
+			tooltipHTML: '',
+			tooltipX: 0,
+			tooltipY: 0,
+			d3Update: true
+		};
+	}
+	componentDidMount() {
+		d3.select('#svg-wrap')
+			.append('svg')
+			.attr('width' , this.state.w)
+			.attr('height', this.state.h)
+		d3.json(this.props.url.worldmap,  data=>this.setState({ worldmap	: data }));
+		d3.json(this.props.url.meteorite, data=>this.setState({ meteorite	: data }));
+	}
+	componentDidUpdate(prevProps, prevState) {
+		if(typeof this.state.worldmap  === 'undefined' ||
+			 typeof this.state.meteorite === 'undefined' ||
+			 this.state.d3Update === false) return;
+		let w = this.state.w,
+				h	= this.state.h;
+		let svg = d3.select('#svg-wrap svg');
+		let col = d3.schemeCategory20b; // colors
+		let plane	= svg.append('g').attr('transform',`translate(${w/2},${h/2})`).append('g'); // XY Plane
+		let proj	= d3.geoOrthographic().translate([0,0]).scale( (h / 2)-10 ).rotate([0,0,0]); // Projection (Globe)
+		let sky		= d3.geoOrthographic().translate([0,0]).scale( (h / 2)+10 ).rotate([0,0,0]); // Projection (Sky)
+		let path	= d3.geoPath().projection(proj); // path generator
+		let countries  = topojson.feature(this.state.worldmap , this.state.worldmap.objects.countries).features; // World Map
+		let meteorites = this.state.meteorite.features;
+		let $this = this;
+		
+		let min = d3.min(meteorites, d=>parseInt(d.properties.mass));
+		let max = d3.max(meteorites, d=>parseInt(d.properties.mass));
+		
+		let circleScale = d3.scaleLinear()
+			.clamp([true])
+			.domain([min, max / 200])
+			.range([0.3,6]);
+		
+		let globeBase = plane.append('circle')
+			.style('fill', '#1b3249')
+			.attr('cx', 0)
+			.attr('cy', 0)
+			.attr('r', (h/2)-10);
+		let globe = plane.append('g').selectAll('path')
+			.data(countries)
+			.enter().insert('path')
+				.style('fill', '#29abe0')
+				.attr('stroke', 'black')
+				.attr('stroke-width', '0.2')
+				.attr('d', path);
+		let highlight = svg.append("defs").append("radialGradient") // http://angrytools.com/gradient/
+			.attr("id", "highlight")
+			.attr("cx", "75%")
+			.attr("cy", "25%");
+		highlight.append("stop")
+			.attr("offset", "5%").attr("stop-color", "white")
+			.attr("stop-opacity","0.6");
+		highlight.append("stop")
+			.attr("offset", "100%").attr("stop-color", "#dedede")
+			.attr("stop-opacity","0.2");
+		let circleHighlight = globe.append('circle')
+			.style('opacity', 0.5)
+			.attr('fill', 'url(#highlight)')
+			.attr('cx', w / 2)
+			.attr('cy', h / 2)
+			.attr('r', proj.scale());
+		
+		function circle(r, properties) {
+			let points = [];
+			for(let angle=0.0; angle<=2*Math.PI; angle=angle+0.3) {
+				let x	= r*Math.cos(angle);
+				let y	= r*Math.sin(angle);
+				points.push(sky([properties.reclong-x, properties.reclat-y]));
+			}
+			return points.join(',');
+		}
+		
+		let circles = plane.append('g').selectAll('polygon')
+			.data(meteorites)
+			.enter().insert('polygon')
+				.style('fill', (_,indx)=>{
+					let color = d3.color(col[indx % 20]);
+					color.opacity = 0.5;
+					return color;
+				})
+				.attr('points', d=>circle(0.1, d.properties))
+				.style('display', d=>path(d)===undefined? 'none' : 'block')
+				.attr('stroke', (_,indx)=>col[indx % 20])
+				.attr('stroke-width', 1)
+		circles.on('mouseover', function(d) {
+				if(svg.hasOwnProperty('mMove')) return;
+				$this.setState({
+					tooltipShow: true,
+					tooltipX: d3.event.clientX - 200,
+					tooltipY: d3.event.clientY - 40,
+					tooltipHTML: (
+						<span>
+							<strong>Name:</strong>{d.properties.name}<br/>
+							<strong>Year:</strong>{(new Date(d.properties.year)).getFullYear()}<br/>
+							<strong>Class.:</strong>{d.properties.recclass}<br/>
+							<strong>Mass:</strong>{d.properties.mass}g
+						</span>
+					)
+				});
+			})
+			.on('mouseout', d=>this.setState({ tooltipShow: false }));
+		circles
+			.transition()
+			.attr('points', d=>circle(circleScale(parseInt(d.properties.mass || 0)), d.properties))
+			.duration((_,indx)=>10*indx)
+			.ease(d3.easeBounce)
+		
+		let angleOnX = d3.scaleLinear().domain([0,w]).range([-180,180]);
+		let angleOnY = d3.scaleLinear().domain([0,h]).range([90,-90]);
+		svg.on('mousedown', _=>{
+			if(!svg.hasOwnProperty('degree'))
+				svg.degree = {
+					x: 0,
+					y: 0
+				};
+			svg.mMove = true;
+			svg.mClientX = d3.event.clientX;
+			svg.mClientY = d3.event.clientY;
+		})
+		d3.select(window).on('mousemove', _=>{ // Code can be optimized :/ .. later, later
+			if(!svg.hasOwnProperty('mMove')) return;
+			let x = svg.mClientX - d3.event.clientX; // x<0 is right, x>0 is left
+			let y = svg.mClientY - d3.event.clientY;
+			svg.mClientX = d3.event.clientX;
+			svg.mClientY = d3.event.clientY;
+			if(x<0) svg.degree.x = svg.degree.x + 4;
+			if(x>0) svg.degree.x = svg.degree.x - 4;
+			if(y<0) svg.degree.y = svg.degree.y - 4;
+			if(y>0) svg.degree.y = svg.degree.y + 4;
+			if(svg.degree.x < 0) svg.degree.x * -1;
+			if(svg.degree.y < 0) svg.degree.y * -1;
+			svg.degree = {
+				x: svg.degree.x % 360,
+				y: svg.degree.y % 360
+			}
+			proj.rotate([svg.degree.x,svg.degree.y,0]);
+			sky.rotate([svg.degree.x,svg.degree.y,0]);
+			globe.attr('d', path); // update graphic
+			circles
+				.interrupt()
+				.style('display', d=>path(d)===undefined? 'none' : 'block')
+				.attr('points', d=>circle(circleScale(parseInt(d.properties.mass || 0)), d.properties))
+		})
+		.on('mouseup', _=>{ delete(svg.mMove); });
+		
+		this.setState({ d3Update: false });
+	}
+	render() {
+		return(
+			<Grid>
+				<Row>
+					<Col xs={12}>
+						<Tooltip id='tooltip' className='in' placement='left' 
+							style={{
+								display	: this.state.tooltipShow? 'block': 'none',
+								position: 'fixed',
+								left: this.state.tooltipX,
+								top	: this.state.tooltipY,
+								width: 165
+							}}
+						>{this.state.tooltipHTML}</Tooltip>
+						<div id="svg-wrap" />
+					</Col>
+				</Row>
+			</Grid>
+		);
+	}
+}
+
+const AppNavbar = (
+	<Navbar inverse staticTop>
+		<Navbar.Header>
+			<Navbar.Brand>
+				<a href="https://codepen.io/eddyw/" target="_blank">Meteorite Landings Across the Globe</a>
+			</Navbar.Brand>
+			<Navbar.Toggle />
+		</Navbar.Header>
+		<Navbar.Collapse>
+			<Navbar.Form pullRight>
+				<Button target="_blank" href="https://www.freecodecamp.com/eddyw">FreeCodeCamp</Button>{' | '}
+				<Button target="_blank" href="https://www.linkedin.com/in/ieddyw">LinkedIn</Button>{' | '}
+				<Button target="_blank" href="https://codepen.io/eddyw">Codepen.io</Button>
+			</Navbar.Form>
+		</Navbar.Collapse>
+	</Navbar>
+);
+ReactDOM.render(AppNavbar, document.getElementById('navbar'));
+ReactDOM.render(
+	<Application 
+		url={{
+			worldmap: 'https://gist.githubusercontent.com/eddyw/bd31bfb563c2356d32d69efe363fc07b/raw/cf9245ca33b54f32f64ad600986acd40f5f6799d/eddyw-world-110m.json',
+			meteorite: 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/meteorite-strike-data.json'			
+		}}
+	/>,
+	document.getElementById('webapp')
+);

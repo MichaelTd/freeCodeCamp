@@ -1,0 +1,131 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<style>
+.info{
+  font-family:'Montserrat';
+}
+
+#logo{
+  display:block;
+  margin-right:auto;
+  margin-left:auto;
+}
+#patreon{
+ width:15%;
+}
+.btn-lg{
+  margin:5px;
+}</style>
+
+<script>
+var classApp = angular.module('weatherApp', []);
+
+classApp.controller('weatherCtrl', function ($scope, $http) {
+  var vm = $scope;
+  vm.channelInfo={
+    heading:"Open Weather API Project",
+    subheading1: "Free Code Camp: Front End Projects",
+    subheading2: "YouTube.com/CodingTutorials360",
+    subheading3: "Patreon.com/CodingTutorials360",
+    logo: "http://codingtutorials360.com/img/smallLogo.png"
+  };
+$http.get("http://ip-api.com/json").success(function(data){
+  vm.lat= data.lat;
+  vm.lon= data.lon;
+  var apiKey="b86d21440d8c9a110912a2eb0845abb4";
+  var openWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat="+ vm.lat + "&lon="+vm.lon+ "&appid=" +apiKey;
+  console.log(openWeatherURL);
+  $http.get(openWeatherURL).success(function(data){
+    vm.description=data.weather[0].description;
+    vm.speed = (2.237*data.wind.speed).toFixed(1) + " mph";
+    vm.name=data.name;
+    vm.temp=data.main.temp;
+    vm.fTemp= (vm.temp*(9/5)-459.67).toFixed(1) + "  (°F)";
+    vm.cTemp = (vm.temp-273).toFixed(1) + "  (°C)";
+    vm.icon = "http://openweathermap.org/img/w/"+ data.weather[0].icon + ".png";
+
+      switch(vm.description){
+         case "clear sky": {
+           vm.weatherBackground={
+             "background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/clearSky.jpg')",
+             "background-size": "cover"
+           };
+           break;
+         }
+          case "broken clouds": {
+          vm.weatherBackground = {"background": "url(' http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/brokenClouds.jpg')",
+             "background-size": "cover" };
+            break;
+          }
+             case "few clouds": {
+          vm.weatherBackground = {"background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/fewClouds.jpg')",
+             "background-size": "cover" };
+            break;
+          }
+           case "mist": {
+          vm.weatherBackground = {"background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/mist.jpg')",
+             "background-size": "cover" };
+            break;
+          }
+           case "mist": {
+          vm.weatherBackground = {"background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/mist.jpg')",
+             "background-size": "cover" };
+            break;
+          }
+        case "rain": {
+          vm.weatherBackground = {"background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/rain.jpg')",
+             "background-size": "cover" };
+            break;
+          }
+            case "scattered clouds": {
+          vm.weatherBackground = {"background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/scatteredClouds.jpg')",
+             "background-size": "cover" };
+            break;
+          }
+          case "shower rain": {
+          vm.weatherBackground = {"background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/showerRain.jpg')",
+             "background-size": "cover" };
+            break;
+          }
+          case "snow": {
+          vm.weatherBackground = {"background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/snow.jpg')",
+             "background-size": "cover" };
+            break;
+          }
+          case "thunderstorm": {
+          vm.weatherBackground = {"background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/Thunder.jpg')",
+             "background-size": "cover" };
+            break;
+          }
+        default:
+            vm.weatherBackground = {"background": "url('http://codingtutorials360.com/img/FreeCodeCamp/OpenWeather/sun.jpg')",
+             "background-size": "cover" };
+            break;
+         }
+  });
+
+});
+});
+</script>
+</head>
+<body  ng-app="weatherApp" ng-controller="weatherCtrl"ng-style="weatherBackground" >
+<div class="text-center info">
+<h1>{{channelInfo.heading}}</h1>
+<h2>{{channelInfo.subheading1}}</h2>
+<a ng-href="http://www.{{channelInfo.subheading2}}" target="blank"><h3>{{channelInfo.subheading2}}</h3></a>
+<a class ="btn-lg btn-primary">{{description | uppercase}}  <img id="weatherIcon" ng-src="{{icon}}"/></a>
+<a class ="btn-lg btn-primary"> {{speed}}</a>
+<a class ="btn-lg btn-primary"> {{name}}</a>
+<a class ="btn-lg btn-primary" ng-init="tempVal=true" ng-show="tempVal" ng-click="tempVal=!tempVal">{{cTemp}}</a>
+<a class ="btn-lg btn-primary" ng-show="!tempVal" ng-click="tempVal=!tempVal">{{fTemp}}</a>
+<a ng-href="https://www.{{channelInfo.subheading2}}" target="blank"><img ng-src="{{channelInfo.logo}}" id="logo"/></a>
+<a ng-href="http://www.{{channelInfo.subheading3}}"><img id="patreon" src="http://www.codingtutorials360.com/startbootstrap-landing-page-1.0.5/img/patreon.png"/></a>
+</div>
+</body>
+</html>

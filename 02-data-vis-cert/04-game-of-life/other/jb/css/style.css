@@ -1,0 +1,730 @@
+/* general code style-ing */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300|Raleway:400,900,800,700,600,500,300,200|Lato:400,300,100);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:700,500,400,300,300italic,400italic,500,500italic);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+button, input, select, textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+html, body, div, dl, dt, dd, ul, ol, p, li, a, form, fieldset, input[type="text"], input[type="search"], blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  outline: none !important;
+  text-decoration: none;
+  color: #000;
+}
+
+input:focus, textarea:focus, keygen:focus, select:focus {
+  outline-offset: -2px;
+}
+
+div:before, select, * {
+  box-sizing: border-box;
+}
+
+button, input {
+  line-height: normal;
+  outline: none;
+  border: none;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.flex-column-flow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.flex-row-flow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.flex-column-halign-center, .flex-row-valign-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+}
+
+.flex-column-vspace-around {
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+.flex-column-valign-center, .flex-row-halign-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.flex-stretch {
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  -ms-grid-row-align: stretch;
+  align-items: stretch;
+}
+
+.h-center {
+  text-align: center;
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+.fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.all-margin-auto {
+  margin: auto;
+}
+
+/* MARKING ELEMENTS */
+/* debug markers */
+/* debug markers */
+/* debug markers */
+.debug-white {
+  border: 1px white solid;
+}
+
+.debug-black {
+  border: 1px solid black;
+}
+
+.debug-red {
+  border: 1px solid red;
+}
+
+.debug-blue {
+  border: 1px solid blue;
+}
+
+.outline-r {
+  outline: 1px solid red;
+}
+
+.outline-g {
+  outline: 1px solid green;
+}
+
+.outline-b {
+  outline: 1px solid blue;
+}
+
+/*general decoration*/
+/*general decoration*/
+/*general decoration*/
+.rounded {
+  border-radius: 1rem;
+}
+
+.bck-w {
+  background-color: white !important;
+}
+
+.bck-darkened {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ncursor {
+  cursor: unset !important;
+}
+
+.dcursor {
+  cursor: default !important;
+}
+
+.p-small {
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.txt-white {
+  color: #EEE;
+  line-height: 1;
+}
+
+/* application game of life */
+/* application game of life */
+/* application game of life */
+.txt-nr {
+  text-align: right;
+}
+
+body {
+  font-family: "Open Sans";
+  font-size: 16px;
+  background: #605ea1;
+  background-image: -webkit-radial-gradient(circle farthest-corner at right bottom, #ac9cd5 0%, #8e7ec2 28%, #6561af 57%, #1a2565 100%);
+  background-image: radial-gradient(circle farthest-corner at right bottom, #ac9cd5 0%, #8e7ec2 28%, #6561af 57%, #1a2565 100%);
+}
+
+#container-anchor {
+  padding: 1em 0;
+  height: 100%;
+}
+
+.inner-canvas {
+  background: white;
+  /*border-radius:2px;*/
+  width: calc( 100% - 2px );
+  font-family: "Raleway";
+  position: relative;
+  height: calc( 100% - 1em );
+  overflow: hidden;
+}
+
+.inner-canvas > canvas.main-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /*outline:1px red solid;*/
+  /*border-radius:50%;
+box-shadow: 0px 0px 15px rgba(0,0,0,0.2);*/
+}
+
+.inner-canvas > canvas.magnify {
+  z-index: 9999;
+  position: absolute;
+  border: 1px #c8c8c8 solid;
+  right: 40px;
+  top: 40px;
+  pointer-events: none;
+  background-color: white;
+  image-rendering: optimizeSpeed;
+  /* Older versions of FF          */
+  image-rendering: -moz-crisp-edges;
+  /* FF 6.0+                       */
+  image-rendering: -webkit-optimize-contrast;
+  /* Safari                        */
+  image-rendering: -o-crisp-edges;
+  /* OS X & Windows Opera (12.02+) */
+  image-rendering: pixelated;
+  /* Awesome future-browsers       */
+  -ms-interpolation-mode: nearest-neighbor;
+  /* IE                        */
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/* snapout dialog box */
+/* snapout dialog box */
+#flapout-container {
+  position: fixed;
+  top: 50px;
+  left: 10px;
+  z-index: 100000;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.flapout {
+  -webkit-user-select: none;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 0.5em;
+  color: #fff;
+  position: relative;
+}
+
+.flapout.extend {
+  padding-left: 44px;
+}
+
+/* flapout header */
+/* flapout header */
+/* flapout header */
+.header {
+  line-height: 44px;
+  height: 44px;
+  vertical-align: middle;
+}
+.header > .fps {
+  line-height: 44px;
+  font-size: calc( 44px * 0.5 );
+  font-family: "Open Sans";
+  font-weight: 300;
+  height: 44px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 0.125em;
+  background-color: transparent;
+  color: pink;
+  display: inline-block;
+  float: right;
+}
+.header > .open {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  float: right;
+  opacity: 1;
+}
+.header > .open svg {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  width: 80%;
+  height: 80%;
+}
+.header > .open svg path,
+.header > .open svg polygon {
+  fill: #48A0DC;
+}
+.header > .close {
+  position: absolute;
+  width: 0;
+  height: 44px;
+  /*float: left;*/
+  opacity: 0;
+  left: 0;
+  top: 0;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.header > .close svg {
+  /* 50% -0.6/2*100% = 50 -0.3*100 = 20%*/
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  width: 60%;
+  height: 60%;
+}
+.header > .close svg line.lcl {
+  fill: none;
+  stroke: #f57e20;
+  stroke-width: 4px;
+}
+
+.extend .header > .fps {
+  font-size: calc( 44px * 0.7 );
+}
+.extend .header > .open {
+  opacity: 0;
+  width: 0;
+}
+.extend .header > .close {
+  width: 44px;
+  opacity: 1;
+  top: 0;
+}
+
+/*
+.open {
+    position: relative;
+    width: $line-height-new-entry;
+    height: $line-height-new-entry;
+    float: right;
+    opacity: 1;
+    svg {
+        position: absolute;
+        left: 10%;
+        top: 10%;
+        width: 80%;
+        height: 80%;
+        path,
+        polygon {
+            fill: #48A0DC;
+        }
+    }
+}*/
+/*
+.extend .open {
+    opacity: 0;
+    width: 0;
+}*/
+/*
+.close {
+    position: absolute;
+    width: 0;
+    height: $line-height-new-entry;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    svg {
+        position: absolute;
+        left: 20%;
+        top: 20%;
+        width: 60%;
+        height: 60%;
+        line.lcl {
+            fill: none;
+            stroke: rgb(245,126,32);
+            stroke-width: 4px;
+        }
+    }
+    transform: rotate( 45deg );
+    -webkit-transform: rotate( 45deg );
+}*/
+/*
+.extend .close {
+    width: $line-height-new-entry;
+    opacity: 1;
+    top: 0;
+}*/
+/*
+.fps {
+    line-height: $line-height-new-entry;
+    font-size: calc( 44px * 0.5 );
+    font-family: "Open Sans";
+    font-weight: 300;
+    height: $line-height-new-entry;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.125em;
+    background-color: transparent;
+    color: pink;
+    display: inline-block;
+}*/
+/*
+.extend .floater {
+    float: right;
+}*/
+/*
+.extend .fps {
+    font-size: calc( 44px * 0.7 );
+}*/
+/*
+.footer {
+    font-family: "Open Sans";
+    font-weight: 300;
+    font-size: 0;
+}*/
+/* main section flapout */
+/* main section flapout */
+/* main section flapout */
+.main {
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-size: 0;
+}
+.main > .toggle-button > input {
+  display: none;
+}
+.main > .toggle-button > input ~ label > div {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+}
+.main > .toggle-button a.stop div {
+  display: inline-block;
+}
+.main > .toggle-button a.pause div,
+.main > .toggle-button a.play div {
+  position: absolute;
+  display: block;
+}
+
+.extend .main > .toggle-button > input ~ label > div {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.extend .main > .toggle-button a.pause div,
+.extend .main > .toggle-button a.play div,
+.extend .main > .toggle-button a.stop div {
+  width: 30px;
+  height: 30px;
+  left: 0;
+  right: 0;
+}
+.extend .main > .toggle-button a.pause div svg,
+.extend .main > .toggle-button a.play div svg,
+.extend .main > .toggle-button a.stop div svg {
+  width: 100%;
+  height: 100%;
+}
+.extend .main > .toggle-button a.pause div svg .shaded,
+.extend .main > .toggle-button a.play div svg .shaded,
+.extend .main > .toggle-button a.stop div svg .shaded {
+  fill: #4f5bc1;
+  fill-opacity: 0.3;
+}
+.extend .main > .toggle-button a.pause div svg .empress,
+.extend .main > .toggle-button a.play div svg .empress,
+.extend .main > .toggle-button a.stop div svg .empress {
+  fill: #4f5bc1;
+  fill-opacity: 0.7;
+}
+.extend .main > .toggle-button a.pause:active .shaded,
+.extend .main > .toggle-button a.play:active .shaded,
+.extend .main > .toggle-button a.stop:active .shaded {
+  fill: #4f5bc1;
+  fill-opacity: 0.9;
+}
+.extend .main > .toggle-button a.pause:active .empress,
+.extend .main > .toggle-button a.play:active .empress,
+.extend .main > .toggle-button a.stop:active .empress {
+  fill: #28112e;
+  fill-opacity: 0.5;
+}
+.extend .main > .toggle-button > input ~ label a.play div {
+  left: 15px;
+  top: 15px;
+  width: 0;
+  height: 0;
+}
+.extend .main > .toggle-button > input ~ label a.pause div {
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+}
+.extend .main > .toggle-button > input:checked ~ label a.play div {
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+}
+.extend .main > .toggle-button > input:checked ~ label a.pause div {
+  left: 15px;
+  top: 15px;
+  width: 0;
+  height: 0;
+}
+
+/* footer */
+/* footer */
+/* footer */
+.footer {
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-size: 0;
+}
+
+/*
+.extend .footer {
+    font-size: calc( 30px * 0.5 ) !important;
+}*/
+/* generic header, main, footer */
+/* generic header, main, footer */
+/* generic header, main, footer */
+.extend .footer,
+.extend .header,
+.extend .main {
+  font-size: 12px;
+  min-width: calc( 44px + 150px );
+  margin-bottom: 0.5em;
+}
+
+/*
+.flapout:not(.extend) {
+    input#toggle-play-pause ~ label > div {
+        position: relative;
+        display: inline-block;
+        width: 0;
+        height: 0;
+    }
+}*/
+/*.flapout.extend {*/
+/*input#toggle-play-pause ~ label > div {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }*/
+/*a#svg-pause div,
+    a#svg-play div,
+    a#svg-stop div {
+        width: 30px;
+        height: 30px;
+        left: 0;
+        right: 0;
+        svg {
+            width: 100%;
+            height: 100%;
+            .shaded {
+                fill: rgb(79, 91, 193);
+                fill-opacity: 0.3;
+            }
+            .empress {
+                fill: rgb(79, 91, 193);
+                fill-opacity: 0.7;
+            }
+        }
+    }*/
+/*a#svg-pause:active,
+    a#svg-play:active,
+    a#svg-stop:active {
+        .shaded {
+            fill: rgb(79, 91, 193);
+            fill-opacity: 0.9;
+        }
+        .empress {
+            fill: rgb(40, 17, 46);
+            fill-opacity: 0.5;
+        }
+    }*/
+/* when it is not checked show pause button*/
+/*input#toggle-play-pause ~ label {
+        a#svg-play div {
+            left: 15px;
+            top: 15px;
+            width: 0;
+            height: 0;
+        }
+        a#svg-pause div {
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+        }
+    }
+    input#toggle-play-pause:checked ~ label {
+        a#svg-play div {
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+        }
+        a#svg-pause div {
+            left: 15px;
+            top: 15px;
+            width: 0;
+            height: 0;
+        }
+    }*/
+/*}*/
+ul.table {
+  display: table;
+  width: 100%;
+  margin-bottom: 1em;
+}
+ul.table li {
+  display: table-row;
+}
+ul.table li span {
+  display: table-cell;
+}
+
+ul.select-radio.table li {
+  height: 0;
+  position: relative;
+  white-space: nowrap;
+}
+ul.select-radio.table li > span input[type=radio] {
+  display: none;
+}
+
+.extend ul.select-radio.table li {
+  line-height: 30px;
+  height: 30px;
+}
+
+.section-heading {
+  background: rgba(128, 128, 128, 0.2);
+  margin: 0.5em 0;
+  font-size: 0;
+}
+
+.extend .section-heading {
+  font-size: 12px;
+}
+
+.check {
+  display: inline-block;
+  float: left;
+  height: 0;
+  width: 0;
+  position: relative;
+}
+.check > div {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  right: 4px;
+  border: 0 solid #AAAAAA;
+  border-radius: 50%;
+}
+.check > div::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  border-radius: 50%;
+  background: #AAAAAA;
+  opacity: 0;
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+}
+
+.extend .check {
+  height: 30px;
+  width: 30px;
+}
+.extend .check > div {
+  border-width: 1px;
+}
+
+.extend input[type="radio"]:checked ~ label > .radio-text {
+  color: #C1FBC9;
+}
+.extend input[type="radio"]:checked ~ label > .check div {
+  border-color: #C1FBC9;
+}
+.extend input[type="radio"]:checked ~ label > .check div::before {
+  background: #C1FBC9;
+  opacity: 1;
+}
+
+.radio-text {
+  padding-left: 0.5em;
+}
+
+.close,
+.flapout,
+.footer,
+.main,
+.main .toggle-button > input ~ label a div,
+.open {
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+}

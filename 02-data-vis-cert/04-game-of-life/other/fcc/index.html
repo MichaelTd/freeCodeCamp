@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>FreeCodeCamp : Build the Game of Life</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <head>
+	<meta charset="utf-8">
+	<title>DivLife!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+
+<header><a href="https://www.math.cornell.edu/~lipa/mec/lesson6.html" target="_blank">
+ReactJS Game of Life (click to learn more)</a></header>
+
+<div class="topMenu">
+	<button class='run topButton'>Run</button>
+	<button class='stop topButton'>Pause</button>
+	<button class='clear topButton'>Clear</button>
+	<div class="counter">Generation: <span class="gen"></span></div>
+
+</div>
+
+<div id='container'></div>
+
+<div class="bottomMenu">
+	<p>Board Size:</p>
+	<button class='50 bottomButtonRow1'>Size: 50x30</button>
+	<button class='70 bottomButtonRow1 activeButton'>Size: 70x50</button>
+	<button class='100 bottomButtonRow1'>Size: 100x80</button>
+	<p>Sim Speed:&nbsp;</p>
+	<button class='slow bottomButtonRow2'>Slow</button>
+	<button class='medium bottomButtonRow2'>Medium</button>
+	<button class='fast bottomButtonRow2 activeButton'>Fast</button>
+</div>
+
+<div class='notice'>
+	Feel free to add cells while it's running. The cells in light red are younger, dark red are older.  Enjoy!
+</div>
+
+<div id='divTest'></div>
+
+</body>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

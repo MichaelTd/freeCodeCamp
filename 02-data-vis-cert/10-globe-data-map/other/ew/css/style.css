@@ -1,0 +1,17 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,700';
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  background: #212121;
+}
+
+#svg-wrap {
+  margin-top: 40px;
+}
+#svg-wrap svg {
+  margin: auto;
+  display: block;
+}
+
+.tooltip-arrow {
+  display: none;
+}

@@ -1,0 +1,227 @@
+class App extends React.Component {
+  constructor() {
+    super();
+    let w=90,h=90, arr=[], size=w*h;
+    for (let i=0; i<size; i++) {
+      arr.push(Math.round(Math.random()));
+    }
+    this.state={
+      count: -1,
+      board: arr,
+      width: w,
+      height: h,
+      speed: 1,
+      play: true,
+    }
+    this.togglePlay = this.togglePlay.bind(this);
+    this.clearBoard = this.clearBoard.bind(this);
+    this.randomBoard = this.randomBoard.bind(this);
+    this.speedUp = this.speedUp.bind(this);
+    this.slowDown = this.slowDown.bind(this);
+    this.makeBigger = this.makeBigger.bind(this);
+    this.makeSmaller = this.makeSmaller.bind(this);
+  }
+  //there is probably a better way to do this
+  clearBoard() {
+    let size=this.state.width*this.state.height,
+        arr=[];
+    for (let i=0; i<size; i++) {
+      arr.push(0);
+    }
+    this.setState({board: arr, count: 0});
+  }
+  randomBoard() {
+    let size=this.state.width*this.state.height,
+        arr=[];
+    for (let i=0; i<size; i++) {
+      arr.push(Math.round(Math.random()));
+    }  
+    this.setState({board: arr, count: 0});
+  }
+  togglePlay() {
+    this.setState({play: !this.state.play});
+  }
+  speedUp() {
+    if (this.state.speed > 50) {
+      this.setState({speed: this.state.speed-50});
+    } else {
+      this.setState({speed: 1});
+    }
+  }
+  slowDown() {
+    if (this.state.speed < 500) {
+      this.setState({speed: this.state.speed+50});
+    }
+  }
+  makeBigger() {
+    if (this.state.width<130) {
+      this.setState({width: this.state.width+10,
+                     height: this.state.height+10}, function() {
+                     this.randomBoard()});
+    }
+  }
+  makeSmaller() {
+    if (this.state.width>10) {
+      this.setState({width: this.state.width-10,
+                     height: this.state.height-10}, function() {
+                     this.randomBoard()});
+    }
+  }
+  render() {
+    return (
+      <div className='app-contain'>
+        <LifeBoard app={this} />
+        <Btn icon='random' name='RANDOM' click={this.randomBoard}/>
+        <Btn icon='times' name='CLEAR' click={this.clearBoard}/>
+        <Btn icon='search-minus' name='SMALLER' click={this.makeBigger}/>
+        <Btn icon='search-plus' name='BIGGER' click={this.makeSmaller}/>
+        <Btn icon='angle-double-left' name='SLOW' click={this.slowDown}/>
+        <Btn icon='angle-double-right' name='FAST' click={this.speedUp}/>
+        <Btn icon='play/pause' name='PLAY' playing={this.state.play} click={this.togglePlay}/>
+        <Counter count={this.state.count}/>
+      </div>
+    )
+  }
+}
+
+class Btn extends React.Component {
+  render() {
+    let icon = this.props.icon;
+    if (icon == 'play/pause') {
+      icon = this.props.playing==true? 'pause' : 'play'; 
+    }
+    return (
+      <div className='btn' onClick={this.props.click}>
+        <i className={'fa fa-'+icon}></i>
+      </div>
+    )
+  }
+}
+class Counter extends React.Component {
+  render() {
+    return (
+      <div className='counter'><p>{this.props.count}</p></div>
+    )
+  }
+}
+
+class LifeBoard extends React.Component {
+  constructor() {
+    super();
+    this.updateBoard = this.updateBoard.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  updateBoard() {
+    let board = this.props.app.state.board,
+        width = this.props.app.state.width,
+        height = this.props.app.state.height,
+        next = [], //next step of board
+        x=0, y=0;
+    for (let i=board.length-1; i>=0; i--) {
+      let nCount=0;
+      nCount=getNeighborCount(i, width);
+      if (board[i]>=1) {  //rules for living cells
+        if (nCount<2) {
+          next.unshift(0);   //dead
+        } else if (nCount<4) {
+          next.unshift(1);   //alive
+        } else {
+          next.unshift(0);   //dead
+        }
+      } else if (nCount==3) {
+        next.unshift(1);     //alive
+      } else {
+        next.unshift(0)      //dead
+      }
+    }
+    this.timer = false;
+    this.props.app.setState({board: next, count: this.props.app.state.count+1});
+
+    function getNeighborCount(i,width) {
+      let count = 0; //total number of neighbors
+
+      //up/down
+      if (board[i-width]>=1) count++;  //up
+      if (board[i+width]>=1) count++;  //down
+      //on the right
+      if (i%width!=width-1) {             //on right edge
+        if (board[i+1]>=1) count++;       //right
+        if (board[i-width+1]>=1) count++; //upper-right
+        if (board[i+width+1]>=1) count++; //lower-right
+      }
+      //on the left
+      if (i%width!=0) {                   //on left edge
+        if (board[i-1]>=1) count++;       //left
+        if (board[i-width-1]>=1) count++; //upper-left
+        if (board[i+width-1]>=1) count++; //lower-left
+      }
+      return count;
+    }
+
+  }
+  getX(i, width) {
+    return i%width;
+  }
+  getY(i,width) {
+    return Math.floor(i/width);
+  }
+  paint() {
+    let ctx = ReactDOM.findDOMNode(this).getContext('2d');
+    let board = this.props.app.state.board,
+        width = this.props.app.state.width,
+        height = this.props.app.state.height,
+        x=0, y=0;
+    ctx.clearRect(0,0,width,height);
+    for (let i=board.length-1; i>=0; i--) {
+      if (board[i]==1) {
+        y=this.getY(i,width);
+        x=this.getX(i,width);
+        ctx.fillStyle='#11bb55';
+        ctx.fillRect(x,y,1,1);
+      }
+    }
+  }
+  handleClick(e) {
+    //calculates click x and y....
+    let canvas = ReactDOM.findDOMNode(this),
+        rect = canvas.getBoundingClientRect(), //REKT
+        pxX = e.clientX - rect.left - 2, //2 for border
+        pxY = e.clientY - rect.top - 2, 
+        cWidth = this.props.app.state.width,
+        cHeight = this.props.app.state.height,
+        x, y;
+    x = Math.floor( (pxX/rect.width)*cWidth);
+    y = Math.floor( (pxY/rect.width)*cHeight);
+    console.log(x, y);
+    if (x>=0 && y>=0) {
+      //puts that ish into our data...
+      let i = (y*cWidth) + x,
+          board = this.props.app.state.board.slice(),
+          data = board[i]==0?1:0; //if 0, 1-- if 1, 0
+      board.splice (i,1,data);
+      
+      this.props.app.setState({board: board});
+    }
+  }
+  componentDidMount() {
+    this.paint();
+    this.props.app.setState({count: 0}); //lol just to force update whoo
+  }
+
+  componentDidUpdate() {
+    this.paint();
+    if (this.props.app.state.play && !this.timer) {
+      this.timer = window.setTimeout(this.updateBoard, this.props.app.state.speed);
+    }
+  }
+  render() {
+    return(
+        <canvas width={this.props.app.state.width + 'px'}
+                height={this.props.app.state.height + 'px'}
+                onClick={this.handleClick}>
+        </canvas>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('app'));

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>BS GENERATOR</title>
+<style>
+body {
+  align-content: center;
+  background: #f9f9f9;
+  display: flex;
+  margin: 0;
+  overflow: hidden;
+  -webkit-align-items: center;
+}
+
+.container {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: HelveticaNeue, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, Roboto, sans-serif;
+  height: calc(90% - 2rem);
+  justify-content: space-between;
+  padding: 1rem 0;
+  position: absolute;
+  top: 0;
+  -webkit-align-items: center;
+  -webkit-flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -webkit-justify-content: space-between;
+  width: 100%;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(127,127,127,0.5);
+  min-height: 10vh;
+  padding: 1%;
+  text-align: center;
+  font-family: cursive, sans-serif;
+}
+
+.title {
+  font-size: 1.953125rem;
+  line-height: 1.216em;
+  margin: 0;
+}
+
+.quote {
+  font-size: 1.25rem;
+  line-height: 1.2em;
+  margin: 0 10%;
+}
+
+.unos {
+  color: #e71d32;
+}
+
+.dos {
+  color: #1de732;
+}
+
+.tres {
+  color: #4178be;
+}
+
+.quatros {
+  color: #323232;
+}
+
+.button {
+  background: transparent;
+  border: 4px solid #323232;
+  color: #323232;
+  font-size: 1.25rem;
+  line-height: 1.2em;
+  padding: 1rem 1.5rem;
+  transition: .5s all linear;
+  -webkit-transition: .5s all linear;
+}
+
+.button:hover {
+  background: #323232;
+  color: #f9f9f9;
+  cursor: pointer;
+}
+
+.description {
+  text-align: left;
+}
+
+.description-link {
+  color: #323232;
+  line-height: 1.5rem;
+  text-decoration: none;
+}
+
+.description-link:hover {
+  border-bottom: 2px solid #323232;
+}
+
+@media only screen and (min-width: 31.3125em) {
+  .container {
+    height: calc(90% - 4rem);
+    height: calc(90vh - 4rem);
+    padding: 2rem 0;
+  }
+
+  .title {
+    font-size: 3.375rem;
+    line-height: 1.11111111111em;
+  }
+
+  .quote, .button {
+    font-size: 1.5rem;
+    line-height: 1.25em;
+  }
+}
+
+@media only screen and (min-width: 48.5625em) {
+  .title {
+    font-size: 4.23606798rem;
+    line-height: 1.0623059em;
+  }
+
+  .quote, .button {
+    font-size: 1.61803399rem;
+    line-height: 1.15881373em;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<div class='container'>
+<h1 class='title'>BS GENERATOR</h1>
+<p class='quote'>
+<span class='unos'>Ladies and Gentlemen </span><br/>
+<span class='dos'>the realization of given goals</span><br/>
+<span class='tres'>dictates carefull analysis</span><br/>
+<span class='quatros'>the given finincial and institutional landscape.</span>
+</p>
+<button class='button' onclick="generateQuote()">Generate</button>
+<div class='description'>
+<a class='description-link' href='http://www.ibm.com/design/thinking/keys/hills/' target='_blank'>What the hill is a hill?</a>
+<br />
+
+</div>
+</div>
+<footer>
+  <p>
+    <a href="https://www.minds.com/michaeltsouchlarakis" target="_blank">TDM</a>
+    <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>
+    <a href="mailto:tsouchlarakis+rqm@gmail.com"><i class="fa fa-envelope fa-fw fa-2x"></i></a>
+    <a href="https://plus.google.com/u/0/109449761845014157264" target="_blank"><i class="fa fa-google-plus fa-fw fa-2x"></i></a>
+    <a href="https://www.youtube.com/channel/UClA_agOTrwCEUe1p-eHgmzg" target="_blank"><i class="fa fa-youtube fa-fw fa-2x"></i></a>
+    <a href="http://www.facebook.com/michael.tsouchlarakis" target="_blank"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
+    <a href="skype:tsouchlarakis@gmail.com?userinfo" target='_blank'><i class="fa fa-skype fa-fw fa-2x"></i></a>
+    <a href="https://github.com/MichaelTd" target='_blank'><i class="fa fa-github fa-fw fa-2x"></i></a>
+    <a href="https://www.linkedin.com/in/michael-tsouchlarakis/" target='_blank'><i class="fa fa-linkedin fa-fw fa-2x"></i></a>
+    <a href="http://codepen.io/TdMichael/" target='_blank'><i class="fa fa-codepen fa-2x"></i></a>
+    <a href="https://www.freecodecamp.com/michaeltd/" target='_blank'><i class="fa fa-free-code-camp fa-fw fa-2x"></i></a>
+    <a href="https://twitter.com/tsouchlarakis" target='_blank'><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+  </p>
+</footer>
+
+<script>
+
+var obj = {
+  unos: [
+    'Ladies and Gentlemen ',
+    'On the other hand ',
+    'At the same time ',
+    'We must not forget that ',
+    'That way ',
+    'Daily practice has shown that ',
+    'Needless to say the importance of those details regarding ',
+    'Extensive and rich experience combined with ',
+    'Organisaton management and foremost ',
+    'Ideological criteria when combined with ',
+  ],
+  dos: [
+    'the realization of given goals',
+    'the extent and method of executive formation',
+    'the constant rise in quality and volume of our efforts',
+    'the given structure of our system',
+    'a new model of action in multiple levels',
+    'the development of our complex activities',
+    'the restless commitment to practical documentation and education',
+    'the enrichment and development of our infrastructure',
+    'the wide collaboration with the public in our workflow',
+    'the start of a decisive campaign',
+  ],
+  tres: [
+    'dictates carefull analysis of',
+    'playing an important role in determining',
+    'obligates us to define and mesure',
+    'is helping us to prepare and understand',
+    'guaranties the widest possible acceptanse in order to process',
+    'contributes in a determining manner in signing',
+    'helps in an effort to solidify',
+    'is giving us in great degree the opportunity to appreciate',
+    'are part in a very important base for',
+    'is opening a process that contributes in perfectioning',
+  ],
+  quatros: [
+    'the given finincial and institutional landscape.',
+    'the axis of future course.',
+    'a general system of wider contribution.',
+    'the new norm and directives against modern days challenges.',
+    'the new guides and principles.',
+    'the basis of a liberal evolution.',
+    'a dynamic system to counter modern demands.',
+    'the best conditions possible for accelerating development.',
+    'a new model of grouth.',
+    'the various forms of developing our infuence.',
+  ]
+
+}
+
+function randomizeText(part) {
+  var text = obj[part][Math.floor(Math.random() * obj[part].length)];
+  document.querySelector('.' + part).innerHTML = text;
+};
+
+function generateQuote() {
+  var generateUnos = setInterval(function() {
+    randomizeText('unos')}, 100);
+    setTimeout(function() {
+      clearInterval(generateUnos);
+      var generateDos = setInterval(function() {
+        randomizeText('dos')}, 100);
+        setTimeout(function() {
+          clearInterval(generateDos);
+          var generateTres = setInterval(function() {
+            randomizeText('tres')}, 100);
+            setTimeout(function() {
+              clearInterval(generateTres);
+              var generateQuatros = setInterval(function() {
+                randomizeText('quatros')}, 100);
+                setTimeout(function() {
+                  clearInterval(generateQuatros);
+                }, 500);
+            }, 500);
+        }, 500);
+    }, 500);
+};
+
+generateQuote();
+</script>
+</body>
+</html>

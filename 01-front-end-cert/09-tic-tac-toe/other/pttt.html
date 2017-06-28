@@ -1,0 +1,363 @@
+<html>
+<head>
+
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+html{heigth: 100%;}
+body{background-color: rgba(73, 126, 167, 1);  height: 100%;}
+.container {position: relative;}
+.gameend {font-family: 'Indie Flower';display: none;font-sice: 40px;margin-left: auto;margin-right: auto;}
+.title {font-family: 'Indie Flower';font-size: 90px;color: rgba(3, 17, 27, 1);}
+#board {font-family: 'Indie Flower';color: #e53434;display: block;background-color: rgba(73, 126, 167, 1);margin-left: auto;margin-right: auto;margin-top: 100px;border: none;}
+.buttons {position: absolute;width: 400px;top: 35.5%;left: 50%;margin-left: -200px;outline: none;}
+.button {position: relative;width: 130px;height: 130px;font-size: 50px;border: none;outline: none;z-index: 100;background-color: rgba(255, 255, 255, 0);}
+</style>
+<script>
+$(document).ready(function () {
+	  var gameboard = [null, null, null, null, null, null, null, null, null];
+	   //var gameboard = [true, false, true, null, null, null, null, false, null];
+
+	  var canvas = $("#board")[0];
+	  var ctx = canvas.getContext("2d");
+	  var W = $("#board").width();
+	  var H = $("#board").height();
+	  function drawboard() {
+	    for( var i = 0; i < 2; i++) {
+	      var newW = W - (W / 3)*(i + 1);
+	      ctx.beginPath();
+	      ctx.moveTo(0, newW);
+	      ctx.lineTo(H, newW);
+	      ctx.strokeStyle = 'rgba(141, 198, 242, 1)';
+	      ctx.lineWidth = 5;
+	      ctx.stroke();
+	    }
+	    for( var j = 0; j < 2; j++) {
+	      newW = W - (W / 3)*(j + 1);
+	      ctx.beginPath();
+	      ctx.moveTo(newW, 0);
+	      ctx.lineTo(newW, H);
+	      ctx.lineWidth = 5;
+	      ctx.strokeStyle = 'rgba(141, 198, 242, 1)'
+	      ctx.stroke();
+	    }
+	  }
+	  
+	  var coordarray = [[35, 100], [(W/3) + 35, 100], [2 * (W/3) + 35, 100], [35, 100 + (W/3)], [(W/3) + 35, 100 + (W/3)], [2 * (W/3) + 35, 100 + (W/3)], [35, 100 + 2 * (W/3)], [35 + (W/3), 100 + 2 * (W/3)], [35 + 2 * (W/3), 100 + 2 * (W/3)]];
+	  
+	  
+	  
+	  function drawletters(letter, num) {
+	    ctx.font = '110px Indie Flower';
+	    ctx.fillStyle = "rgba(7, 37, 59, 1)";
+	    ctx.fillText(letter, coordarray[num][0], coordarray[num][1]);
+	  }
+	  var currentplayer;
+	  
+	  drawboard();
+	  
+	  var gamestart = false;
+	  
+	  function menu() {
+	    drawletters("X", 3);
+	    drawletters('or', 4);
+	    drawletters('O', 5);
+	  }
+	  menu();
+	  
+	  function reset() {
+	    drawboard();
+	    gameboard = [null, null, null, null, null, null, null, null, null];
+	    gamestart = false;
+	    ctx.clearRect(0, 0, 400, 400);
+	  }
+	  var p1 = 'O';
+	  var p2 = 'X';
+	  function onclick(player, id) {
+	    if (gamestart) {
+	      if (player === 'X') {
+	        drawletters('X', id);
+	        gameboard[id] = false;
+	        gameboard = max(gameboard);
+	        for (var i = 0; i < gameboard.length; i ++) {
+	          if(gameboard[i]) {
+	            drawletters(p1, i);
+	          }
+	          else if (gameboard[i] === false) {
+	            drawletters(p2, i);
+	          }
+	        }
+	      }
+	      else {
+	        drawletters('O', id);
+	        gameboard[id] = true;
+	        gameboard = min(gameboard);
+	        for (var i = 0; i < gameboard.length; i ++) {
+	          if(gameboard[i] ===  false) {
+	            drawletters('X', i);
+	          }
+	          else if (gameboard[i] === true) {
+	            drawletters('O', i);
+	          }
+	        }
+	      }
+	    }
+	    else {
+	      if (id === 3) {
+	        currentplayer = "X";
+	        reset();
+	        drawboard();
+	        gamestart = true;
+	      }
+	      else if (id === 5) {
+	        p1 = 'X';
+	        p2 = 'O';
+	        currentplayer = 'O';
+	        reset();
+	        drawboard();
+	        var rand = Math.floor(Math.random() * 9);
+	        drawletters('X', rand);
+	        gameboard[rand] = false;
+	        gamestart = true;
+	      }
+	      
+	    }
+	  }
+	  
+	  
+	  function endgame(pl1, pl2) {
+	    var check = checkboard(gameboard)
+	    gamestart = false;
+	    if (check === pl1) {
+	      $('#win').css({'display': 'block','font-family ':'Indie Flower','font-size': '40px'});
+	      $('.reset').css({'display': 'block','font-family ':'Indie Flower','font-size': '40px','background-color': 'transparent','border': 'none'});
+	    }
+	    else if (check === pl2) {
+	      $('#defeat').css({'display': 'block','font-family ':'Indie Flower','font-size': '40px'});
+	      $('.reset').css({'display': 'block','font-family ':'Indie Flower','font-size': '40px', 'background-color': 'transparent','border': 'none'});
+	    }
+	    else{
+	      $('#tie').css({'display': 'block','font-family ':'Indie Flower','font-size': '40px'});
+	      $('.reset').css({'display': 'block','font-family ':'Indie Flower','font-size': '40px','background-color': 'transparent','border': 'none'});
+	    }
+	  }
+	  var idarray = [];
+	  function setidarray() {
+	    for (var i = 0; i < gameboard.length; i ++) {
+	      if (gameboard[i] || gameboard[i] === false) {
+	        idarray.push(i);
+	      }
+	    }
+	  }
+	  $('.button').click(function() {
+	    var id = eval($(this).attr('id'));
+	    setidarray();
+	    if (idarray.indexOf(id) === -1) {
+	      onclick(p2, id);
+	      if(checkboard(gameboard) !== 'next') {
+	        if (p1 === 'X'){
+	          endgame(1, -1);
+	        }
+	        else {
+	          endgame(-1, 1);
+	        }
+	      }
+	    }
+	  });
+	  $('.reset').click(function() {
+	    reset();
+	    $('.gameend').css('display', 'none');
+	    menu();
+	    idarray = [];
+	    drawboard();
+	    p1 = 'O';
+	    p2 = 'X';
+	  });
+	  
+	  function whosturn() {
+	    var count = 0;
+	    for (var i = 0; i < gameboard.length; i++) {
+	      if (gameboard[i]) {
+	        count++;
+	      }
+	      else if (gameboard[i] === false) {
+	        count--;
+	      }
+	    }
+	    if (count === 0) {
+	      return true;
+	    }
+	    else {
+	      return false;
+	    }
+	  }
+	  
+	  function whoiswinning(player, board) {
+	    var countboard = 0;
+	    for (var i = 0; i < 9; i++) {
+	      if (i === 0) {
+	        if ((board[0] && board[4] && board[8]) || (board[0] && board[1] && board[2]) || (board[0] && board[3] && board[6])) {
+	          return player;
+	        }
+	      }
+	      else if (i === 1) { 
+	        if (board[1] && board[4] && board[7]) {
+	          return player;
+	        }
+	      }
+	      else if (i === 2) {
+	        if ((board[2] && board[4] && board[6]) || (board[2] && board[5] && board[8])) {
+	          return player;
+	        }
+	      }
+	      else if (i === 3) {
+	        if(board[3] && board[4] && board[5]) {
+	          return player;
+	        }
+	      }
+	      else if (i === 6) {
+	        if (board[6] && board[7] && board[8]) { 
+	          return player;
+	        }
+	      }
+	      if (board[i] === true || board[i] === false) {
+	        countboard ++;
+	        if (countboard === 9) {
+	          return 0;
+	        }
+	      }
+	    }
+	    return "next";
+	  }
+	  
+	  function checkboard(gb) {
+	    if (whoiswinning(1, gb) === 'next') {
+	      var board = gb.map(function(a) {
+	        if (a === true) {
+	          return false;
+	        }
+	        else if(a === false) {
+	          return true;
+	        }
+	      });
+	      if (whoiswinning(-1, board) === 'next') {
+	        return 'next';
+	      }
+	      else{
+	        return whoiswinning(-1, board);
+	      }
+	    }
+	    else {
+	      return whoiswinning(1, gameboard);
+	    }
+	  }
+	  
+	  function possibleMoves(gb) {
+	    var posmoves = [];
+	    for (var i = 0; i < gb.length; i++) {
+	      if (gb[i] === null) {
+	        posmoves.push(i);
+	      }
+	    }
+	    return posmoves;
+	  }
+	  
+	  function scoresofar(gameb) {
+	    if (checkboard(gameb) === 1) {
+	      
+	        return 10;
+	      }
+	      else if (checkboard(gameb) === -1) {
+	        return -10;
+	      }
+	      else {
+	        return 0;
+	      }
+	  }
+	  var depth = 0;
+	  function max(gameb) {
+	    if (checkboard(gameb) !== 'next') {
+	      return gameb;
+	    }
+	    var bestscore = -Infinity;
+	    var bestmove = [];
+	    var newscore;
+	    
+	    var posmoves = possibleMoves(gameb);
+	    for(var i = 0; i < posmoves.length; i++) {
+	      var newboard = gameb.slice();
+	      newboard[posmoves[i]] = true;
+	      newscore = scoresofar(min(newboard));
+	      if (newscore > bestscore) {
+	        bestscore = newscore;
+	        bestmove = newboard.slice();
+	      }
+	    }
+	    return bestmove;
+	  }
+	  
+	  function min(gameb) {
+	    if (checkboard(gameb) !== 'next') {
+	      return gameb;
+	    }
+	    var badscore = Infinity;
+	    var worstmove = [];
+	    var newscore;
+	    var posmoves = possibleMoves(gameb);
+	    for(var i = 0; i < posmoves.length; i++) {
+	      var newboard = gameb.slice();
+	      newboard[posmoves[i]] = false;
+	      newscore = scoresofar(max(newboard));
+	      if (newscore < badscore) {
+	        badscore = newscore;
+	        worstmove = newboard.slice();
+	      }
+	    }
+	    return worstmove;
+	  }
+	                  
+	  //var b = max(gameboard);
+	  //console.log(b);
+	  
+	  
+	  
+	  
+	  
+	  
+	});
+
+</script>
+</head>
+<body>
+
+
+
+<div class = "container">
+  <h1 class = "text-center title" >Tic Tac Toe</h1>
+  <p class = 'gameend text-center' id = 'win'>You won!</p>
+  <p class = 'gameend text-center' id = 'defeat'>You lost!</p>
+  <p class = 'gameend text-center' id = 'tie'>it's a tie!</p>
+  <button class = 'reset gameend text-center'>&#8634</button>
+  <canvas id = "board" width = 400 height = 400>
+  </canvas>
+  
+  <div class = "buttons">
+    <button class = "button" id = "0"></button>
+    <button class = "button" id = "1"></button>
+    <button class = "button" id = "2"></button>
+    <button class = "button" id = "3"></button>
+    <button class = "button" id = "4"></button>
+    <button class = "button" id = "5"></button>
+    <button class = "button" id = "6"></button>
+    <button class = "button" id = "7"></button>
+    <button class = "button" id = "8"></button>
+  </div>
+</div>
+</body>
+</html>

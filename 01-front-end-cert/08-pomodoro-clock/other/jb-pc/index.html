@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Pomodoro CLOCK</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <html lang="en">
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,400italic,700,900,700italic,900italic|Open+Sans:400,300,300italic,400italic,600,600italic,700italic,800,700,800italic|Julius+Sans+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+
+    <!--link rel="stylesheet" href="./polmo.css"/>
+    <script src="./polmo.js"></script-->
+</head>
+<body>
+<div id="container"
+     class="flex-column-flow flex-column-valign-center flex-column-halign-center">
+    <div id="place-holder" class="all-margin-auto fit  ">
+        <div id="inner-canvas" class="fit  ">
+            <header>
+            <p class="julius-big title">Pomodoro</p>
+            <ul id="ui-ctrls" class="">
+                <li>
+                    <span>BREAK LENGTH</span><span>SESSION LENGTH</span>
+                </li>
+                <li>
+                    <span id="arrow-up-break" class="fa fa-angle-double-up btn"></span>
+                    <span id="arrow-up-work" class="fa fa-angle-double-up btn"></span>
+                </li>
+                <li>
+                    <span id="minutes-break" class="minutes user-select-none">05</span>
+                    <span id="minutes-work" class="minutes user-select-none">25</span>
+                </li>
+                <li>
+                    <span id="arrow-down-break" class="fa fa-angle-double-down btn"></span>
+                    <span id="arrow-down-work" class="fa fa-angle-double-down btn"></span>
+                </li>
+            </ul>
+            </header>
+            <svg id="angular-progress" class="user-select-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+                <path id="guide-path" d="M160 8 A 152 152 0 1 1 159.999 8" fill="transparent" stroke ="rgba(255,255,255,0.1)" stroke-width="2"/>
+                <text id="break_time" class="red-text hide" text-anchor="middle"
+                      x="160" y="100">Take Break</text>
+                <text id="time" class="text-white" text-anchor="middle"
+                      x="160" y="190">00 00</text>
+                <text id="double-dot" class="text-white" text-anchor="middle"
+                      x="160" y="180">:</text>
+                <path id="__l001" class="piece" d="M160 8 A 152 152 0 0 1 167.95506534892746 8.208310717304784" fill="transparent" stroke ="hsl(253,85%, 51%)" stroke-width="16" />
+                <path id="__l002" class="piece" d="M167.87558631944145 8.204166262294848 A 152 152 0 0 1 175.88832641668333 8.832671904022448" fill="transparent" stroke ="hsl(251,85%, 51%)" stroke-width="16" />
+                <path id="__l003" class="piece" d="M175.73001567806423 8.816116577302296 A 152 152 0 0 1 183.77803868611508 9.871372229539048" fill="transparent" stroke ="hsl(249,85%, 51%)" stroke-width="16" />
+                <path id="__l004" class="piece" d="M183.54218795107082 9.834207002804874 A 152 152 0 0 1 191.6025770042994 11.321564688461535" fill="transparent" stroke ="hsl(247,85%, 51%)" stroke-width="16" />
+                <path id="__l005" class="piece" d="M191.29111653302198 11.25570254252824 A 152 152 0 0 1 199.34049485558316 13.17927440406163" fill="transparent" stroke ="hsl(244,85%, 51%)" stroke-width="16" />
+                <path id="__l006" class="piece" d="M198.95598471621548 13.076784493430097 A 152 152 0 0 1 206.97058314499202 15.439409523136675" fill="transparent" stroke ="hsl(242,85%, 51%)" stroke-width="16" />
+                <path id="__l007" class="piece" d="M206.5162016126521 15.292560704257141 A 152 152 0 0 1 214.47192833088565 18.095775172425334" fill="transparent" stroke ="hsl(240,85%, 51%)" stroke-width="16" />
+                <path id="__l008" class="piece" d="M213.95145746935967 17.897078717811468 A 152 152 0 0 1 221.82396974752163 21.14109043832468" fill="transparent" stroke ="hsl(238,85%, 51%)" stroke-width="16" />
+                <path id="__l009" class="piece" d="M221.24177822847673 20.883341761620528 A 152 152 0 0 1 229.0065559604111 24.56700832336807" fill="transparent" stroke ="hsl(236,85%, 51%)" stroke-width="16" />
+                <path id="__l010" class="piece" d="M228.36757918552541 24.243327544054353 A 152 152 0 0 1 236 28.36413862476533" fill="transparent" stroke ="hsl(234,85%, 51%)" stroke-width="16" />
+                <path id="__l011" class="piece" d="M235.30971760172594 27.968009805394928 A 152 152 0 0 1 242.7851333222841 32.52207367229555" fill="transparent" stroke ="hsl(232,85%, 51%)" stroke-width="16" />
+                <path id="__l012" class="piece" d="M242.04954412901566 32.04738256596423 A 152 152 0 0 1 249.34335834845592 37.02941685500798" fill="transparent" stroke ="hsl(230,85%, 51%)" stroke-width="16" />
+                <path id="__l013" class="piece" d="M248.56895290962353 36.47048700616972 A 152 152 0 0 1 255.6566994395753 41.873813858540444" fill="transparent" stroke ="hsl(227,85%, 51%)" stroke-width="16" />
+                <path id="__l014" class="piece" d="M254.85043021561404 41.225440906257475 A 152 152 0 0 1 261.70785216654645 47.04198652743608" fill="transparent" stroke ="hsl(225,85%, 51%)" stroke-width="16" />
+                <path id="__l015" class="piece" d="M260.8771014977337 46.299470566685855 A 152 152 0 0 1 267.48023074035524 52.51976925964479" fill="transparent" stroke ="hsl(223,85%, 51%)" stroke-width="16" />
+                <path id="__l016" class="piece" d="M266.6327767171701 51.678945123368806 A 152 152 0 0 1 272.95801347256395 58.292147833453555" fill="transparent" stroke ="hsl(221,85%, 51%)" stroke-width="16" />
+                <path id="__l017" class="piece" d="M272.10199383844247 57.349413165604275 A 152 152 0 0 1 278.1261861414596 64.3433005604247" fill="transparent" stroke ="hsl(219,85%, 51%)" stroke-width="16" />
+                <path id="__l018" class="piece" d="M277.27006036658594 63.295641558318096 A 152 152 0 0 1 282.970583144992 70.6566416515441" fill="transparent" stroke ="hsl(217,85%, 51%)" stroke-width="16" />
+                <path id="__l019" class="piece" d="M282.1230928170434 69.50165636433006 A 152 152 0 0 1 287.47792632770444 77.21486667771589" fill="transparent" stroke ="hsl(215,85%, 51%)" stroke-width="16" />
+                <path id="__l020" class="piece" d="M286.6480540122332 75.95078575671002 A 152 152 0 0 1 291.6358613752347 84.00000000000001" fill="transparent" stroke ="hsl(213,85%, 51%)" stroke-width="16" />
+                <path id="__l021" class="piece" d="M290.83278810459944 82.62570480594357 A 152 152 0 0 1 295.4329916766319 90.99344403958888" fill="transparent" stroke ="hsl(210,85%, 51%)" stroke-width="16" />
+                <path id="__l022" class="piece" d="M294.6660532320587 89.50848202159115 A 152 152 0 0 1 298.8589095616753 98.17603025247837" fill="transparent" stroke ="hsl(208,85%, 51%)" stroke-width="16" />
+                <path id="__l023" class="piece" d="M298.13755171811806 96.58062752341169 A 152 152 0 0 1 301.9042248275747 105.52807166911438" fill="transparent" stroke ="hsl(206,85%, 51%)" stroke-width="16" />
+                <path id="__l024" class="piece" d="M301.2379577355348 103.82314271254313 A 152 152 0 0 1 304.56059047686335 113.02941685500798" fill="transparent" stroke ="hsl(204,85%, 51%)" stroke-width="16" />
+                <path id="__l025" class="piece" d="M303.95894235920116 111.21657130930413 A 152 152 0 0 1 306.82072559593837 120.65950514441684" fill="transparent" stroke ="hsl(202,85%, 51%)" stroke-width="16" />
+                <path id="__l026" class="piece" d="M306.2931959409544 118.7410516205087 A 152 152 0 0 1 308.67843531153846 128.3974229957006" fill="transparent" stroke ="hsl(200,85%, 51%)" stroke-width="16" />
+                <path id="__l027" class="piece" d="M308.23444774620197 126.37636989588245 A 152 152 0 0 1 310.128627770461 136.22196131388495" fill="transparent" stroke ="hsl(198,85%, 51%)" stroke-width="16" />
+                <path id="__l028" class="piece" d="M309.77748279961156 134.1020146302449 A 152 152 0 0 1 311.16732809597755 144.11167358331667" fill="transparent" stroke ="hsl(195,85%, 51%)" stroke-width="16" />
+                <path id="__l029" class="piece" d="M310.9181558946117 141.8972316655798 A 152 152 0 0 1 311.7916892826952 152.04493465107254" fill="transparent" stroke ="hsl(193,85%, 51%)" stroke-width="16" />
+                <path id="__l030" class="piece" d="M311.65340272906656 149.74107994496774 A 152 152 0 0 1 312 160.00000000000003" fill="transparent" stroke ="hsl(191,85%, 51%)" stroke-width="16" />
+                <path id="__l031" class="piece" d="M311.98124813721245 157.6124877686033 A 152 152 0 0 1 311.7916892826952 167.95506534892746" fill="transparent" stroke ="hsl(189,85%, 51%)" stroke-width="16" />
+                <path id="__l032" class="piece" d="M311.90081139573874 165.49030940077125 A 152 152 0 0 1 311.16732809597755 175.88832641668333" fill="transparent" stroke ="hsl(187,85%, 51%)" stroke-width="16" />
+                <path id="__l033" class="piece" d="M311.41230858976223 173.35338187571296 A 152 152 0 0 1 310.1286277704609 183.7780386861151" fill="transparent" stroke ="hsl(185,85%, 51%)" stroke-width="16" />
+                <path id="__l034" class="piece" d="M310.5170520323356 181.1805818497789 A 152 152 0 0 1 308.67843531153846 191.6025770042994" fill="transparent" stroke ="hsl(183,85%, 51%)" stroke-width="16" />
+                <path id="__l035" class="piece" d="M309.21744673905266 188.95088234714086 A 152 152 0 0 1 306.82072559593837 199.34049485558316" fill="transparent" stroke ="hsl(181,85%, 51%)" stroke-width="16" />
+                <path id="__l036" class="piece" d="M307.5169839672185 196.6434092466219 A 152 152 0 0 1 304.56059047686335 206.97058314499202" fill="transparent" stroke ="hsl(179,85%, 51%)" stroke-width="16" />
+                <path id="__l037" class="piece" d="M305.4202318369422 204.23749735789735 A 152 152 0 0 1 301.9042248275747 214.47192833088565" fill="transparent" stroke ="hsl(176,85%, 51%)" stroke-width="16" />
+                <path id="__l038" class="piece" d="M302.9328230593476 211.71274593642485 A 152 152 0 0 1 298.8589095616753 221.82396974752163" fill="transparent" stroke ="hsl(174,85%, 51%)" stroke-width="16" />
+                <path id="__l039" class="piece" d="M300.06143980486775 219.04907348796763 A 152 152 0 0 1 295.4329916766319 229.0065559604111" fill="transparent" stroke ="hsl(172,85%, 51%)" stroke-width="16" />
+                <path id="__l040" class="piece" d="M296.8137957522748 226.22677171548395 A 152 152 0 0 1 291.63586137523464 236.00000000000003" fill="transparent" stroke ="hsl(170,85%, 51%)" stroke-width="16" />
+                <path id="__l041" class="piece" d="M293.19861536666724 233.22655846346075 A 152 152 0 0 1 287.47792632770444 242.7851333222841" fill="transparent" stroke ="hsl(168,85%, 51%)" stroke-width="16" />
+                <path id="__l042" class="piece" d="M289.22561046208256 240.0296295174612 A 152 152 0 0 1 282.970583144992 249.3433583484559" fill="transparent" stroke ="hsl(166,85%, 51%)" stroke-width="16" />
+                <path id="__l043" class="piece" d="M284.90545411169774 246.6177091197324 A 152 152 0 0 1 278.1261861414596 255.65669943957533" fill="transparent" stroke ="hsl(164,85%, 51%)" stroke-width="16" />
+                <path id="__l044" class="piece" d="M280.2497519757046 252.9730990651679 A 152 152 0 0 1 272.95801347256395 261.70785216654645" fill="transparent" stroke ="hsl(162,85%, 51%)" stroke-width="16" />
+                <path id="__l045" class="piece" d="M275.2710111238857 259.0787262457336 A 152 152 0 0 1 267.48023074035524 267.4802307403552" fill="transparent" stroke ="hsl(159,85%, 51%)" stroke-width="16" />
+                <path id="__l046" class="piece" d="M269.9826064366443 264.9181885156345 A 152 152 0 0 1 261.70785216654645 272.95801347256395" fill="transparent" stroke ="hsl(157,85%, 51%)" stroke-width="16" />
+                <path id="__l047" class="piece" d="M264.39874467475 270.47579875400925 A 152 152 0 0 1 255.65669943957528 278.1261861414596" fill="transparent" stroke ="hsl(155,85%, 51%)" stroke-width="16" />
+                <path id="__l048" class="piece" d="M258.5344263143227 275.73662700678346 A 152 152 0 0 1 249.34335834845592 282.970583144992" fill="transparent" stroke ="hsl(153,85%, 51%)" stroke-width="16" />
+                <path id="__l049" class="piece" d="M252.40540524958004 280.68654059447096 A 152 152 0 0 1 242.78513332228408 287.4779263277045" fill="transparent" stroke ="hsl(151,85%, 51%)" stroke-width="16" />
+                <path id="__l050" class="piece" d="M246.02814647160517 285.31224207817866 A 152 152 0 0 1 236 291.6358613752347" fill="transparent" stroke ="hsl(149,85%, 51%)" stroke-width="16" />
+                <path id="__l051" class="piece" d="M239.41978183682423 289.601304981822 A 152 152 0 0 1 229.00655596041105 295.4329916766319" fill="transparent" stroke ="hsl(147,85%, 51%)" stroke-width="16" />
+                <path id="__l052" class="piece" d="M232.59806404401832 293.54220717458816 A 152 152 0 0 1 221.8239697475216 298.8589095616753" fill="transparent" stroke ="hsl(145,85%, 51%)" stroke-width="16" />
+                <path id="__l053" class="piece" d="M225.58131894350575 297.12436182396686 A 152 152 0 0 1 214.47192833088565 301.9042248275747" fill="transparent" stroke ="hsl(142,85%, 51%)" stroke-width="16" />
+                <path id="__l054" class="piece" d="M218.3883963066108 300.33814583619863 A 152 152 0 0 1 206.97058314499196 304.56059047686335" fill="transparent" stroke ="hsl(140,85%, 51%)" stroke-width="16" />
+                <path id="__l055" class="piece" d="M211.03861918767223 303.1749257077362 A 152 152 0 0 1 199.34049485558313 306.82072559593837" fill="transparent" stroke ="hsl(138,85%, 51%)" stroke-width="16" />
+                <path id="__l056" class="piece" d="M203.55173201462532 305.6270807182725 A 152 152 0 0 1 191.6025770042994 308.67843531153846" fill="transparent" stroke ="hsl(136,85%, 51%)" stroke-width="16" />
+                <path id="__l057" class="piece" d="M195.94784754760613 307.68802340303046 A 152 152 0 0 1 183.77803868611505 310.128627770461" fill="transparent" stroke ="hsl(134,85%, 51%)" stroke-width="16" />
+                <path id="__l058" class="piece" d="M188.24739284806927 309.3522172493159 A 152 152 0 0 1 175.8883264166833 311.16732809597755" fill="transparent" stroke ="hsl(132,85%, 51%)" stroke-width="16" />
+                <path id="__l059" class="piece" d="M180.47105440356717 310.61519156979546 A 152 152 0 0 1 167.95506534892746 311.7916892826952" fill="transparent" stroke ="hsl(130,85%, 51%)" stroke-width="16" />
+                <path id="__l060" class="piece" d="M172.639722555607 311.47355351254316 A 152 152 0 0 1 159.99999999999994 312" fill="transparent" stroke ="hsl(128,85%, 51%)" stroke-width="16" />
+                <path id="__l061" class="piece" d="M164.77443537987543 311.9249971755912 A 152 152 0 0 1 152.0449346510725 311.7916892826952" fill="transparent" stroke ="hsl(125,85%, 51%)" stroke-width="16" />
+                <path id="__l062" class="piece" d="M156.89632216959035 311.96830980150116 A 152 152 0 0 1 144.11167358331667 311.16732809597755" fill="transparent" stroke ="hsl(123,85%, 51%)" stroke-width="16" />
+                <path id="__l063" class="piece" d="M149.02654667380523 311.6033750353132 A 152 152 0 0 1 136.22196131388486 310.1286277704609" fill="transparent" stroke ="hsl(121,85%, 51%)" stroke-width="16" />
+                <path id="__l064" class="piece" d="M141.1862502431526 310.8311732371221 A 152 152 0 0 1 128.39742299570057 308.67843531153846" fill="transparent" stroke ="hsl(119,85%, 51%)" stroke-width="16" />
+                <path id="__l065" class="piece" d="M133.39649503575802 309.6537788484392 A 152 152 0 0 1 120.65950514441684 306.82072559593837" fill="transparent" stroke ="hsl(117,85%, 51%)" stroke-width="16" />
+                <path id="__l066" class="piece" d="M125.67820743589625 308.07435481941707 A 152 152 0 0 1 113.02941685500795 304.56059047686335" fill="transparent" stroke ="hsl(115,85%, 51%)" stroke-width="16" />
+                <path id="__l067" class="piece" d="M118.05212183739062 306.0971441119055 A 152 152 0 0 1 105.52807166911433 301.9042248275747" fill="transparent" stroke ="hsl(113,85%, 51%)" stroke-width="16" />
+                <path id="__l068" class="piece" d="M110.5387249427753 303.7274583011665 A 152 152 0 0 1 98.17603025247837 298.8589095616753" fill="transparent" stroke ="hsl(111,85%, 51%)" stroke-width="16" />
+                <path id="__l069" class="piece" d="M103.15820072785434 300.97166330686855 A 152 152 0 0 1 90.99344403958884 295.4329916766319" fill="transparent" stroke ="hsl(108,85%, 51%)" stroke-width="16" />
+                <path id="__l070" class="piece" d="M95.93037621950577 297.8371622916909 A 152 152 0 0 1 83.99999999999999 291.63586137523464" fill="transparent" stroke ="hsl(106,85%, 51%)" stroke-width="16" />
+                <path id="__l071" class="piece" d="M88.87466823239282 294.33237577348143 A 152 152 0 0 1 77.21486667771589 287.47792632770444" fill="transparent" stroke ="hsl(104,85%, 51%)" stroke-width="16" />
+                <path id="__l072" class="piece" d="M82.01003120766767 290.4667190043922 A 152 152 0 0 1 70.65664165154405 282.97058314499196" fill="transparent" stroke ="hsl(102,85%, 51%)" stroke-width="16" />
+                <path id="__l073" class="piece" d="M75.35490629379537 286.2505766777635 A 152 152 0 0 1 64.34330056042468 278.1261861414596" fill="transparent" stroke ="hsl(100,85%, 51%)" stroke-width="16" />
+                <path id="__l074" class="piece" d="M68.9271718062862 281.69527503070236 A 152 152 0 0 1 58.292147833453555 272.95801347256395" fill="transparent" stroke ="hsl(98,85%, 51%)" stroke-width="16" />
+                <path id="__l075" class="piece" d="M62.7440951994209 276.8130514172997 A 152 152 0 0 1 52.51976925964475 267.4802307403552" fill="transparent" stroke ="hsl(96,85%, 51%)" stroke-width="16" />
+                <path id="__l076" class="piece" d="M56.82228667899285 271.61702143422417 A 152 152 0 0 1 47.04198652743605 261.70785216654645" fill="transparent" stroke ="hsl(94,85%, 51%)" stroke-width="16" />
+                <path id="__l077" class="piece" d="M51.177654580681676 266.1211436870079 A 152 152 0 0 1 41.87381385854039 255.65669943957522" fill="transparent" stroke ="hsl(91,85%, 51%)" stroke-width="16" />
+                <path id="__l078" class="piece" d="M45.82536263392862 260.34018229167265 A 152 152 0 0 1 37.02941685500801 249.34335834845592" fill="transparent" stroke ="hsl(89,85%, 51%)" stroke-width="16" />
+                <path id="__l079" class="piece" d="M40.77978922612171 254.28966721243654 A 152 152 0 0 1 32.52207367229555 242.78513332228408" fill="transparent" stroke ="hsl(87,85%, 51%)" stroke-width="16" />
+                <path id="__l080" class="piece" d="M36.05448877652137 247.98585254204525 A 152 152 0 0 1 28.364138624765303 235.99999999999994" fill="transparent" stroke ="hsl(85,85%, 51%)" stroke-width="16" />
+                <path id="__l081" class="piece" d="M31.662155323693668 241.44567283680743 A 152 152 0 0 1 24.5670083233681 229.00655596041113" fill="transparent" stroke ="hsl(83,85%, 51%)" stroke-width="16" />
+                <path id="__l082" class="piece" d="M27.61458842426788 234.68669762363317 A 152 152 0 0 1 21.141090438324653 221.82396974752163" fill="transparent" stroke ="hsl(81,85%, 51%)" stroke-width="16" />
+                <path id="__l083" class="piece" d="M23.92266145462861 227.72708420128822 A 152 152 0 0 1 18.095775172425306 214.4719283308856" fill="transparent" stroke ="hsl(79,85%, 51%)" stroke-width="16" />
+                <path id="__l084" class="piece" d="M20.596292400697763 220.5855288626603 A 152 152 0 0 1 15.439409523136675 206.97058314499202" fill="transparent" stroke ="hsl(77,85%, 51%)" stroke-width="16" />
+                <path id="__l085" class="piece" d="M17.644417214274768 213.28121666907137 A 152 152 0 0 1 13.17927440406163 199.34049485558313" fill="transparent" stroke ="hsl(74,85%, 51%)" stroke-width="16" />
+                <path id="__l086" class="piece" d="M15.074965807511802 205.8337699115633 A 152 152 0 0 1 11.321564688461535 191.60257700429935" fill="transparent" stroke ="hsl(72,85%, 51%)" stroke-width="16" />
+                <path id="__l087" class="piece" d="M12.894840750012435 198.26319539761147 A 152 152 0 0 1 9.871372229539077 183.7780386861151" fill="transparent" stroke ="hsl(70,85%, 51%)" stroke-width="16" />
+                <path id="__l088" class="piece" d="M11.109898725780965 190.5898307048731 A 152 152 0 0 1 8.832671904022448 175.8883264166833" fill="transparent" stroke ="hsl(68,85%, 51%)" stroke-width="16" />
+                <path id="__l089" class="piece" d="M9.724934799837058 182.83428954635502 A 152 152 0 0 1 8.208310717304755 167.9550653489274" fill="transparent" stroke ="hsl(66,85%, 51%)" stroke-width="16" />
+                <path id="__l090" class="piece" d="M8.743669536762013 175.0174063937733 A 152 152 0 0 1 8 160.00000000000003" fill="transparent" stroke ="hsl(64,85%, 51%)" stroke-width="16" />
+                <path id="__l091" class="piece" d="M8.168739005780566 167.16018050786568 A 152 152 0 0 1 8.208310717304784 152.0449346510725" fill="transparent" stroke ="hsl(62,85%, 51%)" stroke-width="16" />
+                <path id="__l092" class="piece" d="M8.001687699229421 159.28371952601518 A 152 152 0 0 1 8.832671904022448 144.11167358331662" fill="transparent" stroke ="hsl(59,85%, 51%)" stroke-width="16" />
+                <path id="__l093" class="piece" d="M8.242964383435805 151.40918275873216 A 152 152 0 0 1 9.871372229539048 136.22196131388495" fill="transparent" stroke ="hsl(57,85%, 51%)" stroke-width="16" />
+                <path id="__l094" class="piece" d="M8.891920893152445 143.55772434732043 A 152 152 0 0 1 11.321564688461564 128.39742299570057" fill="transparent" stroke ="hsl(55,85%, 51%)" stroke-width="16" />
+                <path id="__l095" class="piece" d="M9.946813872787487 135.75043643543 A 152 152 0 0 1 13.17927440406163 120.65950514441678" fill="transparent" stroke ="hsl(53,85%, 51%)" stroke-width="16" />
+                <path id="__l096" class="piece" d="M11.404809459751817 128.00829250716154 A 152 152 0 0 1 15.439409523136646 113.02941685500802" fill="transparent" stroke ="hsl(51,85%, 51%)" stroke-width="16" />
+                <path id="__l097" class="piece" d="M13.261990897342343 120.35209104393576 A 152 152 0 0 1 18.095775172425334 105.52807166911434" fill="transparent" stroke ="hsl(49,85%, 51%)" stroke-width="16" />
+                <path id="__l098" class="piece" d="M15.513369056710218 112.80239965149096 A 152 152 0 0 1 21.14109043832468 98.17603025247831" fill="transparent" stroke ="hsl(47,85%, 51%)" stroke-width="16" />
+                <path id="__l099" class="piece" d="M18.152895839647414 105.37949980710461 A 152 152 0 0 1 24.56700832336813 90.9934440395888" fill="transparent" stroke ="hsl(45,85%, 51%)" stroke-width="16" />
+                <path id="__l100" class="piece" d="M21.173480426186813 98.10333237546902 A 152 152 0 0 1 28.36413862476533 83.99999999999999" fill="transparent" stroke ="hsl(42,85%, 51%)" stroke-width="16" />
+                <path id="__l101" class="piece" d="M24.56700832336807 90.99344403958891 A 152 152 0 0 1 32.522073672295576 77.21486667771583" fill="transparent" stroke ="hsl(40,85%, 51%)" stroke-width="16" />
+                <path id="__l102" class="piece" d="M28.324363163997134 84.06893479060706 A 152 152 0 0 1 37.02941685500805 70.65664165154399" fill="transparent" stroke ="hsl(38,85%, 51%)" stroke-width="16" />
+                <path id="__l103" class="piece" d="M32.43545119683802 77.34840661762348 A 152 152 0 0 1 41.873813858540444 64.3433005604247" fill="transparent" stroke ="hsl(36,85%, 51%)" stroke-width="16" />
+                <path id="__l104" class="piece" d="M36.88922840244818 70.84991353534518 A 152 152 0 0 1 47.04198652743611 58.29214783345351" fill="transparent" stroke ="hsl(34,85%, 51%)" stroke-width="16" />
+                <path id="__l105" class="piece" d="M41.67373016181247 64.59091308381349 A 152 152 0 0 1 52.519769259644846 52.519769259644704" fill="transparent" stroke ="hsl(32,85%, 51%)" stroke-width="16" />
+                <path id="__l106" class="piece" d="M46.7761033980735 58.588219430500786 A 152 152 0 0 1 58.29214783345357 47.04198652743608" fill="transparent" stroke ="hsl(30,85%, 51%)" stroke-width="16" />
+                <path id="__l107" class="piece" d="M52.18264110501437 52.857958200761075 A 152 152 0 0 1 64.34330056042475 41.87381385854039" fill="transparent" stroke ="hsl(28,85%, 51%)" stroke-width="16" />
+                <path id="__l108" class="piece" d="M57.878819169535475 47.41552315797901 A 152 152 0 0 1 70.65664165154416 37.02941685500794" fill="transparent" stroke ="hsl(25,85%, 51%)" stroke-width="16" />
+                <path id="__l109" class="piece" d="M63.84933538920515 42.27553484979241 A 152 152 0 0 1 77.2148666777159 32.52207367229555" fill="transparent" stroke ="hsl(23,85%, 51%)" stroke-width="16" />
+                <path id="__l110" class="piece" d="M70.07815058006884 37.451801331479274 A 152 152 0 0 1 84.00000000000006 28.364138624765303" fill="transparent" stroke ="hsl(21,85%, 51%)" stroke-width="16" />
+                <path id="__l111" class="piece" d="M76.54853166428404 32.95728107202288 A 152 152 0 0 1 90.99344403958898 24.567008323368043" fill="transparent" stroke ="hsl(19,85%, 51%)" stroke-width="16" />
+                <path id="__l112" class="piece" d="M83.24309662182975 28.804048142504655 A 152 152 0 0 1 98.17603025247837 21.141090438324653" fill="transparent" stroke ="hsl(17,85%, 51%)" stroke-width="16" />
+                <path id="__l113" class="piece" d="M90.14386118553386 25.00325978034121 A 152 152 0 0 1 105.52807166911441 18.095775172425306" fill="transparent" stroke ="hsl(15,85%, 51%)" stroke-width="16" />
+                <path id="__l114" class="piece" d="M97.23228715397626 21.56512641650187 A 152 152 0 0 1 113.0294168550081 15.439409523136618" fill="transparent" stroke ="hsl(13,85%, 51%)" stroke-width="16" />
+                <path id="__l115" class="piece" d="M104.48933219247877 18.498884246225742 A 152 152 0 0 1 120.65950514441685 13.17927440406163" fill="transparent" stroke ="hsl(11,85%, 51%)" stroke-width="16" />
+                <path id="__l116" class="piece" d="M111.89550098839895 15.812770416923286 A 152 152 0 0 1 128.39742299570062 11.321564688461535" fill="transparent" stroke ="hsl(8,85%, 51%)" stroke-width="16" />
+                <path id="__l117" class="piece" d="M119.430897623303 13.5140008999185 A 152 152 0 0 1 136.221961313885 9.871372229539048" fill="transparent" stroke ="hsl(6,85%, 51%)" stroke-width="16" />
+                <path id="__l118" class="piece" d="M127.07527902132425 11.608751105476728 A 152 152 0 0 1 144.11167358331667 8.832671904022448" fill="transparent" stroke ="hsl(4,85%, 51%)" stroke-width="16" />
+                <path id="__l119" class="piece" d="M134.80810933012586 10.102139293193687 A 152 152 0 0 1 152.0449346510726 8.208310717304755" fill="transparent" stroke ="hsl(2,85%, 51%)" stroke-width="16" />
+                <path id="__l120" class="piece" d="M142.60861508837772 8.998212822311956 A 152 152 0 0 1 160.00000000000009 8" fill="transparent" stroke ="hsl(0,85%, 51%)" stroke-width="16" />
+        </svg>
+        </div><!-- inner-canvas -->
+    </div><!-- place holder -->
+</div><!-- container -->
+<!--div>Icons made by
+<a href="http://www.flaticon.com/authors/daniel-bruce"
+title="Daniel Bruce">Daniel Bruce</a> from
+<a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>
+is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"
+title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+</div-->
+</body>
+</html>
+  
+    <script src="js/index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+$opa: rgba(0, 0, 0, 0.8);
+$primary: #2ba163;
+a {
+  text-decoration: none;
+  color: $primary;
+}
+p{font-size: 14px}
+body {
+  font: 10px Roboto;
+  padding: 20px;
+  text-align: center;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 14px;
+  fill: $primary;
+}
+
+.tile {
+  shape-rendering: crispEdges;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: none;
+  shape-rendering: crispEdges;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 12px;
+  font-weight: 700;
+  background: $opa;
+  color: #fff;
+  width: 100px;
+  border-radius: 2px;
+  z-index: 999;
+  text-align: center;
+  font-size: 18px;
+  
+  &:after {
+    /* Creates a small triangle extender for the tooltip */
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: $opa;
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+  }
+  
+  &.n:after {
+    /* Style northward tooltips differently */
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+  }
+}
+.abs-temp {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 5px;
+}
+.real-temp {
+  font-size: 10px;
+  font-weight: 300;
+}
+.legend,.tile {
+  cursor: pointer;
+}

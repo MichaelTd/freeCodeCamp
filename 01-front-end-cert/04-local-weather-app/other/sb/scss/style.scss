@@ -1,0 +1,231 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,300,700);
+@import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+
+$font: 'Josefin Sans';
+@mixin transition($val1,
+$time,
+$animate) {
+  transition: $val1 $time $animate;
+  -webkit-transition: $val1 $time $animate;
+  -moz-transition: $val1 $time $animate;
+  -o-transition: $val1 $time $animate;
+  -ms--transition: $val1 $time $animate;
+}
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin center {
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+$backcolor: #0F1A20;
+$backcolorlight: #334046;
+body {
+  font-family: $font;
+  background: $backcolorlight;
+}
+
+.bck {
+  z-index: -1;
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  @include center;
+  background: radial-gradient(#334046, $backcolor);
+  background: -webkit-radial-gradient(#334046, $backcolor);
+  background: -moz-radial-gradient(#334046, $backcolor);
+  background: -o-radial-gradient(#334046, $backcolor);
+  background: -ms-radial-gradient(#334046, $backcolor);
+}
+
+.container {
+  color: black;
+  @include center;
+  position: absolute;
+  display: block;
+  height: 22em;
+  width: 24em;
+  background: none;
+}
+
+.inner-container {
+  @include center;
+  @include transition (display,
+  1s,
+  linear);
+  overflow:hidden;
+  border-radius: 15px;
+  color: $backcolorlight;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  display: none;
+  font-family: $font;
+}
+
+.city {
+  width: 8em;
+  font-size: 2.4em;
+  position: absolute;
+  top: 0.2em;
+  left: 0.6em;
+  font-weight: 300;
+}
+.close{
+  display:block;
+  float:right;
+  font-size:1.6em;
+  margin-right:0.3em;
+  margin-top:0.2em;
+  &:hover{
+    color:#FB0531;
+  }
+}
+.country {
+  float: left;
+  position: absolute;
+  max-width: 18em;
+  top: 3em;
+  left: 1.6em;
+  font-size: 1em;
+}
+
+.inside-stuff {
+  position: absolute;
+  display: block;
+  top: 4.6em;
+  border-color: #505050;
+  border-top-style: solid;
+  border-width: 5px;
+  width: 90%;
+  height: 16.5em;
+  left: 50%;
+  @include transform(translateX(-50%));
+}
+
+.weather {
+  width:55%;
+  position: relative;
+  margin-top: 0.2em;
+  font-size: 2em;
+}
+
+.weather-icon{
+  height:0.8em;
+  width:1.4em;
+  display:block;
+  position:relative;
+  font-size:7em;
+}
+.weather-icon-container{
+  position:absolute;
+  top:50%;
+  @include transform(translateY(-50%));
+}
+.temperature {
+  display:block;
+  width:55%;
+  float:left;
+  height:1.6em;
+  position:relative;
+  font-size:4em;
+  font-weight:700;
+  
+  & :hover{
+    @include transform(translateY(-50%) scale(1.2));
+    color:$backcolor;
+  }
+  & .temperature-text{
+    @include transition (color, 0.2s, linear);
+    display:block; 
+    width:100%;
+    position:absolute;
+    top:50%;
+    @include transform (translateY(-50%));
+  }
+}
+
+.button {
+  @include transition (background,
+  0.25s,
+  linear);
+  display: block;
+  content: '';
+  color: #FFFFFF;
+  text-align: center;
+  height: 1.3em;
+  width: 1.3em;
+  background: $backcolor;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #FFFFFF;
+  border-radius: 50%;
+  font-size: 6em;
+  position: absolute;
+  @include center;
+  & i {
+    z-index: 11;
+    position: absolute;
+    @include center;
+  }
+  &:hover {
+    @include transform(translate(-50%, -50%) scale(1.1));
+  }
+}
+.open-button{
+  z-index:100;
+  display:none;
+  color:white;
+  font-size:6em;
+  font-weight:300;
+  position:absolute;
+  @include center;
+  @include transition (all, 0.1s, ease-in);
+  &:hover{
+    @include transform(translate(-50%, -50%) scale(1.1));
+    font-weight:400;
+  }
+}
+.button-message {
+  display: block;
+  color: #FFF;
+  text-align: center;
+  height: 3em;
+  width:10em;
+  font-size: 2em;
+  position: absolute;
+  left: 50%;
+  @include transform(translateX(-50%));
+  top: 2em;
+}
+
+.bck {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  @include center;
+}
+
+@keyframes pulse {
+  0% {
+    color: $backcolorlight;
+  }
+  100% {
+    color: #FFF;
+  }
+}
+.animate-pulse {
+  animation: pulse 0.8s ease alternate infinite;
+}

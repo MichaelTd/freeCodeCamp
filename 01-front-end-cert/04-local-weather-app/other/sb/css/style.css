@@ -1,0 +1,290 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,300,700);
+@import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+body {
+  font-family: "Josefin Sans";
+  background: #334046;
+}
+
+.bck {
+  z-index: -1;
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(#334046, #0f1a20);
+  background: -webkit-radial-gradient(#334046, #0F1A20);
+  background: -moz-radial-gradient(#334046, #0F1A20);
+  background: -o-radial-gradient(#334046, #0F1A20);
+  background: -ms-radial-gradient(#334046, #0F1A20);
+}
+
+.container {
+  color: black;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: block;
+  height: 22em;
+  width: 24em;
+  background: none;
+}
+
+.inner-container {
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: display 1s linear;
+  -webkit-transition: display 1s linear;
+  -moz-transition: display 1s linear;
+  -o-transition: display 1s linear;
+  -ms--transition: display 1s linear;
+  overflow: hidden;
+  border-radius: 15px;
+  color: #334046;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  display: none;
+  font-family: "Josefin Sans";
+}
+
+.city {
+  width: 8em;
+  font-size: 2.4em;
+  position: absolute;
+  top: 0.2em;
+  left: 0.6em;
+  font-weight: 300;
+}
+
+.close {
+  display: block;
+  float: right;
+  font-size: 1.6em;
+  margin-right: 0.3em;
+  margin-top: 0.2em;
+}
+.close:hover {
+  color: #FB0531;
+}
+
+.country {
+  float: left;
+  position: absolute;
+  max-width: 18em;
+  top: 3em;
+  left: 1.6em;
+  font-size: 1em;
+}
+
+.inside-stuff {
+  position: absolute;
+  display: block;
+  top: 4.6em;
+  border-color: #505050;
+  border-top-style: solid;
+  border-width: 5px;
+  width: 90%;
+  height: 16.5em;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.weather {
+  width: 55%;
+  position: relative;
+  margin-top: 0.2em;
+  font-size: 2em;
+}
+
+.weather-icon {
+  height: 0.8em;
+  width: 1.4em;
+  display: block;
+  position: relative;
+  font-size: 7em;
+}
+
+.weather-icon-container {
+  position: absolute;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.temperature {
+  display: block;
+  width: 55%;
+  float: left;
+  height: 1.6em;
+  position: relative;
+  font-size: 4em;
+  font-weight: 700;
+}
+.temperature :hover {
+  -moz-transform: translateY(-50%) scale(1.2);
+  -o-transform: translateY(-50%) scale(1.2);
+  -ms-transform: translateY(-50%) scale(1.2);
+  -webkit-transform: translateY(-50%) scale(1.2);
+  transform: translateY(-50%) scale(1.2);
+  color: #0F1A20;
+}
+.temperature .temperature-text {
+  transition: color 0.2s linear;
+  -webkit-transition: color 0.2s linear;
+  -moz-transition: color 0.2s linear;
+  -o-transition: color 0.2s linear;
+  -ms--transition: color 0.2s linear;
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.button {
+  transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
+  -moz-transition: background 0.25s linear;
+  -o-transition: background 0.25s linear;
+  -ms--transition: background 0.25s linear;
+  display: block;
+  content: '';
+  color: #FFFFFF;
+  text-align: center;
+  height: 1.3em;
+  width: 1.3em;
+  background: #0F1A20;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #FFFFFF;
+  border-radius: 50%;
+  font-size: 6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.button i {
+  z-index: 11;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.button:hover {
+  -moz-transform: translate(-50%, -50%) scale(1.1);
+  -o-transform: translate(-50%, -50%) scale(1.1);
+  -ms-transform: translate(-50%, -50%) scale(1.1);
+  -webkit-transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.open-button {
+  z-index: 100;
+  display: none;
+  color: white;
+  font-size: 6em;
+  font-weight: 300;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -ms--transition: all 0.1s ease-in;
+}
+.open-button:hover {
+  -moz-transform: translate(-50%, -50%) scale(1.1);
+  -o-transform: translate(-50%, -50%) scale(1.1);
+  -ms-transform: translate(-50%, -50%) scale(1.1);
+  -webkit-transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1);
+  font-weight: 400;
+}
+
+.button-message {
+  display: block;
+  color: #FFF;
+  text-align: center;
+  height: 3em;
+  width: 10em;
+  font-size: 2em;
+  position: absolute;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 2em;
+}
+
+.bck {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes pulse {
+  0% {
+    color: #334046;
+  }
+  100% {
+    color: #FFF;
+  }
+}
+.animate-pulse {
+  animation: pulse 0.8s ease alternate infinite;
+}

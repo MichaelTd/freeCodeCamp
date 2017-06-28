@@ -1,0 +1,214 @@
+<html lang="en">
+
+  <head>
+
+    <title>Local Weather App</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><!-- jQuery 3.1.1  -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><!-- Latest compiled and minified CSS --><!-- BOOTSTRAP -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Latest compiled and minified JavaScript -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- FONTAWESOME -->
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Bungee+Inline" rel="stylesheet" type="text/css">GOOGLEAPI FONTS -->
+    <!-- Weather Icons
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" rel="stylesheet" type="text/css">  -->
+    <!-- Simple Weather js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+      body {
+        color:white;
+        background-image: url("http://wallpapercave.com/wp/4CaQipY.jpg");
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-position:center;
+        background-size:cover;
+      }
+
+      h1{
+        margin-bottom:4%;
+        margin-top:4%;
+      }
+
+      .container-fluid {
+        min-height: 90vh;
+      }
+
+      .container{
+        max-width: 500px;
+        background:rgba(127,127,127,0.5);
+      }
+
+      footer {
+        background-color: rgba(127,127,127,0.5);
+        min-height: 10vh;
+        padding: 1%;
+        text-align: center;
+        font-family: cursive, sans-serif;
+      }
+
+    </style>
+
+    <script>
+
+      /* var codeToFont = {
+        0:["tornado","wi-tornado"],
+        1:["tropical storm","wi-storm-warning"],
+        2:["hurricane","wi-hurricane"],
+        3:["severe thunderstorms","wi-thunderstorm"],
+        4:["thunderstorms","wi-thunderstorm"],
+        5:["mixed rain and snow","wi-rain-mix"],
+        6:["mixed rain and sleet","wi-rain-mix"],
+        7:["mixed snow and sleet","wi-rain-mix"],
+        8:["freezing drizzle","wi-snowflake-cold"],
+        9:["drizzle","wi-snowflake-cold"],
+        10:["freezing rain","wi-sleet"],
+        11:["showers","wi-showers"],
+        12:["showers","wi-showers"],
+        13:["snow flurries","wi-snow-wind"],
+        14:["light snow showers","wi-snow"],
+        15:["blowing snow","wi-snow-wind"],
+        16:["snow","wi-snow"],
+        17:["hail","wi-hail"],
+        18:["sleet","wi-sleet"],
+        19:["dust","wi-dust"],
+        20:["foggy","wi-fog"],
+        21:["haze","wi-day-haze"],
+        22:["smoky","wi-smoke"],
+        23:["blustery","wi-strong-wind"],
+        24:["windy","wi-windy"],
+        25:["cold","wi-snowflake-cold"],
+        26:["cloudy","wi-cloudy"],
+        27:["mostly cloudy (night)","wi-night-alt-cloudy"],
+        28:["mostly cloudy (day)","wi-day-cloudy"],
+        29:["partly cloudy (night)","wi-night-partly-cloudy"],
+        30:["partly cloudy (day)","wi-day-sunny-overcast"],
+        31:["clear (night)","wi-night-clear"],
+        32:["sunny","wi-day-sunny"],
+        33:["fair (night)","wi-night-clear"],
+        34:["fair (day)","wi-day-sunny"],
+        35:["mixed rain and hail","wi-rain-mix"],
+        36:["hot","wi-hot"],
+        37:["isolated thunderstorms","wi-thunderstorm"],
+        38:["scattered thunderstorms","wi-thunderstorm"],
+        39:["scattered thunderstorms","wi-thunderstorm"],
+        40:["scattered showers","wi-storm-showers"],
+        41:["heavy snow","wi-snow"],
+        42:["scattered snow showers","wi-snow"],
+        43:["heavy snow","wi-snow"],
+        44:["partly cloudy","wi-cloud-refresh"],
+        45:["thundershowers","wi-thunderstorm"],
+        46:["snow showers","wi-showers"],
+        47:["isolated thundershowers","wi-storm-showers"],
+        3200:["not available","wi-na"]
+      }; */
+
+      function loadWeather(location, woeid){
+        $.simpleWeather({
+          location: location,
+          woeid: woeid,
+          unit: 'C',
+          success: function(weather){
+            city = weather.city;
+            temp = weather.temp + '&deg; C';
+            atemp = weather.alt.temp + '&deg; F';
+            //wcode = codeToFont[weather.code][1];
+            wcode = weather.code;
+            //console.log(weather.code)
+            //console.log(codeToFont[weather.code])
+            wind = weather.wind.speed + '&nbsp;' + weather.units.speed;
+            humidity = weather.humidity+' %';
+
+            //wt = weather.thumbnail;
+            wi = weather.image;
+            //$(".thumbnail").attr("src", wt);
+            $(".image").attr("src", wi);
+
+
+            $(".location").html(city);
+            $(".temperature").html(temp + ' - ' + atemp);
+            //$(".icon").addClass(wcode);
+            //$(".weather-desc").html(codeToFont[weather.code][0]);
+            $(".windspeed").html(wind);
+            $(".humidity").html(humidity);
+          },
+          error: function(error){
+            $(".error-title").html('<p>Error report</p>');
+            $(".error").html('<p>' + error + '</p>');
+          }
+        });
+      }
+
+      var jqxhr = $.getJSON("http://ip-api.com/json", function() {
+      })
+      .done(function(data) {
+       loadWeather(data.lat + ',' + data.lon);
+      })
+
+    </script>
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+
+    <h1 class="text-center">Local Weather App</h1>
+
+    <div class="container">
+      <div>
+        <div class="row">
+          <div class="col-sm-6"><h4>Location:</h4></div>
+          <div class="col-sm-6"><h4 class="location"></h4></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6"><h4>Temp:</h4></div>
+          <div class="col-sm-6"><h4 class="temperature"></h4></div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-sm-6">Weather:</div>
+          <div class="col-sm-6 weather-icon"><i class="icon wi" style="font-size:1em;"></i></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">Description:</div>
+          <div class="col-sm-6 weather-desc"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">Thumbnail:</div>
+          <div class="col-sm-6"><img class="thumbnail" src=""></img></div>
+        </div> -->
+        <div class="row">
+          <div class="col-sm-6"><h4>Weather:</h4></div>
+          <div class="col-sm-6"><img class="image" src=""></img></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6"><h4>Wind:</h4></div>
+          <div class="col-sm-6"><h4 class="windspeed"></h4></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6"><h4>Humidity:</h4></div>
+          <div class="col-sm-6"><h4 class="humidity"></h4></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6"><h4 class="error-title"></h4></div>
+          <div class="col-sm-6"><h4 class="error"></h4></div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <footer>
+      <p>
+        <a href="https://www.minds.com/michaeltsouchlarakis" target="_blank">TDM</a>
+        <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>
+        <a href="https://www.freecodecamp.com/michaeltd/" target='_blank'><i class="fa fa-free-code-camp fa-fw"></i></a>
+      </p>
+    </footer>
+  </body>
+</html>

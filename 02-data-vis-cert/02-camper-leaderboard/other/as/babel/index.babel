@@ -1,0 +1,99 @@
+class Table extends React.Component {
+	constructor() {
+		super();
+		this.createCamper = this.createCamper.bind(this);
+	}
+	getDefaultProps () {
+		return { data: [] }
+	}
+	
+	createCamper (item, index) {
+		if (this.props.option == 'recent') {
+			return (
+				<div className='user-single'>
+					<span>{index + 1}</span>
+					<a href={'https://www.freecodecamp.com/' + item.username} target='_blank'><img src={item.img} /><span>{item.username}</span></a>
+					<span>{item.recent}</span>
+				</div>
+			)			
+		} else {
+			return (
+				<div className='user-single'>
+					<span>{index + 1}</span>
+					<a href={'https://www.freecodecamp.com/' + item.username} target='_blank'><img src={item.img} /><span>{item.username}</span></a>
+					<span>{item.alltime}</span>
+				</div>
+			)				
+		}
+
+	}
+	
+    render () {
+		return (
+			<div>		
+				<div className='thead'>
+					<span>#</span>
+					<span>Camper</span>
+					<span>Points</span>
+				</div>
+				{ this.props.data.map(this.createCamper)}
+			</div>
+			
+		);
+	}
+};
+
+class Application extends React.Component {
+	constructor () {
+		super();
+		this.state = {
+			users: []
+		}
+	}
+
+	componentDidMount () {
+        this.serverRequest = $.get('https://fcctop100.herokuapp.com/api/fccusers/top/alltime', function (result) {
+        	this.setState({
+        		users: result,
+				order: '',
+      		});
+    	}.bind(this));
+  	}
+
+	sortCampers (e)  {
+		if (e.target.value == 'recent') {
+			this.setState({
+				users: this.state.users.sort((a, b) => { return a.recent - b.recent }).reverse(),
+				order: 'recent'
+			});
+			return;
+		}
+			this.setState({
+				users: this.state.users.sort((a, b) => { return a.alltime - b.alltime }).reverse(),
+				order: 'all-time'
+			});
+	}
+	
+	render() {		
+		return (
+			<div>
+				<header> 
+					<img src="https://s3.amazonaws.com/freecodecamp/freecodecamp_logo.svg"/>
+					<div>Camper Leaderboard</div>
+				</header>
+				
+				<div className='content-wrapper'>
+					<label>Sort By:</label>
+					<select onChange={this.sortCampers.bind(this)}>
+						<option value='allTime'>All time points</option>
+						<option value='recent'>Points in the last 30 days</option>
+					</select>
+					<Table option={this.state.order} data={this.state.users}/>		
+				</div>
+
+			</div>
+		)
+	}
+}
+
+React.render(<Application />, document.getElementById('app'));
