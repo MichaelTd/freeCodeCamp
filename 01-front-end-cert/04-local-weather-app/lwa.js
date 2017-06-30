@@ -34,7 +34,7 @@ function togglestyle(el){
 }
 
 // The ip-api is dead Long live the ipinfo.io
-//$.getJSON("http://ip-api.com/json",function(){}) 
+//$.getJSON("http://ip-api.com/json",function(){})
 //.done(function(data) {
 //  loadWeather(data.lat + ',' + data.lon);
 //})
@@ -52,9 +52,9 @@ $.getJSON("https://ipinfo.io/json",function(){})
 		lat = sLoc[0];
 		lon = sLoc[1];
 		loadWeather(lat + ',' + lon);
-})
-.fail(function(error){
-  $(".error-title").html('<p>jQuery Error:</p>');
-  $(".error").html('<p>' + error + '</p>');
-  console.log("ipinfo.io error", error)
-})
+  })
+  .fail(function(error){
+    $(".error-title").html('<p>jQuery Error:</p>');
+    $(".error").html('<p>' + error + '</p>');
+    console.log("ipinfo.io error", error)
+  })

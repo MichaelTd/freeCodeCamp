@@ -1,4 +1,3 @@
-
 new Vue({
   el: '#editor',
   data: {
@@ -10,7 +9,7 @@ new Vue({
     }
   },
   methods: {
-    update: _.debounce(function (e) {
+    update: _.debounce(function(e) {
       this.input = e.target.value
     }, 300)
   }
