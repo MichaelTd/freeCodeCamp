@@ -1,3 +1,5 @@
+var mdURI = 'https://cdn.rawgit.com/chjj/marked/master/README.md';
+
 new Vue({
   el: '#editor',
   data: {
@@ -14,3 +16,13 @@ new Vue({
     }, 300)
   }
 });
+
+/*
+$.getJSON(mdURI,function(){})
+  .done(function(data) {
+	  $(textarea).text(data.responseText);
+  })
+  .fail(function(error){
+    console.log(error)
+  })
+*/
