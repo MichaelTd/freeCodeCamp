@@ -1,4 +1,4 @@
-# JavaScript
+## JavaScript
 
 ### [W3 Schools](http://www.w3schools.com/js/)
 ### [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -10,6 +10,6 @@
 ## [React.js](https://facebook.github.io/react/)
 ### [React Tutorial](https://facebook.github.io/react/tutorial/tutorial.html)
 
-## [Node.js]()
+## [Node.js](https://nodejs.org/)
 
-# [Markdown Cheatsheet](./markdown-cheatsheet.md)
+## [Markdown Cheatsheet](markdown-cheatsheet.md)
