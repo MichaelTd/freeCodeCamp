@@ -28,7 +28,7 @@ app.get("/dateValues/:dVal", function(req,res,next){
     day: 'numeric'
   };
 
-  // If no params pased
+  // If no params passed
   if(isNaN(dateVal)){
     var naturalDate = new Date(dateVal);
     naturalDate = naturalDate.toLocaleDateString('en-us', dateFormattingOptions);
