@@ -1,0 +1,25 @@
+{
+  "name": "02-camper-leaderboard",
+  "version": "1.0.0",
+  "description": "fcc data vis challenge #2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MichaelTd/freeCodeCamp/tree/master/02-data-vis-cert/02-camper-leaderboard/"
+  },
+  "keywords": [
+    "camper",
+    "leaderboard",
+    "freeCodeCamp",
+    "fcc",
+    "dataVisChallenges"
+  ],
+  "author": "tsouchlarakis@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.6.1"
+  }
+}
