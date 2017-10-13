@@ -1,5 +1,7 @@
 #### freeCodeCamp Challenges
 
+[freeCodeCamp](https://www.freecodecamp.org/) [Syllabus](https://www.freecodecamp.org/map) [Account](https://www.freecodecamp.org/michaeltd)
+
 1. #### [User Interface](./01-front-end-cert/)
   * ###### Build a Tribute Page [fcc](https://www.freecodecamp.org/challenges/build-a-tribute-page) [Source](./01-front-end-cert/01-tribute-page/) [Demo](https://codepen.io/TdMichael/full/jVGGoX)
   * ###### Build a Personal Portfolio Webpage [fcc](https://www.freecodecamp.org/challenges/build-a-personal-portfolio-webpage) [Source](./01-front-end-cert/02-personal-portfolio-page/) [Demo](https://codepen.io/TdMichael/full/pNdVbg)
@@ -34,7 +36,3 @@
   * ###### Chart the Stock Market [fcc](https://www.freecodecamp.org/challenges/chart-the-stock-market) [Source](./03-back-end-cert/08-chart-stock-market/) [Demo]()
   * ###### Manage a Book Trading Club [fcc](https://www.freecodecamp.org/challenges/manage-a-book-trading-club) [Source](./03-back-end-cert/09-book-trading-club/) [Demo]()
   * ###### Build a Pinterest Clone [fcc](https://www.freecodecamp.org/challenges/build-a-pinterest-clone) [Source](./03-back-end-cert/10-pinterest-clone/) [Demo]()
-
-#### [freeCodeCamp](https://www.freecodecamp.org/)
-#### [Syllabus](https://www.freecodecamp.org/map)
-#### [Account](https://www.freecodecamp.org/michaeltd)
