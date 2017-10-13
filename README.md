@@ -36,5 +36,5 @@
   * ###### Build a Pinterest Clone [fcc](https://www.freecodecamp.org/challenges/build-a-pinterest-clone) [Source](./03-back-end-cert/10-pinterest-clone/) [Demo]()
 
 #### [freeCodeCamp](https://www.freecodecamp.org/)
-#### [freeCodeCamp syllabus](https://www.freecodecamp.org/map)
-#### [freeCodeCamp account](https://www.freecodecamp.org/michaeltd)
+#### [Syllabus](https://www.freecodecamp.org/map)
+#### [Account](https://www.freecodecamp.org/michaeltd)
