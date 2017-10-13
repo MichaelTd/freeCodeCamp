@@ -12,10 +12,12 @@ header {
   background: #006400;
   color: #fff;
 }
+
 header img {
   margin-left: 15px;
   width: 260px;
 }
+
 header div {
   font-size: 25px;
   margin-top: 5px;
@@ -44,6 +46,7 @@ select {
   background-size: 36px;
   background-position: 145px -5px;
 }
+
 select:hover {
   cursor: pointer;
 }
@@ -59,10 +62,12 @@ select:hover {
   padding-bottom: 10px;
   border-bottom: 1px solid black;
 }
+
 .thead span:first-child {
   padding: 23px;
   padding-right: 17px;
 }
+
 .thead span:nth-child(3) {
   float: right;
 }
@@ -78,6 +83,7 @@ select:hover {
   padding: 10px;
   padding-bottom: 4px;
 }
+
 .user-single span:nth-child(3), .user-single span:nth-child(4) {
   position: relative;
   left: -12px;
@@ -85,6 +91,7 @@ select:hover {
   margin-right: 20px;
   float: right;
 }
+
 .user-single span:nth-child(1) {
   margin: 0 20px 0 10px;
   font-size: 24px;
@@ -92,14 +99,17 @@ select:hover {
   font-weight: bold;
   top: -11px;
 }
+
 .user-single a {
   color: #666666;
   font-weight: bold;
 }
+
 .user-single a img {
   width: 42px;
   border-radius: 4px;
 }
+
 .user-single a span {
   position: relative;
   top: -16px;
