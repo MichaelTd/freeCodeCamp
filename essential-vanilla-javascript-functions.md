@@ -8,20 +8,20 @@
     - [`array_merge()`](#array_merge) - Merge two arrays
     - [`array_chunk()`](#array_chunk) - Splits an array into chunks of arrays
     - [`array_collapse()`](#array_collapse) - Collapses a collection of arrays into a single, flat array
-    - [`array_diff()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#array_diff) - Returns the values in the array1 that are not present in array2
-    - [`array_intersect()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#array_intersect) - Returns the values common in the two supplied arrays
-    - [`array_map()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#array_map) - Sends each value of an array to a user-made function, which returns new values
-    - [`array_reject()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#array_reject) - Filters the array using the given callback. The callback should return true if the item should be removed from the resulting array
-    - [`array_split()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#array_split) - Breaks an array into the given number of groups
-    - [`array_take()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#array_take) - Returns a new array with the specified number of items
-    - [`array_pad()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#array_pad) - Inserts a specified number of items, with a specified value, to an array
-    - [`range()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#range) - Creates an array containing a range of elements
+    - [`array_diff()`](#array_diff) - Returns the values in the array1 that are not present in array2
+    - [`array_intersect()`](#array_intersect) - Returns the values common in the two supplied arrays
+    - [`array_map()`](#array_map) - Sends each value of an array to a user-made function, which returns new values
+    - [`array_reject()`](#array_reject) - Filters the array using the given callback. The callback should return true if the item should be removed from the resulting array
+    - [`array_split()`](#array_split) - Breaks an array into the given number of groups
+    - [`array_take()`](#array_take) - Returns a new array with the specified number of items
+    - [`array_pad()`](#array_pad) - Inserts a specified number of items, with a specified value, to an array
+    - [`range()`](#range) - Creates an array containing a range of elements
 
 - String
-    - [`chunk_split()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#chunk_split) - Splits a string into a series of smaller parts
-    - [`str_pad()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#str_pad) - Pads a string to a new length
-    - [`strrev()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#strrev) - Reverses a string
-    - [`similar_text()`](https://github.com/amitmerchant1990/vanilla-javascript-functions#similar_text) - Calculates the similarity between two strings
+    - [`chunk_split()`](#chunk_split) - Splits a string into a series of smaller parts
+    - [`str_pad()`](#str_pad) - Pads a string to a new length
+    - [`strrev()`](#strrev) - Reverses a string
+    - [`similar_text()`](#similar_text) - Calculates the similarity between two strings
 
 ## `array_unique()`
 > Remove duplicates from an array
