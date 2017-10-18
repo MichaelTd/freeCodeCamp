@@ -8,45 +8,53 @@ body {
   font-family: "Play", sans-serif;
   font-size: 2.2em;
 }
-body .nopadding {
+
+.nopadding {
   padding: 0;
 }
-body .navbar-brand {
+
+.navbar-brand {
   font-size: 1em;
 }
-body .home {
+
+.home {
   min-height: 100vh;
   height: auto !important;
 }
-body .sect {
+
+.sect {
   padding-top: 8vh;
 }
-body .sect .githublogo {
-  height: 1em;
-}
-body .sect h2 {
+
+h2 {
   text-align: center;
   font-weight: bold;
 }
-body .sect #output {
+
+#output {
   text-align: center;
   width: 100%;
   height: auto !important;
 }
-body .sect #output p {
+
+p {
   color: #ff0000;
 }
-body .sect #output .cllps-toggler {
+
+.cllps-toggler {
   display: block;
 }
-body .sect #output a {
+
+a {
   text-decoration: none;
 }
-body .sect .credits {
+
+a:hover {
+  text-decoration: none;
+}
+
+.credits {
   display: block;
   text-align: center;
   font-size: 0.75em;
-}
-body .sect .credits a:hover {
-  text-decoration: none;
 }
