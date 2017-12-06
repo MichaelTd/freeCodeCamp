@@ -1,23 +1,10 @@
-## [freeCodeCamp: Learn to code and help nonprofits](https://www.freecodecamp.com/)
-
-### [freeCodeCamp Challenges](http://codepen.io/TdMichael/)
-
-#### [01-tribute-page](http://codepen.io/TdMichael/full/jVGGoX/) [README.md](01-tribute-page/README.md)
-
-#### [02-personal-portfolio-page](http://codepen.io/TdMichael/full/pNdVbg/) [README.md](02-personal-portfolio-page/README.md)
-
-#### [03-random-quote-machine](http://codepen.io/TdMichael/full/pRGVWw/) [README.md](03-random-quote-machine/README.md)
-
-#### [04-local-weather-app](http://codepen.io/TdMichael/full/oYKBEy/) [README.md](04-local-weather-app/README.md)
-
-#### [05-wikipedia-viewer](http://codepen.io/TdMichael/full/ZBgMZq/) [README.md](05-wikipedia-viewer/README.md)
-
-#### [06-twitch.tv-json-api](http://codepen.io/TdMichael/full/pRWbew/) [README.md](06-twitch.tv-json-api/README.md)
-
-#### [07-javascript-calculator](http://codepen.io/TdMichael/full/gLerPy/) [README.md](07-javascript-calculator/README.md)
-
-#### [08-pomodoro-clock](http://codepen.io/TdMichael/full/EZwKev/) [README.md](08-pomodoro-clock/README.md)
-
-#### [09-tic-tac-toe](http://codepen.io/TdMichael/full/wgrGOv/) [README.md](09-tic-tac-toe/README.md)
-
-#### [10-simon-game](https://codepen.io/TdMichael/full/jyGrry) [README.md](10-simon-game/README.md)
+* ###### Build a Tribute Page [fcc](https://www.freecodecamp.org/challenges/build-a-tribute-page) [Source](01-tribute-page/) [Demo](https://codepen.io/TdMichael/full/jVGGoX)
+* ###### Build a Personal Portfolio Webpage [fcc](https://www.freecodecamp.org/challenges/build-a-personal-portfolio-webpage) [Source](02-personal-portfolio-page/) [Demo](https://codepen.io/TdMichael/full/pNdVbg)
+* ###### Build a Random Quote Machine [fcc](https://www.freecodecamp.org/challenges/build-a-random-quote-machine) [Source](03-random-quote-machine/) [Demo](https://codepen.io/TdMichael/full/pRGVWw)
+* ###### Show the Local Weather [fcc](https://www.freecodecamp.org/challenges/show-the-local-weather) [Source](04-local-weather-app/) [Demo](https://codepen.io/TdMichael/full/oYKBEy)
+* ###### Build a Wikipedia Viewer [fcc](https://www.freecodecamp.org/challenges/build-a-wikipedia-viewer) [Source](05-wikipedia-viewer/) [Demo](https://codepen.io/TdMichael/full/ZBgMZq)
+* ###### Use the Twitchtv JSON API [fcc](https://www.freecodecamp.org/challenges/use-the-twitchtv-json-api) [Source](06-twitch.tv-json-api/) [Demo](https://codepen.io/TdMichael/full/pRWbew)
+* ###### Build a JavaScript Calculator [fcc](https://www.freecodecamp.org/challenges/build-a-javascript-calculator) [Source](07-javascript-calculator/) [Demo](https://codepen.io/TdMichael/full/gLerPy)
+* ###### Build a Pomodoro Clock [fcc](https://www.freecodecamp.org/challenges/build-a-pomodoro-clock) [Source](08-pomodoro-clock/) [Demo](https://codepen.io/TdMichael/full/EZwKev)
+* ###### Build a Tic Tac Toe Game [fcc](https://www.freecodecamp.org/challenges/build-a-tic-tac-toe-game) [Source](09-tic-tac-toe/) [Demo](https://codepen.io/TdMichael/full/wgrGOv)
+* ###### Build a Simon Game [fcc](https://www.freecodecamp.org/challenges/build-a-simon-game) [Source](10-simon-game/) [Demo](https://codepen.io/TdMichael/full/jyGrry)
