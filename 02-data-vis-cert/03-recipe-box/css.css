@@ -1,12 +1,21 @@
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 @import url("https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css");
 @import url("https://fonts.googleapis.com/css?family=Play&effect=neon");
 
 body {
+  background-image:url("https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center;
+  background-size:cover;
   color: #000000;
   font-family: "Play", sans-serif;
   font-size: 2.2em;
+}
+
+.film{
+  background:rgba(127,127,127,0.5);
 }
 
 .nopadding {
@@ -31,7 +40,7 @@ h2 {
   font-weight: bold;
 }
 
-#output {
+#app {
   text-align: center;
   width: 100%;
   height: auto !important;

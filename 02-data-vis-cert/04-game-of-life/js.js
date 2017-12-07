@@ -1,22 +1,20 @@
 'use strict';
 
 function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
+  if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
-  }
 }
 
 function _possibleConstructorReturn(self, call) {
-  if (!self) {
+  if (!self)
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
+  if (typeof superClass !== "function" && superClass !== null)
     throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }
+
   subClass.prototype = Object.create(superClass && superClass.prototype, {
     constructor: { value: subClass, enumerable: false, writable: true, configurable: true }
   });
@@ -39,14 +37,8 @@ var App = function (_React$Component) {
     for (var i = 0; i < size; i++) {
       arr.push(Math.round(Math.random()));
     }
-    _this.state = {
-      count: -1,
-      board: arr,
-      width: w,
-      height: h,
-      speed: 1,
-      play: true
-    };
+
+    _this.state = {count: -1,board: arr,width: w,height: h,speed: 1,play: true};
     _this.togglePlay = _this.togglePlay.bind(_this);
     _this.clearBoard = _this.clearBoard.bind(_this);
     _this.randomBoard = _this.randomBoard.bind(_this);
@@ -54,13 +46,14 @@ var App = function (_React$Component) {
     _this.slowDown = _this.slowDown.bind(_this);
     _this.makeBigger = _this.makeBigger.bind(_this);
     _this.makeSmaller = _this.makeSmaller.bind(_this);
-    return _this;
-  }
-  //there is probably a better way to do this
 
+    return _this;
+
+  }
+
+  //there is probably a better way to do this
   App.prototype.clearBoard = function clearBoard() {
-    var size = this.state.width * this.state.height,
-        arr = [];
+    var size = this.state.width * this.state.height, arr = [];
     for (var i = 0; i < size; i++) {
       arr.push(0);
     }
@@ -68,8 +61,7 @@ var App = function (_React$Component) {
   };
 
   App.prototype.randomBoard = function randomBoard() {
-    var size = this.state.width * this.state.height,
-        arr = [];
+    var size = this.state.width * this.state.height, arr = [];
     for (var i = 0; i < size; i++) {
       arr.push(Math.round(Math.random()));
     }
