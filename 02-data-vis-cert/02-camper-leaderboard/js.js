@@ -1,218 +1,134 @@
 "use strict";
 
+const dt = new Date();
+const year = dt.getFullYear();
+
 function _classCallCheck(instance, Constructor) {
-	if (!(instance instanceof Constructor)) {
-		throw new TypeError("Cannot call a class as a function");
-	}
+  if (!(instance instanceof Constructor)){
+    throw new TypeError("Cannot call a class as a function");}
 }
-/*
+
 function _possibleConstructorReturn(self, call) {
-	if (!self) {
-		throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	}
-	return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  if (!self){
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
-*/
+
 function _inherits(subClass, superClass) {
-	if (typeof superClass !== "function" && superClass !== null) {
-		throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	}
+  if (typeof superClass !== "function" && superClass !== null){
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}
 
-	subClass.prototype = Object.create(superClass && superClass.prototype, {
-		constructor: { value: subClass, enumerable: false, writable: true, configurable: true }
-	});
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {value:subClass,enumerable:false,writable:true,configurable:true}});
 
-	if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
-var Table = function (_React$Component) {
-	_inherits(Table, _React$Component);
+var UserList = function (_React$ComponentUL) {
+  _inherits(UserList, _React$ComponentUL);
 
-	function Table() {
-		_classCallCheck(this, Table);
+  function UserList() {
+    _classCallCheck(this, UserList);
+    return _possibleConstructorReturn(this, _React$ComponentUL.apply(this, arguments));
+  }
 
-		var _this = _possibleConstructorReturn(this, _React$Component.call(this));
+  UserList.prototype.render = function render() {
+    return React.createElement(
+      "tbody",null,this.props.data.map(function (value, index) {
+        return React.createElement(User, { data: value, index: index + 1 });
+      })
+    );
+  };
 
-		_this.createCamper = _this.createCamper.bind(_this);
-		return _this;
-	}
-
-	Table.prototype.getDefaultProps = function getDefaultProps() {
-		return { data: [] };
-	};
-
-	Table.prototype.createCamper = function createCamper(item, index) {
-		if (this.props.option == 'recent') {
-			return React.createElement(
-				'div',
-				{ className: 'user-single' },
-				React.createElement(
-					'span',
-					null,
-					index + 1
-				),
-				React.createElement(
-					'a',
-					//{ href: 'https://www.freecodecamp.com/' + item.username, target: '_blank' },
-					{ href: 'https://www.freecodecamp.com/' + item.username },
-					React.createElement('img', { src: item.img }),
-					React.createElement(
-						'span',
-						null,
-						item.username
-					)
-				),
-				React.createElement(
-					'span',
-					null,
-					item.recent
-				)
-			);
-		} else {
-			return React.createElement(
-				'div',
-				{ className: 'user-single' },
-				React.createElement(
-					'span',
-					null,
-					index + 1
-				),
-				React.createElement(
-					'a',
-					//{ href: 'https://www.freecodecamp.com/' + item.username, target: '_blank' },
-					{ href: 'https://www.freecodecamp.com/' + item.username },
-					React.createElement('img', { src: item.img }),
-					React.createElement(
-						'span',
-						null,
-						item.username
-					)
-				),
-				React.createElement(
-					'span',
-					null,
-					item.alltime
-				)
-			);
-		}
-	};
-
-	Table.prototype.render = function render() {
-		return React.createElement(
-			'div',
-			null,
-			React.createElement(
-				'div',
-				{ className: 'thead' },
-				React.createElement(
-					'span',
-					null,
-					'#'
-				),
-				React.createElement(
-					'span',
-					null,
-					'Camper'
-				),
-				React.createElement(
-					'span',
-					null,
-					'Points'
-				)
-			),
-			this.props.data.map(this.createCamper)
-		);
-	};
-
-	return Table;
+  return UserList;
 }(React.Component);
 
-;
+var User = function (_React$ComponentUser) {
 
-var Application = function (_React$Component2) {
-	_inherits(Application, _React$Component2);
+  _inherits(User, _React$ComponentUser);
 
-	function Application() {
-		_classCallCheck(this, Application);
+  function User() {
+    _classCallCheck(this, User);
+    return _possibleConstructorReturn(this, _React$ComponentUser.apply(this, arguments));
+  }
 
-		var _this2 = _possibleConstructorReturn(this, _React$Component2.call(this));
+  User.prototype.render = function render() {
+    return React.createElement("tr",null,
+      React.createElement("td",{ className: "index vert-align" },this.props.index),
+      React.createElement("td",null,
+      React.createElement(Avatar, { img: this.props.data.img, username: this.props.data.username })),
+      React.createElement("td",{ className: "vert-align" },this.props.data.recent),
+      React.createElement("td",{ className: "vert-align" },this.props.data.alltime));
+  };
 
-		_this2.state = {
-			users: []
-		};
-		return _this2;
-	}
-
-	Application.prototype.componentDidMount = function componentDidMount() {
-		this.serverRequest = $.get('https://fcctop100.herokuapp.com/api/fccusers/top/alltime', function (result) {
-			this.setState({
-				users: result,
-				order: ''
-			});
-		}.bind(this));
-	};
-
-	Application.prototype.sortCampers = function sortCampers(e) {
-		if (e.target.value == 'recent') {
-			this.setState({
-				users: this.state.users.sort(function (a, b) {
-					return a.recent - b.recent;
-				}).reverse(),
-				order: 'recent'
-			});
-			return;
-		}
-		this.setState({
-			users: this.state.users.sort(function (a, b) {
-				return a.alltime - b.alltime;
-			}).reverse(),
-			order: 'all-time'
-		});
-	};
-
-	Application.prototype.render = function render() {
-		return React.createElement(
-			'div',
-			null,
-			React.createElement(
-				'header',
-				null,
-				React.createElement('img', { src: 'https://s3.amazonaws.com/freecodecamp/freecodecamp_logo.svg' }),
-				React.createElement(
-					'div',
-					null,
-					'Camper Leaderboard'
-				)
-			),
-			React.createElement(
-				'div',
-				{ className: 'content-wrapper' },
-				React.createElement(
-					'label',
-					null,
-					'Sort By:'
-				),
-				React.createElement(
-					'select',
-					{ onChange: this.sortCampers.bind(this) },
-					React.createElement(
-						'option',
-						{ value: 'allTime' },
-						'All time points'
-					),
-					React.createElement(
-						'option',
-						{ value: 'recent' },
-						'Points in the last 30 days'
-					)
-				),
-				React.createElement(Table, { option: this.state.order, data: this.state.users })
-			)
-		);
-	};
-
-	return Application;
+  return User;
 }(React.Component);
 
-React.render(React.createElement(Application, null), document.getElementById('app'));
+var Avatar = function (_React$ComponentAvatar) {
+  _inherits(Avatar, _React$ComponentAvatar);
+
+  function Avatar() {
+    _classCallCheck(this, Avatar);
+    return _possibleConstructorReturn(this, _React$ComponentAvatar.apply(this, arguments));
+  }
+
+  Avatar.prototype.render = function render() {
+    return React.createElement("div",{ className: "avatar" },
+      React.createElement("img", { className: "img-responsive img-rounded", src: this.props.img }),
+      React.createElement("a",{ className: "username", href: "https://freecodecamp.com/" + this.props.username},this.props.username));
+  };
+  return Avatar;
+}(React.Component);
+
+var Footer = function Footer() {
+  return React.createElement("footer",null,
+    React.createElement("div",{className: "container-footer"},
+    React.createElement("p",{className: "coder"}),
+    React.createElement("a",{href:"https://www.freecodecamp.org/MichaelTd/"},
+    React.createElement("i",{className:"fa fa-free-code-camp fa-1x"}, " ", " tdm ", year))));
+};
+
+var lb = function (_React$ComponentLb) {
+  _inherits(lb, _React$ComponentLb);
+
+  function lb() {
+    _classCallCheck(this, lb);
+    var _this = _possibleConstructorReturn(this, _React$ComponentLb.call(this));
+    _this.state = {userDataRecent:[],userDataAlltime:[],selected:"recent"};
+    return _this;
+  }
+
+  lb.prototype.componentDidMount = function componentDidMount() {
+    $.get("https://fcctop100.herokuapp.com/api/fccusers/top/recent", function (data) {this.setState({ userDataRecent: data });}.bind(this));
+    $.get("https://fcctop100.herokuapp.com/api/fccusers/top/alltime", function (data) {this.setState({ userDataAlltime: data });}.bind(this));
+  };
+
+  lb.prototype.changeSelectedRecent = function changeSelectedRecent(){
+    this.setState({selected:"recent"});};
+
+  lb.prototype.changeSelectedAlltime = function changeSelectedAlltime(){
+    this.setState({selected:"alltime"});};
+
+  lb.prototype.render = function render() {
+    return React.createElement("div",{className:"container"},
+      React.createElement("h1",{className:"text-center title"},
+      React.createElement("i",{className:"fa fa-free-code-camp"}),"Camper Leaderboard"),
+      React.createElement("table",{className:"table table-responsive table-striped leaderboard"},
+      React.createElement("thead",null,
+      React.createElement("tr",null,
+      React.createElement("th",null,"#"),
+      React.createElement("th",null,"Camper Name"),
+      React.createElement("th",{onClick: this.changeSelectedRecent.bind(this)},"Points in past 30 days",
+      React.createElement("i",{className: this.state.selected === "recent"?"fa fa-arrow-down":""})),
+      React.createElement("th",{onClick: this.changeSelectedAlltime.bind(this)},"All time points",
+      React.createElement("i",{className: this.state.selected === "alltime"?"fa fa-arrow-down":"" })))),
+      React.createElement(UserList,{ data: this.state.selected === "recent"?this.state.userDataRecent : this.state.userDataAlltime})),
+      React.createElement("hr",null),
+      React.createElement(Footer,null));
+  };
+
+  return lb;
+}(React.Component);
+
+ReactDOM.render(React.createElement(lb, null), document.getElementById("app"));

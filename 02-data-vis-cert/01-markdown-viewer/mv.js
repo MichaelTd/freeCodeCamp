@@ -1,20 +1,3 @@
-/*
-var mdURI = 'https://cdn.rawgit.com/chjj/marked/master/README.md';
-
-var mdTXT = "";
-
-$.getJSON(mdURI,function(){})
-  .done(function(data) {
-	  //$(textarea).text(data.responseText);
-    mdTXT = data.responseText;
-    //Vue.data.input = data.responseText;
-    //Vue.updata();
-  })
-  .fail(function(error){
-    console.log(error);
-  })
-*/
-
 new Vue({
   el: '#editor',
   data: {
