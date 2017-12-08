@@ -8,7 +8,7 @@
 }
 
 footer {
-  background-color: rgba(127,127,127,0.5);
+  background-color: rgba(127,127,127,0.75);
   min-height: 10vh;
   padding: 1%;
   text-align: center;
@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  background: url("http://www.wallpapers.net/web/wallpapers/colourful-abstract-rainbow/1920x1080.jpg") no-repeat center center fixed;
+  background: url("https://images.unsplash.com/photo-1486475554424-2fa50cd59f18?dpr=1&auto=format&fit=crop&w=568&h=379&q=60&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D") no-repeat center center fixed;
   background-size: cover;
   color:white;
   margin: 0;
@@ -301,9 +301,8 @@ body {
 
 .box {
   color:#333333;
-  background-color: rgba(127,127,127,0.5);
+  background-color: rgba(127,127,127,0.75);
   box-shadow: 0 0 60px black;
   border:solid #333333;
   border-radius: 10px;
 }
-
