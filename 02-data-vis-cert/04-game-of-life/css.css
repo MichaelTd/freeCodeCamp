@@ -1,7 +1,7 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 body {
-  background-image:url("https://images.unsplash.com/photo-1506268919522-a927511962a9?dpr=1&auto=format&fit=crop&w=1600&h=500&q=60&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
+  background-image:url("https://images.unsplash.com/photo-1504179175816-14bdcc59eec2?dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
   background-repeat:no-repeat;
   background-attachment:fixed;
   background-position:center;
@@ -10,7 +10,7 @@ body {
 }
 
 .app-contain {
-  background:rgba(127,127,127,0.5);
+  /*background:rgba(127,127,127,0.5);*/
   box-sizing: border-box;
   display: inline-block;
   min-width: 50%;
@@ -21,7 +21,7 @@ body {
   font-family: sans-serif;
   font-size: 8px;
   display: inline-block;
-  color: #000000;
+  color: #ffffff;
   margin: 0;
   margin-top: 5px;
   margin-right: 20px;
@@ -42,7 +42,7 @@ body {
   width: 24px;
   height: 20px;
   display: inline-block;
-  color: #000000;
+  color: #ffffff;
   position: relative;
 }
 
