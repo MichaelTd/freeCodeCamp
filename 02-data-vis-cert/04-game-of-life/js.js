@@ -191,14 +191,14 @@ var LifeBoard = function (_React$ComponentLB) {
           next.unshift(0); //dead
         } else if (nCount < 4) {
             next.unshift(1); //alive
-          } else {
-              next.unshift(0); //dead
-            }
-      } else if (nCount == 3) {
-          next.unshift(1); //alive
         } else {
-            next.unshift(0); //dead
-          }
+          next.unshift(0); //dead
+        }
+      } else if (nCount == 3) {
+        next.unshift(1); //alive
+      } else {
+        next.unshift(0); //dead
+      }
     }
     this.timer = false;
     this.props.app.setState({ board: next, count: this.props.app.state.count + 1 });
