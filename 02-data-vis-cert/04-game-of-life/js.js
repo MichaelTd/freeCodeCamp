@@ -22,13 +22,13 @@ function _inherits(subClass, superClass) {
   if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
-var App = function (_React$Component) {
-  _inherits(App, _React$Component);
+var App = function (_React$ComponentApp) {
+  _inherits(App, _React$ComponentApp);
 
   function App() {
     _classCallCheck(this, App);
 
-    var _this = _possibleConstructorReturn(this, _React$Component.call(this));
+    var _this = _possibleConstructorReturn(this, _React$ComponentApp.call(this));
 
     var w = 90,
         h = 90,
@@ -105,9 +105,7 @@ var App = function (_React$Component) {
   };
 
   App.prototype.render = function render() {
-    return React.createElement(
-      'div',
-      { className: 'app-contain' },
+    return React.createElement('div',{ className: 'app-contain' },
       React.createElement(LifeBoard, { app: this }),
       React.createElement(Btn, { icon: 'random', name: 'RANDOM', click: this.randomBoard }),
       React.createElement(Btn, { icon: 'times', name: 'CLEAR', click: this.clearBoard }),
@@ -123,13 +121,13 @@ var App = function (_React$Component) {
   return App;
 }(React.Component);
 
-var Btn = function (_React$Component2) {
-  _inherits(Btn, _React$Component2);
+var Btn = function (_React$ComponentBtn) {
+  _inherits(Btn, _React$ComponentBtn);
 
   function Btn() {
     _classCallCheck(this, Btn);
 
-    return _possibleConstructorReturn(this, _React$Component2.apply(this, arguments));
+    return _possibleConstructorReturn(this, _React$ComponentBtn.apply(this, arguments));
   }
 
   Btn.prototype.render = function render() {
@@ -137,9 +135,7 @@ var Btn = function (_React$Component2) {
     if (icon == 'play/pause') {
       icon = this.props.playing == true ? 'pause' : 'play';
     }
-    return React.createElement(
-      'div',
-      { className: 'btn', onClick: this.props.click },
+    return React.createElement('div',{ className: 'btn', onClick: this.props.click },
       React.createElement('i', { className: 'fa fa-' + icon })
     );
   };
@@ -147,41 +143,35 @@ var Btn = function (_React$Component2) {
   return Btn;
 }(React.Component);
 
-var Counter = function (_React$Component3) {
-  _inherits(Counter, _React$Component3);
+var Counter = function (_React$ComponentCntr) {
+  _inherits(Counter, _React$ComponentCntr);
 
   function Counter() {
     _classCallCheck(this, Counter);
 
-    return _possibleConstructorReturn(this, _React$Component3.apply(this, arguments));
+    return _possibleConstructorReturn(this, _React$ComponentCntr.apply(this, arguments));
   }
 
   Counter.prototype.render = function render() {
-    return React.createElement(
-      'div',
-      { className: 'counter' },
-      React.createElement(
-        'p',
-        null,
-        this.props.count
-      )
+    return React.createElement('div',{ className: 'counter' },
+      React.createElement('p',null,this.props.count)
     );
   };
 
   return Counter;
 }(React.Component);
 
-var LifeBoard = function (_React$Component4) {
-  _inherits(LifeBoard, _React$Component4);
+var LifeBoard = function (_React$ComponentLB) {
+  _inherits(LifeBoard, _React$ComponentLB);
 
   function LifeBoard() {
     _classCallCheck(this, LifeBoard);
 
-    var _this4 = _possibleConstructorReturn(this, _React$Component4.call(this));
+    var _this = _possibleConstructorReturn(this, _React$ComponentLB.call(this));
 
-    _this4.updateBoard = _this4.updateBoard.bind(_this4);
-    _this4.handleClick = _this4.handleClick.bind(_this4);
-    return _this4;
+    _this.updateBoard = _this.updateBoard.bind(_this);
+    _this.handleClick = _this.handleClick.bind(_this);
+    return _this;
   }
 
   LifeBoard.prototype.updateBoard = function updateBoard() {
@@ -237,13 +227,9 @@ var LifeBoard = function (_React$Component4) {
     }
   };
 
-  LifeBoard.prototype.getX = function getX(i, width) {
-    return i % width;
-  };
+  LifeBoard.prototype.getX = function getX(i, width) {return i % width;};
 
-  LifeBoard.prototype.getY = function getY(i, width) {
-    return Math.floor(i / width);
-  };
+  LifeBoard.prototype.getY = function getY(i, width) {return Math.floor(i / width);};
 
   LifeBoard.prototype.paint = function paint() {
     var ctx = ReactDOM.findDOMNode(this).getContext('2d');
@@ -257,7 +243,8 @@ var LifeBoard = function (_React$Component4) {
       if (board[i] == 1) {
         y = this.getY(i, width);
         x = this.getX(i, width);
-        ctx.fillStyle = '#11bb55';
+        // ctx.fillStyle = '#11bb55';
+        ctx.fillStyle = '#000000';
         ctx.fillRect(x, y, 1, 1);
       }
     }
