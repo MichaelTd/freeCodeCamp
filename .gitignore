@@ -1,4 +1,12 @@
+*/*/private/
 */*/other/
 */*/_other/
 */*/node_modules/
 fcc-project-tutorials/
+_config.yml
+.project
+essential-vanilla-javascript-functions.md
+jsArrayFunctions.js
+JSON-API-and-Ajax.md
+markdown-cheatsheet.md
+template.html
