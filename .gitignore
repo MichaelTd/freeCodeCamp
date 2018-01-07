@@ -3,6 +3,7 @@
 */*/_other/
 */*/node_modules/
 fcc-project-tutorials/
+private/*
 _config.yml
 .project
 essential-vanilla-javascript-functions.md
