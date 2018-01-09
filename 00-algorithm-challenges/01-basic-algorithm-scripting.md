@@ -2,8 +2,6 @@
 
 ### [Reverse a String](https://www.freecodecamp.com/challenges/reverse-a-string)
 
-OK
-
 Reverse the provided string.
 
 You may need to turn the string into an array before you can reverse it.
@@ -36,8 +34,6 @@ reverseString("hello");
 ```
 
 ### [Factorialize a Number](https://www.freecodecamp.com/challenges/factorialize-a-number)
-
-OK
 
 Return the factorial of the provided integer.
 
@@ -72,8 +68,6 @@ factorialize(5);
 
 ### [Check for Palindromes](https://www.freecodecamp.com/challenges/check-for-palindromes)
 
-OK
-
 Return true if the given string is a palindrome. Otherwise, return false.
 
 A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing.
@@ -107,8 +101,6 @@ palindrome("eye");
 ```
 
 ### [Find the Longest Word in a String](https://www.freecodecamp.com/challenges/find-the-longest-word-in-a-string)
-
-OK
 
 Return the length of the longest word in the provided sentence.
 
@@ -146,8 +138,6 @@ findLongestWord("The quick brown fox jumped over the lazy dog");
 
 ### [Title Case a Sentence](https://www.freecodecamp.com/challenges/title-case-a-sentence)
 
-OK
-
 Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
 
 For the purpose of this exercise, you should also capitalize connecting words like "the" and "of".
@@ -177,8 +167,6 @@ titleCase("I'm a little tea pot");
 ```
 
 ### [Return Largest Numbers in Arrays](https://www.freecodecamp.com/challenges/return-largest-numbers-in-arrays)
-
-OK
 
 Return an array consisting of the largest number from each provided sub-array. For simplicity, the provided array will contain exactly 4 sub-arrays.
 
@@ -210,8 +198,6 @@ largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 85
 
 ### [Confirm the Ending](https://www.freecodecamp.com/challenges/confirm-the-ending)
 
-OK
-
 Check if a string (first argument, str) ends with the given target string (second argument, target).
 
 This challenge can be solved with the .endsWith() method, which was introduced in ES2015. But for the purpose of this challenge, we would like you to use one of the JavaScript substring methods instead.
@@ -236,8 +222,6 @@ confirmEnding("Bastian", "n");
 
 ### [Repeat a string repeat a string](https://www.freecodecamp.com/challenges/repeat-a-string-repeat-a-string)
 
-OK
-
 Repeat a given string (first argument) num times (second argument). Return an empty string if num is not a positive number.
 
 Remember to use Read-Search-Ask if you get stuck. Write your own code.
@@ -261,8 +245,6 @@ repeatStringNumTimes("abc", 3);
 ```
 
 ### [Truncate a string](https://www.freecodecamp.com/challenges/truncate-a-string)
-
-OK
 
 Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending.
 
@@ -296,8 +278,6 @@ truncateString("A-tisket a-tasket A green and yellow basket", 11);
 ```
 
 ### [Chunky Monkey](https://www.freecodecamp.com/challenges/chunky-monkey)
-
-OK
 
 Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
 
@@ -351,8 +331,6 @@ slasher([1, 2, 3], 2);
 
 ### [Mutations](https://www.freecodecamp.com/challenges/mutations)
 
-OK
-
 Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
 
 For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
@@ -385,8 +363,6 @@ mutation(["hello", "hey"]);
 
 ### [Falsy Bouncer](https://www.freecodecamp.com/challenges/falsy-bouncer)
 
-OK
-
 Remove all falsy values from an array.
 
 Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
@@ -410,8 +386,6 @@ bouncer([7, "ate", "", false, 9]);
 ```
 
 ### [Seek and Destroy](https://www.freecodecamp.com/challenges/seek-and-destroy)
-
-OK
 
 You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
 
@@ -443,8 +417,6 @@ destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 
 ### [Where do I belong](https://www.freecodecamp.com/challenges/where-do-i-belong)
 
-OK
-
 Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
 
 For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
@@ -470,8 +442,6 @@ getIndexToIns([40, 60], 50);
 ```
 
 ### [Caesars Cipher](https://www.freecodecamp.com/challenges/caesars-cipher)
-
-ok
 
 One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift cipher. In a shift cipher the meanings of the letters are shifted by some set amount.
 

@@ -2,8 +2,6 @@
 
 ### [Validate US Telephone Numbers](https://www.freecodecamp.com/challenges/validate-us-telephone-numbers)
 
-OK
-
 Return true if the passed string is a valid US phone number.
 
 The user may fill out the form field any way they choose as long as it is a valid US number. The following are examples of valid formats for US numbers (refer to the tests below for other variants):
@@ -48,8 +46,6 @@ telephoneCheck("555-555-5555");
 ```
 
 ### [Record Collection](https://www.freecodecamp.com/challenges/record-collection)
-
-OK
 
 You are given a JSON object representing a part of your musical album collection. Each album has several properties and a unique id number as its key. Not all albums have complete information.
 
@@ -126,8 +122,6 @@ updateRecords(5439, "artist", "ABBA");
 
 ### [Symmetric Difference](https://www.freecodecamp.com/challenges/symmetric-difference)
 
-OK
-
 Create a function that takes two or more arrays and returns an array of the symmetric difference (△ or ⊕) of the provided arrays.
 
 Given two sets (for example set A = {1, 2, 3} and set B = {2, 3, 4}), the mathematical term "symmetric difference" of two sets is the set of elements which are in either of the two sets, but not in both (A △ B = C = {1, 4}). For every additional symmetric difference you take (say on a set D = {2, 3}), you should get the set with elements which are in either of the two the sets but not both (C △ D = {1, 4} △ {2, 3} = {1, 2, 3, 4}).
@@ -172,8 +166,6 @@ sym([1, 2, 3], [5, 2, 1, 4]);
 ```
 
 ### [Exact Change](https://www.freecodecamp.com/challenges/exact-change)
-
-OK
 
 Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument (price), payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
 
@@ -285,8 +277,6 @@ checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1
 
 ### [Inventory Update](https://www.freecodecamp.com/challenges/inventory-update)
 
-OK
-
 Compare and update the inventory stored in a 2D array against a second 2D array of a fresh delivery. Update the current existing inventory item quantities (in arr1). If an item cannot be found, add the new item and quantity into the inventory array. The returned inventory array should be in alphabetical order by item.
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
@@ -385,8 +375,6 @@ updateInventory(curInv, newInv);
 ```
 
 ### [No repeats please](https://www.freecodecamp.com/challenges/no-repeats-please)
-
-OK
 
 Return the number of total permutations of the provided string that don't have repeated consecutive letters. Assume that all characters in the provided string are each unique.
 
@@ -561,8 +549,6 @@ permAlone('aab');
 
 ### [Friendly Date Ranges](https://www.freecodecamp.com/challenges/friendly-date-ranges)
 
-Gone
-
 Convert a date range consisting of two dates formatted as YYYY-MM-DD into a more readable format.
 
 The friendly display should use month names instead of numbers and ordinal dates instead of cardinal (1st instead of 1).
@@ -648,8 +634,6 @@ makeFriendlyDates(['2016-07-01', '2016-07-04']);
 
 ### [Make a Person](https://www.freecodecamp.com/challenges/make-a-person)
 
-OK
-
 Fill in the object constructor with the following methods below:
 
     getFirstName()
@@ -712,8 +696,6 @@ bob.getFullName();
 
 ### [Map the Debris](https://www.freecodecamp.com/challenges/map-the-debris)
 
-OK?
-
 Return a new array that transforms the element's average altitude into their orbital periods.
 
 The array will contain objects in the format {name: 'name', avgAlt: avgAlt}.
@@ -762,8 +744,6 @@ orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 ```
 
 ### [Pairwise](https://www.freecodecamp.com/challenges/pairwise)
-
-OK
 
 Given an array arr, find element pairs whose sum equal the second argument arg and return the sum of their indices.
 
