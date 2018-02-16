@@ -3,10 +3,12 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 body {
-  background: url("https://images.unsplash.com/photo-1483425571841-9662f86c7154?dpr=1&auto=format&fit=crop&w=1500&h=746&q=80&cs=tinysrgb&crop=") no-repeat center center fixed;
+    /*
+    background: url("https://images.unsplash.com/photo-1483425571841-9662f86c7154?dpr=1&auto=format&fit=crop&w=1500&h=746&q=80&cs=tinysrgb&crop=") no-repeat center center fixed;
+   */
+  background: url("https://cdn-images-1.medium.com/max/1400/1*XsmvUvDELQVWAl3zhTvvlQ.jpeg") no-repeat center center fixed;
   background-size: cover;
   min-height: 90vh;
-
 }
 
 .pomodoro {
@@ -60,7 +62,8 @@ p {
 }
 
 h1 {
-  color:#333333;
+    /* color:#333333; */
+  color:#cccccc;
   background-color: rgba(127,127,127,0.5);
   box-shadow: 0 0 60px black;
   border:solid #333333;
