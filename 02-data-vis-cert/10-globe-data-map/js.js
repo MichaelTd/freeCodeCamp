@@ -10,8 +10,8 @@ d3.json(url, function (json) {
   var g = svg.append("g");
 
   var projection = d3.geo.equirectangular() //tells d3 that we are using a rectangular full map for geolocation
-  .scale(133).translate([width / 2 - 19, height / 2 + 43]) //tell the systemt that the point 0,0 is in the middle
-  .precision(.2);
+    .scale(133).translate([width / 2 - 19, height / 2 + 43]) //tell the systemt that the point 0,0 is in the middle
+    .precision(.2);
 
   var path = d3.geo.path().projection(projection);
 
