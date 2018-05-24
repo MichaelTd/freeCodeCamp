@@ -13,3 +13,30 @@
 ### [Node.js](https://nodejs.org/)
 
 ### ~~[Markdown Cheatsheet](markdown-cheatsheet.md)~~
+
+### skills 
+  'Bootstrap'
+	'Bower'
+	'CamperBot
+	'Codepen'
+	'CSS3'
+	'D3'
+	'ES6'
+	'Git'
+	'Github'
+	'Gitter'
+	'Grunt'
+	'Heroku'
+	'HTML5'
+	'jQuery'
+	'Javascript'
+	'MongoDB'
+	'NodeJS'
+	'React'
+	'Redux'
+	'Sass'
+	'StackOverflow'
+	'Sublime'
+	'Terminal'
+	'Twitter'
+	'Webpack'
