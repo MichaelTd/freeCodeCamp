@@ -1,6 +1,8 @@
+## [freeCodeCamp](https://www.freecodecamp.org/)
+
 #### freeCodeCamp Legacy Challenges
 
-[freeCodeCamp](https://www.freecodecamp.org/) -  [Syllabus](https://www.freecodecamp.org/map) -  [Account](https://www.freecodecamp.org/michaeltd)
+[freeCodeCamp](https://www.freecodecamp.org/)
 
 1. ###### [User Interface](01-front-end-cert/) -  [README.md](01-front-end-cert/README.md)
 
