@@ -1,4 +1,4 @@
-#### freeCodeCamp Challenges
+#### freeCodeCamp Legacy Challenges
 
 [freeCodeCamp](https://www.freecodecamp.org/) -  [Syllabus](https://www.freecodecamp.org/map) -  [Account](https://www.freecodecamp.org/michaeltd)
 
@@ -7,3 +7,8 @@
 1. ###### [Data Visualization](02-data-vis-cert/) -  [README.md](02-data-vis-cert/README.md)
 
 1. ###### [Back End Projects](03-back-end-cert/) -  [README.md](03-back-end-cert/README.md)
+
+#### freeCodeCamp New Challenges
+
+[rosettacode.org on the web](http://rosettacode.org/) [Rosetta Code solutions](https://github.com/MichaelTd/CodeSites/tree/master/rosettacode)
+[projecteuler.com on the web](https://projecteuler.net/)[Project Euler solutions](https://github.com/MichaelTd/CodeSites/tree/master/projecteuler)
