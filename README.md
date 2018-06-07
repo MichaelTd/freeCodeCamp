@@ -10,5 +10,9 @@
 
 #### freeCodeCamp New Challenges
 
-[rosettacode.org on the web](http://rosettacode.org/) [Rosetta Code solutions](https://github.com/MichaelTd/CodeSites/tree/master/rosettacode)
-[projecteuler.com on the web](https://projecteuler.net/)[Project Euler solutions](https://github.com/MichaelTd/CodeSites/tree/master/projecteuler)
+###### Rosetta code
+  * [Rosetta Code on the web](http://rosettacode.org/)
+  * [Rosetta Code solutions](https://github.com/MichaelTd/CodeSites/tree/master/rosettacode)
+###### Project Euler
+  * [Project Euler on the web](https://projecteuler.net/)
+  * [Project Euler solutions](https://github.com/MichaelTd/CodeSites/tree/master/projecteuler)
