@@ -6,7 +6,7 @@
 
 1. [Data Visualization](02-data-vis-cert/) -  [README.md](02-data-vis-cert/README.md)
 
-1. [Back End Projects](03-back-end-cert/) -  [README.md](03-back-end-cert/README.md)
+1. [Back End](03-back-end-cert/) -  [README.md](03-back-end-cert/README.md)
 
 #### freeCodeCamp New Challenges
 
