@@ -4,10 +4,10 @@ $(document).ready(function() {
     var encodedQuote = encodeURIComponent(data);
     var tweetUrl = "https://twitter.com/intent/tweet?text=" + encodedQuote;
     $('.quote').text(data);
-    $('.btnTweet').attr('href', tweetUrl);
+    $('.btn-tweet').attr('href', tweetUrl);
   };
 
-  $('.btnNew').on('click', function() {
+  $('.btn-new').on('click', function() {
     var reloadBtn = $(this);
     reloadBtn.prop('disabled', true).children('i').addClass('fa-spin');
     getQuote().done(function(data) {
