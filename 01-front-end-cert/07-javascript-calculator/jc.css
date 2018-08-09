@@ -1,7 +1,6 @@
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
-@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-@import url("https://fonts.googleapis.com/css?family=Orbitron|Roboto+Mono");
+@import url("https://fonts.googleapis.com/css?family=Orbitron");
 
 body {
   background: url("https://www.wallpapers.net/web/wallpapers/sun-earth-wallpaper-for-desktop-mobiles/1440x900.jpg") no-repeat center center fixed;
@@ -45,7 +44,7 @@ h1 {
 }
 
 .display{
-  font-family:"Roboto Mono";
+  font-family:"Orbitron";
   box-shadow: 0 0 30px black !Important;
   color:white;
   background-color:black;
