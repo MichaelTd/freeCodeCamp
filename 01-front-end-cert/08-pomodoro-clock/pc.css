@@ -3,12 +3,10 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 body {
-    /*
-    background: url("https://images.unsplash.com/photo-1483425571841-9662f86c7154?dpr=1&auto=format&fit=crop&w=1500&h=746&q=80&cs=tinysrgb&crop=") no-repeat center center fixed;
-   */
-  background: url("https://cdn-images-1.medium.com/max/1400/1*XsmvUvDELQVWAl3zhTvvlQ.jpeg") no-repeat center center fixed;
+  background: url('https://cdn-images-1.medium.com/max/1400/1*XsmvUvDELQVWAl3zhTvvlQ.jpeg') no-repeat center center fixed;
   background-size: cover;
   min-height: 90vh;
+  color:#ccc;
 }
 
 .pomodoro {
@@ -19,7 +17,7 @@ body {
   width: 600px;
   padding-top: 15px;
   padding-bottom: 25px;
-  background-color: rgba(127,127,127,0.5);
+  background-color: rgba(0,0,0,0.5);
   box-shadow: 0 0 60px black;
   border:solid #333333;
   border-radius: 10px;
@@ -62,9 +60,7 @@ p {
 }
 
 h1 {
-    /* color:#333333; */
-  color:#cccccc;
-  background-color: rgba(127,127,127,0.5);
+  background-color: rgba(0,0,0,0.5);
   box-shadow: 0 0 60px black;
   border:solid #333333;
   border-radius: 10px;
@@ -72,7 +68,6 @@ h1 {
 
 .container{
   width: 600px;
-
 }
 
 .middle {
@@ -91,7 +86,6 @@ h1 {
 
 .btn {
   background-color: #333333;
-  color: #CCCCCC;
 }
 
 #ssnUp, #ssnDn, #brkUp, #brkDn {
@@ -99,11 +93,9 @@ h1 {
 }
 
 #stats {
-  /*background-color: #333333;*/
   width: 220px;
   height: 70px;
   border-radius: 10px;
-  /*color: #CCCCCC;*/
   font-size: 45px;
   text-align: center;
 }
@@ -114,13 +106,8 @@ h1 {
   margin-bottom: 20px;
 }
 
-a{
-  color:#333333;
-}
-
 footer {
-  color:#333333;
-  background-color: rgba(127,127,127,0.5);
+  background-color: rgba(0,0,0,0.5);
   min-height: 10vh;
   line-height: 20px;
   padding-top: 10px;
