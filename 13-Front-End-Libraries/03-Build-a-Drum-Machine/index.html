@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>fcc Drum Machine</title>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400");
+html, body {
+  overflow: hidden;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  font-family: "Roboto Slab", serif;
+  background: #222;
+}
+
+p {
+  font-weight: 100;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #e3e3e3;
+}
+
+.container {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+}
+
+.drumpad {
+  width: 480px;
+  display: inline-flex;
+  flex-direction: column;
+  margin: 50px auto;
+}
+
+.key {
+  position: relative;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 7px;
+  background: rgba(130, 130, 130, 0.4);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 40px;
+  font-weight: 300;
+  box-shadow: inset 0 0 5px 3px rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.key.yellow {
+  background-image: radial-gradient(#e5c134, #9f8314);
+}
+.key.green {
+  background-image: radial-gradient(#8cd277, #53aa39);
+}
+.key.blue {
+  background-image: radial-gradient(#4faed4, #257798);
+}
+.key.purple {
+  background-image: radial-gradient(#d64aac, #972374);
+}
+.key.playing {
+  opacity: 1;
+}
+</style>
+</head>
+
+<body>
+
+  <div class="container">
+  <div class="drumpad">
+    <div class="row">
+      <div class="key blue" data-key="65">A</div>
+      <div class="key blue" data-key="83">S</div>
+      <div class="key yellow" data-key="68">D</div>
+      <div class="key purple" data-key="70">F</div>
+    </div>
+    <div class="row">
+      <div class="key yellow" data-key="72">H</div>
+      <div class="key purple" data-key="74">J</div>
+      <div class="key blue" data-key="75">K</div>
+      <div class="key green" data-key="76">L</div>
+    </div>
+  </div>
+  <p>Just press those keys on your keyboard to get started.</p>
+</div>
+
+<audio loop id="Big-Rack-Tom-Audio" data-key="65">
+  <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/343880/looperman-l-1172494-0081589-yappy-organ-flute-90bpm.wav" preload="auto" type="audio/wav" />
+</audio>
+<audio loop id="Crash-Audio" data-key="83">
+  <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/343880/looperman-l-0911223-0096296-silencekills-space-lift-drums-90.wav" preload="auto" type="audio/wav" />
+</audio>
+<audio loop id="Floor-Tom-Audio" data-key="68">
+  <source src="https://s3.amazonaws.com/iamjoshellis-codepen/pens-of-rock/drums/Floor-Tom.mp3" preload="auto" type="audio/mp3" />
+</audio>
+<audio loop id="Hi-Hat-Closed-Audio" data-key="70">
+  <source src="https://s3.amazonaws.com/iamjoshellis-codepen/pens-of-rock/drums/Hi-Hat-Closed.mp3" preload="auto" type="audio/mp3" />
+</audio>
+<audio loop id="Hi-Hat-Open-Audio" data-key="72">
+  <source src="https://s3.amazonaws.com/iamjoshellis-codepen/pens-of-rock/drums/High-Hat-Open.mp3" preload="auto" type="audio/mp3" />
+</audio>
+<audio loop id="Kick-Audio" data-key="74">
+  <source src="https://s3.amazonaws.com/iamjoshellis-codepen/pens-of-rock/drums/Kick.mp3" preload="auto" type="audio/mp3" />
+</audio>
+<audio loop id="Small-Rack-Tom-Audio" data-key="75">
+  <source src="https://s3.amazonaws.com/iamjoshellis-codepen/pens-of-rock/drums/Small-Rack-Tom.mp3" preload="auto" type="audio/mp3" />
+</audio>
+<audio loop id="Snare-Audio" data-key="76">
+  <source src="https://s3.amazonaws.com/iamjoshellis-codepen/pens-of-rock/drums/Snare.mp3" preload="auto" type="audio/mp3" />
+</audio>
+<script>
+function _startPlayingMusic(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  if (!audio) return;
+  audio.play();
+  key.classList.add('playing');
+}
+
+function _stopPlaying(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  if (!audio) return;
+  audio.pause();
+  audio.currentTime = 0;
+  key.classList.remove('playing');
+}
+
+window.addEventListener('keydown', (e) => {
+  _startPlayingMusic(e);
+});
+
+window.addEventListener('keyup', (e) => {
+  _stopPlaying(e);
+});
+</script>
+</body>
+</html>
