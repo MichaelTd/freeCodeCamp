@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Form | FCC  </title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Survey Form for Free Code Camp"/>
+<meta name="author" content="Adèle Royer"/>
+<title>Survey Form | FCC</title>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.m-b-xs {
+  margin-bottom: 2%;
+}
+
+.m-b-md {
+  margin-bottom: 10%;
+}
+
+.m-t-xs {
+  margin-top: 2%;
+}
+
+.m-t-sm {
+  margin-top: 5%;
+}
+
+* {
+  outline: 0 !important;
+}
+
+body {
+  padding: 2% 0;
+  background-color: #37404a;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 2.2em;
+  font-weight: 300;
+  color: #85FFC7;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  color: #FFF;
+}
+
+a {
+  color: #FFF;
+}
+a:hover {
+  text-decoration: none;
+  color: #FFF;
+}
+
+#survey-form label,
+#survey-form .labels {
+  display: block;
+  margin-bottom: 2%;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  color: #FFF;
+  letter-spacing: 0.5px;
+}
+#survey-form input::-webkit-input-placeholder {
+  color: transparent !important;
+}
+#survey-form input::-moz-placeholder {
+  color: transparent !important;
+}
+#survey-form input:-ms-input-placeholder {
+  color: transparent !important;
+}
+#survey-form input:-moz-placeholder {
+  color: transparent !important;
+}
+#survey-form input,
+#survey-form select {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  outline: none;
+  border: 2px solid #333;
+}
+#survey-form input {
+  margin-top: 1.5%;
+  padding: 0 0 5px 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #FFF;
+  font-size: 1.1em;
+  font-weight: 300;
+  color: #85FFC7;
+}
+#survey-form input:focus {
+  border-color: #85FFC7;
+}
+#survey-form [type="checkbox"],
+#survey-form [type="radio"] {
+  display: inline-block;
+  width: auto;
+  margin: 0px 10px 0 0;
+}
+#survey-form [type="checkbox"],
+#survey-form [type="radio"] {
+  display: inline-block;
+  margin: 0 10px 0 0 !important;
+  position: relative;
+  top: 5px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  height: 23px;
+  width: 23px;
+  transition: all 0.15s ease-out 0s;
+  background: #37404a;
+  color: #FFF;
+  cursor: pointer;
+  outline: none;
+  z-index: 1000;
+  border: 1px solid #FFF;
+}
+#survey-form [type="checkbox"]:hover,
+#survey-form [type="radio"]:hover {
+  border-color: #85FFC7;
+}
+#survey-form [type="checkbox"]:checked:before,
+#survey-form [type="radio"]:checked:before {
+  display: inline-block;
+  height: 21px;
+  width: 21px;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  content: "\e014";
+  text-align: center;
+  font-family: 'Glyphicons Halflings';
+  line-height: 20px;
+  font-size: 15px;
+  color: #85FFC7;
+}
+#survey-form [type="checkbox"]:focus,
+#survey-form [type="radio"]:focus {
+  outline: none;
+  border-color: #FFF;
+}
+#survey-form [type="radio"] {
+  border-radius: 50%;
+}
+#survey-form [type="radio"]:after {
+  border-radius: 50%;
+}
+#survey-form [type=number] {
+  width: 45px;
+}
+#survey-form [type=number]::-webkit-inner-spin-button, #survey-form [type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+#survey-form select {
+  height: 40px;
+  padding-left: 5px;
+  background-color: #37404a;
+  border: 2px solid #FFF;
+  color: #85FFC7;
+}
+#survey-form select option {
+  padding: 5px 10px;
+  font-weight: 300;
+  cursor: pointer;
+}
+#survey-form select option:hover {
+  background-color: #85FFC7;
+}
+#survey-form textarea {
+  resize: none;
+  margin-top: 2%;
+  padding: 10px 10px 0px 20px;
+  width: 100%;
+  height: 90px;
+  color: #85FFC7;
+  background-color: #37404a;
+  border: 2px solid #FFF;
+}
+#survey-form .btn {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin: 3% 0 0 0;
+  height: 45px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: 3px solid #85FFC7;
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 1.2em;
+  color: #85FFC7;
+  text-align: center;
+  background: none;
+  transition: color 0.25s ease;
+}
+#survey-form .btn:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #85FFC7;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  transition: width 0.5s ease;
+  z-index: -1;
+}
+#survey-form .btn:hover {
+  color: #37404a;
+}
+#survey-form .btn:hover:after {
+  width: 100%;
+}
+#survey-form fieldset {
+  margin: 5% 0 0 0;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 10px;
+  color: #FFF;
+}
+.copyright i {
+  color: #EF5350;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 8% 0;
+  }
+}
+</style>
+
+</head>
+<body>
+  <main id="main" class="container">
+   <div class="row">
+      <div class="col-xs-12 col-lg-offset-3 col-lg-6">
+         <div class="m-b-md text-center">
+            <h1 id="title">Survey Form</h1>
+            <p id="description" class="description" class="text-center">Let us know how we can improve freeCodeCamp</p>
+         </div>
+         <form method="GET" action="" id="survey-form" name="survey-form">
+            <fieldset>
+               <label for="name" id="name-label">
+               Name *
+               <input class="" type="text" id="name" name="name" placeholder="Enter your name (required)" required />
+               </label>
+            </fieldset>
+            <fieldset>
+               <label for="email" id="email-label">
+               Email *
+               <input class="" type="email" id="email" name="email" placeholder="Enter your email (required)" required />
+               </label>
+            </fieldset>
+            <fieldset>
+               <label for="number" id="number-label">
+               Age *
+               <input class="" type="number" id="number" name="number" min="8" max="112" placeholder="Enter you age (required)" required />
+               </label>
+            </fieldset>
+            <fieldset>
+               <label for="dropdown">
+                  Which option best describes your current role? *
+                  <select id="dropdown" name="dropdown" class="m-t-xs">
+                     <option value="student" selected>Student</option>
+                     <option value="ftLob">Full Time Job</option>
+                     <option value="ftLearner">Full Time Learner</option>
+                     <option value="notSaying">Prefer not to say</option>
+                     <option value="other">Other</option>
+                  </select>
+               </label>
+            </fieldset>
+            <fieldset>
+               <div class="labels">
+                  How likely is that you would recommend freeCodeCamp to a friend? *
+               </div>
+               <label class="m-b-xs">
+               <input type="radio" name="survey-form-gender" value="definitely" checked /> Definitely
+               </label>
+               <label class="m-b-xs">
+               <input type="radio" name="survey-form-gender" value="maybe" /> Maybe
+               </label>
+               <label class="m-b-xs">
+               <input type="radio" name="survey-form-gender" value="notSure" /> Not sure
+               </label>
+            </fieldset>
+            <fieldset>
+               <label for="survey-form-like">
+                  What do you like most in FCC:
+                  <select id="survey-form-like" name="survey-form-like" class="m-t-xs">
+                     <option value="challenges" selected>Challenges</option>
+                     <option value="projects">Projects</option>
+                     <option value="community">Community</option>
+                     <option value="openSource">Open Source</option>
+                  </select>
+               </label>
+            </fieldset>
+            <fieldset>
+               <div class="labels">
+                  Things that should be improved in the future (Check all that apply):
+               </div>
+               <label for="survey-form-improve1" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve1" value="feProjects">
+               Front-end Projects
+               </label>
+               <label for="survey-form-improve2" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve2" value="beProjects">
+               Back-end Projects
+               </label>
+               <label for="survey-form-improve3" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve3" value="dataVisualization">
+               Data Visualization
+               </label>
+               <label for="survey-form-improve4" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve4" value="challenges">
+               Challenges
+               </label>
+               <label for="survey-form-improve5" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve5" value="openSources">
+               Open Source Community
+               </label>
+               <label for="survey-form-improve6" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve6" value="gitter">
+               Gitter help rooms
+               </label>
+               <label for="survey-form-improve7" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve7" value="videos">
+               Videos
+               </label>
+               <label for="survey-form-improve8" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve8" value="meetup">
+               City Meetups
+               </label>
+               <label for="survey-form-improve9" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve9" value="wiki">
+               Wiki
+               </label>
+               <label for="survey-form-improve10" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve10" value="forum">
+               Forum
+               </label>
+               <label for="survey-form-improve11" class="m-b-xs">
+               <input type="checkbox" id="survey-form-improve11" value="additional">
+               Additional Courses
+               </label>
+            </fieldset>
+            <fieldset>
+               <label for="survey-form-suggestions">
+               Any Comments or Suggestions?
+               <textarea id="survey-form-suggestions" maxlength="194"></textarea>
+               </label>
+            </fieldset>
+            <button id="submit" type="submit" class="btn">Submit the form</button>
+         </form>
+         <div class="copyright m-t-sm">
+            <div>By <a href="http://www.adeleroyer.fr" title="Adèle Royer">Adèle Royer</a> with <i class="glyphicon glyphicon-heart"></i></div>
+         </div>
+      </div>
+   </div>
+</main>
+<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+</body>
+</html>
