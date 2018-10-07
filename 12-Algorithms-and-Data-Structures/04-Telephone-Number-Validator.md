@@ -15,7 +15,7 @@ The user may fill out the form field any way they choose as long as it has the f
 
 For this challenge you will be presented with a string such as <code>800-692-7753</code> or <code>8oo-six427676;laskdjf</code>. Your job is to validate or reject the US phone number based on any combination of the formats provided above. The area code is required. If the country code is provided, you must confirm that the country code is <code>1</code>. Return <code>true</code> if the string is a valid US phone number; otherwise return <code>false</code>.
 
-Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
+Remember to use [Read-Search-Ask](http://forum.freecodecamp.org/t/how-to-get-help-when-you-are-stuck/19514) if you get stuck. Try to pair program. Write your own code.
 
 ``` js
 /**

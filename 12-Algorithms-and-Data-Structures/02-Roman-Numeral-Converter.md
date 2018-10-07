@@ -2,9 +2,9 @@
 
 Convert the given number into a roman numeral.
 
-All roman numerals answers should be provided in upper-case.
+All [roman numerals](http://www.mathsisfun.com/roman-numerals.html) answers should be provided in upper-case.
 
-Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
+Remember to use [Read-Search-Ask](http://forum.freecodecamp.org/t/how-to-get-help-when-you-are-stuck/19514) if you get stuck. Try to pair program. Write your own code.
 
 ```js
 function convertToRoman(nm) {
