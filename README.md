@@ -1,4 +1,4 @@
-## [freeCodeCamp](https://www.freecodecamp.org/)
+## [freeCodeCamp](https://www.freecodecamp.org/) <a href="http://unmaintained.tech/"><img alt="No Maintenance Intended" src="http://unmaintained.tech/badge.svg"></a>
 
 #### freeCodeCamp Legacy Challenges
 
