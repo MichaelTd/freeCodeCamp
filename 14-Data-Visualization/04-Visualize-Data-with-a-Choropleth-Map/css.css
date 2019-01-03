@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+body {
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  min-width: 966px;
+  margin-top: 20px;
+}
+
+.county {
+  stroke: darkblue;
+  stroke-width: 0.1px;
+}
+
+.state {
+  fill: transparent;
+  stroke: darkblue;
+  stroke-width: 0.5px;
+  pointer-events: none;
+}
+
+header {
+  width: 100%;
+  background-color: #469d27;
+  padding: 4px 0;
+  margin: 0;
+  min-width: 966px;
+}
+header h1, header p {
+  text-align: center;
+  color: white;
+}
+header h1 {
+  margin: 6px 0 0;
+}
+header p {
+  margin: 0 0 18px;
+}
+
+.source {
+  text-align: right;
+  margin: 0 24px;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#tooltip {
+  transition: 0.2s;
+  transition-property: opacity;
+  pointer-events: none;
+}
+
+.tooltip-box {
+  fill: azure;
+  stroke: lightsteelblue;
+  stroke-width: 0.5px;
+  height: 28px;
+}
+
+.tooltip-text {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  font-size: 14px;
+}
+
+.legend-box {
+  stroke: darkblue;
+  stroke-width: 0.5px;
+}
+
+.legend-axis {
+  font-size: 12px;
+}

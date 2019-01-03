@@ -1,0 +1,72 @@
+body {
+  display: flex;
+  justify-content: center;
+  background-color: #251F22;
+  color: white;
+  font-family: 'Share Tech Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+#content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1250px;
+  padding: 10px;
+}
+#titles {
+  text-align: center;
+}
+#title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 40px;
+}
+#description {
+  margin-top: 0px;
+  font-size: 20px;
+}
+#plot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#treemap {
+  margin-top: 5px;
+}
+#legend {
+  
+}
+#tooltip {
+  position: absolute;
+  text-align: center;
+  background-color: black;
+  color: white;
+  box-shadow: 1px 1px 10px black;
+  border-radius: 5px;
+  pointer-events: none;
+  font-size: 12px;
+  padding: 5px;
+}
+.tile:hover {
+  stroke: black;
+  stroke-width: 2px;
+}
+.tile-text {
+  font-size: 10px;
+  user-select: none;
+}
+#selections {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15px;
+}
+.selection {
+  margin: 0px 20px;
+  cursor: pointer;
+}
+.selection:hover {
+  color: grey;
+}
