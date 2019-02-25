@@ -1,4 +1,5 @@
-## [freeCodeCamp](https://www.freecodecamp.org/) 
+## [freeCodeCamp](https://www.freecodecamp.org/)
+
 <hr/>
 
 #### freeCodeCamp Legacy Challenges
@@ -25,8 +26,8 @@
  1. [Algorithms](21-Algorithms/)
  1. [Data Structures](22-Data-Structures/)
  1. [Take Home Projects](23-Take-Home-Projects/)
- 1. [Rosetta Code](24-rosetta-code-org) - [https://rosettacode.org/](https://rosettacode.org/)
- 1. [Project Euler](25-project-euler-net) - [https://projecteuler.net/](https://projecteuler.net/)
+ 1. [Rosetta Code](24-rosettacode.org) - [https://rosettacode.org/](https://rosettacode.org/)
+ 1. [Project Euler](25-projecteuler.net) - [https://projecteuler.net/](https://projecteuler.net/)
 
 <hr/>
 
