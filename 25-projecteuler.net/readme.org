@@ -1,16 +1,27 @@
 #+TITLE: http://projecteuler.net/
 
-# 1
+* Multiples of 3 and 5
+
 [[001MultiplesOf3And5.c]]
-# 2
+
+* Even Fibonacci Numbers
+
 [[002EvenFibonacciNumbers.c]]
-# 3
+
+* Largest Prime Factor
+
 [[003LargestPrimeFactor.c]]
-# 4
+
+* Largest Palindrome Product
+
 [[004LargestPalindromeProduct.c]]
-# 5
+
+* Smallest Multiple
+
 [[005SmallestMultiple.c]]
-# 6
+
+* Sum Square Difference
+
 [[006SumSquareDifference.c]]
 
 [[https://projecteuler.net/profile/MichaelTd.png]]
