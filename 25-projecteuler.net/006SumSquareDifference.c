@@ -18,32 +18,23 @@
 
 int main(void) {
 
-    /*// Brute force
-    int sum = 0;
-    int squared = 0;
-    int result = 0;
+    int sum = 0, squared = 0, result = 0;
     const int N = 100;
 
+    /* Brute force
     for (int i = 1; i <= N; i++) {
         sum += i;
         squared += i * i;
     }
-
-    result = sum * sum - squared;
     */
 
-    long sum = 0;
-    long squared = 0;
-    long result = 0;
-
-    const int N = 100;
-
+    // or formula
     sum = N * (N+1)/ 2;
     squared = (N * (N + 1) * (2 * N + 1)) / 6;
+    //
 
     result = sum * sum - squared;
 
-    printf("%ld\n", result);
-
+    printf("%d\n", result);
     return (0);
 }
