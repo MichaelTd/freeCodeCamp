@@ -1,11 +1,16 @@
 #+TITLE: http://projecteuler.net/
 
 # 1
+[[001MultiplesOf3And5.c]]
 # 2
+[[002EvenFibonacciNumbers.c]]
 # 3
+[[003LargestPrimeFactor.c]]
 # 4
+[[004LargestPalindromeProduct.c]]
 # 5
+[[005SmallestMultiple.c]]
+# 6
+[[006SumSquareDifference.c]]
 
-![[https://projecteuler.net/profile/MichaelTd.png]]
-
-[[https://projecteuler.net/][Project Euler]]
+[[https://projecteuler.net/profile/MichaelTd.png]]
