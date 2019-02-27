@@ -6,4 +6,6 @@
 # 4
 # 5
 
-[[https://projecteuler.net/profile/MichaelTd.png][https://projecteuler.net/]]
+![[https://projecteuler.net/profile/MichaelTd.png]]
+
+[[https://projecteuler.net/][Project Euler]]
