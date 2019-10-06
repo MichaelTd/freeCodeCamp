@@ -2,7 +2,7 @@
 #+author: michaeltd
 #+date: <2019-10-06 Sun>
 
-[[[[https://projecteuler.net/profile/MichaelTd.png]]]]
+[[https://projecteuler.net/profile/MichaelTd.png]]
 
 * Multiples of 3 and 5
 
