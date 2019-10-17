@@ -1,4 +1,5 @@
-* ## Intermediate Algorithm Scripting
+* Intermediate Algorithm Scripting
+
 ** [[https://www.freecodecamp.com/challenges/sum-all-numbers-in-a-range][Sum All Numbers in a Range]]
 
 We'll pass you an array of two numbers. Return the sum of those two numbers and all numbers between them.
@@ -15,7 +16,7 @@ Here are some helpful links:
 
     Array.prototype.reduce()
 
-``` js
+#+BEGIN_SRC js
 
 function sumAll(arr) {
   let lw = Math.min(arr[0], arr[1]);
@@ -31,9 +32,9 @@ function sumAll(arr) {
 
 sumAll([1, 4]);
 
-```
+#+END_SRC
 
-### [Diff Two Arrays](https://www.freecodecamp.com/challenges/diff-two-arrays)
+** [[https://www.freecodecamp.com/challenges/diff-two-arrays][Diff Two Arrays]]
 
 Compare two arrays and return a new array with any items only found in one of the two given arrays, but not both. In other words, return the symmetric difference of the two arrays.
 
@@ -51,7 +52,7 @@ Here are some helpful links:
 
     Array.prototype.concat()
 
-``` js
+#+BEGIN_SRC js
 
 function diffArray(ar1, ar2) {
   let na = ar1.concat(ar2);
@@ -65,9 +66,9 @@ function diffArray(ar1, ar2) {
 
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 
-```
+#+END_SRC
 
-### [Roman Numeral Converter](https://www.freecodecamp.com/challenges/roman-numeral-converter)
+** [[https://www.freecodecamp.com/challenges/roman-numeral-converter][Roman Numeral Converter]]
 
 Convert the given number into a roman numeral.
 
@@ -85,7 +86,7 @@ Here are some helpful links:
 
     Array.prototype.join()
 
-``` js
+#+BEGIN_SRC js
 
 function convertToRoman(nm) {
   let rslt = [];
@@ -103,9 +104,9 @@ function convertToRoman(nm) {
 
 convertToRoman(36);
 
-```
+#+END_SRC
 
-### [Wherefore art thou](https://www.freecodecamp.com/challenges/wherefore-art-thou)
+** [[https://www.freecodecamp.com/challenges/wherefore-art-thou][Wherefore art thou]]
 
 Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching property and value pairs (second argument). Each property and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
 
@@ -121,7 +122,7 @@ Here are some helpful links:
 
     Object.keys()
 
-``` js
+#+BEGIN_SRC js
 
 function whatIsInAName(coll, src) {
   let srcKeys = Object.keys(src);
@@ -137,9 +138,9 @@ function whatIsInAName(coll, src) {
 
 whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
 
-```
+#+END_SRC
 
-### [Search and Replace](https://www.freecodecamp.com/challenges/search-and-replace)
+** [[https://www.freecodecamp.com/challenges/search-and-replace][Search and Replace]]
 
 Perform a search and replace on the sentence using the arguments provided and return the new sentence.
 
@@ -161,7 +162,7 @@ Here are some helpful links:
 
     Array.prototype.join()
 
-``` js
+#+BEGIN_SRC js
 
 function myReplace(str, pre, post) {
   let idx = str.indexOf(pre);
@@ -173,10 +174,9 @@ function myReplace(str, pre, post) {
 
 myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
 
-```
+#+END_SRC
 
-
-### [Pig Latin](https://www.freecodecamp.com/challenges/pig-latin)
+** [[https://www.freecodecamp.com/challenges/pig-latin][Pig Latin]]
 
 Translate the provided string to pig latin.
 
@@ -200,7 +200,7 @@ Here are some helpful links:
 
     String.prototype.split()
 
-``` js
+#+BEGIN_SRC js
 
 function translatePigLatin(str) {
     let cnsnnt = false;
@@ -216,10 +216,9 @@ function translatePigLatin(str) {
 
 translatePigLatin("consonant");
 
+#+END_SRC
 
-```
-
-### [DNA Pairing](https://www.freecodecamp.com/challenges/dna-pairing)
+** [[https://www.freecodecamp.com/challenges/dna-pairing][DNA Pairing]]
 
 The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array.
 
@@ -239,7 +238,7 @@ Here are some helpful links:
 
     String.prototype.split()
 
-``` js
+#+BEGIN_SRC js
 
 function MatchingPair(prt){
   // why does this switch doesn't need break; statements? ;..;
@@ -264,10 +263,9 @@ function pairElement(str) {
 
 pairElement("GCG");
 
+#+END_SRC
 
-```
-
-### [Missing letters](https://www.freecodecamp.com/challenges/missing-letters)
+** [[https://www.freecodecamp.com/challenges/missing-letters][Missing letters]]
 
 Find the missing letter in the passed letter range and return it.
 
@@ -281,7 +279,7 @@ Here are some helpful links:
 
     String.fromCharCode()
 
-``` js
+#+BEGIN_SRC js
 
 function fearNotLetter(str) {
 
@@ -298,9 +296,9 @@ function fearNotLetter(str) {
 
 fearNotLetter("abce");
 
-```
+#+END_SRC
 
-### [Boo who](https://www.freecodecamp.com/challenges/boo-who)
+** [[https://www.freecodecamp.com/challenges/boo-who][Boo who]]
 
 Check if a value is classified as a boolean primitive. Return true or false.
 
@@ -312,7 +310,7 @@ Here are some helpful links:
 
     Boolean Objects
 
-``` js
+#+BEGIN_SRC js
 
 function booWho(val) {
   return typeof val === 'boolean';
@@ -321,9 +319,9 @@ function booWho(val) {
 booWho(null);
 
 
-```
+#+END_SRC
 
-### [Sorted Union](https://www.freecodecamp.com/challenges/sorted-union)
+** [[https://www.freecodecamp.com/challenges/sorted-union][Sorted Union]]
 
 Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
 
@@ -341,7 +339,7 @@ Here are some helpful links:
 
     Array.prototype.reduce()
 
-``` js
+#+BEGIN_SRC js
 
 function uniteUnique(arr) {
 
@@ -362,9 +360,9 @@ function uniteUnique(arr) {
 
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 
-```
+#+END_SRC
 
-### [Convert HTML Entities](https://www.freecodecamp.com/challenges/convert-html-entities)
+** [[https://www.freecodecamp.com/challenges/convert-html-entities][Convert HTML Entities]]
 
 Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
 
@@ -378,7 +376,7 @@ Here are some helpful links:
 
     String.prototype.replace()
 
-``` js
+#+BEGIN_SRC js
 
 function convertHTML(str) {
   // & = &amp; < = &lt; > = &gt; " = &quot; ' = &apos;
@@ -408,9 +406,9 @@ function convertHTML(str) {
 
 convertHTML("Dolce & Gabbana");
 
-```
+#+END_SRC
 
-### [Spinal Tap Case](https://www.freecodecamp.com/challenges/spinal-tap-case)
+** [[https://www.freecodecamp.com/challenges/spinal-tap-case][Spinal Tap Case]]
 
 Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
 
@@ -422,7 +420,7 @@ Here are some helpful links:
 
     String.prototype.replace()
 
-``` js
+#+BEGIN_SRC js
 
 function spinalCase(str) {
 
@@ -437,9 +435,9 @@ function spinalCase(str) {
 
 spinalCase('This Is Spinal Tap');
 
-```
+#+END_SRC
 
-### [Sum All Odd Fibonacci Numbers](https://www.freecodecamp.com/challenges/sum-all-odd-fibonacci-numbers)
+** [[https://www.freecodecamp.com/challenges/sum-all-odd-fibonacci-numbers][Sum All Odd Fibonacci Numbers]]
 
 Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
 
@@ -453,7 +451,7 @@ Here are some helpful links:
 
     Remainder
 
-``` js
+#+BEGIN_SRC js
 
 function sumFibs(num) {
     let ln = 0, cn = 1, rs = 0;
@@ -470,9 +468,9 @@ function sumFibs(num) {
 
 sumFibs(4);
 
-```
+#+END_SRC
 
-### [Sum All Primes](https://www.freecodecamp.com/challenges/sum-all-primes)
+** [[https://www.freecodecamp.com/challenges/sum-all-primes][Sum All Primes]]
 
 Sum all the prime numbers up to and including the provided number.
 
@@ -488,7 +486,7 @@ Here are some helpful links:
 
     Array.prototype.push()
 
-``` js
+#+BEGIN_SRC js
 
 function isPrime(num){
   for (i = 2; i <= num; i++){
@@ -507,9 +505,10 @@ function sumPrimes(num) {
 
 sumPrimes(10);
 
-```
 
-### [Smallest Common Multiple](https://www.freecodecamp.com/challenges/smallest-common-multiple)
+#+END_SRC
+
+** [[https://www.freecodecamp.com/challenges/smallest-common-multiple][Smallest Common Multiple]]
 
 Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
 
@@ -523,7 +522,7 @@ Here are some helpful links:
 
     Smallest Common Multiple
 
-``` js
+#+BEGIN_SRC js
 
 function gcd(a, b) {
   if (b === 0) return a;
@@ -544,9 +543,9 @@ function smallestCommons(arr) {
 
 smallestCommons([1,5]);
 
-```
+#+END_SRC
 
-### [Finders Keepers](https://www.freecodecamp.com/challenges/finders-keepers)
+** [[https://www.freecodecamp.com/challenges/finders-keepers][Finders Keepers]]
 
 Create a function that looks through an array (first argument) and returns the first element in the array that passes a truth test (second argument).
 
@@ -556,7 +555,7 @@ Here are some helpful links:
 
     Array.prototype.filter()
 
-``` js
+#+BEGIN_SRC js
 
 function findElement(varArr, check) {
   let keepMe;
@@ -585,10 +584,9 @@ function findElement(varArr, check) {
 
 findElement([1, 2, 3, 4], function(checkMe){ return checkMe % 2 === 0; });
 
+#+END_SRC
 
-```
-
-### [Drop it](https://www.freecodecamp.com/challenges/drop-it)
+** [[https://www.freecodecamp.com/challenges/drop-it][Drop it]]
 
 Drop the elements of an array (first argument), starting from the front, until the predicate (second argument) returns true.
 
@@ -606,7 +604,7 @@ Here are some helpful links:
 
     Array.prototype.slice()
 
-``` js
+#+BEGIN_SRC js
 
 function dropElements(arr, func) {
 
@@ -647,9 +645,9 @@ dropElements([1, 2, 3, 4], function(n) {return n > 5;}) // should return []
 dropElements([1, 2, 3, 7, 4], function(n) {return n > 3;}) // should return [7, 4]
 dropElements([1, 2, 3, 9, 2], function(n) {return n > 2;}) // should return [3, 9, 2]
 
-```
+#+END_SRC
 
-### [Steamroller](https://www.freecodecamp.com/challenges/steamroller)
+** [[https://www.freecodecamp.com/challenges/steamroller][Steamroller]]
 
 Flatten a nested array. You must account for varying levels of nesting.
 
@@ -659,7 +657,7 @@ Here are some helpful links:
 
     Array.isArray()
 
-``` js
+#+BEGIN_SRC js
 
 function steamrollArray(varArr) {
 
@@ -684,10 +682,9 @@ function steamrollArray(varArr) {
 
 steamrollArray([1, [2], [3, [[4]]]]);
 
+#+END_SRC
 
-```
-
-### [Binary Agents](https://www.freecodecamp.com/challenges/binary-agents)
+** [[https://www.freecodecamp.com/challenges/binary-agents][Binary Agents]]
 
 Return an English translated sentence of the passed binary string.
 
@@ -701,7 +698,7 @@ Here are some helpful links:
 
     String.fromCharCode()
 
-``` js
+#+BEGIN_SRC js
 
 function binaryAgent(str) {
 
@@ -719,10 +716,9 @@ function binaryAgent(str) {
 
 binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
 
+#+END_SRC
 
-```
-
-### [Everything Be True](https://www.freecodecamp.com/challenges/everything-be-true)
+** [[https://www.freecodecamp.com/challenges/everything-be-true][Everything Be True]]
 
 Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
 
@@ -730,7 +726,7 @@ Remember, you can access object properties through either dot notation or [] not
 
 Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
 
-``` js
+#+BEGIN_SRC js
 
 function truthCheck(collection, pre) {
 
@@ -749,9 +745,9 @@ function truthCheck(collection, pre) {
 
 truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
 
-```
+#+END_SRC
 
-### [Arguments Optional](https://www.freecodecamp.com/challenges/arguments-optional)
+** [[https://www.freecodecamp.com/challenges/arguments-optional][Arguments Optional]]
 
 Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
 
@@ -773,7 +769,7 @@ Here are some helpful links:
 
     Arguments object
 
-``` js
+#+BEGIN_SRC js
 
 function addTogether(someNums) {
 
@@ -796,4 +792,4 @@ function addTogether(someNums) {
 
 addTogether(2,3);
 
-```
+#+END_SRC
