@@ -14,11 +14,11 @@
   "author": "tdm",
   "license": "ISC",
   "dependencies": {
-    "bing-api": "0.0.1",
-    "body-parser": "^1.17.2",
-    "cors": "^2.8.3",
-    "express": "^4.15.3",
-    "mongoose": "^4.11.0",
-    "node-bing-api": "^3.2.1"
+      "bing-api": "0.0.1",
+      "body-parser": "^1.17.2",
+      "cors": "^2.8.3",
+      "express": "^4.15.3",
+      "mongoose": ">=5.7.5",
+      "node-bing-api": "^3.2.1"
   }
 }

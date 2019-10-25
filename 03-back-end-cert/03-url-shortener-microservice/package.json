@@ -4,11 +4,11 @@
   "description": "fcc's 3rd be basejump",
   "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "cors": "^2.8.3",
-    "express": "^4.15.3",
-    "mongoose": "^4.10.8",
-    "nodemon": "^1.11.0"
+      "body-parser": "^1.17.2",
+      "cors": "^2.8.3",
+      "express": "^4.15.3",
+      "mongoose": ">=5.7.5",
+      "nodemon": "^1.11.0"
   },
   "devDependencies": {},
   "scripts": {
