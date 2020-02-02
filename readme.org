@@ -9,6 +9,7 @@
 2. [[02-data-vis-cert/][Data Visualization]] - [[02-data-vis-cert/README.md][README.md]]
 3. [[03-back-end-cert/][Back End]] - [[03-back-end-cert/README.md][README.md]]
 
+
 * freeCodeCamp New Challenges
 
 1. [[11-Responsive-Web-Design][Responsive-Web-Design]]
@@ -17,6 +18,7 @@
 4. [[14-Data-Visualization][Data-Visualization]]
 5. [[15-APIs-and-Microservices][APIs-and-Microservices]]
 6. [[16-Information-Security-and-Quality-Assurance][Information-Security-and-Quality-Assurance]]
+
 
 * Coding Interview Prep
 
