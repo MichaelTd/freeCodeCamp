@@ -85,7 +85,7 @@ var Footer = function Footer() {
   return React.createElement("footer",null,
     React.createElement("div",{className: "container-footer"},
     React.createElement("p",{className: "coder"}),
-    React.createElement("a",{href:"https://www.freecodecamp.org/MichaelTd/"},
+    React.createElement("a",{href:"https://www.freecodecamp.org/michaeltd/"},
     React.createElement("i",{className:"fa fa-free-code-camp fa-1x"}, " ", " tdm ", year))));
 };
 
