@@ -1,4 +1,4 @@
-* Advanced Algorithm Scripting
+** Advanced Algorithm Scripting
 ** [[https://www.freecodecamp.com/challenges/validate-us-telephone-numbers][Validate US Telephone Numbers]]
 
 Return true if the passed string is a valid US phone number.

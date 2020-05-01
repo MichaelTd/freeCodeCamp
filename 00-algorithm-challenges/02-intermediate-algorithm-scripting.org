@@ -1,4 +1,4 @@
-* Intermediate Algorithm Scripting
+** Intermediate Algorithm Scripting
 ** [[https://www.freecodecamp.com/challenges/sum-all-numbers-in-a-range][Sum All Numbers in a Range]]
 
 We'll pass you an array of two numbers. Return the sum of those two numbers and all numbers between them.
