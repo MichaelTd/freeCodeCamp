@@ -1,4 +1,4 @@
-* Basic Algorithm Scripting
+** Basic Algorithm Scripting
 ** [[https://www.freecodecamp.com/challenges/reverse-a-string][Reverse a String]]
 
 Reverse the provided string.
@@ -33,7 +33,6 @@ reverseString("hello");
 #+END_SRC
 
 #+RESULTS:
-: undefined
 
 ** [[https://www.freecodecamp.com/challenges/factorialize-a-number][Factorialize a Number]]
 
@@ -54,19 +53,21 @@ Here are some helpful links:
 #+BEGIN_SRC js
 
 function factorialize(nmbr) {
-  if (nmbr === 0 || nmbr === 1) {
-    return 1;
-  } else {
-    for (let idx = nmbr - 1; idx >= 1; idx--) {
-      nmbr *= idx;
+    if (nmbr === 0 || nmbr === 1) {
+        return 1;
+    } else {
+        for (let idx = nmbr - 1; idx >= 1; idx--) {
+            nmbr *= idx;
+        }
+        return nmbr;
     }
-    return nmbr;
-  }
 }
 
 factorialize(5);
 
 #+END_SRC
+
+#+RESULTS:
 
 ** [[https://www.freecodecamp.com/challenges/check-for-palindromes][Check for Palindromes]]
 
@@ -92,10 +93,10 @@ Here are some helpful links:
 #+BEGIN_SRC js
 
 function palindrome(strng) {
-  let anStrng = strng.replace(/[\W_]/g, ''); // Alphanumeric string.
-  let lcStrng = anStrng.toLowerCase(); // Lower case string.
-  let rvStrng = lcStrng.split('').reverse().join(''); // Reverse string.
-  return lcStrng === rvStrng;
+    let anStrng = strng.replace(/[\W_]/g, ''); // Alphanumeric string.
+    let lcStrng = anStrng.toLowerCase(); // Lower case string.
+    let rvStrng = lcStrng.split('').reverse().join(''); // Reverse string.
+    return lcStrng === rvStrng;
 }
 
 palindrome("eye");
