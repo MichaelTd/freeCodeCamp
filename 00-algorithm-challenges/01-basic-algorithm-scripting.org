@@ -21,14 +21,14 @@ Here are some helpful links:
 
 #+BEGIN_SRC js
 
-function reverseString(strng) {
-  strng = strng.split('');
-  strng = strng.reverse();
-  strng = strng.join('');
-  return strng;
-}
+  function reverseString(strng) {
+    strng = strng.split('');
+    strng = strng.reverse();
+    strng = strng.join('');
+    return strng;
+  }
 
-reverseString("hello");
+  reverseString("hello");
 
 #+END_SRC
 
